@@ -13,7 +13,7 @@ canvas.height = window.innerHeight;
 const particulas = [];
 
 //Número de particulas existentes
-const numParticulas = 150;
+const numParticulas = 75;
 
 // Clase para crear partículas, con sus atributos.
 class Particle {
