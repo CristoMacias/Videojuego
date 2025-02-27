@@ -14,11 +14,12 @@ export default class Personaje{
     oro=0; // Total de oro 
     imagen; // Imagen elegida
     
+    
     //Constructor creador de personajes
     constructor(nombre,raza,max,ataque,defensa,magia,resistenciaMagica,imagen){
         this.nombre = nombre;
         this.raza=raza;
-        this.vida = {max: max,actual:max};
+        this.vida = {max: 100*razas[raza].vida,actual:max};
         this.mana = {max: max, actual: max};
         this.ataque = ataque;
         this.defensa= defensa;
