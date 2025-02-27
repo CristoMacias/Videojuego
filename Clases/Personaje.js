@@ -3,15 +3,15 @@ export default class Personaje{
     
     nombre; //Nombre del personaje
     raza;//Raza: Enano,Elfo,Humano,Mago,Orco,
-    vida;//Vida máxima y vida actual
-    mana;//Maná máximo, y maná actual
-    ataque;//Puntos de ataque
-    defensa;//Puntos de defensa
-    magia;//Puntos de magia
-    resitenciaMagica;//Puntos de resistencia mágica
-    nivel;//Nivel actual
-    experiencia;//Experiencia
-    oro; // Total de oro 
+    vida=100;//Vida máxima y vida actual
+    mana=100;//Maná máximo, y maná actual
+    ataque=100;//Puntos de ataque
+    defensa=100;//Puntos de defensa
+    magia=100;//Puntos de magia
+    resitenciaMagica=100;//Puntos de resistencia mágica
+    nivel=0;//Nivel actual
+    experiencia=0;//Experiencia
+    oro=0; // Total de oro 
     imagen; // Imagen elegida
     
     //Constructor creador de personajes
@@ -26,4 +26,6 @@ export default class Personaje{
         this.resistenciaMagica=resistenciaMagica;
         this.imagen=imagen;
     }
+
+
 }
