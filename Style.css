@@ -41,7 +41,7 @@ a{
     margin-bottom: 5%;
 }
 
-.botones{
+a{
     background-color: var(--amarilloFondo);
     border-radius: 15px;
     display: inline-block;
@@ -56,7 +56,7 @@ a{
     font-size: 110%;
   
 }
-.botones:hover{
+a:hover{
     background-color: #20464e;
     transform: scale(1.10);
     transition: 1s;
@@ -64,4 +64,10 @@ a{
     color: var(--amarilloFondo);
     
 }
+
+.noPersonaje{
+    display: none;
+}
+
+
 
