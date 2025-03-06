@@ -7,6 +7,29 @@
 </head>
 <body>
     <p><a href="Index.html">Volver</a></p>
+    <h1 id="titulo-Crea">CREA TU PERSONAJE</h1>
+    <form>
+        <div>
+            <select id="elegir-raza">
+                <option>Elige una raza</option>
+                <option value="humano">Humano</option>
+                <option value="orco">Orco</option>
+                <option value="mago">Mago</option>
+                <option value="enano">Enano</option>
+                <option value="elfo">Elfo</option>
+            </select>
+            <div>
+                <img id="imagen-elegir" src="./Imagenes/elfo.png" alt="Imagen para elegir Personaje">
+            </div>
+            <div>
+        </div>
+            <label>Nombre: <input type="text" name="nombre"></label>
+        </div>
+        <div>
+            <button type="submit">Crear Personaje</button>
+            <button type="reset">Reiniciar</button>
+        </div>
+    </form>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
 </body>
