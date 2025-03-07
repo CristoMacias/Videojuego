@@ -31,11 +31,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         
     });
-
-
+     
+    /**
+     * Evento para que se cree el personaje al ahcer submit
+     */
     formulario.addEventListener('submit',(event)=>{
         event.preventDefault();//Para bloquear la actualización automática
-        const guardados = JSON.parse(localStorage.getItem('personajes'))|| [];//Cargar loscalStorage con la partida
         const nombre = nombreFormulario.value.trim();
         const raza = creadorSelect.value;
         const indiceRaza= razas.indexOf(raza);
@@ -44,16 +45,14 @@ document.addEventListener('DOMContentLoaded',()=>{
             return
         }
         const imagen = imagenesPersonaje[indiceRaza];
-
         const personaje = new Personaje(nombre,raza,imagen);
-        guardados.push(personaje);
-        localStorage.setItem('personajes',JSON.stringify(guardados));
-
+        //No se añade, se sobreescribe para que sólo haya 1
+        localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
         alert("Bienvenido a la BATALLA DE LOS 5 PUEBLOS!");
-        window.location.href='Lobby.html'
+        window.location.href='Lobby.html'; // Una vez creado va a la página del lobby
     });
-    
-    formulario.addEventListener('reset',(event)=>{
+    //Evento para cambiar a la imagen predeterminada al reiniciar
+    formulario.addEventListener('reset',()=>{
         const raza = creadorSelect.value;
         const indiceRaza= razas.indexOf(raza);
         if(indiceRaza===-1){

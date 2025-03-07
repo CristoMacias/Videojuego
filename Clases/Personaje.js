@@ -42,8 +42,30 @@ export default class Personaje{
         this.#ataque = this.#ataque*razas[raza].ataque;
         this.#defensa= this.#defensa*razas[raza].defensa;
         this.#magia=this.#magia*razas[raza].magia;
-        this.#resistenciaMagica=resistenciaMagica=this.#resistenciaMagica*razas[raza].resistenciaMagica;
+        this.#resistenciaMagica=this.#resistenciaMagica*razas[raza].resistenciaMagica;
 
+    }
+    /**
+     * Método para convertir los atributos en público y poder convertirlos en JSON
+     * y poder guardarlos en el localStorage
+     * @returns  Devuelve todos los atributos
+     * 
+     */
+    convertirJson(){
+      return{
+         nombre: this.#nombre,
+         raza: this.#raza,
+         imagen: this.#imagen,
+         vida:this.#vida,
+         mana:this.#mana,
+         ataque:this.#ataque,
+         defensa:this.#defensa,
+         magia:this.#magia,
+         resistenciaMagica:this.#resistenciaMagica,
+         nivel:this.#nivel,
+         experiencia:this.#experiencia,
+         oro: this.#oro
+      };
     }
     
    /**

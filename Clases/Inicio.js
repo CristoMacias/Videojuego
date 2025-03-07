@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     const continuarPartida = document.querySelector("#continuarPartida");
     const eliminarDatos = document.querySelector("#eliminarDatos");
-    
-    localStorage.setItem("personajes", "Hola");
-    //localStorage.splice("personajes", "Hola");
 
+    
     if(localStorage.length === 0){
         continuarPartida.classList.add("noPersonaje");
         eliminarDatos.classList.add("noPersonaje");
@@ -14,8 +12,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
         continuarPartida.classList.remove("noPersonaje");
         eliminarDatos.classList.remove("noPersonaje");
     }
-
-    
+    /**
+     * Evento para que cuando haga click botón eliminar, elimine al personaje
+     */
+    eliminarDatos.addEventListener('click',()=>{
+        localStorage.removeItem('personaje');
+    });
 
 });
 
