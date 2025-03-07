@@ -3,7 +3,6 @@ import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
-    console.log(personaje);
     const razaPermitida = personaje.raza; // Para controlar las armas disponibles para comprar
     const martilloRompeMontanhas= new Arma("Martillo Rompemontañas 🪨🔨","Un martillo de guerra tan pesado que solo un enano puede levantarlo. Golpea con la fuerza de una avalancha.",120,30,500,5,"enano","./Imagenes/rompemontanhas(1).png");
     const hachaDeTormenta= new Arma("Hacha de Tormenta ⚡🪓", "Un hacha con runas grabadas que lanza rayos al impactar. Ideal contra enemigos con armaduras metálicas.",120,15,600,6,"enano","./Imagenes/rompemontanhas(1).png");
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     const lanzaDeColmillosDeBestia=new Arma("Lanza de Colmillos de Bestia 🐺🏹","Hecha con los colmillos de un monstruo gigante, sus heridas son letales.",105,15,800,7,"orco","./Imagenes/rompemontanhas(1).png");
     const garroteDeLava=new Arma("Garrote de Lava 🌋🔥","Un arma cubierta de roca volcánica que arde al golpear.",150,20,1000,9,"orco","./Imagenes/rompemontanhas(1).png");
 
-    localStorage.setItem('tienda',JSON.stringify(martilloRompeMontanhas.convertirJson()));
     const prueba=document.querySelector("#prueba-imagen");
     const pruebaN=document.querySelector("#nombre-prueba");
     prueba.src=martilloRompeMontanhas.imagen;

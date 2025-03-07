@@ -3,13 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👜Inventario👜</title>
+    <title>👜Inventario</title>
     <link rel="stylesheet" href="Style.css">
 </head>
 <body>
-    
     <p><a href="Lobby.html">Volver</a></p>
+    <h1 id="titulo-inventario">INVENTARIO DE </h1>
+    <div id="cajon-arma">
+        <div id="cajon-arma-imagen">
+            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+        </div>
+        <p id="nombre-arma">Martillo</p>
+        <p id="descripcion-arma">Descripcion</p>
+        <p id="daño-arma">Daño</p>
+        <p id="raza-arma">Especial para: </p>
+    </div>
+    <div id="cajon-armadura">
+        <div id="cajon-armadura-imagen">
+            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+        </div>
+        <p id="nombre-armadura">Malla Metálica</p>
+        <p id="descripcion-armadura">Descripcion</p>
+        <p id="defensa-armadura">Defensa</p>
+    </div>
+    <div id="pociones">
+        <div id="pocion-vida">
+            <h3>Pociones de Salud</h3>
+            <div>
+                <img src=""></img>
+            </div>
+        </div>
+        <div id="pocion-mana">
+
+        </div>
+    </div>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
+    <script src="Clases/Inventario.js"></script>
 </body>
 </html>
