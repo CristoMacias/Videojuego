@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     localStorage.setItem("personajes", "Hola");
     //localStorage.splice("personajes", "Hola");
 
-    if(localStorage.length === 0){
+    if(localStorage.length === 1){
         continuarPartida.classList.add("noPersonaje");
         eliminarDatos.classList.add("noPersonaje");
     }
