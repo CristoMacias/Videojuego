@@ -9,7 +9,7 @@ export default class Personaje{
     #defensa=100;//Puntos de defensa
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
-    #nivel=0;//Nivel actual
+    #nivel=1;//Nivel actual
     #experiencia=0;//Experiencia
     #oro=0; // Total de oro 
     #imagen; // Imagen elegida
@@ -31,11 +31,11 @@ export default class Personaje{
      */
     #calcularEstadisticas(raza){
         const razas={ //estadísticas por raza
-            enano:{vida:1.15,mana:0.9,ataque:1.0 ,defensa:1.15,magia:1.0,resistenciaMagica:1.1},
+            enano:{vida:1.20,mana:0.9,ataque:1.0 ,defensa:1.20,magia:1.0,resistenciaMagica:1.2},
             orco:{vida:1.15,mana:0.85,ataque:1.25,defensa:1.0,magia:1.3,resistenciaMagica:0.9},
             humano:{vida:1.05,mana:1.05,ataque:1.05,defensa:1.05,magia:1.05,resistenciaMagica:1.05},
             mago:{vida:0.8,mana:1.3,ataque:0.8,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
-            elfo:{vida:0.9,mana:1.2,ataque:1.1,defensa:1.0,magia:1.1,resistenciaMagica:1.0}
+            elfo:{vida:0.9,mana:1.2,ataque:1.2,defensa:1.0,magia:1.2,resistenciaMagica:1.0}
         };
         this.#vida={max: this.#vida*razas[raza].vida, actual: this.#vida*razas[raza].vida };
         this.#mana = {max: this.#mana*razas[raza].mana, actual: this.#mana*razas[raza].mana};
