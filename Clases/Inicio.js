@@ -3,8 +3,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const continuarPartida = document.querySelector("#continuarPartida");
     const eliminarDatos = document.querySelector("#eliminarDatos");
 
-    
-    if(localStorage.length === 0){
+    /**
+     * Si existe elemento en el localStorage muestra los botones
+     */
+    if(!localStorage.getItem("personaje")){
         continuarPartida.classList.add("noPersonaje");
         eliminarDatos.classList.add("noPersonaje");
     }
