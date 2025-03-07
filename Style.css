@@ -3,7 +3,6 @@
     --amarilloFondo: #ce904c;
 }
 
-
 body {
     margin: 0;
     overflow: hidden;
@@ -69,5 +68,35 @@ a:hover{
     display: none;
 }
 
+.topLobby{
+    display: flex;
+    align-items: start;
+    margin: 3%;
+}
+
+.imagenLobby{
+    border: 5px ridge;
+    width: 33%;
+    height: 300px;
+    border-radius: 15px;
+    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
+    margin-right: 5%;
+    
+}
+.conjuntoEstadisticasLobby{
+    border: red 3px ridge;
+    width: 20%;
+    color: var(--amarilloFondo);
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.opcionesLobby{
+    border: blue 3px ridge;
+    width: 40%;
+    text-align: right;
+    padding-top: 10%;
+    
+}
 
 
