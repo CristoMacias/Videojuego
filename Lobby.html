@@ -8,17 +8,17 @@
 <body>
     <div class="topLobby">
         <div class="imagenLobby">
-            <p>imagen</p>
+            <img class="tamanioImagen" id="imagen" src="">
         </div>
         <div class="conjuntoEstadisticasLobby">
             <p>ESTADÍSTICAS</p>
             <div class="estadisticasLobby">
-                <p>Vida<span></span></p>
-                <p>Mana<span></span></p>
-                <p>Daño físico<span></span></p>
-                <p>Armadura<span></span></p>
-                <p>Poder Mágico<span></span></p>
-                <p>Resistencia Mágica<span></span></p>
+                <p>Vida<span id="spanVida"></span></p>
+                <p>Mana<span id="spanMana"></span></p>
+                <p>Daño físico<span id="spanDanioFisico"></span></p>
+                <p>Armadura<span id="spanArmadura"></span></p>
+                <p>Poder Mágico<span id="spanPoderMagico"></span></p>
+                <p>Resistencia Mágica<span id="spanResistenciaMagica"></span></p>
             </div>
         </div>
         <div class="opcionesLobby">
@@ -28,13 +28,15 @@
         </div>
     </div>
     <div class="caracteristicasLobby">
-        <p>Nombre<span></span></p>
-        <p>Raza<span></span></p>
-        <p>Nivel<span></span></p>
-        <p>Experiencia<span></span></p>
+        <p>Nombre<span id="spanNombre"></span></p>
+        <p>Raza<span id="spanRaza"></span></p>
+        <p>Nivel<span id="spanNivel"></span></p>
+        <p>Experiencia<span id="spanExperiencia"></span></p>
+        <p>Oro<span id="spanOro"></span></p>
     </div>
     <p><a class="botonVolverLobby" href="Index.html">Volver</a></p>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
+    <script src="Clases/Lobby.js"></script>
     <script src="Clases/FondoAnimado.js"></script>
 </body>
 </html>

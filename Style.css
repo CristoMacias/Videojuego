@@ -122,3 +122,10 @@ a:hover{
     margin-left: 3%;
 }
 
+.tamanioImagen{
+    height: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15%;
+}
+
