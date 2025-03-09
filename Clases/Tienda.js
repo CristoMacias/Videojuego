@@ -1,4 +1,6 @@
 import Arma from "./Arma.js";
+import Proteccion from "./Proteccion.js";
+import Pocion from "./Pocion.js";
 import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -34,9 +36,57 @@ document.addEventListener('DOMContentLoaded',()=>{
     const lanzaDeColmillosDeBestia=new Arma("Lanza de Colmillos de Bestia 🐺🏹","Hecha con los colmillos de un monstruo gigante, sus heridas son letales.",105,15,800,7,"orco","./Imagenes/rompemontanhas(1).png");
     const garroteDeLava=new Arma("Garrote de Lava 🌋🔥","Un arma cubierta de roca volcánica que arde al golpear.",150,20,1000,9,"orco","./Imagenes/rompemontanhas(1).png");
 
-    const prueba=document.querySelector("#prueba-imagen");
-    const pruebaN=document.querySelector("#nombre-prueba");
-    prueba.src=martilloRompeMontanhas.imagen;
-    pruebaN.textContent=martilloRompeMontanhas.nombre;
+
+    //PROTECCIONES
+    /**
+     * Creación de protecciones de tipo escudo
+     */
+    const escudoGondor= new Proteccion("Escudo de Gondor","Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.","escudo",10,250,1.15,"./Imagenes/escudo.png");
+    
+    /**
+     * Creación de protecciones de tipo armadura
+     */
+    const armaduraMithril= new Proteccion ("Armadura de Mithril","Forjada con mithril, el metal más fuerte conocido en la Tierra Media, esta armadura es ligera pero extremadamente resistente a los ataques.","armadura",20,500,1.20,"./Imagenes/escudo.png");
+    
+    /**
+     * Creación de protecciones de tipo amuleto
+     */
+    const amuletoGaladriel = new Proteccion ("Amuleto de Galadriel","Este amuleto de Galadriel, hecho con la luz de Eärendil, proporciona una gran resistencia a los poderes oscuros y aumenta la resistencia mágica.","amuleto",10,350,1.1,"./Imagenes/escudo.png");
+
+    //POCIONES
+    /**
+     * Creación de pociones de tipo salud
+     */
+    const pocionCuracion= new Pocion("Poción de Curación","El elixir de los sanadores élficos, restaura una gran cantidad de salud al beberla.","salud",50,50,"./Imagenes/pocionVida.png");
+    /**
+     * Creación de pociones de tipo maná
+     */
+    const pocionEnergiaMagica= new Pocion("Poción de Energia Mágica","El elixir de los magos de Rivendel, recarga rápidamente la energía mágica.",50,50,"./Imagenes/pocionMana.png");
+    //Prueba para mostrar un arma
+    const imagenArma=document.querySelector("#imagen-arma");
+    const nombreArma=document.querySelector("#nombre-arma");
+    imagenArma.src=martilloRompeMontanhas.imagen;
+    nombreArma.textContent=martilloRompeMontanhas.nombre;
+    //Prueba para mostrar un escudo
+    const imagenEscudo=document.querySelector("#imagen-escudo");
+    const nombreEscudo=document.querySelector("#nombre-escudo");
+    imagenEscudo.src=escudoGondor.imagen;
+    nombreEscudo.textContent=escudoGondor.nombre;
+    //Prueba para mostrar un armadura
+    const imagenArmadura=document.querySelector("#imagen-armadura");
+    const nombreArmadura=document.querySelector("#nombre-armadura");
+    imagenArmadura.src=armaduraMithril.imagen;
+    nombreArmadura.textContent=armaduraMithril.nombre;
+    //Prueba para mostrar un amuleto
+    const imagenAmuleto=document.querySelector("#imagen-amuleto");
+    const nombreAmuleto=document.querySelector("#nombre-amuleto");
+    imagenAmuleto.src=amuletoGaladriel.imagen;
+    nombreAmuleto.textContent=amuletoGaladriel.nombre;
+    //Prueba para mostrar un pocion
+    const imagenPocion=document.querySelector("#imagen-pocion");
+    const nombrePocion=document.querySelector("#nombre-pocion");
+    imagenPocion.src=pocionCuracion.imagen;
+    nombrePocion.textContent=pocionCuracion.nombre;
+
 
 });
