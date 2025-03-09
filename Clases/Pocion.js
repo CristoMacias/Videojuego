@@ -3,7 +3,7 @@ export default class Pocion{
     #descripcion; //Descripción de la poción
     #efecto; //Efecto para salud o maná
     #aumento;// Aumento que produce
-    #precio // Precio de compra
+    #precio; // Precio de compra
     #imagen; //Imagen de la poción
     /**
      * Constructor

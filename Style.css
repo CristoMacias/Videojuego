@@ -122,5 +122,13 @@ a:hover{
     margin-left: 3%;
 }
 
-
+.tarjetas{
+    display: flex;
+}
+.tarjetas div{
+    border: 2px solid white;
+}
+img{
+    border: 2px solid red;
+}
 
