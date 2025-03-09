@@ -1,4 +1,6 @@
 import Arma from "./Arma.js";
+import Proteccion from "./Proteccion.js";
+import Pocion from "./Pocion.js";
 import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     //LISTADO DE PROTEECIONES
     //Protecciones tipo Escudo
-    const escudoGondor =new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/escudoGondor.png");
+    const escudoGondor =new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/escudo.png");
     const escudoDraconico =new Proteccion("Escudo Dragónico🐉", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/escudoDraconico.png");
     const escudoSombrio =new Proteccion("Escudo Sombrío🌑", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/escudoSombrio.png");
     const escudoCelestial =new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/escudoCelestial.png");
@@ -65,21 +67,46 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     //LISTADO DE POCIONES 
     //Pociones refeneración Salud
-    const pocionSaludPequeña =new Pocion("Poción de Salud Pequeña🍷", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/pocionSaludPequeña.png");
+    const pocionSaludPequenha =new Pocion("Poción de Salud Pequeña🍷", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/pocionVida.png");
     const pocionSaludMedia =new Pocion("Poción de Salud Media🥂", "Recupera una cantidad moderada de salud.", "salud", 150, 10, "./Imagenes/pocionSaludMedia.png");
     const pocionSaludGrande =new Pocion("Poción de Salud Grande🍾", "Regenera una gran cantidad de salud.", "salud", 300, 20, "./Imagenes/pocionSaludGrande.png");
     const pocionSaludMilagrosa =new Pocion("Poción Milagrosa✨", "Cura completamente la salud del usuario.", "salud", 1000, 50, "./Imagenes/pocionSaludMilagrosa.png");
 
     //Pociones regeneración Mana
-    const pocionManaPequeña =new Pocion("Poción de Maná Pequeña🔵", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/pocionManaPequeña.png");
+    const pocionManaPequenha =new Pocion("Poción de Maná Pequeña🔵", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/pocionMana.png");
     const pocionManaMedia =new Pocion("Poción de Maná Media🔷", "Recupera una cantidad moderada de maná.", "mana", 150, 10, "./Imagenes/pocionManaMedia.png");
     const pocionManaGrande =new Pocion("Poción de Maná Grande🔮", "Regenera una gran cantidad de maná.", "mana", 300, 20, "./Imagenes/pocionManaGrande.png");
     const pocionManaDivina =new Pocion("Poción de Maná Divina✨", "Restaura completamente el maná del usuario.", "mana", 1000, 50, "./Imagenes/pocionManaDivina.png");
 
-    localStorage.setItem('tienda',JSON.stringify(martilloRompeMontanhas.convertirJson()));
-    const prueba=document.querySelector("#prueba-imagen");
-    const pruebaN=document.querySelector("#nombre-prueba");
-    prueba.src=martilloRompeMontanhas.imagen;
-    pruebaN.textContent=martilloRompeMontanhas.nombre;
+    //Prueba para mostrar un arma
+    const imagenArma=document.querySelector("#imagen-arma");
+    const nombreArma=document.querySelector("#nombre-arma");
+    imagenArma.src=martilloRompeMontanhas.imagen;
+    nombreArma.textContent=martilloRompeMontanhas.nombre;
+    //Prueba para mostrar un escudo
+    const imagenEscudo=document.querySelector("#imagen-escudo");
+    const nombreEscudo=document.querySelector("#nombre-escudo");
+    imagenEscudo.src=escudoGondor.imagen;
+    nombreEscudo.textContent=escudoGondor.nombre;
+    //Prueba para mostrar un armadura
+    const imagenArmadura=document.querySelector("#imagen-armadura");
+    const nombreArmadura=document.querySelector("#nombre-armadura");
+    imagenArmadura.src=armaduraReal.imagen;
+    nombreArmadura.textContent=armaduraReal.nombre;
+    //Prueba para mostrar un amuleto
+    const imagenAmuleto=document.querySelector("#imagen-amuleto");
+    const nombreAmuleto=document.querySelector("#nombre-amuleto");
+    imagenAmuleto.src=amuletoVida.imagen;
+    nombreAmuleto.textContent=amuletoVida.nombre;
+    //Prueba para mostrar un pocion vida
+    const imagenPocionVida=document.querySelector("#imagen-pocion-vida");
+    const nombrePocionVida=document.querySelector("#nombre-pocion-vida");
+    imagenPocionVida.src=pocionSaludPequenha.imagen;
+    nombrePocionVida.textContent=pocionSaludPequenha.nombre;
 
+    //Prueba para mostrar un pocion maná
+    const imagenPocionMana=document.querySelector("#imagen-pocion-mana");
+    const nombrePocionMana=document.querySelector("#nombre-pocion-mama");
+    imagenPocionMana.src=pocionManaPequenha.imagen;
+    nombrePocionMana.textContent=pocionManaPequenha.nombre;
 });
