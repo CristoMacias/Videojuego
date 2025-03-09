@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
         alert("Bienvenido a la BATALLA DE LOS 5 PUEBLOS!");
         window.location.href='Lobby.html'; // Una vez creado va a la página del lobby
+        window.personaje = personaje; // Se guarda el personaje en una variable general para poder recibirla desde otros archivos.
+
     });
     //Evento para cambiar a la imagen predeterminada al reiniciar
     formulario.addEventListener('reset',()=>{

@@ -122,13 +122,10 @@ a:hover{
     margin-left: 3%;
 }
 
-.tarjetas{
-    display: flex;
-}
-.tarjetas div{
-    border: 2px solid white;
-}
-img{
-    border: 2px solid red;
+.tamanioImagen{
+    height: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15%;
 }
 
