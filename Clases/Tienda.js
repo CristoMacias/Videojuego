@@ -5,7 +5,6 @@ import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
-    console.log(personaje);
     const razaPermitida = personaje.raza; // Para controlar las armas disponibles para comprar
 
     //LISTADO DE ARMAS
@@ -93,36 +92,79 @@ document.addEventListener('DOMContentLoaded',()=>{
     const pocionesMana=[pocionManaPequenha,pocionManaMedia,pocionManaGrande,pocionManaDivina];
 
 
-
     //Prueba para mostrar un arma
     const imagenArma=document.querySelector("#imagen-arma");
     const nombreArma=document.querySelector("#nombre-arma");
+    const descripcionArma=document.querySelector("#descripcion-arma");
+    const danhoArma=document.querySelector("#danho-arma");
+    const precioArma=document.querySelector("#precio-arma");
     imagenArma.src=martilloRompeMontanhas.imagen;
     nombreArma.textContent=martilloRompeMontanhas.nombre;
+    descripcionArma.textContent=martilloRompeMontanhas.descripcion;
+    danhoArma.textContent=martilloRompeMontanhas.danho;
+    precioArma.textContent=martilloRompeMontanhas.precio;
+    
     //Prueba para mostrar un escudo
     const imagenEscudo=document.querySelector("#imagen-escudo");
     const nombreEscudo=document.querySelector("#nombre-escudo");
+    const descripcionEscudo=document.querySelector("#descripcion-escudo");
+    const defensaEscudo=document.querySelector("#defensa-escudo");
+    const precioEscudo=document.querySelector("#precio-escudo");
+    
     imagenEscudo.src=escudoGondor.imagen;
     nombreEscudo.textContent=escudoGondor.nombre;
+    descripcionEscudo.textContent=escudoGondor.descripcion;
+    defensaEscudo.textContent=escudoGondor.aumento;
+    precioEscudo.textContent=escudoGondor.precio;
+
     //Prueba para mostrar un armadura
     const imagenArmadura=document.querySelector("#imagen-armadura");
     const nombreArmadura=document.querySelector("#nombre-armadura");
+    const descripcionArmadura=document.querySelector("#descripcion-armadura");
+    const defensaArmadura=document.querySelector("#defensa-armadura");
+    const precioArmadura=document.querySelector("#precio-armadura");
     imagenArmadura.src=armaduraReal.imagen;
     nombreArmadura.textContent=armaduraReal.nombre;
+    descripcionArmadura.textContent=armaduraReal.descripcion;
+    defensaArmadura.textContent=armaduraReal.aumento;
+    precioArmadura.textContent=armaduraReal.precio;
+
     //Prueba para mostrar un amuleto
     const imagenAmuleto=document.querySelector("#imagen-amuleto");
     const nombreAmuleto=document.querySelector("#nombre-amuleto");
+    const descripcionAmuleto=document.querySelector("#descripcion-amuleto");
+    const resistenciaMagicaAmuleto=document.querySelector("#resistenciaMagica-amuleto");
+    const precioAmuleto=document.querySelector("#precio-amuleto");
+
     imagenAmuleto.src=amuletoVida.imagen;
     nombreAmuleto.textContent=amuletoVida.nombre;
+    descripcionAmuleto.textContent=amuletoVida.descripcion;
+    resistenciaMagicaAmuleto.textContent=amuletoVida.aumento;
+    precioAmuleto.textContent=amuletoVida.precio;
+
     //Prueba para mostrar un pocion vida
     const imagenPocionVida=document.querySelector("#imagen-pocion-vida");
     const nombrePocionVida=document.querySelector("#nombre-pocion-vida");
+    const descripcionPocionVida=document.querySelector("#descripcion-pocion-vida");
+    const regeneraVida=document.querySelector("#aumento-vida");
+    const precioPocionVida=document.querySelector("#precio-vida");
+
     imagenPocionVida.src=pocionSaludPequenha.imagen;
     nombrePocionVida.textContent=pocionSaludPequenha.nombre;
+    descripcionPocionVida.textContent=pocionSaludPequenha.descripcion;
+    regeneraVida.textContent=pocionSaludPequenha.aumento;
+    precioPocionVida.textContent=pocionSaludPequenha.precio;
 
     //Prueba para mostrar un pocion maná
-    const imagenPocionMana=document.querySelector("#pocion-mana");
-    const nombrePocionMana=document.querySelector("#pocion-mama");
+    const imagenPocionMana=document.querySelector("#imagen-pocion-mana");
+    const nombrePocionMana=document.querySelector("#nombre-pocion-mana");
+    const descripcionPocionMana=document.querySelector("#descripcion-pocion-mana");
+    const regeneraMana=document.querySelector("#aumento-mana");
+    const precioPocionMana=document.querySelector("#precio-arma");
+
     imagenPocionMana.src=pocionManaPequenha.imagen;
     nombrePocionMana.textContent=pocionManaPequenha.nombre;
+    descripcionPocionMana.textContent=pocionManaPequenha.descripcion;
+    regeneraMana.textContent=pocionManaPequenha.aumento;
+    precioPocionMana.textContent=pocionManaPequenha.precio;
 });
