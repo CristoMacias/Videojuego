@@ -26,7 +26,7 @@ export default class Tienda{
                 new Proteccion("Armadura Sombría🌑", "Impregnada con magia oscura, reduce el daño recibido y otorga sigilo.", "armadura", 20, 450, 1.40, "./Imagenes/armaduraSombria.png"),
                 new Proteccion("Armadura Celestial✨", "Bendecida por los dioses, mejora la resistencia mágica y la regeneración.", "armadura", 35, 700, 1.75, "./Imagenes/armaduraCelestial.png")
             ],
-            amulato:[//Protecciones tipo Magia
+            amuleto:[//Protecciones tipo Magia
                 new Proteccion("Amuleto de Vida💖", "Aumenta la vitalidad del portador y la regeneración de salud.", "amuleto", 5, 200, 1.10, "./Imagenes/oscuro.png"),
                 new Proteccion("Amuleto de Fuego🔥", "Otorga resistencia al fuego y potencia ataques ígneos.", "amuleto", 7, 250, 1.20, "./Imagenes/amuletoFuego.png"),
                 new Proteccion("Amuleto Oscuro🌑", "Absorbe parte del daño oscuro y aumenta la resistencia a maldiciones.", "amuleto", 6, 220, 1.15, "./Imagenes/amuletoOscuro.png"),
@@ -57,7 +57,7 @@ export default class Tienda{
         switch(raza){
             case "humano":
             return [   //Armas de Humanos
-                new Arma("Espada del Rey Caído 👑⚔️","Una hoja legendaria que brilla con la voluntad de su portador.",100,20,800,6,"humano","./Imagenes/rompemontanhas(1).png"),
+                new Arma("Espada del Rey Caído 👑⚔️","Una hoja legendaria que brilla con la voluntad de su portador.",100,20,800,6,"humano","./Imagenes/humanos/espada_rey.png"),
                 new Arma("Lanza Relámpago ⚡🏹"," Puede arrojarse y volver a la mano del usuario.",100,15,700,5,"humano","./Imagenes/rompemontanhas(1).png"),
                 new Arma("Maza Bendecida 🛡️🔨","Un arma con poder sagrado que quema a los no-muertos.",115,30,750,6,"humano","./Imagenes/rompemontanhas(1).png"),
                 new Arma("Ballesta de Triple Disparo 🎯🔫"," Dispara tres proyectiles a la vez, ideal para eliminar múltiples enemigos.",70,10,900,7,"humano","./Imagenes/rompemontanhas(1).png"),
@@ -99,38 +99,14 @@ export default class Tienda{
 
 
     };
-    //ARRGLAR NO FUNCIONA
-    mostrarArma(){
-        const arma=this.#armas[indice];
-        const imagenArma=document.querySelector("#imagen-arma");
-        const nombreArma=document.querySelector("#nombre-arma");
-        const descripcionArma=document.querySelector("#descripcion-arma");
-        const danhoArma=document.querySelector("#danho-arma");
-        const precioArma=document.querySelector("#precio-arma");
-
-        imagenArma.src=this.#armas[indice].imagen;
-        nombreArma.textContent=this.#armas[indice].nombre;
-        descripcionArma.textContent=this.#armas[indice].descripcion;
-        danhoArma.textContent=this.#armas[indice].danho;
-        precioArma.textContent=this.#armas[indice].precio;
-    }
 
     /**
-    * Getter para armas
-    * @return armas Devuelve el valor de armas;
+    * Getter para arma
+    * @return arma Devuelve el valor de arma;
     */
     get armas() {
-        return this.#armas;
+       return this.#armas;
     }
-        
-    /**
-    * Setter para armas
-    * @param {*} armas Recibe el valor de armas para modificar
-    */
-        set armas(armas) {
-        this.#armas = armas;
-    }
-
     /**
     * Getter para protecciones
     * @return protecciones Devuelve el valor de protecciones;
@@ -138,30 +114,15 @@ export default class Tienda{
     get protecciones() {
        return this.#protecciones;
     }
-    
-    /**
-    * Setter para protecciones
-    * @param {*} protecciones Recibe el valor de preotecciones para modificar
-    */
-    set protecciones(preotecciones) {
-       this.#protecciones = preotecciones;
-    }
 
     /**
     * Getter para pociones
     * @return pociones Devuelve el valor de pociones;
     */
     get pociones() {
-        return this.#pociones;
+       return this.#pociones;
     }
 
-    /**
-    * Setter para pociones
-    * @param {*} pociones Recibe el valor de pociones para modificar
-    */
-    set pociones(pociones) {
-        this.#pociones = pociones;
-    }
 
 };
 

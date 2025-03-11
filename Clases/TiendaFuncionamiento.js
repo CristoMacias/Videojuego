@@ -1,53 +1,57 @@
-import Tienda from './Tienda.js'
-
+import Tienda from './Tienda.js';
+import Arma from './Arma.js';
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
+    console.log(tienda);
     const armas=tienda.armas;
-    console.log(tienda.armas);//Array con las armas
+    console.log(armas);//Array con las armas
     const protecciones=tienda.protecciones; //Array con las protecciones
-    const pociones=tienda.pociones; //Array con las pociones
+    const pociones=tienda.pociones;
+    console.log(protecciones);
+     //Array con las pociones
+
     const escudos=protecciones[0]; //Array con los escudos
     const armaduras=protecciones[1]; //Array con las armaduras
     const amuletos=protecciones[2]; //Array con los amuletos
     const pocionesVida=pociones[0]; //Array con las pociones de vida
     const pocionesMana=pociones[1]; //Array con las pociones de maná
-
+    console.log(escudos);
+    
     const anteriorBoton=document.querySelector("#boton-anterior");
     const siguienteBoton=document.querySelector("#boton-siguiente");
-    let indice=0;
 
+
+    let indice=0;
+    
     //Probando mostrar y cambiar la vista de armas
     anteriorBoton.addEventListener('click',()=>{
         indice--;
         if(indice<0){
             indice=0;
-            
+            armas[indice].mostrarArma();
         }
         else{
-            imagenArma.src=armas[indice].imagen;
-            nombreArma.textContent=armas[indice].nombre;
-            descripcionArma.textContent=armas[indice].descripcion;
-            danhoArma.textContent=armas[indice].danho;
-            precioArma.textContent=armas[indice].precio;
+            armas[indice].mostrarArma();
         }
     });
 
     siguienteBoton.addEventListener('click',()=>{
         indice++;
-        imagenArma.src=armas[indice].imagen;
-        nombreArma.textContent=armas[indice].nombre;
-        descripcionArma.textContent=armas[indice].descripcion;
-        danhoArma.textContent=armas[indice].danho;
-        precioArma.textContent=armas[indice].precio;
-    })
+        if(indice>armas.length){
+            indice = armas.length-1
+            armas[indice].mostrarArma();
+        }else{
+            armas[indice].mostrarArma();
+        }
+    });
+   
 
 
 
 
-
-    //Mostrar un arma
+  //Hacer eventos para el resto
 
 
  /*   imagenArma.src=martilloRompeMontanhas.imagen;
@@ -119,4 +123,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     descripcionPocionMana.textContent=pocionManaPequenha.descripcion;
     regeneraMana.textContent=pocionManaPequenha.aumento;
     precioPocionMana.textContent=pocionManaPequenha.precio;*/
+
+    armas[0].mostrarArma();
 });
