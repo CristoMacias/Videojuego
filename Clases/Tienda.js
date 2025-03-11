@@ -1,9 +1,10 @@
 import Arma from "./Arma.js";
+import Proteccion from "./Proteccion.js";
+import Pocion from "./Pocion.js";
 import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
-    console.log(personaje);
     const razaPermitida = personaje.raza; // Para controlar las armas disponibles para comprar
 
     //LISTADO DE ARMAS
@@ -46,40 +47,124 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     //LISTADO DE PROTEECIONES
     //Protecciones tipo Escudo
-    const escudoGondor🛡️ =new Proteccion("Escudo de Gondor", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/escudoGondor.png");
-    const escudoDraconico🐉 =new Proteccion("Escudo Dragónico", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/escudoDraconico.png");
-    const escudoSombrio🌑 =new Proteccion("Escudo Sombrío", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/escudoSombrio.png");
-    const escudoCelestial✨ =new Proteccion("Escudo Celestial", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/escudoCelestial.png");
+    const escudoGondor =new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/escudo.png");
+    const escudoDraconico =new Proteccion("Escudo Dragónico🐉", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/escudoDraconico.png");
+    const escudoSombrio =new Proteccion("Escudo Sombrío🌑", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/escudoSombrio.png");
+    const escudoCelestial =new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/escudoCelestial.png");
 
     //Protecciones tipo Armadura
-    const armaduraReal👑 =new Proteccion("Armadura Real", "Una armadura hecha con los mejores materiales del reino, otorga alta resistencia física.", "armadura", 25, 500, 1.50, "./Imagenes/armaduraReal.png");
-    const armaduraDraconica🔥 =new Proteccion("Armadura Dragónica", "Forjada con escamas de dragón, resistente al fuego y a los ataques físicos.", "armadura", 30, 600, 1.60, "./Imagenes/armaduraDraconica.png");
-    const armaduraSombria🌑 =new Proteccion("Armadura Sombría", "Impregnada con magia oscura, reduce el daño recibido y otorga sigilo.", "armadura", 20, 450, 1.40, "./Imagenes/armaduraSombria.png");
-    const armaduraCelestial✨ =new Proteccion("Armadura Celestial", "Bendecida por los dioses, mejora la resistencia mágica y la regeneración.", "armadura", 35, 700, 1.75, "./Imagenes/armaduraCelestial.png");
+    const armaduraReal =new Proteccion("Armadura Real👑", "Una armadura hecha con los mejores materiales del reino, otorga alta resistencia física.", "armadura", 25, 500, 1.50, "./Imagenes/escudo.png");
+    const armaduraDraconica =new Proteccion("Armadura Dragónica🔥", "Forjada con escamas de dragón, resistente al fuego y a los ataques físicos.", "armadura", 30, 600, 1.60, "./Imagenes/armaduraDraconica.png");
+    const armaduraSombria =new Proteccion("Armadura Sombría🌑", "Impregnada con magia oscura, reduce el daño recibido y otorga sigilo.", "armadura", 20, 450, 1.40, "./Imagenes/armaduraSombria.png");
+    const armaduraCelestial =new Proteccion("Armadura Celestial✨", "Bendecida por los dioses, mejora la resistencia mágica y la regeneración.", "armadura", 35, 700, 1.75, "./Imagenes/armaduraCelestial.png");
 
     //Protecciones tipo Magia
-    const amuletoVida💖 =new Proteccion("Amuleto de Vida", "Aumenta la vitalidad del portador y la regeneración de salud.", "amuleto", 5, 200, 1.10, "./Imagenes/amuletoVida.png");
-    const amuletoFuego🔥 =new Proteccion("Amuleto de Fuego", "Otorga resistencia al fuego y potencia ataques ígneos.", "amuleto", 7, 250, 1.20, "./Imagenes/amuletoFuego.png");
-    const amuletoOscuro🌑 =new Proteccion("Amuleto Oscuro", "Absorbe parte del daño oscuro y aumenta la resistencia a maldiciones.", "amuleto", 6, 220, 1.15, "./Imagenes/amuletoOscuro.png");
-    const amuletoDivino✨ =new Proteccion("Amuleto Divino", "Bendecido por los dioses, otorga regeneración continua y protección mágica.", "amuleto", 8, 300, 1.25, "./Imagenes/amuletoDivino.png");
+    const amuletoVida =new Proteccion("Amuleto de Vida💖", "Aumenta la vitalidad del portador y la regeneración de salud.", "amuleto", 5, 200, 1.10, "./Imagenes/oscuro.png");
+    const amuletoFuego =new Proteccion("Amuleto de Fuego🔥", "Otorga resistencia al fuego y potencia ataques ígneos.", "amuleto", 7, 250, 1.20, "./Imagenes/amuletoFuego.png");
+    const amuletoOscuro =new Proteccion("Amuleto Oscuro🌑", "Absorbe parte del daño oscuro y aumenta la resistencia a maldiciones.", "amuleto", 6, 220, 1.15, "./Imagenes/amuletoOscuro.png");
+    const amuletoDivino =new Proteccion("Amuleto Divino✨", "Bendecido por los dioses, otorga regeneración continua y protección mágica.", "amuleto", 8, 300, 1.25, "./Imagenes/amuletoDivino.png");
 
     //LISTADO DE POCIONES 
     //Pociones refeneración Salud
-    const pocionSaludPequeña🍷 =new Pocion("Poción de Salud Pequeña", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/pocionSaludPequeña.png");
-    const pocionSaludMedia🥂 =new Pocion("Poción de Salud Media", "Recupera una cantidad moderada de salud.", "salud", 150, 10, "./Imagenes/pocionSaludMedia.png");
-    const pocionSaludGrande🍾 =new Pocion("Poción de Salud Grande", "Regenera una gran cantidad de salud.", "salud", 300, 20, "./Imagenes/pocionSaludGrande.png");
-    const pocionSaludMilagrosa✨ =new Pocion("Poción Milagrosa", "Cura completamente la salud del usuario.", "salud", 1000, 50, "./Imagenes/pocionSaludMilagrosa.png");
+    const pocionSaludPequenha =new Pocion("Poción de Salud Pequeña🍷", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/pocionVida.png");
+    const pocionSaludMedia =new Pocion("Poción de Salud Media🥂", "Recupera una cantidad moderada de salud.", "salud", 150, 10, "./Imagenes/pocionSaludMedia.png");
+    const pocionSaludGrande =new Pocion("Poción de Salud Grande🍾", "Regenera una gran cantidad de salud.", "salud", 300, 20, "./Imagenes/pocionSaludGrande.png");
+    const pocionSaludMilagrosa =new Pocion("Poción Milagrosa✨", "Cura completamente la salud del usuario.", "salud", 1000, 50, "./Imagenes/pocionSaludMilagrosa.png");
 
     //Pociones regeneración Mana
-    const pocionManaPequeña🔵 =new Pocion("Poción de Maná Pequeña", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/pocionManaPequeña.png");
-    const pocionManaMedia🔷 =new Pocion("Poción de Maná Media", "Recupera una cantidad moderada de maná.", "mana", 150, 10, "./Imagenes/pocionManaMedia.png");
-    const pocionManaGrande🔮 =new Pocion("Poción de Maná Grande", "Regenera una gran cantidad de maná.", "mana", 300, 20, "./Imagenes/pocionManaGrande.png");
-    const pocionManaDivina✨ =new Pocion("Poción de Maná Divina", "Restaura completamente el maná del usuario.", "mana", 1000, 50, "./Imagenes/pocionManaDivina.png");
+    const pocionManaPequenha =new Pocion("Poción de Maná Pequeña🔵", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/pocionMana.png");
+    const pocionManaMedia =new Pocion("Poción de Maná Media🔷", "Recupera una cantidad moderada de maná.", "mana", 150, 10, "./Imagenes/pocionManaMedia.png");
+    const pocionManaGrande =new Pocion("Poción de Maná Grande🔮", "Regenera una gran cantidad de maná.", "mana", 300, 20, "./Imagenes/pocionManaGrande.png");
+    const pocionManaDivina =new Pocion("Poción de Maná Divina✨", "Restaura completamente el maná del usuario.", "mana", 1000, 50, "./Imagenes/pocionManaDivina.png");
 
-    localStorage.setItem('tienda',JSON.stringify(martilloRompeMontanhas.convertirJson()));
-    const prueba=document.querySelector("#prueba-imagen");
-    const pruebaN=document.querySelector("#nombre-prueba");
-    prueba.src=martilloRompeMontanhas.imagen;
-    pruebaN.textContent=martilloRompeMontanhas.nombre;
 
+    //Array de armasEnanos
+    const armasEnanos=[martilloRompeMontanhas,hachaDeTormenta,martilloLanzarrocas,escudoMandoble,ballestaDePerforacion];
+    const armasElfos=[arcoDeLuzLunar,espadasDanzantes,lanzaDelViento,flechasDeEnredaderas,bastonDeEspiritusDelBosque];
+    const armasMagos=[baculoDeTormentas,varitaDeLlamasEternas,orbeDelVacio,guanteleteDeManipulacionDelTiempo,espadaDelArcano];
+    const armasHumanos=[espadaDelReyCaido,lanzaRelampago,mazaBendecida,ballestaDeTripleDisparo,dagasDeSombra];
+    const armasOrcos=[hachaSangrienta, mazaDeGuerraDeCraneos,espadaSerrada,lanzaDeColmillosDeBestia,garroteDeLava];
+
+    const escudos=[escudoGondor,escudoDraconico,escudoSombrio,escudoCelestial];
+    const armaduras=[armaduraReal,armaduraDraconica,armaduraSombria,armaduraCelestial];
+    const amuletos=[ amuletoVida,amuletoFuego,amuletoOscuro, amuletoDivino];
+    const pocionesVida=[pocionSaludPequenha,pocionSaludMedia,pocionSaludGrande,pocionSaludMilagrosa];
+    const pocionesMana=[pocionManaPequenha,pocionManaMedia,pocionManaGrande,pocionManaDivina];
+
+
+    //Prueba para mostrar un arma
+    const imagenArma=document.querySelector("#imagen-arma");
+    const nombreArma=document.querySelector("#nombre-arma");
+    const descripcionArma=document.querySelector("#descripcion-arma");
+    const danhoArma=document.querySelector("#danho-arma");
+    const precioArma=document.querySelector("#precio-arma");
+    imagenArma.src=martilloRompeMontanhas.imagen;
+    nombreArma.textContent=martilloRompeMontanhas.nombre;
+    descripcionArma.textContent=martilloRompeMontanhas.descripcion;
+    danhoArma.textContent=martilloRompeMontanhas.danho;
+    precioArma.textContent=martilloRompeMontanhas.precio;
+    
+    //Prueba para mostrar un escudo
+    const imagenEscudo=document.querySelector("#imagen-escudo");
+    const nombreEscudo=document.querySelector("#nombre-escudo");
+    const descripcionEscudo=document.querySelector("#descripcion-escudo");
+    const defensaEscudo=document.querySelector("#defensa-escudo");
+    const precioEscudo=document.querySelector("#precio-escudo");
+    
+    imagenEscudo.src=escudoGondor.imagen;
+    nombreEscudo.textContent=escudoGondor.nombre;
+    descripcionEscudo.textContent=escudoGondor.descripcion;
+    defensaEscudo.textContent=escudoGondor.aumento;
+    precioEscudo.textContent=escudoGondor.precio;
+
+    //Prueba para mostrar un armadura
+    const imagenArmadura=document.querySelector("#imagen-armadura");
+    const nombreArmadura=document.querySelector("#nombre-armadura");
+    const descripcionArmadura=document.querySelector("#descripcion-armadura");
+    const defensaArmadura=document.querySelector("#defensa-armadura");
+    const precioArmadura=document.querySelector("#precio-armadura");
+    imagenArmadura.src=armaduraReal.imagen;
+    nombreArmadura.textContent=armaduraReal.nombre;
+    descripcionArmadura.textContent=armaduraReal.descripcion;
+    defensaArmadura.textContent=armaduraReal.aumento;
+    precioArmadura.textContent=armaduraReal.precio;
+
+    //Prueba para mostrar un amuleto
+    const imagenAmuleto=document.querySelector("#imagen-amuleto");
+    const nombreAmuleto=document.querySelector("#nombre-amuleto");
+    const descripcionAmuleto=document.querySelector("#descripcion-amuleto");
+    const resistenciaMagicaAmuleto=document.querySelector("#resistenciaMagica-amuleto");
+    const precioAmuleto=document.querySelector("#precio-amuleto");
+
+    imagenAmuleto.src=amuletoVida.imagen;
+    nombreAmuleto.textContent=amuletoVida.nombre;
+    descripcionAmuleto.textContent=amuletoVida.descripcion;
+    resistenciaMagicaAmuleto.textContent=amuletoVida.aumento;
+    precioAmuleto.textContent=amuletoVida.precio;
+
+    //Prueba para mostrar un pocion vida
+    const imagenPocionVida=document.querySelector("#imagen-pocion-vida");
+    const nombrePocionVida=document.querySelector("#nombre-pocion-vida");
+    const descripcionPocionVida=document.querySelector("#descripcion-pocion-vida");
+    const regeneraVida=document.querySelector("#aumento-vida");
+    const precioPocionVida=document.querySelector("#precio-vida");
+
+    imagenPocionVida.src=pocionSaludPequenha.imagen;
+    nombrePocionVida.textContent=pocionSaludPequenha.nombre;
+    descripcionPocionVida.textContent=pocionSaludPequenha.descripcion;
+    regeneraVida.textContent=pocionSaludPequenha.aumento;
+    precioPocionVida.textContent=pocionSaludPequenha.precio;
+
+    //Prueba para mostrar un pocion maná
+    const imagenPocionMana=document.querySelector("#imagen-pocion-mana");
+    const nombrePocionMana=document.querySelector("#nombre-pocion-mana");
+    const descripcionPocionMana=document.querySelector("#descripcion-pocion-mana");
+    const regeneraMana=document.querySelector("#aumento-mana");
+    const precioPocionMana=document.querySelector("#precio-arma");
+
+    imagenPocionMana.src=pocionManaPequenha.imagen;
+    nombrePocionMana.textContent=pocionManaPequenha.nombre;
+    descripcionPocionMana.textContent=pocionManaPequenha.descripcion;
+    regeneraMana.textContent=pocionManaPequenha.aumento;
+    precioPocionMana.textContent=pocionManaPequenha.precio;
 });

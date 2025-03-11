@@ -122,3 +122,25 @@ a:hover{
     margin-left: 3%;
 }
 
+.tamanioImagen{
+    height: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15%;
+}
+
+.tarjetas{
+    display: inline-flex;
+}
+.tarjetas div{
+    border:2px solid white;
+}
+html .tienda{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    max-width: 100%;
+    right: 0;
+    box-sizing: border-box;
+}

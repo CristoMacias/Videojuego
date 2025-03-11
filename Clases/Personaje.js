@@ -234,5 +234,6 @@ export default class Personaje{
    get imagen() {
       return this.#imagen;
    }
+
    
 }
