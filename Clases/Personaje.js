@@ -13,6 +13,7 @@ export default class Personaje{
     #experiencia=0;//Experiencia
     #oro=0; // Total de oro 
     #imagen; // Imagen elegida
+    #inventario;
     
     //Constructor creador de personajes
     constructor(nombre,raza,imagen){
@@ -23,6 +24,7 @@ export default class Personaje{
         this.#experiencia;
         this.#oro;
         this.#calcularEstadisticas(raza);
+        this.#inventario
 
     }
     /**
@@ -47,7 +49,7 @@ export default class Personaje{
     }
     /**
      * Método para convertir los atributos en público y poder convertirlos en JSON
-     * y poder guardarlos en el localStorage
+     * y guardarlos en el localStorage
      * @returns  Devuelve todos los atributos
      * 
      */
