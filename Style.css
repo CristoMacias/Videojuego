@@ -131,16 +131,29 @@ a:hover{
 
 .tarjetas{
     display: inline-flex;
+    
+   
 }
 .tarjetas div{
     border:2px solid white;
+    width: 15%;
 }
 html .tienda{
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     height: 100vh;
     max-width: 100%;
     right: 0;
-    box-sizing: border-box;
+   
 }
+
+.imagenItem{
+    height: 140px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15%;
+    
+}
+
