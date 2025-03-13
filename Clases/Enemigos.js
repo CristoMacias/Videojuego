@@ -164,7 +164,5 @@ export default class Enemigos{
     set raza(raza) {
        this.#raza = raza;
     }
-
-   
     
    }

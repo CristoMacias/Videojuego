@@ -1,4 +1,6 @@
-import Enemigos from "./Enemigo";
+import Enemigos from "./Enemigos.js";
+
+const iniciarCombate = document.querySelector("#combate")
 
 const nombres = ["Malgor", 
                 "Zorath", 
@@ -18,18 +20,19 @@ const razas = ["Orco",
                 "Elfo"];
 
 const niveles = [1, 2 , 3 ,4 , 5];
-const enemigo = crearPersonaje();
 
 /**
  * Función para crear al enemigo
  */
-function crearPersonaje(){
+const subirPersonaje = function (){
     const nombre = elegirNombre();
     const raza = elegirRaza();
     const nivel = elegirNivel();
-
-    return new Enemigos(nombre, raza, nivel);
+    const enemigo = new Enemigos(nombre, raza, nivel);
+    localStorage.setItem('enemigo',JSON.stringify(enemigo.convertirJson()));
 }
+iniciarCombate.addEventListener("click", subirPersonaje);
+
 /**
  * Función para elegir una raza de manera aleatoria
  * @returns 
@@ -56,3 +59,5 @@ function elegirNivel(){
 
     return numeroNivel;
 }
+
+
