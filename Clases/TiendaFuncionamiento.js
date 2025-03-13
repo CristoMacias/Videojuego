@@ -1,7 +1,8 @@
 import Tienda from './Tienda.js';
-
+import Personaje from './Personaje.js';
 document.addEventListener('DOMContentLoaded',()=>{
-    const personaje = JSON.parse(localStorage.getItem('personaje'));
+    const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
+    const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
     const armas=tienda.armas;//Array con las armas
     const protecciones=tienda.protecciones; //Array con las protecciones
@@ -147,15 +148,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     const comprarArma=document.querySelector("#comprar-arma");
     comprarArma.addEventListener('click',()=>{
         console.log('Se ha pulsado el boton de comprar')
-        console.log(personaje);
-        personaje.comprarTienda(armas[indiceArma]);
-        
-        /*
-        if(personaje.oro>armaComprar.precio){
-            personaje.comprarTienda(armaComprar);
-        }else{
+        const armaComprar=armas[indiceArma];
+        //Comprobar que el personaje tenga suficiente dinero para comprar el arma
+        if(personaje.oro>armaComprar.precio-1){
+            personaje.comprarTienda(armaComprar);//Añadimos el arma
+            personaje.perderOro(armaComprar.precio);//Restamos el oro del arma al oro del personaje
+        }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
-        }*/
+        }
+        localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+
     });
 
 

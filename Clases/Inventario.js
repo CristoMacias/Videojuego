@@ -33,7 +33,7 @@ export default class Inventario{
                 this.#amuletos.push(objeto);
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
             }
-        }else if(objeto instanceof Pocion && this.#pocionesVida<7){
+        }else if(objeto instanceof Pocion && (this.#pocionesVida.length<7 && this.#pocionesMana.length<7)){
             if(objeto.tipo==="salud"){
                 this.#pocionesVida.push(objeto);
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
@@ -59,6 +59,25 @@ export default class Inventario{
         }
     }
 
+    convertirJson(){
+        return{
+            armas:this.#armas,
+            defensa:this.#defensa,
+            amuletos:this.#amuletos,
+            pocionesVida:this.#pocionesVida,
+            pocionesMana:this.#pocionesMana
+        };
+    }
+
+    static reconstruirJson(json){
+        const inventario = new Inventario();
+        inventario.#armas=json.armas ||[] ;
+        inventario.#defensa=json.defensa || [] ;
+        inventario.#amuletos=json.amuletos || [] ;
+        inventario.#pocionesVida=json.pocionVida || [];
+        inventario.#pocionesMana=json.pocionesMana || [];
+        return inventario;
+    }
 
 
     /**
