@@ -22,10 +22,11 @@ export default class Inventario{
      */
     agregarObjeto(objeto){
         console.log("llega a inventario");
+        console.log(objeto.nombre);
         if(objeto instanceof Arma && this.#armas.length<5){
             this.#armas.push(objeto);
             alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
-        }else if(objeto instanceof Proteccion && this.#armas.length<5){
+        }else if(objeto instanceof Proteccion && this.#defensa.length<4){
             if(objeto.tipo==="escudo" || objeto.tipo==="armadura"){
                 this.#defensa.push(objeto);
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
@@ -34,7 +35,7 @@ export default class Inventario{
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
             }
         }else if(objeto instanceof Pocion && (this.#pocionesVida.length<7 && this.#pocionesMana.length<7)){
-            if(objeto.tipo==="salud"){
+            if(objeto.efecto==="salud"){
                 this.#pocionesVida.push(objeto);
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
             }else{
@@ -45,19 +46,7 @@ export default class Inventario{
             alert(`¡No se ha podido añadido ${objeto.nombre} al inventario porque está lleno!`);
         }
     }
-    
-    /**
-     * Método para eliminar un arma del inventario
-     * @param {arma} arma Arma a eliminar
-     */
-    eliminarArma(arma){
-        if(arma===null){
-            alert(`El inventario está vacío, no hay nada que borrar.`);
-        }else{
-            this.#armas.splice(arma);
-            alert(`¡El arma ${arma.nombre} se ha eliminado del inventario!`)
-        }
-    }
+    //Metodo para eliminar en el inventario
 
     convertirJson(){
         return{

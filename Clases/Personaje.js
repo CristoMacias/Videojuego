@@ -13,7 +13,7 @@ export default class Personaje{
     #resistenciaMagica=100;//Puntos de resistencia mágica
     #nivel=1;//Nivel actual
     #experiencia=0;//Experiencia
-    #oro=800; // Total de oro 
+    #oro=80000; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
 
@@ -103,6 +103,7 @@ export default class Personaje{
      */
     comprarTienda(objeto){
       console.log("Llega a Personaje")
+      console.log(objeto.nombre);
       this.#inventario.agregarObjeto(objeto);
     }
 
