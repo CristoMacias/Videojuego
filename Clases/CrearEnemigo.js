@@ -1,6 +1,8 @@
 import Enemigos from "./Enemigos.js";
 
-const iniciarCombate = document.querySelector("#combate")
+document.addEventListener('DOMContentLoaded', ()=> {
+
+const iniciarCombate = document.querySelector("#combate");
 
 const nombres = ["Malgor", 
                 "Zorath", 
@@ -13,11 +15,11 @@ const nombres = ["Malgor",
                 "Kharaz",
                 "Vorath"];
 
-const razas = ["Orco",
-                "Enano",
-                "Humano",
-                "Mago",
-                "Elfo"];
+const razas = ["orco",
+                "enano",
+                "humano",
+                "mago",
+                "elfo"];
 
 const niveles = [1, 2 , 3 ,4 , 5];
 
@@ -38,8 +40,9 @@ iniciarCombate.addEventListener("click", subirPersonaje);
  * @returns 
  */
 function elegirRaza(){
-    let max = 5;
-    let numeroRaza = Math.floor(Math.random() * (max + 1));
+    let numeroRaza = Math.floor(Math.random() * (razas.length));
+    console.log(numeroRaza);
+    console.log(razas[numeroRaza]);
     return razas[numeroRaza];
 }
 
@@ -48,16 +51,16 @@ function elegirRaza(){
  * @returns nombre
  */
 function elegirNombre(){
-    let max = 10;
-    let numeroNombre = Math.floor(Math.random() * (max + 1));
+    let numeroNombre = Math.floor(Math.random() * (nombres.length));
+    console.log(numeroNombre);
+    console.log(nombres[numeroNombre]);
     return nombres[numeroNombre];
 }
 
 function elegirNivel(){
-    let max = 4;
-    let numeroNivel = Math.floor(Math.random() * (max + 1));
-
-    return numeroNivel;
-}
-
-
+    let numeroNivel = Math.floor(Math.random() * (niveles.length));
+    console.log(numeroNivel);
+    console.log(niveles[numeroNivel]);
+    return niveles[numeroNivel];
+    }
+});
