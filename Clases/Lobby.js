@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const personaje = JSON.parse(localStorage.getItem('personaje'));
 
     if(personaje){
-
-    spanVida.textContent = " : " + personaje.vida.actual;
-    spanMana.textContent = " : " + personaje.mana.actual;
+        //TODO: Añadir vida y mana maximos
+    spanVida.textContent = " : " + personaje.vidaActual;
+    spanMana.textContent = " : " + personaje.manaActual;
     spanDanioFisico.textContent = " : " + personaje.ataque;
     spanArmadura.textContent = " : " + personaje.defensa;
     spanPoderMagico.textContent = " : " + personaje.magia;

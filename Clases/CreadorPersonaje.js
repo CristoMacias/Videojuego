@@ -21,15 +21,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     const elegirImagen = document.querySelector("#imagen-elegir");
     creadorSelect.addEventListener('change', ()=>{
         let razaElegida = creadorSelect.value;
-        
         let indiceRaza = razas.indexOf(razaElegida);
         if(indiceRaza !== -1){
             elegirImagen.src=imagenesPersonaje[indiceRaza];
-            
         }else{
             alert("La raza no es válida");
         }
-        
     });
      
     /**
@@ -46,6 +43,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         const imagen = imagenesPersonaje[indiceRaza];
         const personaje = new Personaje(nombre,raza,imagen);
+        console.log(personaje);
         //No se añade, se sobreescribe para que sólo haya 1
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
         alert("Bienvenido a la BATALLA DE LOS 5 PUEBLOS!");

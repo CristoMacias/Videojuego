@@ -1,122 +1,164 @@
-import Tienda from './Tienda.js'
-
-
+import Tienda from './Tienda.js';
+import Personaje from './Personaje.js';
 document.addEventListener('DOMContentLoaded',()=>{
-    const personaje = JSON.parse(localStorage.getItem('personaje'));
+    const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
+    const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
-    const armas=tienda.armas;
-    console.log(tienda.armas);//Array con las armas
+    const armas=tienda.armas;//Array con las armas
     const protecciones=tienda.protecciones; //Array con las protecciones
-    const pociones=tienda.pociones; //Array con las pociones
-    const escudos=protecciones[0]; //Array con los escudos
-    const armaduras=protecciones[1]; //Array con las armaduras
-    const amuletos=protecciones[2]; //Array con los amuletos
-    const pocionesVida=pociones[0]; //Array con las pociones de vida
-    const pocionesMana=pociones[1]; //Array con las pociones de maná
+    const pociones=tienda.pociones;//Array con las pociones
+    const escudos=protecciones.escudo;//Array con los escudos
+    const armaduras=protecciones.armadura;//Array con las armaduras
+    const amuletos=protecciones.amuleto; //Array con los amuletos
+    const pocionesVida=pociones.salud; //Array con las pociones de vida
+    const pocionesMana=pociones.mana; //Array con las pociones de maná
+    const comprar=document.querySelector(".comprar");
+    //Cuando se inicia la tienda muestra el primer objeto de cada array
+    armas[0].mostrarArma();
+    escudos[0].mostrarEscudo();
+    armaduras[0].mostrarArmadura();
+    amuletos[0].mostrarAmuleto();
+    pocionesVida[0].mostrarVida();
+    pocionesMana[0].mostrarMana();
 
-    const anteriorBoton=document.querySelector("#boton-anterior");
-    const siguienteBoton=document.querySelector("#boton-siguiente");
-    let indice=0;
-
-    //Probando mostrar y cambiar la vista de armas
-    anteriorBoton.addEventListener('click',()=>{
-        indice--;
-        if(indice<0){
-            indice=0;
-            
+    //Carrousel Armas //TODO: Comproabar porque no se ven dos armas
+    const anteriorBotonArma=document.querySelector("#boton-anterior-arma");
+    const siguienteBotonArma=document.querySelector("#boton-siguiente-arma");
+    let indiceArma=0;
+     //Evento para elegir la opcion anterior
+    anteriorBotonArma.addEventListener('click',()=>{
+        indiceArma--;
+        if(indiceArma<0){//evitamos que se salga del array
+            indiceArma=0;
         }
-        else{
-            imagenArma.src=armas[indice].imagen;
-            nombreArma.textContent=armas[indice].nombre;
-            descripcionArma.textContent=armas[indice].descripcion;
-            danhoArma.textContent=armas[indice].danho;
-            precioArma.textContent=armas[indice].precio;
+        armas[indiceArma].mostrarArma();
+        
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonArma.addEventListener('click',()=>{
+        indiceArma++;
+        if(indiceArma>armas.length-1){//evitamos que se salga del array
+            indiceArma = armas.length-1;
         }
+        armas[indiceArma].mostrarArma();
+    });
+    //Carrousel Escudos
+    const anteriorBotonEscudos=document.querySelector("#boton-anterior-escudo");
+    const siguienteBotonEscudos=document.querySelector("#boton-siguiente-escudo");
+    let indiceEscudo=0;
+     //Evento para elegir la opcion anterior
+    anteriorBotonEscudos.addEventListener('click',()=>{
+        indiceEscudo--;
+        if(indiceEscudo<0){//evitamos que se salga del array
+            indiceEscudo=0;
+        }
+        escudos[indiceEscudo].mostrarEscudo();     
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonEscudos.addEventListener('click',()=>{
+        indiceEscudo++;
+        if(indiceEscudo>escudos.length-1){//evitamos que se salga del array
+            indiceEscudo=escudos.length-1;
+        }
+        escudos[indiceEscudo].mostrarEscudo();
     });
 
-    siguienteBoton.addEventListener('click',()=>{
-        indice++;
-        imagenArma.src=armas[indice].imagen;
-        nombreArma.textContent=armas[indice].nombre;
-        descripcionArma.textContent=armas[indice].descripcion;
-        danhoArma.textContent=armas[indice].danho;
-        precioArma.textContent=armas[indice].precio;
+    //Carrousel Armaduras
+    const anteriorBotonArmaduras=document.querySelector("#boton-anterior-armadura");
+    const siguienteBotonArmaduras=document.querySelector("#boton-siguiente-armadura");
+    let indiceArmadura=0;
+     //Evento para elegir la opcion anterior
+    anteriorBotonArmaduras.addEventListener('click',()=>{
+        indiceArmadura--;
+        if(indiceArmadura<0){//evitamos que se salga del array
+            indiceArmadura=0;
+        }
+        armaduras[indiceArmadura].mostrarArmadura();
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonArmaduras.addEventListener('click',()=>{
+        indiceArmadura++;
+        if(indiceArmadura>armaduras.length-1){//evitamos que se salga del array
+            indiceArmadura = armaduras.length-1;
+        }
+        armaduras[indiceArmadura].mostrarArmadura();
+    });
+    //Carrousel Amuletos
+    const anteriorBotonAmuletos=document.querySelector("#boton-anterior-amuleto");
+    const siguienteBotonAmuletos=document.querySelector("#boton-siguiente-amuleto");
+    let indiceAmuleto=0;
+     //Evento para elegir la opcion anterior
+    anteriorBotonAmuletos.addEventListener('click',()=>{
+        indiceAmuleto--;
+        if(indiceAmuleto<0){//evitamos que se salga del array
+            indiceAmuleto=0;
+        }
+        amuletos[indiceAmuleto].mostrarAmuleto();
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonAmuletos.addEventListener('click',()=>{
+        indiceAmuleto++;
+        if(indiceAmuleto>amuletos.length-1){//evitamos que se salga del array
+            indiceAmuleto=amuletos.length-1;
+        }
+        amuletos[indiceAmuleto].mostrarAmuleto();
     })
+    //Carrousel de pociones de vida
+    const anteriorBotonVida=document.querySelector("#boton-anterior-vida");
+    const siguienteBotonVida=document.querySelector("#boton-siguiente-vida");
+    let indiceVida=0;
+     //Evento para elegir la opcion anterior
+    anteriorBotonVida.addEventListener('click',()=>{
+        indiceVida--;
+        if(indiceVida<0){//evitamos que se salga del array
+            indiceVida=0;
+        }
+        pocionesVida[indiceVida].mostrarVida();
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonVida.addEventListener('click',()=>{
+       indiceVida++;
+       if(indiceVida>pocionesVida.length-1){//evitamos que se salga del array
+        indiceVida=pocionesVida.length-1;
+       } 
+       pocionesVida[indiceVida].mostrarVida();
+    });
+
+    //Carrousel de pociones de maná
+    const anteriorBotonMana=document.querySelector("#boton-anterior-mana");
+    const siguienteBotonoMana=document.querySelector("#boton-siguiente-mana");
+    let indiceMana=0;
+    //Evento para elegir la opcion anterior
+    anteriorBotonMana.addEventListener('click',()=>{
+        indiceMana--;
+        if(indiceMana<0){//evitamos que se salga del array
+            indiceMana=0;
+        }
+        pocionesMana[indiceMana].mostrarMana();
+    });
+    //Evento para elegir la opcion siguiente
+    siguienteBotonoMana.addEventListener('click',()=>{
+        indiceMana++;
+        if(indiceMana>pocionesMana.length-1){//evitamos que se salga del array
+            indiceMana=pocionesMana.length-1;
+        }
+        pocionesMana[indiceMana].mostrarMana();
+    });
+    //Comprar armas
+    const comprarArma=document.querySelector("#comprar-arma");
+    comprarArma.addEventListener('click',()=>{
+        console.log('Se ha pulsado el boton de comprar')
+        const armaComprar=armas[indiceArma];
+        //Comprobar que el personaje tenga suficiente dinero para comprar el arma
+        if(personaje.oro>armaComprar.precio-1){
+            personaje.comprarTienda(armaComprar);//Añadimos el arma
+            personaje.perderOro(armaComprar.precio);//Restamos el oro del arma al oro del personaje
+        }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
+            alert(`¡No tiene oro suficiente!`);
+        }
+        localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+
+    });
 
 
-
-
-
-    //Mostrar un arma
-
-
- /*   imagenArma.src=martilloRompeMontanhas.imagen;
-    nombreArma.textContent=martilloRompeMontanhas.nombre;
-    descripcionArma.textContent=martilloRompeMontanhas.descripcion;
-    danhoArma.textContent=martilloRompeMontanhas.danho;
-    precioArma.textContent=martilloRompeMontanhas.precio;*/
-    
-    //Mostrar un escudo
-    const imagenEscudo=document.querySelector("#imagen-escudo");
-    const nombreEscudo=document.querySelector("#nombre-escudo");
-    const descripcionEscudo=document.querySelector("#descripcion-escudo");
-    const defensaEscudo=document.querySelector("#defensa-escudo");
-    const precioEscudo=document.querySelector("#precio-escudo");
-    
-/*  imagenEscudo.src=escudoGondor.imagen;
-    nombreEscudo.textContent=escudoGondor.nombre;
-    descripcionEscudo.textContent=escudoGondor.descripcion;
-    defensaEscudo.textContent=escudoGondor.aumento;
-    precioEscudo.textContent=escudoGondor.precio; */
-
-    //Mostrar un armadura
-    const imagenArmadura=document.querySelector("#imagen-armadura");
-    const nombreArmadura=document.querySelector("#nombre-armadura");
-    const descripcionArmadura=document.querySelector("#descripcion-armadura");
-    const defensaArmadura=document.querySelector("#defensa-armadura");
-    const precioArmadura=document.querySelector("#precio-armadura");
-  /*  imagenArmadura.src=armaduraReal.imagen;
-    nombreArmadura.textContent=armaduraReal.nombre;
-    descripcionArmadura.textContent=armaduraReal.descripcion;
-    defensaArmadura.textContent=armaduraReal.aumento;
-    precioArmadura.textContent=armaduraReal.precio;*/
-
-    //Mostrar un amuleto
-    const imagenAmuleto=document.querySelector("#imagen-amuleto");
-    const nombreAmuleto=document.querySelector("#nombre-amuleto");
-    const descripcionAmuleto=document.querySelector("#descripcion-amuleto");
-    const resistenciaMagicaAmuleto=document.querySelector("#resistenciaMagica-amuleto");
-    const precioAmuleto=document.querySelector("#precio-amuleto");
-
- /*   imagenAmuleto.src=amuletoVida.imagen;
-    nombreAmuleto.textContent=amuletoVida.nombre;
-    descripcionAmuleto.textContent=amuletoVida.descripcion;
-    resistenciaMagicaAmuleto.textContent=amuletoVida.aumento;
-    precioAmuleto.textContent=amuletoVida.precio;*/
-
-    //Mostrarr un pocion vida
-    const imagenPocionVida=document.querySelector("#imagen-pocion-vida");
-    const nombrePocionVida=document.querySelector("#nombre-pocion-vida");
-    const descripcionPocionVida=document.querySelector("#descripcion-pocion-vida");
-    const regeneraVida=document.querySelector("#aumento-vida");
-    const precioPocionVida=document.querySelector("#precio-vida");
-
-/*  imagenPocionVida.src=pocionSaludPequenha.imagen;
-    nombrePocionVida.textContent=pocionSaludPequenha.nombre;
-    descripcionPocionVida.textContent=pocionSaludPequenha.descripcion;
-    regeneraVida.textContent=pocionSaludPequenha.aumento;
-    precioPocionVida.textContent=pocionSaludPequenha.precio;*/
-
-    //Mostrar un pocion maná
-    const imagenPocionMana=document.querySelector("#imagen-pocion-mana");
-    const nombrePocionMana=document.querySelector("#nombre-pocion-mana");
-    const descripcionPocionMana=document.querySelector("#descripcion-pocion-mana");
-    const regeneraMana=document.querySelector("#aumento-mana");
-    const precioPocionMana=document.querySelector("#precio-arma");
-
- /*   imagenPocionMana.src=pocionManaPequenha.imagen;
-    nombrePocionMana.textContent=pocionManaPequenha.nombre;
-    descripcionPocionMana.textContent=pocionManaPequenha.descripcion;
-    regeneraMana.textContent=pocionManaPequenha.aumento;
-    precioPocionMana.textContent=pocionManaPequenha.precio;*/
 });
