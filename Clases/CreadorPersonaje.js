@@ -21,15 +21,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     const elegirImagen = document.querySelector("#imagen-elegir");
     creadorSelect.addEventListener('change', ()=>{
         let razaElegida = creadorSelect.value;
-        
         let indiceRaza = razas.indexOf(razaElegida);
         if(indiceRaza !== -1){
             elegirImagen.src=imagenesPersonaje[indiceRaza];
-            
         }else{
             alert("La raza no es válida");
         }
-        
     });
      
     /**

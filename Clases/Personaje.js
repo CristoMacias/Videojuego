@@ -1,4 +1,4 @@
-
+import Inventario from './Inventario.js';
 export default class Personaje{
     
     #nombre; //Nombre del personaje
@@ -24,7 +24,7 @@ export default class Personaje{
         this.#experiencia;
         this.#oro;
         this.#calcularEstadisticas(raza);
-        this.#inventario
+        this.#inventario=new Inventario();
 
     }
     /**
@@ -66,8 +66,17 @@ export default class Personaje{
          resistenciaMagica:this.#resistenciaMagica,
          nivel:this.#nivel,
          experiencia:this.#experiencia,
-         oro: this.#oro
+         oro: this.#oro,
+         inventario: this.#inventario
       };
+    }
+    /**
+     * Método para comprar un objeto en la tienda y guardarlo en el inventario
+     * @param {*} objeto
+     */
+    comprarTienda(objeto){
+      console.log("Llega a Personaje")
+      this.#inventario.agregarObjeto(objeto);
     }
     
    /**
@@ -235,6 +244,22 @@ export default class Personaje{
    */
    get imagen() {
       return this.#imagen;
+   }
+
+   /**
+   * Getter para inventario
+   * @return inventario Devuelve el valor de inventario;
+   */
+   get inventario() {
+      return this.#inventario;
+   }
+   
+   /**
+   * Setter para inventario
+   * @param {*} inventario Recibe el valor de inventario para modificar
+   */
+   set inventario(inventario) {
+      this.#inventario = inventario;
    }
 
    

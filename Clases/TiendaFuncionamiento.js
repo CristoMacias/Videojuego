@@ -1,6 +1,4 @@
 import Tienda from './Tienda.js';
-import Proteccion from './Proteccion.js';
-import Arma from './Arma.js';
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
@@ -13,7 +11,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const amuletos=protecciones.amuleto; //Array con los amuletos
     const pocionesVida=pociones.salud; //Array con las pociones de vida
     const pocionesMana=pociones.mana; //Array con las pociones de maná
-
+    const comprar=document.querySelector(".comprar");
+    //Cuando se inicia la tienda muestra el primer objeto de cada array
     armas[0].mostrarArma();
     escudos[0].mostrarEscudo();
     armaduras[0].mostrarArmadura();
@@ -25,39 +24,39 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonArma=document.querySelector("#boton-anterior-arma");
     const siguienteBotonArma=document.querySelector("#boton-siguiente-arma");
     let indiceArma=0;
+     //Evento para elegir la opcion anterior
     anteriorBotonArma.addEventListener('click',()=>{
         indiceArma--;
-        if(indiceArma<0){
+        if(indiceArma<0){//evitamos que se salga del array
             indiceArma=0;
         }
         armas[indiceArma].mostrarArma();
         
     });
-
+    //Evento para elegir la opcion siguiente
     siguienteBotonArma.addEventListener('click',()=>{
         indiceArma++;
-        if(indiceArma>armas.length-1){
+        if(indiceArma>armas.length-1){//evitamos que se salga del array
             indiceArma = armas.length-1;
         }
         armas[indiceArma].mostrarArma();
     });
-
-
     //Carrousel Escudos
     const anteriorBotonEscudos=document.querySelector("#boton-anterior-escudo");
     const siguienteBotonEscudos=document.querySelector("#boton-siguiente-escudo");
     let indiceEscudo=0;
+     //Evento para elegir la opcion anterior
     anteriorBotonEscudos.addEventListener('click',()=>{
         indiceEscudo--;
-        if(indiceEscudo<0){
+        if(indiceEscudo<0){//evitamos que se salga del array
             indiceEscudo=0;
         }
-        escudos[indiceEscudo].mostrarEscudo();
-        
+        escudos[indiceEscudo].mostrarEscudo();     
     });
+    //Evento para elegir la opcion siguiente
     siguienteBotonEscudos.addEventListener('click',()=>{
         indiceEscudo++;
-        if(indiceEscudo>escudos.length-1){
+        if(indiceEscudo>escudos.length-1){//evitamos que se salga del array
             indiceEscudo=escudos.length-1;
         }
         escudos[indiceEscudo].mostrarEscudo();
@@ -67,35 +66,38 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonArmaduras=document.querySelector("#boton-anterior-armadura");
     const siguienteBotonArmaduras=document.querySelector("#boton-siguiente-armadura");
     let indiceArmadura=0;
+     //Evento para elegir la opcion anterior
     anteriorBotonArmaduras.addEventListener('click',()=>{
         indiceArmadura--;
-        if(indiceArmadura<0){
+        if(indiceArmadura<0){//evitamos que se salga del array
             indiceArmadura=0;
         }
         armaduras[indiceArmadura].mostrarArmadura();
     });
+    //Evento para elegir la opcion siguiente
     siguienteBotonArmaduras.addEventListener('click',()=>{
         indiceArmadura++;
-        if(indiceArmadura>armaduras.length-1){
+        if(indiceArmadura>armaduras.length-1){//evitamos que se salga del array
             indiceArmadura = armaduras.length-1;
         }
         armaduras[indiceArmadura].mostrarArmadura();
     });
     //Carrousel Amuletos
-
     const anteriorBotonAmuletos=document.querySelector("#boton-anterior-amuleto");
     const siguienteBotonAmuletos=document.querySelector("#boton-siguiente-amuleto");
     let indiceAmuleto=0;
+     //Evento para elegir la opcion anterior
     anteriorBotonAmuletos.addEventListener('click',()=>{
         indiceAmuleto--;
-        if(indiceAmuleto<0){
+        if(indiceAmuleto<0){//evitamos que se salga del array
             indiceAmuleto=0;
         }
         amuletos[indiceAmuleto].mostrarAmuleto();
     });
+    //Evento para elegir la opcion siguiente
     siguienteBotonAmuletos.addEventListener('click',()=>{
         indiceAmuleto++;
-        if(indiceAmuleto>amuletos.length-1){
+        if(indiceAmuleto>amuletos.length-1){//evitamos que se salga del array
             indiceAmuleto=amuletos.length-1;
         }
         amuletos[indiceAmuleto].mostrarAmuleto();
@@ -104,16 +106,18 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonVida=document.querySelector("#boton-anterior-vida");
     const siguienteBotonVida=document.querySelector("#boton-siguiente-vida");
     let indiceVida=0;
+     //Evento para elegir la opcion anterior
     anteriorBotonVida.addEventListener('click',()=>{
         indiceVida--;
-        if(indiceVida<0){
+        if(indiceVida<0){//evitamos que se salga del array
             indiceVida=0;
         }
         pocionesVida[indiceVida].mostrarVida();
     });
+    //Evento para elegir la opcion siguiente
     siguienteBotonVida.addEventListener('click',()=>{
        indiceVida++;
-       if(indiceVida>pocionesVida.length-1){
+       if(indiceVida>pocionesVida.length-1){//evitamos que se salga del array
         indiceVida=pocionesVida.length-1;
        } 
        pocionesVida[indiceVida].mostrarVida();
@@ -123,19 +127,36 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonMana=document.querySelector("#boton-anterior-mana");
     const siguienteBotonoMana=document.querySelector("#boton-siguiente-mana");
     let indiceMana=0;
+    //Evento para elegir la opcion anterior
     anteriorBotonMana.addEventListener('click',()=>{
         indiceMana--;
-        if(indiceMana<0){
+        if(indiceMana<0){//evitamos que se salga del array
             indiceMana=0;
         }
         pocionesMana[indiceMana].mostrarMana();
     });
+    //Evento para elegir la opcion siguiente
     siguienteBotonoMana.addEventListener('click',()=>{
         indiceMana++;
-        if(indiceMana>pocionesMana.length-1){
+        if(indiceMana>pocionesMana.length-1){//evitamos que se salga del array
             indiceMana=pocionesMana.length-1;
         }
         pocionesMana[indiceMana].mostrarMana();
     });
+    //Comprar armas
+    const comprarArma=document.querySelector("#comprar-arma");
+    comprarArma.addEventListener('click',()=>{
+        console.log('Se ha pulsado el boton de comprar')
+        console.log(personaje);
+        personaje.comprarTienda(armas[indiceArma]);
+        
+        /*
+        if(personaje.oro>armaComprar.precio){
+            personaje.comprarTienda(armaComprar);
+        }else{
+            alert(`¡No tiene oro suficiente!`);
+        }*/
+    });
+
 
 });

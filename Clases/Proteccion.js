@@ -28,7 +28,9 @@ export default class Proteccion{
         this.#imagen=imagen
     }
 
-
+    /**
+     * Método para mostrar en el DOM los atributos de la proteccion de tipo escudo
+     */
     mostrarEscudo(){
       document.querySelector("#imagen-escudo").src=this.imagen;
       document.querySelector("#nombre-escudo").textContent=this.nombre;
@@ -36,7 +38,9 @@ export default class Proteccion{
       document.querySelector("#defensa-escudo").textContent=this.aumento;
       document.querySelector("#precio-escudo").textContent=this.precio;
     }
-
+      /**
+     * Método para mostrar en el DOM los atributos de la proteccion de tipo escudo
+     */
     mostrarArmadura(){
       document.querySelector("#imagen-armadura").src=this.imagen;
       document.querySelector("#nombre-armadura").textContent=this.nombre;
@@ -44,7 +48,9 @@ export default class Proteccion{
       document.querySelector("#defensa-armadura").textContent=this.aumento;
       document.querySelector("#precio-armadura").textContent=this.precio;
     }
-
+      /**
+     * Método para mostrar en el DOM los atributos de la proteccion de tipo escudo
+     */
     mostrarAmuleto(){
       document.querySelector("#imagen-amuleto").src=this.imagen;
       document.querySelector("#nombre-amuleto").textContent=this.nombre;
