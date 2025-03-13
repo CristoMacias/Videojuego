@@ -35,7 +35,7 @@ export default class Inventario{
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
             }
         }else if(objeto instanceof Pocion && (this.#pocionesVida.length<7 && this.#pocionesMana.length<7)){
-            if(objeto.tipo==="salud"){
+            if(objeto.efecto==="salud"){
                 this.#pocionesVida.push(objeto);
                 alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
             }else{
