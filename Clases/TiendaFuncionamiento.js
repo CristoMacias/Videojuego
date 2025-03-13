@@ -1,128 +1,141 @@
 import Tienda from './Tienda.js';
+import Proteccion from './Proteccion.js';
 import Arma from './Arma.js';
 
 document.addEventListener('DOMContentLoaded',()=>{
     const personaje = JSON.parse(localStorage.getItem('personaje'));
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
-    console.log(tienda);
-    const armas=tienda.armas;
-    console.log(armas);//Array con las armas
+    const armas=tienda.armas;//Array con las armas
     const protecciones=tienda.protecciones; //Array con las protecciones
-    const pociones=tienda.pociones;
-    console.log(protecciones);
-     //Array con las pociones
-
-    const escudos=protecciones[0]; //Array con los escudos
-    const armaduras=protecciones[1]; //Array con las armaduras
-    const amuletos=protecciones[2]; //Array con los amuletos
-    const pocionesVida=pociones[0]; //Array con las pociones de vida
-    const pocionesMana=pociones[1]; //Array con las pociones de maná
-    console.log(escudos);
-    
-    const anteriorBoton=document.querySelector("#boton-anterior");
-    const siguienteBoton=document.querySelector("#boton-siguiente");
-
-
-    let indice=0;
-    
-    //Probando mostrar y cambiar la vista de armas
-    anteriorBoton.addEventListener('click',()=>{
-        indice--;
-        if(indice<0){
-            indice=0;
-            armas[indice].mostrarArma();
-        }
-        else{
-            armas[indice].mostrarArma();
-        }
-    });
-
-    siguienteBoton.addEventListener('click',()=>{
-        indice++;
-        if(indice>armas.length){
-            indice = armas.length-1
-            armas[indice].mostrarArma();
-        }else{
-            armas[indice].mostrarArma();
-        }
-    });
-   
-
-
-
-
-  //Hacer eventos para el resto
-
-
- /*   imagenArma.src=martilloRompeMontanhas.imagen;
-    nombreArma.textContent=martilloRompeMontanhas.nombre;
-    descripcionArma.textContent=martilloRompeMontanhas.descripcion;
-    danhoArma.textContent=martilloRompeMontanhas.danho;
-    precioArma.textContent=martilloRompeMontanhas.precio;*/
-    
-    //Mostrar un escudo
-    const imagenEscudo=document.querySelector("#imagen-escudo");
-    const nombreEscudo=document.querySelector("#nombre-escudo");
-    const descripcionEscudo=document.querySelector("#descripcion-escudo");
-    const defensaEscudo=document.querySelector("#defensa-escudo");
-    const precioEscudo=document.querySelector("#precio-escudo");
-    
-/*  imagenEscudo.src=escudoGondor.imagen;
-    nombreEscudo.textContent=escudoGondor.nombre;
-    descripcionEscudo.textContent=escudoGondor.descripcion;
-    defensaEscudo.textContent=escudoGondor.aumento;
-    precioEscudo.textContent=escudoGondor.precio; */
-
-    //Mostrar un armadura
-    const imagenArmadura=document.querySelector("#imagen-armadura");
-    const nombreArmadura=document.querySelector("#nombre-armadura");
-    const descripcionArmadura=document.querySelector("#descripcion-armadura");
-    const defensaArmadura=document.querySelector("#defensa-armadura");
-    const precioArmadura=document.querySelector("#precio-armadura");
-  /*  imagenArmadura.src=armaduraReal.imagen;
-    nombreArmadura.textContent=armaduraReal.nombre;
-    descripcionArmadura.textContent=armaduraReal.descripcion;
-    defensaArmadura.textContent=armaduraReal.aumento;
-    precioArmadura.textContent=armaduraReal.precio;*/
-
-    //Mostrar un amuleto
-    const imagenAmuleto=document.querySelector("#imagen-amuleto");
-    const nombreAmuleto=document.querySelector("#nombre-amuleto");
-    const descripcionAmuleto=document.querySelector("#descripcion-amuleto");
-    const resistenciaMagicaAmuleto=document.querySelector("#resistenciaMagica-amuleto");
-    const precioAmuleto=document.querySelector("#precio-amuleto");
-
- /*   imagenAmuleto.src=amuletoVida.imagen;
-    nombreAmuleto.textContent=amuletoVida.nombre;
-    descripcionAmuleto.textContent=amuletoVida.descripcion;
-    resistenciaMagicaAmuleto.textContent=amuletoVida.aumento;
-    precioAmuleto.textContent=amuletoVida.precio;*/
-
-    //Mostrarr un pocion vida
-    const imagenPocionVida=document.querySelector("#imagen-pocion-vida");
-    const nombrePocionVida=document.querySelector("#nombre-pocion-vida");
-    const descripcionPocionVida=document.querySelector("#descripcion-pocion-vida");
-    const regeneraVida=document.querySelector("#aumento-vida");
-    const precioPocionVida=document.querySelector("#precio-vida");
-
-/*  imagenPocionVida.src=pocionSaludPequenha.imagen;
-    nombrePocionVida.textContent=pocionSaludPequenha.nombre;
-    descripcionPocionVida.textContent=pocionSaludPequenha.descripcion;
-    regeneraVida.textContent=pocionSaludPequenha.aumento;
-    precioPocionVida.textContent=pocionSaludPequenha.precio;*/
-
-    //Mostrar un pocion maná
-    const imagenPocionMana=document.querySelector("#imagen-pocion-mana");
-    const nombrePocionMana=document.querySelector("#nombre-pocion-mana");
-    const descripcionPocionMana=document.querySelector("#descripcion-pocion-mana");
-    const regeneraMana=document.querySelector("#aumento-mana");
-    const precioPocionMana=document.querySelector("#precio-arma");
-
- /*   imagenPocionMana.src=pocionManaPequenha.imagen;
-    nombrePocionMana.textContent=pocionManaPequenha.nombre;
-    descripcionPocionMana.textContent=pocionManaPequenha.descripcion;
-    regeneraMana.textContent=pocionManaPequenha.aumento;
-    precioPocionMana.textContent=pocionManaPequenha.precio;*/
+    const pociones=tienda.pociones;//Array con las pociones
+    const escudos=protecciones.escudo;//Array con los escudos
+    const armaduras=protecciones.armadura;//Array con las armaduras
+    const amuletos=protecciones.amuleto; //Array con los amuletos
+    const pocionesVida=pociones.salud; //Array con las pociones de vida
+    const pocionesMana=pociones.mana; //Array con las pociones de maná
 
     armas[0].mostrarArma();
+    escudos[0].mostrarEscudo();
+    armaduras[0].mostrarArmadura();
+    amuletos[0].mostrarAmuleto();
+    pocionesVida[0].mostrarVida();
+    pocionesMana[0].mostrarMana();
+
+    //Carrousel Armas //TODO: Comproabar porque no se ven dos armas
+    const anteriorBotonArma=document.querySelector("#boton-anterior-arma");
+    const siguienteBotonArma=document.querySelector("#boton-siguiente-arma");
+    let indiceArma=0;
+    anteriorBotonArma.addEventListener('click',()=>{
+        indiceArma--;
+        if(indiceArma<0){
+            indiceArma=0;
+        }
+        armas[indiceArma].mostrarArma();
+        
+    });
+
+    siguienteBotonArma.addEventListener('click',()=>{
+        indiceArma++;
+        if(indiceArma>armas.length-1){
+            indiceArma = armas.length-1;
+        }
+        armas[indiceArma].mostrarArma();
+    });
+
+
+    //Carrousel Escudos
+    const anteriorBotonEscudos=document.querySelector("#boton-anterior-escudo");
+    const siguienteBotonEscudos=document.querySelector("#boton-siguiente-escudo");
+    let indiceEscudo=0;
+    anteriorBotonEscudos.addEventListener('click',()=>{
+        indiceEscudo--;
+        if(indiceEscudo<0){
+            indiceEscudo=0;
+        }
+        escudos[indiceEscudo].mostrarEscudo();
+        
+    });
+    siguienteBotonEscudos.addEventListener('click',()=>{
+        indiceEscudo++;
+        if(indiceEscudo>escudos.length-1){
+            indiceEscudo=escudos.length-1;
+        }
+        escudos[indiceEscudo].mostrarEscudo();
+    });
+
+    //Carrousel Armaduras
+    const anteriorBotonArmaduras=document.querySelector("#boton-anterior-armadura");
+    const siguienteBotonArmaduras=document.querySelector("#boton-siguiente-armadura");
+    let indiceArmadura=0;
+    anteriorBotonArmaduras.addEventListener('click',()=>{
+        indiceArmadura--;
+        if(indiceArmadura<0){
+            indiceArmadura=0;
+        }
+        armaduras[indiceArmadura].mostrarArmadura();
+    });
+    siguienteBotonArmaduras.addEventListener('click',()=>{
+        indiceArmadura++;
+        if(indiceArmadura>armaduras.length-1){
+            indiceArmadura = armaduras.length-1;
+        }
+        armaduras[indiceArmadura].mostrarArmadura();
+    });
+    //Carrousel Amuletos
+
+    const anteriorBotonAmuletos=document.querySelector("#boton-anterior-amuleto");
+    const siguienteBotonAmuletos=document.querySelector("#boton-siguiente-amuleto");
+    let indiceAmuleto=0;
+    anteriorBotonAmuletos.addEventListener('click',()=>{
+        indiceAmuleto--;
+        if(indiceAmuleto<0){
+            indiceAmuleto=0;
+        }
+        amuletos[indiceAmuleto].mostrarAmuleto();
+    });
+    siguienteBotonAmuletos.addEventListener('click',()=>{
+        indiceAmuleto++;
+        if(indiceAmuleto>amuletos.length-1){
+            indiceAmuleto=amuletos.length-1;
+        }
+        amuletos[indiceAmuleto].mostrarAmuleto();
+    })
+    //Carrousel de pociones de vida
+    const anteriorBotonVida=document.querySelector("#boton-anterior-vida");
+    const siguienteBotonVida=document.querySelector("#boton-siguiente-vida");
+    let indiceVida=0;
+    anteriorBotonVida.addEventListener('click',()=>{
+        indiceVida--;
+        if(indiceVida<0){
+            indiceVida=0;
+        }
+        pocionesVida[indiceVida].mostrarVida();
+    });
+    siguienteBotonVida.addEventListener('click',()=>{
+       indiceVida++;
+       if(indiceVida>pocionesVida.length-1){
+        indiceVida=pocionesVida.length-1;
+       } 
+       pocionesVida[indiceVida].mostrarVida();
+    });
+
+    //Carrousel de pociones de maná
+    const anteriorBotonMana=document.querySelector("#boton-anterior-mana");
+    const siguienteBotonoMana=document.querySelector("#boton-siguiente-mana");
+    let indiceMana=0;
+    anteriorBotonMana.addEventListener('click',()=>{
+        indiceMana--;
+        if(indiceMana<0){
+            indiceMana=0;
+        }
+        pocionesMana[indiceMana].mostrarMana();
+    });
+    siguienteBotonoMana.addEventListener('click',()=>{
+        indiceMana++;
+        if(indiceMana>pocionesMana.length-1){
+            indiceMana=pocionesMana.length-1;
+        }
+        pocionesMana[indiceMana].mostrarMana();
+    });
+
 });

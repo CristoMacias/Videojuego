@@ -28,6 +28,32 @@ export default class Proteccion{
         this.#imagen=imagen
     }
 
+
+    mostrarEscudo(){
+      document.querySelector("#imagen-escudo").src=this.imagen;
+      document.querySelector("#nombre-escudo").textContent=this.nombre;
+      document.querySelector("#descripcion-escudo").textContent=this.descripcion;
+      document.querySelector("#defensa-escudo").textContent=this.aumento;
+      document.querySelector("#precio-escudo").textContent=this.precio;
+    }
+
+    mostrarArmadura(){
+      document.querySelector("#imagen-armadura").src=this.imagen;
+      document.querySelector("#nombre-armadura").textContent=this.nombre;
+      document.querySelector("#descripcion-armadura").textContent=this.descripcion;
+      document.querySelector("#defensa-armadura").textContent=this.aumento;
+      document.querySelector("#precio-armadura").textContent=this.precio;
+    }
+
+    mostrarAmuleto(){
+      document.querySelector("#imagen-amuleto").src=this.imagen;
+      document.querySelector("#nombre-amuleto").textContent=this.nombre;
+      document.querySelector("#descripcion-amuleto").textContent=this.descripcion;
+      document.querySelector("#resistenciaMagica-amuleto").textContent=this.aumento;
+      document.querySelector("#precio-amuleto").textContent=this.precio;
+    }
+
+
     /**
     * Getter para nombre
     * @return Devuelve el valor de nombre

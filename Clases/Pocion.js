@@ -23,6 +23,22 @@ export default class Pocion{
         this.#imagen=imagen
     }
 
+    mostrarVida(){
+      document.querySelector("#imagen-pocion-vida").src=this.imagen;
+      document.querySelector("#nombre-pocion-vida").textContent=this.nombre;
+      document.querySelector("#descripcion-pocion-vida").textContent=this.descripcion;
+      document.querySelector("#aumento-vida").textContent=this.aumento;
+      document.querySelector("#precio-vida").textContent=this.precio;
+    }
+
+    mostrarMana(){
+      document.querySelector("#imagen-pocion-mana").src=this.imagen;
+      document.querySelector("#nombre-pocion-mana").textContent=this.nombre;
+      document.querySelector("#descripcion-pocion-mana").textContent=this.descripcion;
+      document.querySelector("#aumento-mana").textContent=this.aumento;
+      document.querySelector("#precio-mana").textContent=this.precio;
+    }
+
     /**
     * Getter para nombre
     * return this.nombre Devuelve el valor de nombre;

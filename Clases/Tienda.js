@@ -15,36 +15,36 @@ export default class Tienda{
         this.#armas=this.obtenerArmasPorRaza(raza);
         this.#protecciones={
             escudo:[ //Protecciones tipo Escudo
-                new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/escudo.png"),
-                new Proteccion("Escudo Dragónico🐉", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/escudoDraconico.png"),
-                new Proteccion("Escudo Sombrío🌑", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/escudoSombrio.png"),
-                new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/escudoCelestial.png")
+                new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/Protecciones_Pociones/escudo_gondor.png"),
+                new Proteccion("Escudo Dragónico🐉", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/Protecciones_Pociones/escudo_draconico.png"),
+                new Proteccion("Escudo Sombrío🌑", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/Protecciones_Pociones/escudo_sombrio.png"),
+                new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/Protecciones_Pociones/escudo_celestial.png")
             ],
             armadura:[ //Protecciones tipo Armadura
-                new Proteccion("Armadura Real👑", "Una armadura hecha con los mejores materiales del reino, otorga alta resistencia física.", "armadura", 25, 500, 1.50, "./Imagenes/escudo.png"),
-                new Proteccion("Armadura Dragónica🔥", "Forjada con escamas de dragón, resistente al fuego y a los ataques físicos.", "armadura", 30, 600, 1.60, "./Imagenes/armaduraDraconica.png"),
-                new Proteccion("Armadura Sombría🌑", "Impregnada con magia oscura, reduce el daño recibido y otorga sigilo.", "armadura", 20, 450, 1.40, "./Imagenes/armaduraSombria.png"),
-                new Proteccion("Armadura Celestial✨", "Bendecida por los dioses, mejora la resistencia mágica y la regeneración.", "armadura", 35, 700, 1.75, "./Imagenes/armaduraCelestial.png")
+                new Proteccion("Armadura Real👑", "Una armadura hecha con los mejores materiales del reino, otorga alta resistencia física.", "armadura", 25, 500, 1.50, "./Imagenes/Protecciones_Pociones/armadura_real.png"),
+                new Proteccion("Armadura Dragónica🔥", "Forjada con escamas de dragón, resistente al fuego y a los ataques físicos.", "armadura", 30, 600, 1.60, "./Imagenes/Protecciones_Pociones/Armadura_Dragonica.png"),
+                new Proteccion("Armadura Sombría🌑", "Impregnada con magia oscura, reduce el daño recibido y otorga sigilo.", "armadura", 20, 450, 1.40, "./Imagenes/Protecciones_Pociones/Armadura_Sombria.png"),
+                new Proteccion("Armadura Celestial✨", "Bendecida por los dioses, mejora la resistencia mágica y la regeneración.", "armadura", 35, 700, 1.75, "./Imagenes/Protecciones_Pociones/Armadura_Celestial.png")
             ],
             amuleto:[//Protecciones tipo Magia
-                new Proteccion("Amuleto de Vida💖", "Aumenta la vitalidad del portador y la regeneración de salud.", "amuleto", 5, 200, 1.10, "./Imagenes/oscuro.png"),
-                new Proteccion("Amuleto de Fuego🔥", "Otorga resistencia al fuego y potencia ataques ígneos.", "amuleto", 7, 250, 1.20, "./Imagenes/amuletoFuego.png"),
-                new Proteccion("Amuleto Oscuro🌑", "Absorbe parte del daño oscuro y aumenta la resistencia a maldiciones.", "amuleto", 6, 220, 1.15, "./Imagenes/amuletoOscuro.png"),
-                new Proteccion("Amuleto Divino✨", "Bendecido por los dioses, otorga regeneración continua y protección mágica.", "amuleto", 8, 300, 1.25, "./Imagenes/amuletoDivino.png")
+                new Proteccion("Amuleto de Vida💖", "Aumenta la vitalidad del portador y la regeneración de salud.", "amuleto", 5, 200, 1.10, "./Imagenes/Protecciones_Pociones/Amuleto_Oscuro.png"),
+                new Proteccion("Amuleto de Fuego🔥", "Otorga resistencia al fuego y potencia ataques ígneos.", "amuleto", 7, 250, 1.20, "./Imagenes/Protecciones_Pociones/Amuleto_Fuego.png"),
+                new Proteccion("Amuleto Oscuro🌑", "Absorbe parte del daño oscuro y aumenta la resistencia a maldiciones.", "amuleto", 6, 220, 1.15, "./Imagenes/Protecciones_Pociones/Amuleto_Oscuro.png"),
+                new Proteccion("Amuleto Divino✨", "Bendecido por los dioses, otorga regeneración continua y protección mágica.", "amuleto", 8, 300, 1.25, "./Imagenes/Protecciones_Pociones/Amuleto_Divino.png")
             ]
         };
         this.#pociones={
             salud:[//Pociones refeneración Salud
-                new Pocion("Poción de Salud Pequeña🍷", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/pocionVida.png"),
-                new Pocion("Poción de Salud Media🥂", "Recupera una cantidad moderada de salud.", "salud", 150, 10, "./Imagenes/pocionSaludMedia.png"),
-                new Pocion("Poción de Salud Grande🍾", "Regenera una gran cantidad de salud.", "salud", 300, 20, "./Imagenes/pocionSaludGrande.png"),
-                new Pocion("Poción Milagrosa✨", "Cura completamente la salud del usuario.", "salud", 1000, 50, "./Imagenes/pocionSaludMilagrosa.png")
+                new Pocion("Poción de Salud Pequeña🍷", "Restaura una pequeña cantidad de salud al instante.", "salud", 50, 5, "./Imagenes/Protecciones_Pociones/Pocion_Salud_Pequenha.png"),
+                new Pocion("Poción de Salud Media🥂", "Recupera una cantidad moderada de salud.", "salud", 150, 10, "./Imagenes/Protecciones_Pociones/Pocion_Salud_Mediana.png"),
+                new Pocion("Poción de Salud Grande🍾", "Regenera una gran cantidad de salud.", "salud", 300, 20, "./Imagenes/Protecciones_Pociones/Pocion_Salud_Grande.png"),
+                new Pocion("Poción Milagrosa✨", "Cura completamente la salud del usuario.", "salud", 1000, 50, "./Imagenes/Protecciones_Pociones/Pocion_Milagrosa.png")
             ],
             mana:[//Pociones regeneración Mana
-                new Pocion("Poción de Maná Pequeña🔵", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/pocionMana.png"),
-                new Pocion("Poción de Maná Media🔷", "Recupera una cantidad moderada de maná.", "mana", 150, 10, "./Imagenes/pocionManaMedia.png"),
-                new Pocion("Poción de Maná Grande🔮", "Regenera una gran cantidad de maná.", "mana", 300, 20, "./Imagenes/pocionManaGrande.png"),
-                new Pocion("Poción de Maná Divina✨", "Restaura completamente el maná del usuario.", "mana", 1000, 50, "./Imagenes/pocionManaDivina.png")
+                new Pocion("Poción de Maná Pequeña🔵", "Recupera una pequeña cantidad de maná.", "mana", 50, 5, "./Imagenes/Protecciones_Pociones/Pocion_Mana_Pequenha.png"),
+                new Pocion("Poción de Maná Media🔷", "Recupera una cantidad moderada de maná.", "mana", 150, 10, "./Imagenes/Protecciones_Pociones/Pocion_Mana_Mediana.png"),
+                new Pocion("Poción de Maná Grande🔮", "Regenera una gran cantidad de maná.", "mana", 300, 20, "./Imagenes/Protecciones_Pociones/Pocion_Mana_Grande.png"),
+                new Pocion("Poción de Maná Divina✨", "Restaura completamente el maná del usuario.", "mana", 1000, 50, "./Imagenes/Protecciones_Pociones/Pocion_Mana_Divina.png")
             ]
         };
     }
@@ -58,10 +58,10 @@ export default class Tienda{
             case "humano":
             return [   //Armas de Humanos
                 new Arma("Espada del Rey Caído 👑⚔️","Una hoja legendaria que brilla con la voluntad de su portador.",100,20,800,6,"humano","./Imagenes/humanos/espada_rey.png"),
-                new Arma("Lanza Relámpago ⚡🏹"," Puede arrojarse y volver a la mano del usuario.",100,15,700,5,"humano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Maza Bendecida 🛡️🔨","Un arma con poder sagrado que quema a los no-muertos.",115,30,750,6,"humano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Ballesta de Triple Disparo 🎯🔫"," Dispara tres proyectiles a la vez, ideal para eliminar múltiples enemigos.",70,10,900,7,"humano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Dagas de Sombra 🕶️🗡️","Permiten moverse sin ser visto por breves instantes.",100,15,750,6,"humano","./Imagenes/rompemontanhas(1).png")
+                new Arma("Lanza Relámpago ⚡🏹"," Puede arrojarse y volver a la mano del usuario.",100,15,700,5,"humano","./Imagenes/humanos/lanza_relampago.png"),
+                new Arma("Maza Bendecida 🛡️🔨","Un arma con poder sagrado que quema a los no-muertos.",115,30,750,6,"humano","./Imagenes/humanos/maza_bendecida.png"),
+                new Arma("Ballesta de Triple Disparo 🎯🔫"," Dispara tres proyectiles a la vez, ideal para eliminar múltiples enemigos.",70,10,900,7,"humano","./Imagenes/humanos/ballesta.png"),
+                new Arma("Dagas de Sombra 🕶️🗡️","Permiten moverse sin ser visto por breves instantes.",100,15,750,6,"humano","./Imagenes/humanos/daga_sombra.png")
             ];
             case "orco":
             return [//Armas de Orcos
