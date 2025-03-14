@@ -18,7 +18,7 @@ export default class Tienda{
                 new Proteccion("Escudo de Gondor🛡️", "Forjado en Gondor, este escudo proporciona una defensa superior contra los ataques físicos.", "escudo", 10, 250, 1.15, "./Imagenes/Protecciones_Pociones/escudo_gondor.png"),
                 new Proteccion("Escudo Dragónico🐉", "Un escudo legendario, forjado con escamas de dragón, que otorga una gran resistencia al fuego y a los golpes.", "escudo", 15, 350, 1.30, "./Imagenes/Protecciones_Pociones/escudo_draconico.png"),
                 new Proteccion("Escudo Sombrío🌑", "Envuelto en magia oscura, este escudo absorbe parte del daño recibido y otorga resistencia a las maldiciones.", "escudo", 12, 280, 1.20, "./Imagenes/Protecciones_Pociones/escudo_sombrio.png"),
-                new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/Protecciones_Pociones/escudo_celestial.png")
+                new Proteccion("Escudo Celestial✨", "Un escudo bendecido por los dioses, capaz de reflejar parte del daño y aumentar la regeneración del portador.", "escudo", 18, 400, 1.40, "./Imagenes/Protecciones_Pociones/celestial.png")
             ],
             armadura:[ //Protecciones tipo Armadura
                 new Proteccion("Armadura Real👑", "Una armadura hecha con los mejores materiales del reino, otorga alta resistencia física.", "armadura", 25, 500, 1.50, "./Imagenes/Protecciones_Pociones/armadura_real.png"),
@@ -61,7 +61,7 @@ export default class Tienda{
                 new Arma("Lanza Relámpago ⚡🏹"," Puede arrojarse y volver a la mano del usuario.",100,15,700,5,"humano","./Imagenes/humanos/lanza_relampago.png"),
                 new Arma("Maza Bendecida 🛡️🔨","Un arma con poder sagrado que quema a los no-muertos.",115,30,750,6,"humano","./Imagenes/humanos/maza_bendecida.png"),
                 new Arma("Ballesta de Triple Disparo 🎯🔫"," Dispara tres proyectiles a la vez, ideal para eliminar múltiples enemigos.",70,10,900,7,"humano","./Imagenes/humanos/ballesta.png"),
-                new Arma("Dagas de Sombra 🕶️🗡️","Permiten moverse sin ser visto por breves instantes.",100,15,750,6,"humano","./Imagenes/humanos/daga_sombra.png")
+                new Arma("Dagas de Sombra 🕶️🗡️","Permiten moverse sin ser visto por breves instantes.",100,15,750,6,"humano","./Imagenes/humanos/dagaSombra.png")
             ];
             case "orco":
             return [//Armas de Orcos
