@@ -144,3 +144,24 @@ html .tienda{
     right: 0;
     box-sizing: border-box;
 }
+
+.arenaElementos{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+}
+.arenaImagenes{
+    border: brown 3px ridge;
+    height: 200px;
+    align-content: center;
+    width: 20%;
+    text-align: center;
+}
+.botonesArena{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center;
+
+
+}

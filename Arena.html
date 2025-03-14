@@ -7,47 +7,58 @@
     <link rel="stylesheet" href="./Style.css">
 </head>
 <body>
-    <div class="arenaImagenes">
-        <div class="arenaImagenesPersonaje">
+    <div class="arenaElementos">
+        <div class="arenaImagenes">
             <p>imagen</p>
         </div>
-        <div class="arenaImagenesEnemigo">
+        <div class="arenaImagenes">
             <p>imagen</p>
         </div>
     </div>
-    <div class="arenaNombre">
+    <div class="arenaElementos">
         <div>
-            <p class="arenaNombrePersonaje">nombre</p>
+            <p class="arenaNombres">nombre<span id="nombreAliado"></span></p>
         </div>
         <div>
-            <p class="arenaNombreEnemigo">nombre</p>
+            <p class="arenaNombres">nombre<span id="nombreEnemigo"></span></p>
         </div>
     </div>
-    <div class="arenaNivel">
-        <div class="arenaNivelPersonaje">
-            <p>nivel</p>
+    <div class="arenaElementos">
+        <div class="arenaNiveles">
+            <p>nivel<span id="nivelAliado"></span></p>
         </div>
-        <div class="arenaNivelEnemigo">
-            <p>nivel</p>
-        </div>
-    </div>
-    <div class="arenaVida">
-        <div class="arenaVidaPersonaje">
-            <p>vida</p>
-        </div>
-        <div class="arenaVidaEnemigo">
-            <p>vida</p>
+        <div class="arenaNiveles">
+            <p>nivel<span id="nivelEnemigo"></span></p>
         </div>
     </div>
-    <p>atacar</p>
-    <p>huir</p>
-    <p>golpe critico</p>
-    <p>mana</p>
-    <p>Pocion</p>
-    <p>defender</p>
+    <div class="arenaElementos">
+        <div class="arenaVidas">
+            <p>vida<span id="vidaAliado"></span></p>
+        </div>
+        <div class="arenaVidas">
+            <p>vida<span id="vidaEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="arenaElementos">
+        <div class="arenaVidas">
+            <p>Maná<span id="manaAliado"></span></p>
+        </div>
+        <div class="arenaVidas">
+            <p><span id="vidaEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="botonesArena">
+        <button class="botonesArena" id="botonAtacar" >Atacar</button>
+        <button class="botonesArena" id="botonDefender" >Defender</button>
+        <button class="botonesArena" id="botonCritico" >Golpe critico</button>
+        <button class="botonesArena" id="botonPocion" >Pocion</button>
+        <a href="Lobby.html"><button class="botonesArena" id="botonHuir">Huir</button></a>     
+    </div>
+    
     
     <p><a href="./Lobby.html">Volver</a></p>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="./Clases/FondoAnimado.js"></script>
+    <script type="module" src="Clases/Combate.js" ></script>
 </body>
 </html>
