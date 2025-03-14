@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arena de Combate</title>
+    <link rel="stylesheet" href="./Style.css">
+</head>
+<body>
+    <div class="arenaElementos">
+        <div class="arenaImagenes">
+            <p>imagen</p>
+        </div>
+        <div class="arenaImagenes">
+            <p>imagen</p>
+        </div>
+    </div>
+    <div class="arenaElementos">
+        <div>
+            <p class="arenaNombres">nombre<span id="nombreAliado"></span></p>
+        </div>
+        <div>
+            <p class="arenaNombres">nombre<span id="nombreEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="arenaElementos">
+        <div class="arenaNiveles">
+            <p>nivel<span id="nivelAliado"></span></p>
+        </div>
+        <div class="arenaNiveles">
+            <p>nivel<span id="nivelEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="arenaElementos">
+        <div class="arenaVidas">
+            <p>vida<span id="vidaAliado"></span></p>
+        </div>
+        <div class="arenaVidas">
+            <p>vida<span id="vidaEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="arenaElementos">
+        <div class="arenaVidas">
+            <p>Maná<span id="manaAliado"></span></p>
+        </div>
+        <div class="arenaVidas">
+            <p><span id="vidaEnemigo"></span></p>
+        </div>
+    </div>
+    <div class="botonesArena">
+        <button class="botonesArena" id="botonAtacar" >Atacar</button>
+        <button class="botonesArena" id="botonDefender" >Defender</button>
+        <button class="botonesArena" id="botonCritico" >Golpe critico</button>
+        <button class="botonesArena" id="botonPocion" >Pocion</button>
+        <a href="Lobby.html"><button class="botonesArena" id="botonHuir">Huir</button></a>     
+    </div>
+    
+    
+    <p><a href="./Lobby.html">Volver</a></p>
+    <canvas class="canvas" id="backgroundCanvas"></canvas>
+    <script src="./Clases/FondoAnimado.js"></script>
+    <script type="module" src="Clases/Combate.js" ></script>
+</body>
+</html>
