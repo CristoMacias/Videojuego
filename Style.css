@@ -170,3 +170,14 @@ html .tienda{
 
 
 }
+
+
+.imagenItem{
+    height: 140px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15%;
+    
+}
+
