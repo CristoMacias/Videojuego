@@ -132,11 +132,13 @@ a:hover{
 .tarjetas{
     display: inline-flex;
     
+    
    
 }
 .tarjetas div{
     border:2px solid white;
     width: 15%;
+    padding-left: 8px;
 }
 html .tienda{
     margin: 0;

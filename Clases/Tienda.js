@@ -65,35 +65,35 @@ export default class Tienda{
             ];
             case "orco":
             return [//Armas de Orcos
-                new Arma("Hacha Sangrienta 🩸🪓","Se vuelve más poderosa con cada golpe que da.",110,15,850,7,"orco","./Imagenes/rompemontanhas(1).png"),
-                new Arma(" Maza de Guerra de Cráneos 💀🔨","Hecha con los huesos de enemigos caídos, aterradora en combate.",120,25,950,8,"orco","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Espada Serrada 🔪💢","Una espada con dientes afilados que desgarran la carne al cortar.",110,10,750,6,"orco","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Lanza de Colmillos de Bestia 🐺🏹","Hecha con los colmillos de un monstruo gigante, sus heridas son letales.",105,15,800,7,"orco","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Garrote de Lava 🌋🔥","Un arma cubierta de roca volcánica que arde al golpear.",150,20,1000,9,"orco","./Imagenes/rompemontanhas(1).png")
+                new Arma("Hacha Sangrienta 🩸🪓","Se vuelve más poderosa con cada golpe que da.",110,15,850,7,"orco","./Imagenes/orcos/hacha_sangrienta.png"),
+                new Arma("Maza de Guerra de Cráneos 💀🔨","Hecha con los huesos de enemigos caídos, aterradora en combate.",120,25,950,8,"orco","./Imagenes/orcos/maza_de_guerra.png"),
+                new Arma("Espada Serrada 🔪💢","Una espada con dientes afilados que desgarran la carne al cortar.",110,10,750,6,"orco","./Imagenes/orcos/espada_serrada.png"),
+                new Arma("Lanza de Colmillos de Bestia 🐺🏹","Hecha con los colmillos de un monstruo gigante, sus heridas son letales.",105,15,800,7,"orco","./Imagenes/orcos/lanza_colmillos.png"),
+                new Arma("Garrote de Lava 🌋🔥","Un arma cubierta de roca volcánica que arde al golpear.",150,20,1000,9,"orco","./Imagenes/orcos/garrote_lava.png")
             ];
             case "mago":
             return [    //Armas de Magos
-                new Arma("Báculo de Tormentas ⚡🌀","Un bastón que controla truenos y vientos, devastador contra grupos de enemigos.",110,20,750,6,"mago","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Varita de Llamas Eternas 🔥📜","Lanza fuego sin necesidad de palabras mágicas, perfecta para hechiceros agresivos.",105,10,600,5,"mago","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Orbe del Vacío ⚫🌌","Una esfera que absorbe energía y la libera como un rayo devastador.",120,10,800,7,"mago","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Guantelete de Manipulación del Tiempo ⏳🖐️","Puede ralentizar al enemigo o acelerar al usuario en combate.",0,30,1000,8,"mago","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Espada del Arcano 🌀⚔️","Una espada flotante que se maneja con la mente.",95,20,750,6,"mago","./Imagenes/rompemontanhas(1).png")
+                new Arma("Báculo de Tormentas ⚡🌀","Un bastón que controla truenos y vientos, devastador contra grupos de enemigos.",110,20,750,6,"mago","./Imagenes/magos/baculo_de_tormentas.png"),
+                new Arma("Varita de Llamas Eternas 🔥📜","Lanza fuego sin necesidad de palabras mágicas, perfecta para hechiceros agresivos.",105,10,600,5,"mago","./Imagenes/magos/varita_llamas.png"),
+                new Arma("Orbe del Vacío ⚫🌌","Una esfera que absorbe energía y la libera como un rayo devastador.",120,10,800,7,"mago","./Imagenes/magos/orbe_del_vacio.png"),
+                new Arma("Guantelete de Manipulación del Tiempo ⏳🖐️","Puede ralentizar al enemigo o acelerar al usuario en combate.",0,30,1000,8,"mago","./Imagenes/magos/guantelete.png"),
+                new Arma("Espada del Arcano 🌀⚔️","Una espada flotante que se maneja con la mente.",95,20,750,6,"mago","./Imagenes/magos/espada_arcano.png")
             ];
             case "enano":
             return [    //Armas de Enanos
-                new Arma("Martillo Rompemontañas 🪨🔨","Un martillo de guerra tan pesado que solo un enano puede levantarlo. Golpea con la fuerza de una avalancha.",120,30,500,5,"enano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Hacha de Tormenta ⚡🪓", "Un hacha con runas grabadas que lanza rayos al impactar. Ideal contra enemigos con armaduras metálicas.",120,15,600,6,"enano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Martillo Lanzarrocas 🏹💥", "Un martillo que puede arrojar pequeños proyectiles de roca al golpear el suelo, afectando a múltiples enemigos a la vez.", 105, 20,450,4,"enano","./Imagenes/rompemontanhas(1).png"),
-                new Arma("Escudo-Mandoble 🛡️⚔️","Un escudo grande que esconde una espada oculta en su centro. Puede resistir golpes letales y sorprender con un ataque inesperado.",50,100,700,7,"enano","./Imagenes/rompemontanhas(1).png"),
-                new Arma(" Ballesta de Perforación 🎯🔩"," Una ballesta enana que dispara virotes capaces de atravesar armaduras pesadas. Perfecta para eliminar enemigos blindados a distancia.",120,10,550,5,"enano","./Imagenes/rompemontanhas(1).png")
+                new Arma("Martillo Rompemontañas 🪨🔨","Un martillo de guerra tan pesado que solo un enano puede levantarlo. Golpea con la fuerza de una avalancha.",120,30,500,5,"enano","./Imagenes/enanos/martillo_rompemontanhas.png"),
+                new Arma("Hacha de Tormenta ⚡🪓", "Un hacha con runas grabadas que lanza rayos al impactar. Ideal contra enemigos con armaduras metálicas.",120,15,600,6,"enano","./Imagenes/enanos/hacha_tormenta.png"),
+                new Arma("Martillo Lanzarrocas 🏹💥", "Un martillo que puede arrojar pequeños proyectiles de roca al golpear el suelo, afectando a múltiples enemigos a la vez.", 105, 20,450,4,"enano","./Imagenes/enanos/martillo_lanzarrocas.png"),
+                new Arma("Escudo-Mandoble 🛡️⚔️","Un escudo grande que esconde una espada oculta en su centro. Puede resistir golpes letales y sorprender con un ataque inesperado.",50,100,700,7,"enano","./Imagenes/enanos/escudo_mandoble.png"),
+                new Arma(" Ballesta de Perforación 🎯🔩"," Una ballesta enana que dispara virotes capaces de atravesar armaduras pesadas. Perfecta para eliminar enemigos blindados a distancia.",120,10,550,5,"enano","./Imagenes/enanos/ballesta_perforacion.png")
             ];
             case "elfo":
             return [//Armas de Elfos
-                    new Arma("Arco de Luz Lunar 🌙🏹","Un arco que dispara flechas de energía pura en la oscuridad, ideal para combates nocturnos.",110,10,600,5,"elfo","./Imagenes/rompemontanhas(1).png"),
-                    new Arma("Espadas Danzantes 🌿⚔️"," Dos dagas que se pueden lanzar y regresan solas como un búmeran, perfectas para combates rápidos.",70,15,550,4,"elfo","./Imagenes/rompemontanhas(1).png"),
-                    new Arma("Lanza del Viento 🍃🌀","Una lanza liviana que se mueve con el aire y permite ataques veloces.",90,20,500,4,"elfo","./Imagenes/rompemontanhas(1).png"),
-                    new Arma("Flechas de Enredaderas 🌱🎯","Flechas que al impactar hacen crecer raíces para atrapar al enemigo.",80,10,450,3,"elfo","./Imagenes/rompemontanhas(1).png"),
-                    new Arma("Bastón de Espíritus del Bosque 🌳✨","Un arma mágica que permite invocar bestias o curar aliados.",50,25,700,6,"elfo","./Imagenes/rompemontanhas(1).png")
+                    new Arma("Arco de Luz Lunar 🌙🏹","Un arco que dispara flechas de energía pura en la oscuridad, ideal para combates nocturnos.",110,10,600,5,"elfo","./Imagenes/elfos/arco_luz_lunar.png"),
+                    new Arma("Espadas Danzantes 🌿⚔️"," Dos dagas que se pueden lanzar y regresan solas como un búmeran, perfectas para combates rápidos.",70,15,550,4,"elfo","./Imagenes/elfos/espadas_danzantes.png"),
+                    new Arma("Lanza del Viento 🍃🌀","Una lanza liviana que se mueve con el aire y permite ataques veloces.",90,20,500,4,"elfo","./Imagenes/elfos/lanza_viento.png"),
+                    new Arma("Flechas de Enredaderas 🌱🎯","Flechas que al impactar hacen crecer raíces para atrapar al enemigo.",80,10,450,3,"elfo","./Imagenes/elfos/flecha_enredaderas.png"),
+                    new Arma("Bastón de Espíritus del Bosque 🌳✨","Un arma mágica que permite invocar bestias o curar aliados.",50,25,700,6,"elfo","./Imagenes/elfos/baston_espiritus_bosque.png")
                 ];
         };
 
