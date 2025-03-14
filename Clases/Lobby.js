@@ -37,6 +37,5 @@ document.addEventListener('DOMContentLoaded', ()=> {
     spanOro.textContent = " : " + personaje.oro;
 
     imagen.src = personaje.imagen;
-    
     }
 });
