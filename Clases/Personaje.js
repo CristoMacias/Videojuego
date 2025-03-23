@@ -1,4 +1,5 @@
 import Inventario from './Inventario.js';
+import Enemigo from './Enemigos.js';
 export default class Personaje{
     
     #nombre; //Nombre del personaje
@@ -12,22 +13,35 @@ export default class Personaje{
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
     #nivel=1;//Nivel actual
-    #experiencia=0;//Experiencia
-    #oro=80000; // Total de oro 
+    #experiencia=0;
+    #experienciaMaxima=100;//Experiencia
+    #oro=0; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
+    #armaEquipada;
+    #armaduraEquipada;
+    #amuletoEquipado;
 
-    //Constructor creador de personajes
-    constructor(nombre,raza,imagen){
+    /**
+     * Constructor personaje
+     * @param {*} nombre Recibe el nombre
+     * @param {*} raza Recibe la raza
+     * @param {*} imagen Recibe la imagen
+     * @param {*} arma  Recibe el arma inicial
+     */
+    constructor(nombre,raza,imagen,arma){
         this.#nombre = nombre;
         this.#raza=raza;
         this.#imagen=imagen;
         this.#nivel;
         this.#experiencia;
-        this.#oro;
-        console.log(this.#raza);
+        this.#experienciaMaxima;
+        this.#oro;;
         this.#calcularEstadisticas(raza);
         this.#inventario=new Inventario();
+        this.#armaEquipada=arma;
+        this.#armaduraEquipada = null;
+        this.#amuletoEquipado = null;
     }
     /**
      * Método para calcular las estadísticas en función de la raza
@@ -35,11 +49,11 @@ export default class Personaje{
      */
     #calcularEstadisticas(raza){
         const razas={ //estadísticas por raza
-            enano:{vida:1.20,mana:0.9,ataque:1.0 ,defensa:1.20,magia:1.0,resistenciaMagica:1.2},
-            orco:{vida:1.15,mana:0.85,ataque:1.25,defensa:1.0,magia:1.3,resistenciaMagica:0.9},
-            humano:{vida:1.05,mana:1.05,ataque:1.05,defensa:1.05,magia:1.05,resistenciaMagica:1.05},
-            mago:{vida:0.8,mana:1.3,ataque:0.8,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
-            elfo:{vida:0.9,mana:1.2,ataque:1.2,defensa:1.0,magia:1.2,resistenciaMagica:1.0}
+            enano:{vida:1.20,mana:0.9,ataque:1.0 ,defensa:1.20,magia:0,resistenciaMagica:1.2},
+            orco:{vida:1.15,mana:0.85,ataque:1.25,defensa:1.0,magia:0,resistenciaMagica:0.9},
+            humano:{vida:1.05,mana:1.05,ataque:1.05,defensa:1.05,magia:0,resistenciaMagica:1.05},
+            mago:{vida:0.8,mana:1.3,ataque:0,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
+            elfo:{vida:0.9,mana:1.2,ataque:0,defensa:1.0,magia:1.2,resistenciaMagica:1.0}
         };
         this.#vidaMaxima=this.#vidaMaxima*razas[raza].vida;
         this.#vidaActual=this.#vidaMaxima;
@@ -49,13 +63,11 @@ export default class Personaje{
         this.#defensa= this.#defensa*razas[raza].defensa;
         this.#magia=this.#magia*razas[raza].magia;
         this.#resistenciaMagica=this.#resistenciaMagica*razas[raza].resistenciaMagica;
-
     }
     /**
      * Método para convertir los atributos en público y poder convertirlos en JSON
      * y guardarlos en el localStorage
      * @returns  Devuelve todos los atributos
-     * 
      */
     convertirJson(){
       return{
@@ -72,8 +84,13 @@ export default class Personaje{
          resistenciaMagica:this.#resistenciaMagica,
          nivel:this.#nivel,
          experiencia:this.#experiencia,
+         experienciaMaxima: this.#experienciaMaxima,
          oro: this.#oro,
-         inventario: this.#inventario.convertirJson()
+         inventario: this.#inventario.convertirJson(),
+         armaEquipada: this.#armaEquipada,
+         armaduraEquipada: this.#armaduraEquipada,
+         amuletoEquipado: this.#amuletoEquipado
+
       };
     }
     static reconstruirJson(json){
@@ -91,9 +108,12 @@ export default class Personaje{
       personaje.#resistenciaMagica=json.resistenciaMagica;
       personaje.#nivel=json.nivel;
       personaje.#experiencia=json.experiencia;
+      personaje.#experienciaMaxima=json.experienciaMaxima;
       personaje.#oro=json.oro;
       personaje.#inventario=Inventario.reconstruirJson(json.inventario);
-
+      personaje.#armaEquipada=json.armaEquipada;
+      personaje.#armaduraEquipada=json.armaduraEquipada;
+      personaje.#amuletoEquipado=json.amuletoEquipado;
       return personaje;
 
     }
@@ -102,17 +122,15 @@ export default class Personaje{
      * @param {*} objeto
      */
     comprarTienda(objeto){
-      console.log("Llega a Personaje")
-      console.log(objeto.nombre);
       this.#inventario.agregarObjeto(objeto);
     }
 
-       /**
+   /**
     * Método para añadir oro al personaje
     * @param {*} oro 
     */
    ganarOro(oro){
-      this.#oro=this.#oro+oro;
+      this.#oro+=oro;
    }
    /**
     * Método para perder oro
@@ -121,9 +139,171 @@ export default class Personaje{
    perderOro(oro){
       //Comprobar que la resta del oro actual menos el oro a perder sea mayor o igual a 0 
       if(this.#oro-oro>-1){
-         this.#oro=this.#oro-oro;
+         this.#oro-=oro;
       }else{
          this.#oro=0;
+      }
+   }
+   /**
+    * Método para recibir daño y restar la vida al jugador 
+    * @param danhoEnemigo Recibe el ataque o magia del enemigo
+    * @param esMagico Recibe true o false en funcion
+    */
+   recibirDanho(danhoEnemigo,esMagico){
+      let danho;
+      if(esMagico){
+         danho = danho-(this.#resistenciaMagica / 2);
+         this.#vidaActual-= danho;
+      }else{
+         danho = danhoEnemigo-(this.#defensa / 2);
+         this.#vidaActual-=danho;
+      }
+   }
+   /**
+    * Método para atacar el enemigo
+    * @param {} enemigo Recibe por parámetro al enemigo al que se ataca
+    */
+   atacarEnemigo(enemigo){
+      let esMagico=false;
+      if(this.#raza === "mago" || this.#raza === "elfo"){
+         esMagico = true;
+         enemigo.recibirDanho(this.magia, esMagico);
+      }else{
+         enemigo.recbirDanho(this.#ataque,esMagico);
+      }
+   }
+   /**
+    * Método para dar un ataque critico, más poderoso
+    * @param {*} enemigo  Recibe por parametro al enemigo al que se ataca
+    */
+   ataqueCritico(enemigo){
+      let esMagico=false;
+      if(raza === "mago" || raza === "elfo"){
+         esMagico = true;
+         enemigo.recibirDanho(this.magia *1.30, esMagico);
+      }else{
+         enemigo.recbirDanho(this.#ataque *1.30,esMagico);
+      }
+   }
+   /**
+    * Método para equipar el arma al personaje para el combate
+    * @param {Arma} arma Recibe el arma a equipar
+    */
+   equiparArma(arma){
+      let armaAnterior=this.#armaEquipada;
+      if(this.#armaEquipada !== null){ //Comprobamos que el arma equipada no esté vacía
+         if(this.#raza === "mago" || this.#raza === "elfo"){
+            this.#magia/=armaAnterior.aumento;
+            this.#magia*=arma.aumento;
+            this.#armaEquipada=arma;
+         }else{
+            this.#ataque/=armaEquipada.aumento;//Le quitamos el aumento del arma anterior
+            this.#ataque*=arma.aumento; //Le añadimos el aumento del arma a equipar
+            this.#armaEquipada=arma; //Añadimos el arma al personaje
+         }
+      }else{
+         if(this.#raza === "mago" || this.#raza === "elfo"){
+            this.#magia*=arma.aumento;
+            this.#armaEquipada=arma;
+         }else{
+            this.#ataque*=arma.aumento; //Le añadimos el aumento del arma a equipar
+            this.#armaEquipada=arma; //Añadimos el arma al personaje
+         }
+      }
+
+   }
+   /**
+    * Metodo para quitar el arma al perosnaje
+    * 
+    */
+   quitarArma(){
+      this.#armaEquipada=null;
+   }
+   /**
+    * Método del personaje para equipar con una armadura/escudo que sube la defensa
+    * @param {Proteccion} armadura Recibe por parámetro el escudo/armadura
+    */
+   equiparArmadura(armadura){
+      let armaduraAnterior=this.#armaduraEquipada;
+      if(this.#armaduraEquipada !== null){
+         this.#defensa/=armaduraAnterior.aumento;
+         this.#defensa *= armadura.aumento;
+         this.#armaduraEquipada=armadura;
+      }else{
+         this.defensa*=armadura.aumento;
+         this.#armaduraEquipada=armadura;
+      }
+      
+   }
+   /**
+    * Método para quitar la armadura al personaje
+    */
+   quitarArmadura(){
+      this.#armaduraEquipada=null;
+   }
+   /**
+    * Método del personaje para equipar con un amuleto que sube la resistencia mágica
+    * @param {Proteccion} amuleto Recibe por parámetro el amuleto
+    */
+   equiparAmuleto(amuleto){
+      let amuletoAnterior = this.#amuletoEquipado;
+      if(this.#amuletoEquipado !== null){
+         this.#resistenciaMagica /= amuletoAnterior.aumento;
+         this.#resistenciaMagica*= amuleto.aumento;
+         this.#amuletoEquipado=amuleto;
+      }else{
+         this.#resistenciaMagica*=amuleto.aumento;
+         this.#amuletoEquipado=amuleto;
+      }
+   }
+   /**
+    * Método para quitar el amuleto al personaje
+    */
+   quitarAmuleto(){
+      this.#amuletoEquipado=null;
+   }
+   /**
+    * Método para que el personaje beba una pocion de salud o de mana
+    * @param {*} efecto Efecto que tiene la poción: salud o maná
+    * @param {*} aumento Vida/Maná que aumenta.
+    */
+   tomarPocion(efecto,aumento){
+      if(efecto===salud){
+         this.#vidaActual+=aumento;
+         this.#inventario.pocionesVida--;
+      }else{
+         this.#manaActual+=aumento;
+         this.#inventario.pocionesMana--;
+      }
+   }
+   /**
+    * Método para ganar experiencia
+    * @param {*} experienciaGanada Recibe por parámetro la experiencia ganada en el combate
+    */
+   ganarExperiencia(experienciaGanada){
+      if(this.#experiencia+=experienciaGanada > this.#experienciaMaxima){
+         this.subirNivel();
+         this.#experiencia= this.#experiencia-this.#experienciaMaxima;
+         this.#experienciaMaxima = Math.floor(this.#experienciaMaxima * 1.5);
+      }else{
+         this.#experiencia+=experienciaGanada;
+      }
+   }
+   /**
+    * Método para subir de nivel y estadísticas
+    */
+   subirNivel(){
+      this.#nivel++;
+      this.#vidaActual+=Math.floor(this.#vidaActual*0.2);
+      this.#vidaMaxima+=Math.floor(this.#vidaMaxima*0.2);
+      this.#defensa+=Math.floor(this.#defensa*0.1);
+      this.resistenciaMagica+=Math.floor(this.#resistenciaMagica*0.1);
+      this.#manaMaximo+=Math.floor(this.#manaMaximo*0.1);
+      this.#manaActual+=Math.floor(this.#manaActual * 0.1);
+      if(this.#raza === "elfo" || this.#raza === "mago"){
+         this.#magia+=Math.floor(this.#magia*0.1);
+      }else{
+         this.#ataque+=Math.floor(this.#ataque*0.1);
       }
    }
     
@@ -347,6 +527,20 @@ export default class Personaje{
    set inventario(inventario) {
       this.#inventario = inventario;
    }
-
+   /**
+   * Getter para experienciaMaxima
+   * @return experienciaMaxima Devuelve el valor de experienciaMaxima;
+   */
+   get experienciaMaxima() {
+      return this.#experienciaMaxima;
+   }
    
+   /**
+   * Setter para experienciaMaxima
+   * @param {*} experienciaMaxima Recibe el valor de experienciaMaxima para modificar
+   */
+   set experienciaMaxima(experienciaMaxima) {
+      this.#experienciaMaxima = experienciaMaxima;
+   }
+
 }
