@@ -2,17 +2,15 @@ export default class Arma{
     #nombre;
     #descripcion;
     #danho;
-    #defensa;
     #precio;
     #nivel;
     #raza;
     #imagen;
 
-    constructor(nombre,descripcion,danho,defensa,precio,nivel,raza,imagen){
+    constructor(nombre,descripcion,danho,precio,nivel,raza,imagen){
         this.#nombre=nombre;
         this.#descripcion=descripcion;
         this.#danho=danho;
-        this.#defensa=defensa;
         this.#precio=precio;
         this.#nivel=nivel;
         this.#raza=raza;
@@ -24,7 +22,6 @@ export default class Arma{
             nombre: this.#nombre,
             descripcion:this.#descripcion,
             danho:this.#danho,
-            defensa:this.#defensa,
             precio:this.#precio,
             nivel:this.#nivel,
             raza:this.#raza,
@@ -47,15 +44,6 @@ export default class Arma{
     get danho() {
        return this.#danho;
     }
-
-    /**
-    * Getter para property
-    */
-    get defensa() {
-       return this.#defensa;
-    }
-    
-
     /**
     * Getter para precio
     */

@@ -195,3 +195,23 @@ html .tienda{
     border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
     margin-right: 5%;
 }
+
+#elegir-arma{
+    display: flex;
+    border: 2px solid red;
+    align-items: center;
+    justify-content: center;
+}
+.div-armas{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border:2px solid green;
+}
+.div-armas img{
+    border-radius: 100%;
+    border: 2px solid white;
+}
+.div-armas p{
+    border: 2px solid rgb(47, 255, 238);
+}

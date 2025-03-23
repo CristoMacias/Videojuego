@@ -1,8 +1,10 @@
 import Personaje from "./Personaje.js";
+import Arma from "./Arma.js";
 document.addEventListener('DOMContentLoaded',()=>{
     const formulario = document.querySelector("#formulario");
     const nombreFormulario = document.querySelector("#nombre-Formulario");
     const creadorSelect = document.querySelector("#creador");
+
     const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
         "./Imagenes/humano.png",
         "./Imagenes/orco.png",
@@ -17,7 +19,30 @@ document.addEventListener('DOMContentLoaded',()=>{
         "enano",
         "elfo"
     ];
-    
+    //Creamos un objeto con los arrays para cada raza donde están las armas iniciales
+    const armas={
+        humano: [
+            new Arma("Hoja del Destino Dorado👑⚔️","Una hoja heredada del mismísimo rey Arturo",85,0,1,"humano","./Imagenes/humanos/hoja_destino.png"),
+            new Arma("Martillo del Paladín Eterno⚖️🔨","Un arma pesada utilizada por los caballeros de la justicia.",95,0,1,"humano","./Imagenes/humanos/martillo_paladin.png")
+        ],
+        orco: [
+            new Arma("Segadora del Infierno🔥🪓","Un arma brutal con un filo forjado en llamas.",90,0,1,"orco","./Imagenes/orcos/segadora.png"),
+            new Arma("Colmillo del Guerrero","Se fortalece con cada enemigo caido en combate",95,0,1,"orco","./Imagenes/orcos/colmillo.png")
+        ],
+        mago: [
+            new Arma("Centro del Firmamento ✨🔮","Canaliza la energía cósmica en poderosos hechizos.",70,0,1,"mago","./Imagenes/magos/centro.png"),
+            new Arma("Tomo de la Penumbra 📜☠️","Un libro de conjuros prohibidos que renace la vitalidad del enemigo.",75,0,1,"mago","./Imagenes/magos/tomo_penumbra.png")
+        ],
+        enano: [
+            new Arma("Martillo del Guardián de Acero 🛡️⚒️","Un martillo colosal capaz de partir la roca con un solo golpe.",95,0,1,"enano","./Imagenes/enanos/martillo_guardian.png"),
+            new Arma("Hacha de la Furia Terrestre ⛏️🌑","Forjada en las minas más oscuras, esta hacha nunca se desafila.",90,0,1,"enano","./Imagenes/enanos/hacha_furia.png")
+        ],
+        elfo:[
+            new Arma("Arco de la Brisa Eterna 🌿🏹","Un arco elegante, imbuido con la energía del atardecer.",80,0,1,"elfo","./Imagenes/elfos/arco_brisa.png"),
+            new Arma("Filos de la Medianoche 🌙🗡️","Un par de dagas encantadas que se desvanecen en la penumbra.",65,0,1,"elfo","./Imagenes/elfos/filos.png")
+        ]
+    };
+
     const elegirImagen = document.querySelector("#imagen-elegir");
     creadorSelect.addEventListener('change', ()=>{
         let razaElegida = creadorSelect.value;
@@ -42,7 +67,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             return
         }
         const imagen = imagenesPersonaje[indiceRaza];
-        const personaje = new Personaje(nombre,raza,imagen);
+        const personaje = new Personaje(nombre,raza,imagen,arma);
         console.log(personaje);
         //No se añade, se sobreescribe para que sólo haya 1
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
@@ -59,5 +84,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             elegirImagen.src="./Logo_videojuego.png";
         }
     });
+
+
 
 });
