@@ -46,7 +46,7 @@ export default class Inventario{
             alert(`¡No se ha podido añadido ${objeto.nombre} al inventario porque está lleno!`);
         }
     }
-    //Metodo para eliminar en el inventario
+
 
     convertirJson(){
         return{
