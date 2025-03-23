@@ -49,7 +49,7 @@ export default class Personaje{
      */
     #calcularEstadisticas(raza){
         const razas={ //estadísticas por raza
-            enano:{vida:1.20,mana:0.9,ataque:1.0 ,defensa:1.20,magia:1.0,resistenciaMagica:1.2},
+            enano:{vida:1.20,mana:0.9,ataque:1.0 ,defensa:1.20,magia:0,resistenciaMagica:1.2},
             orco:{vida:1.15,mana:0.85,ataque:1.25,defensa:1.0,magia:0,resistenciaMagica:0.9},
             humano:{vida:1.05,mana:1.05,ataque:1.05,defensa:1.05,magia:0,resistenciaMagica:1.05},
             mago:{vida:0.8,mana:1.3,ataque:0,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
@@ -84,6 +84,7 @@ export default class Personaje{
          resistenciaMagica:this.#resistenciaMagica,
          nivel:this.#nivel,
          experiencia:this.#experiencia,
+         experienciaMaxima: this.#experienciaMaxima,
          oro: this.#oro,
          inventario: this.#inventario.convertirJson(),
          armaEquipada: this.#armaEquipada,
@@ -107,6 +108,7 @@ export default class Personaje{
       personaje.#resistenciaMagica=json.resistenciaMagica;
       personaje.#nivel=json.nivel;
       personaje.#experiencia=json.experiencia;
+      personaje.#experienciaMaxima=json.experienciaMaxima;
       personaje.#oro=json.oro;
       personaje.#inventario=Inventario.reconstruirJson(json.inventario);
       personaje.#armaEquipada=json.armaEquipada;
@@ -279,7 +281,30 @@ export default class Personaje{
     * @param {*} experienciaGanada Recibe por parámetro la experiencia ganada en el combate
     */
    ganarExperiencia(experienciaGanada){
-
+      if(this.#experiencia+=experienciaGanada > this.#experienciaMaxima){
+         this.subirNivel();
+         this.#experiencia= this.#experiencia-this.#experienciaMaxima;
+         this.#experienciaMaxima = Math.floor(this.#experienciaMaxima * 1.5);
+      }else{
+         this.#experiencia+=experienciaGanada;
+      }
+   }
+   /**
+    * Método para subir de nivel y estadísticas
+    */
+   subirNivel(){
+      this.#nivel++;
+      this.#vidaActual+=Math.floor(this.#vidaActual*0.2);
+      this.#vidaMaxima+=Math.floor(this.#vidaMaxima*0.2);
+      this.#defensa+=Math.floor(this.#defensa*0.1);
+      this.resistenciaMagica+=Math.floor(this.#resistenciaMagica*0.1);
+      this.#manaMaximo+=Math.floor(this.#manaMaximo*0.1);
+      this.#manaActual+=Math.floor(this.#manaActual * 0.1);
+      if(this.#raza === "elfo" || this.#raza === "mago"){
+         this.#magia+=Math.floor(this.#magia*0.1);
+      }else{
+         this.#ataque+=Math.floor(this.#ataque*0.1);
+      }
    }
     
    /**
@@ -502,6 +527,20 @@ export default class Personaje{
    set inventario(inventario) {
       this.#inventario = inventario;
    }
-
+   /**
+   * Getter para experienciaMaxima
+   * @return experienciaMaxima Devuelve el valor de experienciaMaxima;
+   */
+   get experienciaMaxima() {
+      return this.#experienciaMaxima;
+   }
+   
+   /**
+   * Setter para experienciaMaxima
+   * @param {*} experienciaMaxima Recibe el valor de experienciaMaxima para modificar
+   */
+   set experienciaMaxima(experienciaMaxima) {
+      this.#experienciaMaxima = experienciaMaxima;
+   }
 
 }
