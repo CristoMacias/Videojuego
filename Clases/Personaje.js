@@ -15,7 +15,7 @@ export default class Personaje{
     #nivel=1;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=0; // Total de oro 
+    #oro=5000; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;
@@ -264,17 +264,19 @@ export default class Personaje{
    }
    /**
     * Método para que el personaje beba una pocion de salud o de mana
-    * @param {*} efecto Efecto que tiene la poción: salud o maná
-    * @param {*} aumento Vida/Maná que aumenta.
+    * @param {Pocion} pocion que tiene la poción: salud o maná
     */
-   tomarPocion(efecto,aumento){
-      if(efecto===salud){
-         this.#vidaActual+=aumento;
-         this.#inventario.pocionesVida--;
+   tomarPocion(pocion){
+      if(pocion.efecto==="salud"){
+         let posicion  = this.#inventario.pocionesVida.indexOf(pocion);
+         this.#vidaActual+=pocion.aumento;
+         this.#inventario.pocionesVida.splice(posicion,1);
       }else{
-         this.#manaActual+=aumento;
-         this.#inventario.pocionesMana--;
+         let posicion = this.#inventario.pocionesMana.indexOf(pocion);
+         this.#manaActual+=pocion.aumento;
+         this.#inventario.pocionesMana.splice(posicion,1);
       }
+      alert(`Has usado la poción ${pocion.nombre}`);
    }
    /**
     * Método para ganar experiencia
