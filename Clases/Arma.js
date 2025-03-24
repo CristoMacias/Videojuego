@@ -1,16 +1,16 @@
 export default class Arma{
     #nombre;
     #descripcion;
-    #danho;
+    #aumento;
     #precio;
     #nivel;
     #raza;
     #imagen;
 
-    constructor(nombre,descripcion,danho,precio,nivel,raza,imagen){
+    constructor(nombre,descripcion,aumento,precio,nivel,raza,imagen){
         this.#nombre=nombre;
         this.#descripcion=descripcion;
-        this.#danho=danho;
+        this.#aumento=aumento;
         this.#precio=precio;
         this.#nivel=nivel;
         this.#raza=raza;
@@ -21,7 +21,7 @@ export default class Arma{
         return{
             nombre: this.#nombre,
             descripcion:this.#descripcion,
-            danho:this.#danho,
+            danho:this.#aumento,
             precio:this.#precio,
             nivel:this.#nivel,
             raza:this.#raza,
@@ -34,15 +34,15 @@ export default class Arma{
       document.querySelector("#imagen-arma").src=this.imagen;
       document.querySelector("#nombre-arma").textContent=this.nombre;
       document.querySelector("#descripcion-arma").textContent=this.descripcion;
-      document.querySelector("#danho-arma").textContent=this.danho;
+      document.querySelector("#aumento-arma").textContent=this.aumento;
       document.querySelector("#precio-arma").textContent=this.precio;
    }
 
     /**
     * Getter para danho
     */
-    get danho() {
-       return this.#danho;
+    get aumento() {
+       return this.#aumento;
     }
     /**
     * Getter para precio

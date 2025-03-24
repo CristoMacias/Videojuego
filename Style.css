@@ -207,6 +207,7 @@ html .tienda{
     align-items: center;
     justify-content: center;
     border:2px solid green;
+    width:50%;
 }
 .div-armas img{
     border-radius: 100%;

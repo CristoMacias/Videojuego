@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     const formulario = document.querySelector("#formulario");
     const nombreFormulario = document.querySelector("#nombre-Formulario");
     const creadorSelect = document.querySelector("#creador");
+    //Selectores de los span de atributos principales de las armas básicas para mostrar
+    const imagenArma1= document.querySelector("#imagen-arma1");
+    const nombreArma1=document.querySelector("#nombre-arma1");
+    const descripcionArma1=document.querySelector("#descripcion-arma1");
+    const aumentoArma1=document.querySelector("#aumento-arma1");
+    const imagenArma2=document.querySelector("#imagen-arma2");
+    const nombreArma2=document.querySelector("#nombre-arma2");
+    const descripcionArma2=document.querySelector("#descripcion-arma2");
+    const aumentoArma2=document.querySelector("#aumento-arma2");
 
     const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
         "./Imagenes/humano.png",
@@ -42,7 +51,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             new Arma("Filos de la Medianoche 🌙🗡️","Un par de dagas encantadas que se desvanecen en la penumbra.",65,0,1,"elfo","./Imagenes/elfos/filos.png")
         ]
     };
-
     const elegirImagen = document.querySelector("#imagen-elegir");
     creadorSelect.addEventListener('change', ()=>{
         let razaElegida = creadorSelect.value;
@@ -52,8 +60,21 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             alert("La raza no es válida");
         }
+
+        let arrayArmas=armas[razaElegida];
+        let arma1=arrayArmas[0];
+        let arma2=arrayArmas[1];
+        imagenArma1.src=arma1.imagen;
+        nombreArma1.textContent=arma1.nombre;
+        descripcionArma1.textContent=arma1.descripcion;
+        aumentoArma1.textContent=arma1.aumento;
+        imagenArma2.src=arma2.imagen;
+        nombreArma2.textContent=arma2.nombre;
+        descripcionArma2.textContent=arma2.descripcion;
+        aumentoArma2.textContent=arma2.aumento;
+        console.log(arrayArmas);
     });
-     
+
     /**
      * Evento para que se cree el personaje al ahcer submit
      */
