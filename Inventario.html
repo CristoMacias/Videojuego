@@ -9,45 +9,79 @@
 <body>
     <p><a href="Lobby.html">Volver</a></p>
     <h1 id="titulo-inventario">INVENTARIO DE </h1>
+    <div id="equipados">
+        <p>ARMA EQUIPADA</p>
+        <div id="arma-equipada">
+            <img id="imagen-arma-equipada" src="" alt="Imagen del Arma Equipada">
+            <p> <span id="nombre-arma-equipada"></span></p>
+            <p>Descripcion: <span id="descripcion-arma-equipada"></span></p>
+            <p>Aumento: <span id="aumento-arma-equipada"></span></p>
+        </div>
+        <p>ARMADURA/ESCUDO EQUIPADO</p>
+        <div id="armadura-equipada">
+            <img id="imagen-armadura-equipada" src="" alt="Imagen de la armadura/escudo equipados">
+            <p> <span id="nombre-armadura-equiada"></span></p>
+            <p>Descripcion: <span id="descripcion-armadura-equipada"></span></p>
+            <p>Aumento: <span id="aumento-armadura-equipada"></span></p>
+        </div>
+        <p>AMULETO EQUIPADO</p>
+        <div id="amuleto-equipado">
+            <img id="imagen-amuleto-equipado">
+            <p> <span id="nombre-amuleto-equipado"></span></p>
+            <p>Descripcion: <span id="descripcion-amuleto-equipado"></span></p>
+            <p>Aumento: <span id="aumento-amuleto-equipado"></span></p>
+        </div>
+    </div>
+
     <div id="cajon-arma">
+        <h3>ARMAS</h3>
         <div id="cajon-arma-imagen">
             <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
         </div>
-        <p id="nombre-arma">Martillo</p>
-        <p id="descripcion-arma">Descripcion</p>
-        <p id="daño-arma">Daño</p>
-        <p id="raza-arma">Especial para: </p>
+        <p><span id="nombre-arma"></span></p>
+        <p>Descripcion: <span id="descripcion-arma" ></span></p>
+        <p>Aumento: <span id="aumento-arma"></span></p>
     </div>
     <div id="cajon-armadura">
+        <h3>ARMADURAS/ESCUDOS</h3>
         <div id="cajon-armadura-imagen">
-            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+            <img id="imagen-armadura" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
         </div>
-        <p id="nombre-armadura">Malla Metálica</p>
-        <p id="descripcion-armadura">Descripcion</p>
-        <p id="defensa-armadura">Defensa</p>
+        <p><span id="nombre-armadura"></span></p>
+        <p>Descripcion: <span id="descripcion-armadura"></span></p>
+        <p>Aumento: <span id="aumento-armadura"></span></p>
     </div>
-    <div id="cajon-armadura">
-        <div id="cajon-armadura-imagen">
-            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+    <div id="cajon-amuleto">
+        <h3>AMULETOS</h3>
+        <div id="cajon-amuleto-imagen">
+            <img id="imagen-amuleto" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del amuleto">
         </div>
-        <p id="nombre-armadura">Malla Metálica</p>
-        <p id="descripcion-armadura">Descripcion</p>
-        <p id="defensa-armadura">Defensa</p>
+        <p><span id="nombre-amuleto"></span>></p>
+        <p>Descripcion: <span  id="descripcion-amuleto"></span></p>
+        <p>Aumento: <span id="resistenciaMagica-amuleto"></span></p>
     </div>
 
     <div id="pociones">
         <div id="pocion-vida">
             <h3>Pociones de Salud</h3>
             <div>
-                <img src=""></img>
+                <p><span id="nombre-vida"></span></p>
+                <p >Descripcion: <span id="descipcion-vida"></span></p>
+                <img src="" id="imagen-vida" alt="Imagen pocion de vida"></img>
             </div>
         </div>
         <div id="pocion-mana">
-
+            <h3>Pociones de Mana</h3>
+            <div>
+                <p><span id="nombre-mana"></span></p>
+                <p>Descripcion: <span id="descripcion-mana"></span></p>
+                <img id="imagen-mana" src="" alt="Imagen pocion de Mana">
+            </div>
         </div>
     </div>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>
+    <script type="module" src="Clases/InventarioFuncionamiento.js"></script>
 </body>
 </html>

@@ -95,6 +95,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const imagen = imagenesPersonaje[indiceRaza];
         const personaje = new Personaje(nombre,raza,imagen);
         personaje.equiparArma(arma);
+        personaje.inventario.agregarObjeto(arma);
         console.log(personaje);
         //No se añade, se sobreescribe para que sólo haya 1
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
@@ -111,6 +112,8 @@ document.addEventListener('DOMContentLoaded',()=>{
             elegirImagen.src="./Logo_videojuego.png";
         }
     });
+
+
 
 
 
