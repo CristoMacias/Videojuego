@@ -68,8 +68,9 @@ export default class Personaje{
     }
     /**
      * Método para convertir los atributos en público y poder convertirlos en JSON
-     * y guardarlos en el localStorage
-     * @returns  Devuelve todos los atributos
+      * y guardarlos en el localStorage
+      * @returns  Devuelve todos los atributos
+      * 
      */
     convertirJson(){
       return{

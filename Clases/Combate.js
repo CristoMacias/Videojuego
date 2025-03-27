@@ -1,4 +1,5 @@
 import Personaje from "./Personaje.js";
+import Enemigo from "./Enemigos.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -40,28 +41,52 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Método para atacar
      */
+    /**
+     * Método para atacar
+     */
     const atacar = function () {
 
-        if (enemigo.vida > 0) {
-            enemigo.vida -= personaje.ataque;
+        if (enemigo.vida > 0 && personaje.vidaActual > 0) {
+            ataquePersonaje();
+        }
+        else{
+            //Has perdido
+        }
+      
+        if(personaje.vidaActual <= 0){
+            alert("El combate ha terminado");
+            spanVidaAliado.textContent = " : Eliminado";
+        }
+        else{
+            ataqueEnemigo();
+                spanVidaAliado.textContent = " : " + personaje.vidaActual;
         }
         spanVidaEnemigo.textContent = " : " + enemigo.vida;
-        if (contadorCriticoEnemigo == 4) {
-            setTimeout(() => {
-                personaje.vidaActual -= enemigo.ataque + 50;
-                spanVidaAliado.textContent = " : " + personaje.vidaActual;
-                alert("El enemigo te ha atacado");
-            }, 500);
-        } else {
-            setTimeout(() => {
-                personaje.vidaActual -= enemigo.ataque
-                spanVidaAliado.textContent = " : " + personaje.vidaActual;
-                alert("El enemigo te ha atacado");
-            }, 500);
-        }
 
     }
     botonAtacar.addEventListener("click", atacar);
+
+    /**
+     * Método del ataque del enemigo
+     */
+    function ataqueEnemigo(){
+        setTimeout(() => {
+            if(personaje.vidaActual > 0 && enemigo.vida > 0){
+                personaje.vidaActual -= enemigo.ataque;
+            }
+            else{
+                alert("El enemigo te ha atacado");
+            }
+        }, 500);
+    }
+
+    /**
+     * Método de ataque del personaje
+     */
+    function ataquePersonaje(){
+        enemigo.vida -= personaje.ataque;
+    }
+
 
     /**
      * Método de defender
