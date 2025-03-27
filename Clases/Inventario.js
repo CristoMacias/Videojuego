@@ -50,21 +50,21 @@ export default class Inventario{
 
     convertirJson(){
         return{
-            armas:this.#armas,
-            defensa:this.#defensa,
-            amuletos:this.#amuletos,
-            pocionesVida:this.#pocionesVida,
-            pocionesMana:this.#pocionesMana
+            armas:this.#armas.length ? this.#armas.map(arma=> arma.convertirJson()) : [],
+            defensa:this.#defensa ? this.#defensa.map(defensa=>defensa.convertirJson()) : [],
+            amuletos:this.#amuletos.length ? this.#amuletos.map(amuleto=>amuleto.convertirJson()) : [],
+            pocionesVida:this.#pocionesVida.length ? this.#pocionesVida.map(pocion=>pocion.convertirJson()) : [],
+            pocionesMana:this.#pocionesMana ? this.#pocionesMana.map(pocion=>pocion.convertirJson()) : []
         };
     }
 
     static reconstruirJson(json){
         const inventario = new Inventario();
-        inventario.#armas=json.armas ||[] ;
-        inventario.#defensa=json.defensa || [] ;
-        inventario.#amuletos=json.amuletos || [] ;
-        inventario.#pocionesVida=json.pocionVida || [];
-        inventario.#pocionesMana=json.pocionesMana || [];
+        inventario.#armas=json.armas.map(arma=>Arma.reconstruirJson(arma)) ||[] ;
+        inventario.#defensa=json.defensa.map(defensa=>Proteccion.reconstruirJson(defensa)) || [] ;
+        inventario.#amuletos=json.amuletos.map(amuleto=>Proteccion.reconstruirJson(amuleto)) || [] ;
+        inventario.#pocionesVida=json.pocionesVida.map(pocion=>Pocion.reconstruirJson(pocion)) || [];
+        inventario.#pocionesMana=json.pocionesMana.map(pocion=>Pocion.reconstruirJson(pocion)) || [];
         return inventario;
     }
 

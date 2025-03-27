@@ -1,5 +1,7 @@
 import Inventario from './Inventario.js';
 import Enemigo from './Enemigos.js';
+import Arma from './Arma.js';
+import Proteccion from './Proteccion.js';
 export default class Personaje{
     
     #nombre; //Nombre del personaje
@@ -29,17 +31,17 @@ export default class Personaje{
      * @param {*} imagen Recibe la imagen
      * @param {*} arma  Recibe el arma inicial
      */
-    constructor(nombre,raza,imagen,arma){
+    constructor(nombre,raza,imagen){
         this.#nombre = nombre;
         this.#raza=raza;
         this.#imagen=imagen;
         this.#nivel;
         this.#experiencia;
         this.#experienciaMaxima;
-        this.#oro;;
+        this.#oro;
         this.#calcularEstadisticas(raza);
         this.#inventario=new Inventario();
-        this.#armaEquipada=arma;
+        this.#armaEquipada=null;
         this.#armaduraEquipada = null;
         this.#amuletoEquipado = null;
     }
@@ -86,10 +88,10 @@ export default class Personaje{
          experiencia:this.#experiencia,
          experienciaMaxima: this.#experienciaMaxima,
          oro: this.#oro,
-         inventario: this.#inventario.convertirJson(),
-         armaEquipada: this.#armaEquipada,
-         armaduraEquipada: this.#armaduraEquipada,
-         amuletoEquipado: this.#amuletoEquipado
+         inventario:this.#inventario ?  this.#inventario.convertirJson() : {},
+         armaEquipada:this.#armaEquipada ?  this.#armaEquipada.convertirJson() : null,
+         armaduraEquipada:this.#armaduraEquipada ?  this.#armaduraEquipada.convertirJson() : null,
+         amuletoEquipado:this.#amuletoEquipado ?  this.#amuletoEquipado.convertirJson() : null
 
       };
     }
@@ -110,10 +112,10 @@ export default class Personaje{
       personaje.#experiencia=json.experiencia;
       personaje.#experienciaMaxima=json.experienciaMaxima;
       personaje.#oro=json.oro;
-      personaje.#inventario=Inventario.reconstruirJson(json.inventario);
-      personaje.#armaEquipada=json.armaEquipada;
-      personaje.#armaduraEquipada=json.armaduraEquipada;
-      personaje.#amuletoEquipado=json.amuletoEquipado;
+      personaje.#inventario=json.inventario ? Inventario.reconstruirJson(json.inventario) : null ;
+      personaje.#armaEquipada=json.armaEquipada ? Arma.reconstruirJson(json.armaEquipada) : null ;
+      personaje.#armaduraEquipada=json.armaduraEquipada ? Proteccion.reconstruirJson(json.armaduraEquipada) : null;
+      personaje.#amuletoEquipado=json.amuletoEquipado ? Proteccion.reconstruirJson(json.amuletoEquipado) : null;
       return personaje;
 
     }

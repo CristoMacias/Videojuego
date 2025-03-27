@@ -28,6 +28,23 @@ export default class Proteccion{
         this.#imagen=imagen
     }
 
+    convertirJson(){
+      return{
+      nombre: this.#nombre,
+      descripcion: this.#descripcion,
+      tipo: this.#tipo,
+      nivel: this.#nivel,
+      precio: this.#precio,
+      aumento: this.#aumento,
+      imagen: this.#imagen
+      };
+    }
+
+    static reconstruirJson(json){
+      const proteccion= new Proteccion(json.nombre,json.descripcion,json.tipo,json.nivel,json.precio,json.aumento,json.imagen);
+      return proteccion;
+    }
+
     /**
      * Método para mostrar en el DOM los atributos de la proteccion de tipo escudo
      */

@@ -22,6 +22,22 @@ export default class Pocion{
         this.#aumento=aumento,
         this.#imagen=imagen
     }
+
+    convertirJson(){
+      return{
+         nombre: this.#nombre,
+         descripcion: this.#descripcion,
+         efecto: this.#efecto,
+         precio: this.#precio,
+         aumento: this.#aumento,
+         imagen: this.#imagen
+      };
+    }
+
+    reconstruirJson(json){
+      const pocion=new Pocion(json.nombre,json.descripcion,json.efecto,json.precio,json.aumento,json.imagen);
+      return pocion;
+    }
     /**
      * Método para mostrar los atributos para las pociones de tipo vida
      */

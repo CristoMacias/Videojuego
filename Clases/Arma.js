@@ -21,12 +21,17 @@ export default class Arma{
         return{
             nombre: this.#nombre,
             descripcion:this.#descripcion,
-            danho:this.#aumento,
+            aumento:this.#aumento,
             precio:this.#precio,
             nivel:this.#nivel,
             raza:this.#raza,
             imagen:this.#imagen
-        }
+        };
+    }
+
+    static reconstruirJson(json){
+      const arma = new Arma(json.nombre,json.descripcion,json.aumento,json.precio,json.nivel,json.raza,json.imagen);
+      return arma;
     }
 
     
