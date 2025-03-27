@@ -1,4 +1,5 @@
 import Enemigos from "./Enemigos.js";
+import Personaje from "./Personaje.js";
 
 document.addEventListener('DOMContentLoaded', ()=> {
 
@@ -21,7 +22,6 @@ const razas = ["orco",
                 "mago",
                 "elfo"];
 
-const niveles = [1, 2 , 3 ,4 , 5];
 
 /**
  * Función para crear al enemigo
@@ -57,10 +57,29 @@ function elegirNombre(){
     return nombres[numeroNombre];
 }
 
-function elegirNivel(){
-    let numeroNivel = Math.floor(Math.random() * (niveles.length));
-    console.log(numeroNivel);
-    console.log(niveles[numeroNivel]);
-    return niveles[numeroNivel];
+function elegirNivel(personaje){
+    let nivelPersonaje = 5;
+    let numeroNivel;
+    let bandera = false;
+    let escalaNiveles = 10;
+
+    do{
+
+    if(nivelPersonaje < 10){
+        numeroNivel = Math.floor(Math.random() * 10);
     }
+    else if(nivelPersonaje > escalaNiveles && nivelPersonaje <= escalaNiveles + 10){
+        numeroNivel = Math.floor(Math.random() * 10 + escalaNiveles);
+        bandera = true;
+        
+    }
+    else{
+        escalaNiveles += 10;
+    }
+
+    }while(!bandera);
+
+    return numeroNivel;   
+      
+}
 });
