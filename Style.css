@@ -171,7 +171,7 @@ html .tienda{
 
 }
 
-
+/*Imagenes de la tienda de armas*/
 .imagenItem{
     height: 140px;
     width: auto;
@@ -196,23 +196,92 @@ html .tienda{
     margin-right: 5%;
 }
 
+/*Eleccion de armas básicas */
 #elegir-arma{
     display: flex;
-    border: 2px solid red;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
+    gap: 10px;
 }
 .div-armas{
-    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 48%;
+    min-height: 400px; 
+    padding: 10px;
+}
+.div-armas img {
+    
+    width: 300px; 
+    height: 300px; 
+    object-fit:contain; 
+}
+
+.div-armas label {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border:2px solid green;
-    width:50%;
+    gap: 10px; 
 }
-.div-armas img{
-    border-radius: 100%;
-    border: 2px solid white;
+
+.div-armas img:hover{
+    transform: rotate(15deg) translateY(30px) scale(1.1);
+    transition: 1s;
 }
+
 .div-armas p{
     border: 2px solid rgb(47, 255, 238);
+    border-radius: 6px;
+    width: 90%; 
+    text-align: center; 
+    min-height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-armas p span {
+    display: block;
+    min-height: 20px;
+}
+
+/*h2 de eleccion de arma inicial*/
+#titulo-unico {
+    font-size: 28px;
+    color: #00eeff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    margin: 20px 0;
+    border-bottom: 3px solid #00eeff;
+    text-shadow: 3px 3px 5px #0cb3e6d2;
+    animation: titilar 3s infinite alternate;
+}
+
+/*h3 de eleccion de arma inicial*/
+.subtitulo-especial {
+    font-size: 24px;
+    color: #008080; 
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    margin: 15px 0;
+    background: linear-gradient(135deg, #00c6ff, #0072ff); 
+    color: white;
+    border-left: 5px solid #0072ff;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/*Hacer invisible la input*/
+input[type="radio"] {
+    opacity: 0; /* Hace que el radio sea invisible */
+    position: absolute; /* Lo saca del flujo normal */
+    width: 0;
+    height: 0;
 }
