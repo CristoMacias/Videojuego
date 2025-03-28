@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanNivelEnemigo = document.querySelector("#nivelEnemigo");
     const spanVidaAliado = document.querySelector("#vidaAliado");
     const spanVidaEnemigo = document.querySelector("#vidaEnemigo");
-    const mana = document.querySelector("#manaAliado");
+    const spanManaAliado = document.querySelector("#manaAliado");
 
     //Declarar botones
     const botonAtacar = document.querySelector("#botonAtacar");
@@ -31,6 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonPocion = document.querySelector("#botonPocion");
     const botonHuir = document.querySelector("#botonHuir");
 
+    const inventarioPersonaje = personaje.inventario;
+    let pocionesVida = inventarioPersonaje.pocionesVida;
 
     if (personaje) {
         //Mostrar los atributos de personajes
@@ -40,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spanNivelEnemigo.textContent = " : " + enemigo.nivel;
         spanVidaAliado.textContent = " : " + personaje.vidaActual;
         spanVidaEnemigo.textContent = " : " + enemigo.vida;
-        mana.textContent = " : " + personaje.manaActual;
+        spanManaAliado.textContent = " : " + personaje.manaActual;
     }
 
     let contadorCriticoEnemigo = Math.floor(Math.random() * 10);
@@ -93,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if(personaje.vidaActual > 0 && enemigo.vida > 0){
             personaje.ataqueCritico(enemigo);
+            personaje.manaActual -= 40;
+            spanManaAliado.textContent = " : " + personaje.manaActual;
             if(enemigo.vida <= 0){
                 spanVidaEnemigo.textContent = " Eliminado ";
             }
@@ -119,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * Botón de tomar poción.
      */
     const tomarPocion = function () {
-
+        personaje.tomarPocion(pocionesVida[0]);
+        spanVidaAliado.textContent = " : " + personaje.vidaActual;
     }
     botonPocion.addEventListener("click", tomarPocion)
 
