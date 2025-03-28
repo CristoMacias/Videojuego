@@ -67,8 +67,39 @@ export default class Inventario{
         inventario.#pocionesMana=json.pocionesMana.map(pocion=>Pocion.reconstruirJson(pocion)) || [];
         return inventario;
     }
-
-
+    /**
+     * Método para quitar un arma del array de armas
+     * @param {*} indice Posicion del arma a quitar
+     */
+    tirarArma(indice){
+        this.#armas.splice(indice);
+    }
+    /**
+     * Método para quitar una armadura/escudo del array defensa
+     * @param {*} indice Posición del armadura/escudo a quitar
+     */
+    tirarArmadura(indice){
+        this.#defensa.splice(indice);
+    }
+    /**
+     * Método para quitar un amuleto del array amuletos
+     * @param {*} indice Posición del amuleto a quitar
+     */
+    tirarAmuleto(indice){
+        this.amuletos.splice(indice);
+    }
+    /**
+     * Método para quitar una pocion de los arrays de pociones
+     * @param {*} efecto Recibe el efecto para saber de qué array se quita la pocion
+     * @param {*} indice Posicion de la pocion a quitar
+     */
+    tirarPocion(efecto,indice){
+        if(efecto==="salud"){
+            this.#pocionesVida.splice(indice);
+        }else{
+            this.#pocionesMana.splice(indice);
+        }
+    }
     /**
     * Getter para armas
     * @return armas Devuelve el valor de armas;
