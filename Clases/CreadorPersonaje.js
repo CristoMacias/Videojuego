@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
 
     /**
-     * Evento para que se cree el personaje al ahcer submit
+     * Evento para que se cree el personaje al hacer submit
      */
     formulario.addEventListener('submit',(event)=>{
         event.preventDefault();//Para bloquear la actualización automática
