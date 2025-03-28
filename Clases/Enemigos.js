@@ -17,7 +17,8 @@ export default class Enemigos {
    constructor(nombre, raza, nivel) {
 
       this.#nombre = nombre;
-      this.#nivel = nivel;  
+      this.#nivel = nivel;
+      this.#raza = raza;
 
       if (raza === "mago" || raza === "elfo") {
          this.#magia = 100;
@@ -101,6 +102,22 @@ export default class Enemigos {
       this.#raza = raza;
    }
 
+   /**
+   * Getter para nivel
+   * @return nivel Devuelve el valor de nivel;
+   */
+   get nivel() {
+      return this.#nivel;
+   }
+
+   /**
+   * Getter para vida
+   * @return vida Devuelve el valor de vida;
+   */
+   get vida() {
+      return this.#vida;
+   }
+
    convertirJson() {
       return {
          nombre: this.#nombre,
@@ -117,19 +134,24 @@ export default class Enemigos {
       };
    }
 
+     static reconstruirJson(json){
+         const enemigo = new Enemigos(json.nombre, json.raza, json.nivel);
+         return enemigo;
+   
+       }
+
    //METODOS PARA COMBATE
 
    atacar(personaje) {
       let esMagico = false;
 
-      if (raza === "mago" || raza === "elfo") {
+      if (this.#raza === "mago" || this.#raza === "elfo") {
          esMagico = true;
          personaje.recibirDanho(this.#magia, esMagico);
       }
       else {
          personaje.recibirDanho(this.#ataque, esMagico);
       }
-
    }
 
    recibirDanho(danhoPersonaje, esMagico) {

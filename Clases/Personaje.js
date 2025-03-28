@@ -170,9 +170,9 @@ export default class Personaje{
       let esMagico=false;
       if(this.#raza === "mago" || this.#raza === "elfo"){
          esMagico = true;
-         enemigo.recibirDanho(this.magia, esMagico);
+         enemigo.recibirDanho(this.#magia, esMagico);
       }else{
-         enemigo.recbirDanho(this.#ataque,esMagico);
+         enemigo.recibirDanho(this.#ataque,esMagico);
       }
    }
    /**

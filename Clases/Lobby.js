@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', ()=> {
 
-
     //Atributos parte superior
     const spanVida = document.querySelector("#spanVida");
     const spanMana = document.querySelector("#spanMana");

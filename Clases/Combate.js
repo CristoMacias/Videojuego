@@ -1,12 +1,19 @@
 import Personaje from "./Personaje.js";
-import Enemigo from "./Enemigos.js";
+import Enemigos from "./Enemigos.js";
 
 document.addEventListener('DOMContentLoaded', () => {
 
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));
     const personaje = Personaje.reconstruirJson(jsonpersonaje);
 
-    const enemigo = JSON.parse(localStorage.getItem('enemigo'));
+    const jsonenemigo = JSON.parse(localStorage.getItem('enemigo'));
+    console.log(jsonenemigo);
+    const enemigo = Enemigos.reconstruirJson(jsonenemigo);
+
+   console.log(enemigo);
+   console.log(enemigo.vida);
+   console.log(enemigo.nombre);
+   console.log(enemigo.nivel);
 
     //Declarar las span para mostrar los nombres
     const spanNombreAliado = document.querySelector("#nombreAliado");
@@ -45,48 +52,31 @@ document.addEventListener('DOMContentLoaded', () => {
      * Método para atacar
      */
     const atacar = function () {
-
-        if (enemigo.vida > 0 && personaje.vidaActual > 0) {
-            ataquePersonaje();
+        
+        if(personaje.vidaActual > 0 && enemigo.vida > 0){
+            personaje.atacarEnemigo(enemigo);
+            if(enemigo.vida <= 0){
+                spanVidaEnemigo.textContent = " Eliminado ";
+            }
+            else{
+                spanVidaEnemigo.textContent = " : " + enemigo.vida;
+            }
+            
+            if(enemigo.vida > 0){
+                enemigo.atacar(personaje);
+                if(personaje.vidaActual <= 0){
+                    spanVidaAliado.textContent = " Eliminado ";
+                }else{
+                    spanVidaAliado.textContent = " : " + personaje.vidaActual;
+                }
+            }
         }
         else{
-            //Has perdido
+            alert("Se acabo el combate.")
         }
-      
-        if(personaje.vidaActual <= 0){
-            alert("El combate ha terminado");
-            spanVidaAliado.textContent = " : Eliminado";
-        }
-        else{
-            ataqueEnemigo();
-                spanVidaAliado.textContent = " : " + personaje.vidaActual;
-        }
-        spanVidaEnemigo.textContent = " : " + enemigo.vida;
 
     }
     botonAtacar.addEventListener("click", atacar);
-
-    /**
-     * Método del ataque del enemigo
-     */
-    function ataqueEnemigo(){
-        setTimeout(() => {
-            if(personaje.vidaActual > 0 && enemigo.vida > 0){
-                personaje.vidaActual -= enemigo.ataque;
-            }
-            else{
-                alert("El enemigo te ha atacado");
-            }
-        }, 500);
-    }
-
-    /**
-     * Método de ataque del personaje
-     */
-    function ataquePersonaje(){
-        enemigo.vida -= personaje.ataque;
-    }
-
 
     /**
      * Método de defender

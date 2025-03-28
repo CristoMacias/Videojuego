@@ -67,6 +67,13 @@ function elegirNivel(personaje){
 
     if(nivelPersonaje < 10){
         numeroNivel = Math.floor(Math.random() * 10);
+            if(numeroNivel == 0){
+                numeroNivel = 1;
+                bandera = true;
+            }
+            else{
+                bandera = true;
+            }
         bandera = true;
     }
     else if(nivelPersonaje > escalaNiveles && nivelPersonaje <= escalaNiveles + 10){
