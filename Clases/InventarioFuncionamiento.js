@@ -390,5 +390,19 @@ document.addEventListener('DOMContentLoaded',()=>{
         descripcionAmuletoEquipado.textContent=amuleto.descripcion;
         aumentoAmuletoEquipado.textContent=amuleto.aumento;
     });
-    
+
+    //Funcionamiento de botones de Tirar los objetod de los arrays
+
+    const botonArmaTirar=document.querySelector("#boton-arma-tirar");
+    botonArmaTirar.addEventListener('click',()=>{
+        let armaTirar=arrayArmas[indiceArma];
+        personaje.quitarArma(armaTirar,indice);
+        if(arrayArmas.length>0){
+             actualizarArma();
+        }else{
+            armaEquipada=null;
+            divArmaEquipada.style.displa="none";
+            divArmas.style.display="none";
+        }
+    });
 });

@@ -155,7 +155,7 @@ export default class Personaje{
    recibirDanho(danhoEnemigo,esMagico){
       let danho;
       if(esMagico){
-         danho = danho-(this.#resistenciaMagica / 2);
+         danho = danhoEnemigo-(this.#resistenciaMagica / 2);
          this.#vidaActual-= danho;
       }else{
          danho = danhoEnemigo-(this.#defensa / 2);
@@ -317,6 +317,32 @@ export default class Personaje{
          this.#magia+=Math.floor(this.#magia*0.1);
       }else{
          this.#ataque+=Math.floor(this.#ataque*0.1);
+      }
+   }
+   /**
+    * Método para tirar objetos del inventario
+    * @param {*} objeto Objeto a tirar,pueden ser armas, armaduras/escudos o pociones
+    * @param {*} indice Posicion en la que se encuentra del array
+    */
+   tirarObjeto(objeto,indice){
+      if(objeto instanceof Arma){
+         this.#inventario.armas.splice(indice,1);
+         this.#inventario.tirarArma(indice);
+      }
+      else if(objeto instanceof Proteccion){
+         if(objeto.tipo=== "amuleto"){
+            this.#inventario.amuletos.splice(indice,1);
+            this.#inventario.tirarArmadura(indice);
+         }else{
+            this.#inventario.defensa.splice(indice,1);
+            this.#inventario.tirarAmuleto(indice);
+         }
+      }else if(objeto instanceof Pocion){
+         if(objeto.efecto==="salud"){
+            this.inventario.pocionesVida.splice(indice,1);
+         }else{
+            this.inventario.pocionesMana.splice(indice,1);
+         }
       }
    }
     
