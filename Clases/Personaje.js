@@ -181,7 +181,7 @@ export default class Personaje{
     */
    ataqueCritico(enemigo){
       let esMagico=false;
-      if(raza === "mago" || raza === "elfo"){
+      if(this.#raza === "mago" || this.#raza === "elfo"){
          esMagico = true;
          enemigo.recibirDanho(this.magia *1.30, esMagico);
       }else{

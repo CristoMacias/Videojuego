@@ -90,19 +90,28 @@ document.addEventListener('DOMContentLoaded', () => {
      * Método para dar un golpe crítico
      */
     const golpeCritico = function () {
-
-        if (enemigo.vida > 0) {
-            enemigo.vida -= personaje.ataque + 50;
-            personaje.manaActual -= 20;
+        
+        if(personaje.vidaActual > 0 && enemigo.vida > 0){
+            personaje.ataqueCritico(enemigo);
+            if(enemigo.vida <= 0){
+                spanVidaEnemigo.textContent = " Eliminado ";
+            }
+            else{
+                spanVidaEnemigo.textContent = " : " + enemigo.vida;
+            }
+            
+            if(enemigo.vida > 0){
+                enemigo.atacar(personaje);
+                if(personaje.vidaActual <= 0){
+                    spanVidaAliado.textContent = " Eliminado ";
+                }else{
+                    spanVidaAliado.textContent = " : " + personaje.vidaActual;
+                }
+            }
         }
-        spanVidaEnemigo.textContent = " : " + enemigo.vida;
-        mana.textContent = " : " + personaje.manaActual;
-
-        setTimeout(() => {
-            personaje.vidaActual -= enemigo.ataque
-            spanVidaAliado.textContent = " : " + personaje.vidaActual;
-            alert("El enemigo te ha atacado");
-        }, 500);
+        else{
+            alert("Se acabo el combate.")
+        }
     }
     botonCritico.addEventListener("click", golpeCritico);
 
