@@ -34,7 +34,7 @@ export default class Pocion{
       };
     }
 
-    reconstruirJson(json){
+    static reconstruirJson(json){
       const pocion=new Pocion(json.nombre,json.descripcion,json.efecto,json.precio,json.aumento,json.imagen);
       return pocion;
     }

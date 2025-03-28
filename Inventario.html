@@ -8,46 +8,107 @@
 </head>
 <body>
     <p><a href="Lobby.html">Volver</a></p>
+    <button id="boton-guardar">GUARDAR</button>
     <h1 id="titulo-inventario">INVENTARIO DE </h1>
-    <div id="cajon-arma">
+    <div id="equipados">
+        <div id="arma-equipada">
+            <p>ARMA EQUIPADA</p>
+            <img id="imagen-arma-equipada" src="" alt="Imagen del Arma Equipada">
+            <p> <span id="nombre-arma-equipada"></span></p>
+            <p>Descripcion: <span id="descripcion-arma-equipada"></span></p>
+            <p>Aumento: <span id="aumento-arma-equipada"></span></p>
+            <button id="boton-arma-desequipar">DESEQUIPAR</button>
+        </div>
+        <div id="armadura-equipada">
+            <p>ARMADURA/ESCUDO EQUIPADO</p>
+            <img id="imagen-armadura-equipada" src="" alt="Imagen de la armadura/escudo equipados">
+            <p> <span id="nombre-armadura-equipada"></span></p>
+            <p>Descripcion: <span id="descripcion-armadura-equipada"></span></p>
+            <p>Aumento: <span id="aumento-armadura-equipada"></span></p>
+            <button id="boton-armadura-desequipar">DESEQUIPAR</button>
+        </div>
+        <div id="amuleto-equipado">
+            <p>AMULETO EQUIPADO</p>
+            <img id="imagen-amuleto-equipado">
+            <p> <span id="nombre-amuleto-equipado"></span></p>
+            <p>Descripcion: <span id="descripcion-amuleto-equipado"></span></p>
+            <p>Aumento: <span id="aumento-amuleto-equipado"></span></p>
+            <button id="boton-amuleto-desequipar">DESEQUIPAR</button>
+        </div>
+    </div>
+
+    <div id="cajon-armas">
+        <h3>ARMAS</h3>
+      
         <div id="cajon-arma-imagen">
+            <button id="boton-arma-anterior"><</button>
             <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
         </div>
-        <p id="nombre-arma">Martillo</p>
-        <p id="descripcion-arma">Descripcion</p>
-        <p id="daño-arma">Daño</p>
-        <p id="raza-arma">Especial para: </p>
+        <p><span id="nombre-arma"></span></p>
+        <p>Descripcion: <span id="descripcion-arma" ></span></p>
+        <p>Aumento: <span id="aumento-arma"></span></p>
+        <button id="boton-arma-equipar">EQUIPAR</button>
+        <button id="boton-arma-tirar">TIRAR</button>
+        <button id="boton-arma-siguiente">></button>
     </div>
-    <div id="cajon-armadura">
+    <div id="cajon-armaduras">
+        <h3>ARMADURAS/ESCUDOS</h3>
+        <button id="boton-armadura-anterior"><</button>
         <div id="cajon-armadura-imagen">
-            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+            <img id="imagen-armadura" src="" alt="Imagen del arma">
         </div>
-        <p id="nombre-armadura">Malla Metálica</p>
-        <p id="descripcion-armadura">Descripcion</p>
-        <p id="defensa-armadura">Defensa</p>
+        <p><span id="nombre-armadura"></span></p>
+        <p>Descripcion: <span id="descripcion-armadura"></span></p>
+        <p>Aumento: <span id="aumento-armadura"></span></p>
+        <button id="boton-armadura-equipar">EQUIPAR</button>
+        <button id="boton-armadura-tirar">TIRAR</button>
+        <button id="boton-armadura-siguiente">></button>
     </div>
-    <div id="cajon-armadura">
-        <div id="cajon-armadura-imagen">
-            <img id="imagen-arma" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del arma">
+    <div id="cajon-amuletos">
+        <h3>AMULETOS</h3>
+        <button id="boton-amuleto-anterior"><</button>
+        <div id="cajon-amuleto-imagen">
+            <img id="imagen-amuleto" src="./Imagenes/rompemontanhas(1).png" alt="Imagen del amuleto">
         </div>
-        <p id="nombre-armadura">Malla Metálica</p>
-        <p id="descripcion-armadura">Descripcion</p>
-        <p id="defensa-armadura">Defensa</p>
+        <p><span id="nombre-amuleto"></span></p>
+        <p>Descripcion: <span  id="descripcion-amuleto"></span></p>
+        <p>Aumento: <span id="aumento-amuleto"></span></p>
+        <button id="boton-amuleto-equipar">EQUIPAR</button>
+        <button id="boton-amuleto-tirar">TIRAR</button>
+        <button id="boton-amuleto-siguiente">></button>
     </div>
 
     <div id="pociones">
-        <div id="pocion-vida">
+        <div id="cajon-vida">
             <h3>Pociones de Salud</h3>
+            <button id="boton-vida-anterior"><</button>
             <div>
-                <img src=""></img>
+                <p><span id="nombre-vida"></span></p>
+                <p >Descripcion: <span id="descripcion-vida"></span></p>
+                <p> Aumento: <span id="aumento-vida"></span></p>
+                <img src="" id="imagen-vida" alt="Imagen pocion de vida"></img>
+                <button id="boton-beber">BEBER</button>
+                <button id="boton-vida-tirar">TIRAR</button>
+                <button id="boton-vida-siguiente">></button>
             </div>
         </div>
-        <div id="pocion-mana">
-
+        <div id="cajon-mana">
+            <h3>Pociones de Mana</h3>
+            <button id="boton-mana-anterior"><</button>
+            <div>
+                <p><span id="nombre-mana"></span></p>
+                <p>Descripcion: <span id="descripcion-mana"></span></p>
+                <p> Aumento: <span id="aumento-mana"></span></p>
+                <img id="imagen-mana" src="" alt="Imagen pocion de Mana">
+                <button id="boton-beber">EQUIPAR</button>
+                <button id="boton-mana-tirar">TIRAR</button>
+                <button id="boton-mana-siguiente">></button>
+            </div>
         </div>
     </div>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>
+    <script type="module" src="Clases/InventarioFuncionamiento.js"></script>
 </body>
 </html>
