@@ -200,7 +200,7 @@ export default class Personaje{
             this.#magia*=arma.aumento;
             this.#armaEquipada=arma;
          }else{
-            this.#ataque/=armaEquipada.aumento;//Le quitamos el aumento del arma anterior
+            this.#ataque/=armaAnterior.aumento;//Le quitamos el aumento del arma anterior
             this.#ataque*=arma.aumento; //Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
@@ -220,7 +220,13 @@ export default class Personaje{
     * 
     */
    quitarArma(){
+      if(this.#raza === "elfo" || this.#raza === "mago"){
+         this.#magia/=this.#armaEquipada.aumento;
+      }else{
+         this.#ataque/=this.#armaEquipada.aumento;
+      }
       this.#armaEquipada=null;
+   
    }
    /**
     * Método del personaje para equipar con una armadura/escudo que sube la defensa
@@ -242,6 +248,7 @@ export default class Personaje{
     * Método para quitar la armadura al personaje
     */
    quitarArmadura(){
+      this.#defensa/=this.#armaduraEquipada.aumento;;
       this.#armaduraEquipada=null;
    }
    /**
@@ -263,6 +270,7 @@ export default class Personaje{
     * Método para quitar el amuleto al personaje
     */
    quitarAmuleto(){
+      this.#resistenciaMagica/=this.#amuletoEquipado.aumento;
       this.#amuletoEquipado=null;
    }
    /**
@@ -546,6 +554,29 @@ export default class Personaje{
    */
    set experienciaMaxima(experienciaMaxima) {
       this.#experienciaMaxima = experienciaMaxima;
+   }
+
+   /**
+   * Getter para armaEquipada
+   * @return armaEquipada Devuelve el valor de armaEquipada;
+   */
+   get armaEquipada() {
+      return this.#armaEquipada;
+   }
+
+   /**
+   * Getter para armaduraEquipada
+   * @return armaduraEquipada Devuelve el valor de armaduraEquipada;
+   */
+   get armaduraEquipada() {
+      return this.#armaduraEquipada;
+   }
+   /**
+   * Getter para amuletoEquipado
+   * @return amuletoEquipado Devuelve el valor de amuletoEquipado;
+   */
+   get amuletoEquipado() {
+      return this.#amuletoEquipado;
    }
 
 }
