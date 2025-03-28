@@ -396,12 +396,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonArmaTirar=document.querySelector("#boton-arma-tirar");
     botonArmaTirar.addEventListener('click',()=>{
         let armaTirar=arrayArmas[indiceArma];
-        personaje.quitarArma(armaTirar,indice);
+        personaje.tirarObjeto(armaTirar);
+        personaje.quitarArma();
         if(arrayArmas.length>0){
              actualizarArma();
+             divArmaEquipada.style.display="none";
         }else{
-            armaEquipada=null;
-            divArmaEquipada.style.displa="none";
+            divArmaEquipada.style.display="none";
             divArmas.style.display="none";
         }
     });
