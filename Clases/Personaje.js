@@ -326,22 +326,24 @@ export default class Personaje{
     */
    tirarObjeto(objeto,indice){
       if(objeto instanceof Arma){
-         this.#inventario.armas.splice(indice,1);
+        // this.#inventario.armas.splice(indice,1);
          this.#inventario.tirarArma(indice);
       }
       else if(objeto instanceof Proteccion){
          if(objeto.tipo=== "amuleto"){
-            this.#inventario.amuletos.splice(indice,1);
+          //  this.#inventario.amuletos.splice(indice,1);
             this.#inventario.tirarArmadura(indice);
          }else{
-            this.#inventario.defensa.splice(indice,1);
+          //  this.#inventario.defensa.splice(indice,1);
             this.#inventario.tirarAmuleto(indice);
          }
       }else if(objeto instanceof Pocion){
          if(objeto.efecto==="salud"){
-            this.inventario.pocionesVida.splice(indice,1);
+            //this.inventario.pocionesVida.splice(indice,1);
+            this.#inventario.tirarPocion(objeto.efecto,indice);
          }else{
-            this.inventario.pocionesMana.splice(indice,1);
+           // this.inventario.pocionesMana.splice(indice,1);
+           this.#inventario.tirarPocion(objeto.efecto,indice);
          }
       }
    }
