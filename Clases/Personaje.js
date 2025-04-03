@@ -17,7 +17,7 @@ export default class Personaje{
     #nivel=1;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=5000; // Total de oro 
+    #oro=0; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;

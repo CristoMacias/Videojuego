@@ -142,7 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const volverLobby = function () {
         localStorage.removeItem('enemigo');
+        localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
     }
+    botonFinPartida.addEventListener("click", volverLobby);
 
     function controlarVida(){
         if (personaje.vidaActual <= 0 || enemigo.vida <= 0){
@@ -154,8 +156,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonHuir.classList.add("botonesArenaBlock");
                 derrota.style.display = "flex";
                 botonFinPartida.style.display = "flex";
+                personaje.vidaActual = personaje.vidaMaxima;
             }
-            else if(enemigo.vida <= 0){
+            else{
                 botonAtacar.classList.add("botonesArenaBlock");
                 botonDefender.classList.add("botonesArenaBlock");
                 botonCritico.classList.add("botonesArenaBlock");
@@ -163,9 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonHuir.classList.add("botonesArenaBlock");
                 victoria.style.display = "flex";
                 botonFinPartida.style.display = "flex";
-
-            }
-            else{
                 darExperiencia();
                 darOro();
             }
@@ -174,7 +174,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function darExperiencia(){
-        personaje.experiencia += 100;
+        let experienciaGanada = 0;
+
+        if(personaje.nivel === enemigo.nivel){
+            experienciaGanada = 100;
+        }
+        else{
+            experienciaGanada = (personaje.enemigo - personaje.nivel) * 100;
+        }
+        
+
+        personaje.ganarExperiencia(experienciaGanada);
+        
     }
     function darOro(){
         personaje.oro += 100;

@@ -338,6 +338,27 @@ input[type="radio"] {
     height: 0;
 }
 
+form div:last-child {
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+}
+
+#imagen-elegir {
+    display: block;
+    margin: 10px auto;
+   
+}
+#nombre {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100px; /* Ajusta la altura si es necesario */
+}
+
 /*Victoria o derrota*/
 .victoria{
     margin-top: -26%;
@@ -377,24 +398,4 @@ input[type="radio"] {
     align-items: center;
     justify-content: center;
     z-index: 1000;
-}
-form div:last-child {
-    text-align: center;
-}
-
-button {
-    display: inline-block;
-    margin: 10px;
-}
-
-#imagen-elegir {
-    display: block;
-    margin: 10px auto;
-   
-}
-#nombre {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100px; /* Ajusta la altura si es necesario */
 }

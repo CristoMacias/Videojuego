@@ -1,3 +1,5 @@
+import Personaje from "./Personaje.js";
+
 document.addEventListener('DOMContentLoaded', ()=> {
 
     //Atributos parte superior
@@ -18,7 +20,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const spanPoderMagico = document.querySelector("#spanPoderMagico")
     const spanResistenciaMagica = document.querySelector("#spanResistenciaMagica")
 
-    const personaje = JSON.parse(localStorage.getItem('personaje'));
+    const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));
+    const personaje = Personaje.reconstruirJson(jsonpersonaje);
 
     if(personaje){
         //TODO: Añadir vida y mana maximos
