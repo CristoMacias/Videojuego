@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonDesequiparTodo=document.querySelector("#boton-desequipar");
     botonDesequiparTodo.addEventListener('click',()=>{
         personaje.desequiparTodo();
+        divArmaEquipada.style.display="none";
+        divArmaduraEquipada.style.display="none";
+        divAmuletoEquipado.style.display="none";
     });
     //Titulo personalizado
     const titulo=document.querySelector("#titulo-inventario");
