@@ -315,17 +315,18 @@ export default class Personaje{
     * Método para subir de nivel y estadísticas
     */
    subirNivel(){
+      let aumento=this.#nivel*0.5;
       this.#nivel++;
-      this.#vidaActual+=Math.floor(this.#vidaActual*0.2);
-      this.#vidaMaxima+=Math.floor(this.#vidaMaxima*0.2);
-      this.#defensa+=Math.floor(this.#defensa*0.1);
-      this.resistenciaMagica+=Math.floor(this.#resistenciaMagica*0.1);
-      this.#manaMaximo+=Math.floor(this.#manaMaximo*0.1);
-      this.#manaActual+=Math.floor(this.#manaActual * 0.1);
+      this.#vidaActual+=Math.floor(this.#vidaActual*aumento);
+      this.#vidaMaxima+=Math.floor(this.#vidaMaxima*aumento);
+      this.#defensa+=Math.floor(this.#defensa*aumento);
+      this.resistenciaMagica+=Math.floor(this.#resistenciaMagica*aumento);
+      this.#manaMaximo+=Math.floor(this.#manaMaximo*aumento);
+      this.#manaActual+=Math.floor(this.#manaActual * aumento);
       if(this.#raza === "elfo" || this.#raza === "mago"){
-         this.#magia+=Math.floor(this.#magia*0.1);
+         this.#magia+=Math.floor(this.#magia*aumento);
       }else{
-         this.#ataque+=Math.floor(this.#ataque*0.1);
+         this.#ataque+=Math.floor(this.#ataque*aumento);
       }
    }
    /**
