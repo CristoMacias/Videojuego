@@ -2,6 +2,7 @@ import Inventario from './Inventario.js';
 import Enemigo from './Enemigos.js';
 import Arma from './Arma.js';
 import Proteccion from './Proteccion.js';
+import Pocion from './Pocion.js';
 export default class Personaje{
     
     #nombre; //Nombre del personaje
@@ -126,6 +127,7 @@ export default class Personaje{
      */
     comprarTienda(objeto){
       this.#inventario.agregarObjeto(objeto);
+      this.perderOro(objeto.precio);
     }
 
    /**
@@ -226,7 +228,6 @@ export default class Personaje{
          this.#ataque/=this.#armaEquipada.aumento;
       }
       this.#armaEquipada=null;
-   
    }
    /**
     * Método del personaje para equipar con una armadura/escudo que sube la defensa
@@ -271,6 +272,14 @@ export default class Personaje{
     */
    quitarAmuleto(){
       this.#resistenciaMagica/=this.#amuletoEquipado.aumento;
+      this.#amuletoEquipado=null;
+   }
+   /**
+    * Método para desequipar de golpe el arma y objetos de defensa
+    */
+   desequiparTodo(){
+      this.#armaEquipada=null;
+      this.#armaduraEquipada=null;
       this.#amuletoEquipado=null;
    }
    /**
@@ -325,26 +334,25 @@ export default class Personaje{
     * @param {*} indice Posicion en la que se encuentra del array
     */
    tirarObjeto(objeto,indice){
+      console.log("dentro de tirarobjeto");
+      console.log(objeto);
+      console.log(indice);
       if(objeto instanceof Arma){
-        // this.#inventario.armas.splice(indice,1);
          this.#inventario.tirarArma(indice);
       }
       else if(objeto instanceof Proteccion){
+
          if(objeto.tipo=== "amuleto"){
-          //  this.#inventario.amuletos.splice(indice,1);
-            this.#inventario.tirarArmadura(indice);
-         }else{
-          //  this.#inventario.defensa.splice(indice,1);
+
             this.#inventario.tirarAmuleto(indice);
+         }else{
+            console.log("dentro de else armadura");
+            this.#inventario.tirarArmadura(indice);
          }
       }else if(objeto instanceof Pocion){
-         if(objeto.efecto==="salud"){
-            //this.inventario.pocionesVida.splice(indice,1);
-            this.#inventario.tirarPocion(objeto.efecto,indice);
-         }else{
-           // this.inventario.pocionesMana.splice(indice,1);
-           this.#inventario.tirarPocion(objeto.efecto,indice);
-         }
+         console.log("dentro de objeto instance of pocion");
+         this.#inventario.tirarPocion(objeto.efecto,indice);
+         
       }
    }
     

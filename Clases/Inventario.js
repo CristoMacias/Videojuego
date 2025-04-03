@@ -21,8 +21,6 @@ export default class Inventario{
      * @param {*} objeto Objeto a añadir
      */
     agregarObjeto(objeto){
-        console.log("llega a inventario");
-        console.log(objeto.nombre);
         if(objeto instanceof Arma && this.#armas.length<5){
             this.#armas.push(objeto);
             alert(`¡Se ha añadido ${objeto.nombre} al inventario!`);
@@ -72,21 +70,21 @@ export default class Inventario{
      * @param {*} indice Posicion del arma a quitar
      */
     tirarArma(indice){
-        this.#armas.splice(indice);
+        this.#armas.splice(indice,1);
     }
     /**
      * Método para quitar una armadura/escudo del array defensa
      * @param {*} indice Posición del armadura/escudo a quitar
      */
     tirarArmadura(indice){
-        this.#defensa.splice(indice);
+        this.#defensa.splice(indice,1);
     }
     /**
      * Método para quitar un amuleto del array amuletos
      * @param {*} indice Posición del amuleto a quitar
      */
     tirarAmuleto(indice){
-        this.amuletos.splice(indice);
+        this.amuletos.splice(indice,1);
     }
     /**
      * Método para quitar una pocion de los arrays de pociones
@@ -95,9 +93,9 @@ export default class Inventario{
      */
     tirarPocion(efecto,indice){
         if(efecto==="salud"){
-            this.#pocionesVida.splice(indice);
+            this.#pocionesVida.splice(indice,1);
         }else{
-            this.#pocionesMana.splice(indice);
+            this.#pocionesMana.splice(indice,1);
         }
     }
     /**
