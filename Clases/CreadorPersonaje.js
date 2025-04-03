@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded',()=>{
    
         const valor = armaRadio.value;
         console.log(armaRadio.value);
-        const arma = armas[raza][valor]
+        const arma = armas[raza][valor];
         const imagen = imagenesPersonaje[indiceRaza];
         const personaje = new Personaje(nombre,raza,imagen);
         personaje.equiparArma(arma);

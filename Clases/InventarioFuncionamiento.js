@@ -1,29 +1,34 @@
 import Personaje from './Personaje.js';
 import Inventario from './Inventario.js';
+import Arma from './Arma.js';
 document.addEventListener('DOMContentLoaded',()=>{
     //Reconstruir peresonaje
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
     const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
     //Funcion de guardar
     const botonGuardar=document.querySelector("#boton-guardar");
-        botonGuardar.addEventListener('click',()=>{
-            localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); 
+    botonGuardar.addEventListener('click',()=>{
+        localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); 
+    });
+    const botonDesequiparTodo=document.querySelector("#boton-desequipar");
+    botonDesequiparTodo.addEventListener('click',()=>{
+        personaje.desequiparTodo();
     });
     //Titulo personalizado
     const titulo=document.querySelector("#titulo-inventario");
     titulo.textContent="INVENTARIO DE "+ personaje.nombre;
     //Cogemos el inventario en una variable
-    const inventario = personaje.inventario;
+    let inventario = personaje.inventario;
     //Scamos los arrays del inventario
-    const arrayArmas= inventario.armas;
-    const arrayDefensa = inventario.defensa;
-    const arrayAmuletos = inventario.amuletos;
-    const arrayPocionVida = inventario.pocionesVida;
-    const arrayPocionMana = inventario.pocionesMana;
+    let arrayArmas= inventario.armas;
+    let arrayDefensa = inventario.defensa;
+    let arrayAmuletos = inventario.amuletos;
+    let arrayPocionVida = inventario.pocionesVida;
+    let arrayPocionMana = inventario.pocionesMana;
     //Sacamos lo que lleva equipado el personaje
-    const armaEquipada=personaje.armaEquipada;
-    const armaduraEquipada=personaje.armaduraEquipada;
-    const amuletoEquipado=personaje.amuletoEquipado;
+    let armaEquipada=personaje.armaEquipada;
+    let armaduraEquipada=personaje.armaduraEquipada;
+    let amuletoEquipado=personaje.amuletoEquipado;
     //Sacamos los divs de cada objeto para poder controlar que se muestren o se oculten
     const divArmaEquipada=document.querySelector("#arma-equipada");
     const divArmaduraEquipada=document.querySelector("#armadura-equipada");
@@ -125,7 +130,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             divVida.style.display="none";
         }
         //Comprobar el array de pociones de mana
-        if(divMana.length>0){
+        if(arrayPocionMana.length>0){
             divMana.style.display="block";
             imagenMana.src=arrayPocionMana[0].imagen;
             nombreMana.textContent=arrayPocionMana[0].nombre;
@@ -175,15 +180,16 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonArmaSiguiente=document.querySelector("#boton-arma-siguiente");
     let indiceArma=0;
     botonArmaAnterior.addEventListener('click',()=>{
-        console.log("se puelsa el anterior");
+
         indiceArma--;
-        console.log("se resta del indice");
+;
         if(indiceArma<0){
             console.log("se ha pasado del 0");
             indiceArma=arrayArmas.length-1;
         }
         actualizarArma();
-        console.log("se ha actualziado");
+
+        console.log(indiceArma);
     });
 
     botonArmaSiguiente.addEventListener('click',()=>{
@@ -192,7 +198,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             indiceArma=0;
         }
         actualizarArma();
-
+        console.log(indiceArma);
     });
     /**
      * Función para actualizar el arma que se muestra por pantalla
@@ -335,8 +341,11 @@ document.addEventListener('DOMContentLoaded',()=>{
    
     const botonArmaDesequipar=document.querySelector("#boton-arma-desequipar");
     botonArmaDesequipar.addEventListener('click',()=>{
+        console.log("antes de quitar: ",armaEquipada);
         personaje.quitarArma();
+        armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="none";
+        console.log("despues de quitar:",armaEquipada);
     });
 
 
@@ -345,13 +354,17 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const botonArmaEquipar=document.querySelector("#boton-arma-equipar");
     botonArmaEquipar.addEventListener('click',()=>{
-        const arma=arrayArmas[indiceArma];
+        console.log("antes de equipar",armaEquipada);
+        let arma=arrayArmas[indiceArma];
+        console.log("incializado arma",arma);
         personaje.equiparArma(arma);
+        armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="block";
         imagenArmaEquipada.src=arma.imagen;
         nombreArmaEquipada.textContent=arma.nombre;
         descripcionArmaEquipada.textContent=arma.descripcion;
         aumentoArmaEquipada.textContent=arma.aumento;
+        console.log("despues de equipar",armaEquipada);
         
     });
     const botonArmaduraDesequipar=document.querySelector("#boton-armadura-desequipar");
@@ -359,12 +372,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     botonArmaduraDesequipar.addEventListener('click',()=>{
         personaje.quitarArmadura();
+        armaduraEquipada=personaje.armaduraEquipada;
         divArmaduraEquipada.style.display="none";
     });
 
     botonArmaduraEquipar.addEventListener('click',()=>{
-        const armadura=arrayDefensa[indiceArmadura];
+        let armadura=arrayDefensa[indiceArmadura];
         personaje.equiparArmadura(armadura);
+        armaduraEquipada=personaje.armaduraEquipada;
         console.log(personaje.armaduraEquipada);
         divArmaduraEquipada.style.display="block";
         imagenArmaduraEquipada.src=armadura.imagen;
@@ -378,12 +393,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     botonAmuletoDesequipar.addEventListener('click',()=>{
         personaje.quitarAmuleto();
+        amuletoEquipado=personaje.amuletoEquipado;
         divAmuletoEquipado.style.display="none";
     });
 
     botonAmuletoEquipar.addEventListener('click',()=>{
-        const amuleto=arrayAmuletos[indiceAmuleto];
+        let amuleto=arrayAmuletos[indiceAmuleto];
         personaje.equiparAmuleto(amuleto);
+        amuletoEquipado=personaje.amuletoEquipado;
         divAmuletoEquipado.style.display="block";
         imagenAmuletoEquipado.src=amuleto.imagen;
         nombreAmuletoEquipado.textContent=amuleto.nombre;
@@ -393,17 +410,99 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     //Funcionamiento de botones de Tirar los objetod de los arrays
 
+        //Tirar Armas
     const botonArmaTirar=document.querySelector("#boton-arma-tirar");
     botonArmaTirar.addEventListener('click',()=>{
         let armaTirar=arrayArmas[indiceArma];
-        personaje.tirarObjeto(armaTirar);
-        personaje.quitarArma();
+        console.log(armaTirar);
+        personaje.tirarObjeto(armaTirar,indiceArma);
+        if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){
+            personaje.quitarArma();
+            divArmaEquipada.style.display="none";
+        }  
+        indiceArma--;
+        if(indiceArma<0){
+            indiceArma=0;
+        }
         if(arrayArmas.length>0){
              actualizarArma();
-             divArmaEquipada.style.display="none";
         }else{
             divArmaEquipada.style.display="none";
             divArmas.style.display="none";
         }
+    });
+
+        //Tirar armadura
+    const botonArmaduraTirar=document.querySelector("#boton-armadura-tirar");
+    botonArmaduraTirar.addEventListener('click',()=>{
+        let armaduraTirar=arrayDefensa[indiceArmadura];
+        personaje.tirarObjeto(armaduraTirar,indiceArmadura);
+        if(armaduraEquipada!== null && armaduraEquipada.nombre===armaduraTirar.nombre){
+            personaje.quitarArmadura();
+            divArmaduraEquipada.style.display="none";
+        }
+        indiceArmadura--;
+        if(indiceArmadura<0){
+            indiceArmadura=0;
+        }
+        if(arrayDefensa.length>0){
+            actualizarArmadura();
+        }else{
+            divArmaduraEquipada.style.display="none";
+            divArmaduras.style.display="none";
+        }
+    });
+
+    const botonAmuletoTirar=document.querySelector("#boton-amuleto-tirar");
+    botonAmuletoTirar.addEventListener('click',()=>{
+        let amuletoTirar=arrayAmuletos[indiceAmuleto];
+        personaje.tirarObjeto(amuletoTirar,indiceAmuleto);
+        if(amuletoEquipado !==null && amuletoEquipado.nombre===amuletoTirar.nombre){
+            personaje.quitarAmuleto();
+            divAmuletoEquipado.style.display="none";
+        }
+        indiceAmuleto--;
+        if(indiceAmuleto<0){
+            indiceAmuleto=0;
+        }
+        if(arrayAmuletos.length>0){
+            actualizarAmuleto();
+        }else{
+            divAmuletoEquipado.style.display="none";
+            divAMuletos.style.display="none";
+        }
+    });
+    //TODO: Modificar método de tomarPocion para pasar el indice
+    // y así ahorrar sacar el indice en el metodo
+
+    const botonPocionBeberVida=document.querySelector("#boton-beber-vida");
+    botonPocionBeberVida.addEventListener('click',()=>{
+        let pocionBeber = arrayPocionVida[indiceVida];
+        personaje.tomarPocion(pocionBeber);
+        indiceVida--;
+        if(indiceVida<0){
+            indiceVida=0;
+        }
+        if(arrayPocionVida.length>0){
+            actualizarPocionVida();
+        }else{
+            divVida.style.display="none";
+        }
+    });
+
+    const botonBeberMana=document.querySelector("#boton-beber-mana");
+    botonBeberMana.addEventListener('click',()=>{
+        let pocionBeber=arrayPocionMana[indiceMana];
+        personaje.tomarPocion(pocionBeber);
+        indiceMana--;
+        if(indiceMana<0){
+            indiceMana=0;
+        }
+        if(arrayPocionMana.length>0){
+            actualizarPocionMana();
+        }else{
+            divMana.style.display="none";
+        }
+    
     });
 });
