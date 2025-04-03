@@ -31,6 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const botonPocion = document.querySelector("#botonPocion");
     const botonHuir = document.querySelector("#botonHuir");
 
+    //Declarar Superposiciones
+    const victoria = document.querySelector("#victoria");
+    const derrota = document.querySelector("#derrota");
+    const botonFinPartida = document.querySelector("#botonFinPartida");
+
+
     const inventarioPersonaje = personaje.inventario;
     let pocionesVida = inventarioPersonaje.pocionesVida;
 
@@ -76,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else{
             alert("Se acabo el combate.")
         }
+        controlarVida();
 
     }
     botonAtacar.addEventListener("click", atacar);
@@ -133,7 +140,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     botonHuir.addEventListener("click", huirDelCombate);
 
+    const volverLobby = function () {
+        localStorage.removeItem('enemigo');
+    }
 
+    function controlarVida(){
+        if (personaje.vidaActual <= 0 || enemigo.vida <= 0){
+            if(personaje.vidaActual <= 0){
+                botonAtacar.classList.add("botonesArenaBlock");
+                botonDefender.classList.add("botonesArenaBlock");
+                botonCritico.classList.add("botonesArenaBlock");
+                botonPocion.classList.add("botonesArenaBlock");
+                botonHuir.classList.add("botonesArenaBlock");
+                derrota.style.display = "flex";
+                botonFinPartida.style.display = "flex";
+            }
+            else if(enemigo.vida <= 0){
+                botonAtacar.classList.add("botonesArenaBlock");
+                botonDefender.classList.add("botonesArenaBlock");
+                botonCritico.classList.add("botonesArenaBlock");
+                botonPocion.classList.add("botonesArenaBlock");
+                botonHuir.classList.add("botonesArenaBlock");
+                victoria.style.display = "flex";
+                botonFinPartida.style.display = "flex";
+
+            }
+            else{
+                darExperiencia();
+                darOro();
+            }
+
+        }
+    }
+
+    function darExperiencia(){
+        personaje.experiencia += 100;
+    }
+    function darOro(){
+        personaje.oro += 100;
+    }
 
 
 });
