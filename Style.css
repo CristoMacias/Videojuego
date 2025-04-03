@@ -1,6 +1,7 @@
 :root{
     --verdeOscuro: #20464e;
     --amarilloFondo: #ce904c;
+    
 }
 
 body {
@@ -58,8 +59,7 @@ a:hover{
     transform: scale(1.10);
     transition: 1s;
     border: #ce904c ridge 2px;
-    color: var(--amarilloFondo);
-    
+    color: var(--amarilloFondo);  
 }
 
 .opcionIndex{
@@ -149,11 +149,12 @@ html .tienda{
     right: 0;
     box-sizing: border-box;
 }
-
+/* Estilos de arena*/
 .arenaElementos{
     display: flex;
     border: white 3px ridge;
     justify-content: space-around;
+    z-index: -1;
 }
 .arenaImagenes{
     border: brown 3px ridge;
@@ -161,15 +162,22 @@ html .tienda{
     align-content: center;
     width: 20%;
     text-align: center;
+    z-index: -1;
 }
 .botonesArena{
     display: flex;
     border: white 3px ridge;
     justify-content: space-around;
-    text-align: center;
-
-
+    text-align: center;   
 }
+.botonesArenaBlock{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center; 
+    z-index: -1;
+}
+
 
 /*Imagenes de la tienda de armas*/
 .imagenItem{
@@ -178,6 +186,7 @@ html .tienda{
     margin-left: auto;
     margin-right: auto;
     padding-left: 15%;
+    
     
 }
 
@@ -327,6 +336,47 @@ input[type="radio"] {
     position: absolute; /* Lo saca del flujo normal */
     width: 0;
     height: 0;
+}
+
+/*Victoria o derrota*/
+.victoria{
+    margin-top: -26%;
+    background-color: rgba(32, 70, 78, 0.3);
+    margin-right: auto;
+    margin-left: auto;
+    align-content: center;
+    display: none;
+    border-radius: 10%;
+}
+.derrota{
+    margin-top: -26%;
+    background-color: rgba(206, 144, 76, 0.3);
+    margin-right: auto;
+    margin-left: auto;
+    align-content: center;
+    display: none;
+    border-radius: 10%;
+    z-index: 1000;
+}
+.botonFinPartida{
+    background-color: var(--amarilloFondo);
+    border-radius: 15px;
+    display: none;
+    text-align: center;
+    text-decoration: none;
+    color: var(--verdeOscuro);
+    cursor: pointer;
+    align-content: center;
+    border: #20464e ridge 2px;
+    font-size: 110%;
+    width: 33%;
+    height: 40px;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
 form div:last-child {
     text-align: center;

@@ -52,11 +52,15 @@
         <button class="botonesArena" id="botonDefender" >Defender</button>
         <button class="botonesArena" id="botonCritico" >Golpe critico</button>
         <button class="botonesArena" id="botonPocion" >Pocion</button>
-        <a href="Lobby.html"><button class="botonesArena" id="botonHuir">Huir</button></a>     
+        <a href="Lobby.html" class="botonesArena"><button id="botonHuir">Huir</button></a>     
+    </div>
+    <div class="finPartida">
+        <img class="victoria" id="victoria" src="Imagenes/Ganar.png">
+        <img class="derrota" id="derrota" src="Imagenes/Perder.png">
+        <a class="botonFinPartida" id="botonFinPartida" href="Lobby.html">Volver</a>
     </div>
     
     
-    <p><a href="./Lobby.html">Volver</a></p>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="./Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Combate.js" ></script>
