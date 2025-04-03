@@ -305,7 +305,7 @@ export default class Personaje{
    ganarExperiencia(experienciaGanada){
       if(this.#experiencia+=experienciaGanada > this.#experienciaMaxima){
          this.subirNivel();
-         this.#experiencia= this.#experiencia-this.#experienciaMaxima;
+         this.#experiencia=experienciaGanada- this.#experiencia;
          this.#experienciaMaxima = Math.floor(this.#experienciaMaxima * 1.5);
       }else{
          this.#experiencia+=experienciaGanada;
