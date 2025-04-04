@@ -88,9 +88,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     const nombreAmuletoEquipado=document.querySelector("#nombre-amuleto-equipado");
     const descripcionAmuletoEquipado=document.querySelector("#descripcion-amuleto-equipado");
     const aumentoAmuletoEquipado=document.querySelector("#aumento-amuleto-equipado");
-    /*
-   
-    */
+
+    //Variable mostrar total pociones
+    const totalPocionVida=document.querySelector("#total-pociones-vida");
+    const totalPocionMana=document.querySelector("#total-pociones-mana");
     
     function comprobarVacios(){
         //Comprobar el array Armas
@@ -129,6 +130,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             nombreVida.textContent=arrayPocionVida[0].nombre;
             descripcionVida.textContent=arrayPocionVida[0].descripcion;
             aumentoVida.textContent=arrayPocionVida[0].aumento;
+            totalPocionVida.textContent=arrayPocionVida.length;
         }else{
             divVida.style.display="none";
         }
@@ -139,6 +141,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             nombreMana.textContent=arrayPocionMana[0].nombre;
             descripcionMana.textContent=arrayPocionMana[0].descripcion;
             aumentoMana.textContent=arrayPocionMana[0].aumento;
+            totalPocionMana.textContent=arrayPocionMana.length;
 
         }else{
             divMana.style.display="none";
