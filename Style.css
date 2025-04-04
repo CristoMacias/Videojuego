@@ -21,7 +21,7 @@ body {
 a{
     z-index: 10;
 }
-
+/*
 .logo{
     margin-left: auto;
     margin-right: auto;
@@ -70,7 +70,11 @@ a:hover{
 .noPersonaje{
     display: none;
 }
+*/
 
+
+
+/*
 .topLobby{
     display: flex;
     align-items: start;
@@ -128,6 +132,11 @@ a:hover{
     margin-right: auto;
     padding-left: 15%;
 }
+*/
+
+
+
+/*Estilos tienda
 
 .tarjetas{
     display: inline-flex;
@@ -140,6 +149,8 @@ a:hover{
     width: 15%;
     padding-left: 8px;
 }
+
+
 html .tienda{
     margin: 0;
     padding: 0;
@@ -149,73 +160,31 @@ html .tienda{
     right: 0;
     box-sizing: border-box;
 }
-/* Estilos de arena*/
-.arenaElementos{
-    display: flex;
-    border: white 3px ridge;
-    justify-content: space-around;
-    z-index: -1;
-}
-.arenaImagenes{
-    border: brown 3px ridge;
-    height: 200px;
-    align-content: center;
-    width: 20%;
-    text-align: center;
-    z-index: -1;
-}
-.botonesArena{
-    display: flex;
-    border: white 3px ridge;
-    justify-content: space-around;
-    text-align: center;   
-}
-.botonesArenaBlock{
-    display: flex;
-    border: white 3px ridge;
-    justify-content: space-around;
-    text-align: center; 
-    z-index: -1;
-}
-
-
-/*Imagenes de la tienda de armas*/
+--Imagenes de la tienda de armas
 .imagenItem{
-    height: 140px;
-    width: auto;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 15%;
+    max-width: 100%; --La imagen no será más grande que su contenedor 
+    height: auto; -- Mantiene la proporción 
+    display: block; --Evita espacios adicionales 
+    margin: 0 auto; --Centra la imagen 
     
     
 }
+*/
 
-.topArena{
-    display: flex;
-    align-items: start;
-    margin: 3%;
-}
 
-.imagenArena{
-    border: 5px ridge;
-    width: 33%;
-    height: 300px;
-    border-radius: 15px;
-    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
-    margin-right: 5%;
-}
+
+
+
 
 /*Eleccion de armas básicas */
 #elegir-arma{
     display: flex;
-
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: center;
     gap: 10px;
 }
-.div-armas{
-    
+.div-armas{ 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,7 +194,6 @@ html .tienda{
     padding: 10px;
 }
 .div-armas img {
-    
     width: 100%; /* Se ajusta al tamaño del contenedor */
     max-width: 250px; /* Limita el tamaño máximo */
     aspect-ratio: 1/1; 
@@ -280,7 +248,7 @@ html .tienda{
 }
 
 
-/*h2 de eleccion de arma inicial*/
+/*h1 de eleccion de arma inicial*/
 #titulo-Crea {
     font-size: 36px;
     color: var(--amarilloFondo);
@@ -302,6 +270,7 @@ html .tienda{
     margin: 10px auto;
 }
 
+/*h2 de eleccion de arma inicial*/
 #titulo-unico {
     font-size: 28px;
     color: var(--amarilloFondo);
@@ -338,7 +307,11 @@ input[type="radio"] {
     height: 0;
 }
 
-/*Victoria o derrota*/
+
+
+
+/*
+--Victoria o derrota
 .victoria{
     margin-top: -26%;
     background-color: rgba(32, 70, 78, 0.3);
@@ -394,7 +367,56 @@ button {
 }
 #nombre {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100px; /* Ajusta la altura si es necesario */
+    justify-content: center; Centra horizontalmente 
+    align-items: center; Centra verticalmente 
+    height: 100px;  Ajusta la altura si es necesario 
 }
+
+
+/* Estilos de arena
+.arenaElementos{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    z-index: -1;
+}
+.arenaImagenes{
+    border: brown 3px ridge;
+    height: 200px;
+    align-content: center;
+    width: 20%;
+    text-align: center;
+    z-index: -1;
+}
+.botonesArena{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center;   
+}
+.botonesArenaBlock{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center; 
+    z-index: -1;
+}
+
+
+
+
+.topArena{
+    display: flex;
+    align-items: start;
+    margin: 3%;
+}
+
+.imagenArena{
+    border: 5px ridge;
+    width: 33%;
+    height: 300px;
+    border-radius: 15px;
+    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
+    margin-right: 5%;
+}
+*/

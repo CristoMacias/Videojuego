@@ -2,11 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Estilos/CrearPersonaje.css">
     <title>Crear Personaje</title>
 </head>
 <body>
-    <p><a href="Index.html">Volver</a></p>
+    
     <h1 id="titulo-Crea">CREA TU PERSONAJE</h1>
     <form id="formulario">
         <div>
@@ -51,10 +51,15 @@
                 </label>
             </div>
         </div>
-        <div>
-            <button type="submit">Crear Personaje</button>
-            <button type="reset">Reiniciar</button>
+        <div class="botonesCrear">
+            <button class="botonCreacion" type="submit">Crear Personaje</button>
+            <button class="botonCreacion" type="reset">Reiniciar</button>
+         </div>
+         <div>
+            <p><a class="botonVolverLobby"  href="Index.html">Volver</a></p>
         </div>
+            
+       
     </form>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
