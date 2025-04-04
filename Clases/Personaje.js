@@ -187,7 +187,7 @@ export default class Personaje{
          esMagico = true;
          enemigo.recibirDanho(this.magia *1.30, esMagico);
       }else{
-         enemigo.recbirDanho(this.#ataque *1.30,esMagico);
+         enemigo.recibirDanho(this.#ataque *1.30,esMagico);
       }
    }
    /**

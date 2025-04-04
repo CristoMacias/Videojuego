@@ -61,37 +61,41 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const atacar = function () {
         
-        if(personaje.vidaActual > 0 && enemigo.vida > 0){
-            personaje.atacarEnemigo(enemigo);
+        personaje.atacarEnemigo(enemigo);
             if(enemigo.vida <= 0){
                 spanVidaEnemigo.textContent = " Eliminado ";
             }
             else{
                 spanVidaEnemigo.textContent = " : " + enemigo.vida;
             }
-            
-            if(enemigo.vida > 0){
-                enemigo.atacar(personaje);
-                if(personaje.vidaActual <= 0){
-                    spanVidaAliado.textContent = " Eliminado ";
-                }else{
-                    spanVidaAliado.textContent = " : " + personaje.vidaActual;
-                }
-            }
-        }
-        else{
-            alert("Se acabo el combate.")
-        }
+        
+        ataqueEnemigo();
+
         controlarVida();
 
     }
     botonAtacar.addEventListener("click", atacar);
 
+    function ataqueEnemigo(){
+        if(enemigo.vida > 0){
+            enemigo.atacar(personaje);
+            if(personaje.vidaActual <= 0){
+                spanVidaAliado.textContent = " Eliminado ";
+            }else{
+                spanVidaAliado.textContent = " : " + personaje.vidaActual;
+            }
+        }  
+        controlarVida(); 
+    }
+
+
     /**
      * Método de defender
      */
     const defender = function () {
-        console.log("Esta función aun no está implementada.")
+        
+        personaje
+
     }
     botonDefender.addEventListener("click", defender);
 
@@ -99,30 +103,28 @@ document.addEventListener('DOMContentLoaded', () => {
      * Método para dar un golpe crítico
      */
     const golpeCritico = function () {
-        
-        if(personaje.vidaActual > 0 && enemigo.vida > 0){
+    
+    if(personaje.manaActual > 0 && personaje.manaActual > 39){
             personaje.ataqueCritico(enemigo);
             personaje.manaActual -= 40;
             spanManaAliado.textContent = " : " + personaje.manaActual;
             if(enemigo.vida <= 0){
-                spanVidaEnemigo.textContent = " Eliminado ";
+                    spanVidaEnemigo.textContent = " Eliminado ";
             }
             else{
-                spanVidaEnemigo.textContent = " : " + enemigo.vida;
+                    spanVidaEnemigo.textContent = " : " + enemigo.vida;
             }
-            
-            if(enemigo.vida > 0){
-                enemigo.atacar(personaje);
-                if(personaje.vidaActual <= 0){
-                    spanVidaAliado.textContent = " Eliminado ";
-                }else{
-                    spanVidaAliado.textContent = " : " + personaje.vidaActual;
-                }
-            }
-        }
-        else{
-            alert("Se acabo el combate.")
-        }
+                
+            ataqueEnemigo();
+    }
+    else if(personaje.manaActual < 40){
+        alert("No tienes suficiente maná")
+    }
+    else{
+            alert("¡El maná se ha agotado!");
+    }
+        controlarVida();
+       
     }
     botonCritico.addEventListener("click", golpeCritico);
 
@@ -140,11 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     botonHuir.addEventListener("click", huirDelCombate);
 
+    /**
+     * Botón de volver al Lobby, esto subirá los cambios del aliado.
+     */
     const volverLobby = function () {
         localStorage.removeItem('enemigo');
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
     }
     botonFinPartida.addEventListener("click", volverLobby);
+
+    
 
     function controlarVida(){
         if (personaje.vidaActual <= 0 || enemigo.vida <= 0){
@@ -176,11 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function darExperiencia(){
         let experienciaGanada = 0;
 
-        if(personaje.nivel === enemigo.nivel){
+        if(personaje.nivel === enemigo.nivel || personaje.nivel > enemigo.nivel){
             experienciaGanada = 100;
         }
         else{
-            experienciaGanada = (personaje.enemigo - personaje.nivel) * 100;
+            experienciaGanada = (enemigo.nivel - personaje.nivel) * 100;
         }
         
 
