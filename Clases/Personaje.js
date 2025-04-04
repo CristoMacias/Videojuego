@@ -189,6 +189,7 @@ export default class Personaje{
       }else{
          enemigo.recbirDanho(this.#ataque *1.30,esMagico);
       }
+      
    }
    /**
     * Método para equipar el arma al personaje para el combate

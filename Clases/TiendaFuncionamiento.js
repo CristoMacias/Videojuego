@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const amuletos=protecciones.amuleto; //Array con los amuletos
     const pocionesVida=pociones.salud; //Array con las pociones de vida
     const pocionesMana=pociones.mana; //Array con las pociones de maná
-    const comprar=document.querySelector(".comprar");
     //Cuando se inicia la tienda muestra el primer objeto de cada array
+   //TODO: quitar estos metodos a los objetos e implementarlos aqui
     armas[0].mostrarArma();
     escudos[0].mostrarEscudo();
     armaduras[0].mostrarArmadura();

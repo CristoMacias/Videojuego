@@ -36,13 +36,14 @@ export default class Arma{
 
     
     mostrarArma(){
-      document.querySelector("#imagen-arma").src=this.imagen;
-      document.querySelector("#nombre-arma").textContent=this.nombre;
-      document.querySelector("#descripcion-arma").textContent=this.descripcion;
-      document.querySelector("#aumento-arma").textContent=this.aumento;
-      document.querySelector("#precio-arma").textContent=this.precio;
+      document.querySelector("#imagen-arma").src=this.#imagen;
+      document.querySelector("#nombre-arma").textContent=this.#nombre;
+      document.querySelector("#descripcion-arma").textContent=this.#descripcion;
+      document.querySelector("#aumento-arma").textContent=this.#aumento;
+      document.querySelector("#precio-arma").textContent=this.#precio;
+      document.querySelector("#nivel-arma").textContent=this.#nivel;
    }
-
+   
     /**
     * Getter para danho
     */
