@@ -1,0 +1,110 @@
+:root{
+    --verdeOscuro: #20464e;
+    --amarilloFondo: #ce904c;
+    
+}
+
+body {
+    margin: 0;
+    
+    background-color: black;
+    color: white;
+    z-index: relative;
+}
+.canvas{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+a{
+    z-index: 10;
+}
+
+
+.topLobby{
+    display: flex;
+    align-items: start;
+    margin: 3%;
+}
+
+.imagenLobby{
+    border: 5px ridge;
+    width: 33%;
+    height: 300px;
+    border-radius: 15px;
+    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
+    margin-right: 5%;
+    overflow:hidden ;
+    
+    
+}
+.conjuntoEstadisticasLobby{
+    width: 35%;
+    color: var(--amarilloFondo);
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+.opcionesLobby{
+    width: 20%;
+    margin-left: 7%;
+}
+
+.botonLobby{
+    width: 100%;
+    height: 50px;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.caracteristicasLobby{
+    display: block;
+    width: 30%;
+    margin-top: -15%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    background-color: var(--verdeOscuro);
+    padding: 3%;
+    z-index: 2;
+    border-radius: 15px;
+    color: var(--amarilloFondo);
+}
+
+.botonVolverLobby{
+    width: 20%;
+    height: 32px;
+    margin-left: 3%;
+}
+
+.tamanioImagen {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+a{
+    background-color: var(--amarilloFondo);
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--verdeOscuro);
+    cursor: pointer;
+    align-content: center;
+    border: #20464e ridge 2px;
+    font-size: 110%;
+  
+}
+a:hover{
+    background-color: #20464e;
+    transform: scale(1.10);
+    transition: 1s;
+    border: #ce904c ridge 2px;
+    color: var(--amarilloFondo);  
+}

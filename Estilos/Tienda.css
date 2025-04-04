@@ -1,0 +1,211 @@
+:root{
+    --verdeOscuro: #20464e;
+    --amarilloFondo: #ce904c;
+    
+}
+
+body {
+    margin: 0;
+    
+    background-color: black;
+    color: white;
+    z-index: relative;
+}
+.canvas{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+a{
+    z-index: 10;
+}
+
+
+
+
+/*Estilos tienda*/
+
+html .tienda{
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    height: 100vh;
+    max-width: 100%;
+    right: 0;
+    box-sizing: border-box;
+}
+
+.tarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;  /*Espacio entre tarjetas*/
+    padding: 20px;
+     
+}
+.tarjetas div {
+    border: 2px solid white;
+    flex: 1 1 250px;
+    max-width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Espaciado equilibrado */
+    min-height: 450px; /* Asegura que todos tengan mismo alto */
+    text-align: center;
+}
+
+.tarjetas div p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.tarjetas div span {
+    font-weight: bold;
+}
+
+
+
+/*
+.tarjetas div{
+    border: 2px solid white;
+    flex: 1 1 250px;  Se adapta al espacio disponible pero con mínimo de 250px 
+    max-width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+
+}*/
+
+@media (max-width: 768px) {
+    #titulo-tienda {
+        font-size: 22px;
+    }
+
+
+/*Imagenes de la tienda de armas
+.imagenItem{
+    max-width: 100%;  La imagen no será más grande que su contenedor 
+    height: auto;  Mantiene la proporción 
+    display: block;  Evita espacios adicionales 
+    margin: 0 auto; /Centra la imagen 
+    
+    
+}*/
+.imagenItem {
+    max-width: 100%;
+    max-height: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+
+
+/*
+.botones-comprar{
+    width: 40%;
+    height: 40px;
+    margin-left: 3%;
+    background-color: #20464e;
+    border: #ce904c ridge 2px;
+    color: var(--amarilloFondo);  
+}*/
+.botones-comprar {
+    width: 80%;
+    margin: 10px auto;
+    display: block;
+}
+.tarjetas {
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarjetas div {
+    width: 90%;
+}
+
+button[id^="boton-"] {
+    font-size: 18px;
+    padding: 6px 12px;
+}
+}
+/*
+.botonVolverLobby{
+    width: 20%;
+    height: 32px;
+    margin-left: 3%;
+}*/
+
+.botonVolverLobby {
+    width: 55%;
+    margin: 10px auto;
+    display: block;
+}
+a{
+    background-color: var(--amarilloFondo);
+    border-radius: 15px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: var(--verdeOscuro);
+    cursor: pointer;
+    align-content: center;
+    border: #20464e ridge 2px;
+    font-size: 110%;
+  
+}
+a:hover{
+    background-color: #20464e;
+    transform: scale(1.10);
+    transition: 1s;
+    border: #ce904c ridge 2px;
+    color: var(--amarilloFondo);  
+}
+
+
+/*Imagenes de la tienda de armas*/
+.imagenItem{
+    max-width: 100%; /* La imagen no será más grande que su contenedor */
+    height: auto; /* Mantiene la proporción */
+    display: block; /* Evita espacios adicionales */
+    margin: 0 auto; /* Centra la imagen */
+    
+    
+}
+
+#titulo-tienda {
+    font-size: 28px;
+    color: var(--amarilloFondo);
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    margin: 20px 0;
+    border-bottom: 3px solid var(--amarilloFondo);
+    text-shadow: 3px 3px 5px #c55b19;
+    animation: titilar 3s infinite alternate;
+}
+
+button {
+    background-color: var(--verdeOscuro);
+    color: var(--amarilloFondo);
+    border: 2px ridge var(--amarilloFondo);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: var(--amarilloFondo);
+    color: var(--verdeOscuro);
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+
+
+
