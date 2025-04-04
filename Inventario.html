@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>👜Inventario</title>
-    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Estilos/Inventario.css">
 </head>
 <body>
-    <p><a href="Lobby.html">Volver</a></p>
-    <button id="boton-guardar">GUARDAR</button>
-    <button id="boton-desequipar">DESEQUIPAR TODO</button>
+    
     <h1 id="titulo-inventario">INVENTARIO DE </h1>
     <div id="equipados">
         <div id="arma-equipada">
@@ -43,6 +41,7 @@
       
         <div id="cajon-arma-imagen">
             <button id="boton-arma-anterior"><</button>
+                <button id="boton-arma-siguiente">></button>
             <img id="imagen-arma" src="" alt="Imagen del arma">
         </div>
         <p><span id="nombre-arma"></span></p>
@@ -50,24 +49,25 @@
         <p>Aumento: <span id="aumento-arma"></span></p>
         <button id="boton-arma-equipar">EQUIPAR</button>
         <button id="boton-arma-tirar">TIRAR</button>
-        <button id="boton-arma-siguiente">></button>
     </div>
     <div id="cajon-armaduras">
         <h3>ARMADURAS/ESCUDOS</h3>
         <button id="boton-armadura-anterior"><</button>
-        <div id="cajon-armadura-imagen">
-            <img id="imagen-armadura" src="" alt="Imagen del arma">
+        <button id="boton-armadura-siguiente">></button>
+         <div id="cajon-armadura-imagen">   
+            <img id="imagen-armadura" src="" alt="Imagen del arma">  
         </div>
         <p><span id="nombre-armadura"></span></p>
         <p>Descripcion: <span id="descripcion-armadura"></span></p>
         <p>Aumento: <span id="aumento-armadura"></span></p>
         <button id="boton-armadura-equipar">EQUIPAR</button>
         <button id="boton-armadura-tirar">TIRAR</button>
-        <button id="boton-armadura-siguiente">></button>
+        
     </div>
     <div id="cajon-amuletos">
         <h3>AMULETOS</h3>
         <button id="boton-amuleto-anterior"><</button>
+        <button id="boton-amuleto-siguiente">></button>
         <div id="cajon-amuleto-imagen">
             <img id="imagen-amuleto" src="" alt="Imagen del amuleto">
         </div>
@@ -75,36 +75,41 @@
         <p>Descripcion: <span  id="descripcion-amuleto"></span></p>
         <p>Aumento: <span id="aumento-amuleto"></span></p>
         <button id="boton-amuleto-equipar">EQUIPAR</button>
-        <button id="boton-amuleto-tirar">TIRAR</button>
-        <button id="boton-amuleto-siguiente">></button>
+        <button id="boton-amuleto-tirar">TIRAR</button> 
     </div>
 
     <div id="pociones">
         <div id="cajon-vida">
             <h3>Pociones de Salud</h3>
             <button id="boton-vida-anterior"><</button>
+            <button id="boton-vida-siguiente">></button>
             <div>
                 <p><span id="nombre-vida"></span></p>
                 <p >Descripcion: <span id="descripcion-vida"></span></p>
                 <p> Aumento: <span id="aumento-vida"></span></p>
                 <img src="" id="imagen-vida" alt="Imagen pocion de vida"></img>
                 <button id="boton-beber-vida">BEBER</button>
-                <button id="boton-vida-siguiente">></button>
+                
             </div>
         </div>
         <div id="cajon-mana">
             <h3>Pociones de Mana</h3>
             <button id="boton-mana-anterior"><</button>
+            <button id="boton-mana-siguiente">></button>
             <div>
                 <p><span id="nombre-mana"></span></p>
                 <p>Descripcion: <span id="descripcion-mana"></span></p>
                 <p> Aumento: <span id="aumento-mana"></span></p>
                 <img id="imagen-mana" src="" alt="Imagen pocion de Mana">
-                <button id="boton-beber-mana">BEBER</button>
-                <button id="boton-mana-siguiente">></button>
+                <button id="boton-beber-mana">BEBER</button> 
             </div>
         </div>
     </div>
+
+    <p><a class="botonVolverLobby" href="Lobby.html">Volver</a></p>
+    <button id="boton-guardar">GUARDAR</button>
+    <button id="boton-desequipar">DESEQUIPAR TODO</button>
+
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>
