@@ -1,0 +1,135 @@
+:root{
+    --verdeOscuro: #20464e;
+    --amarilloFondo: #ce904c;
+    
+}
+
+body {
+    margin: 0;
+    
+    background-color: black;
+    color: white;
+    z-index: relative;
+}
+.canvas{
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+a{
+    z-index: 10;
+}
+
+
+/* Estilos de arena*/
+.arenaElementos{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    z-index: -1;
+}
+.arenaImagenes{
+    border: brown 3px ridge;
+    height: 200px;
+    align-content: center;
+    width: 20%;
+    text-align: center;
+    z-index: -1;
+}
+.botonesArena{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center;   
+}
+.botonesArenaBlock{
+    display: flex;
+    border: white 3px ridge;
+    justify-content: space-around;
+    text-align: center; 
+    z-index: -1;
+}
+
+
+
+
+.topArena{
+    display: flex;
+    align-items: start;
+    margin: 3%;
+}
+
+.imagenArena{
+    border: 5px ridge;
+    width: 33%;
+    height: 300px;
+    border-radius: 15px;
+    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
+    margin-right: 5%;
+}
+
+
+
+
+/*Victoria o derrota*/
+.victoria{
+    margin-top: -26%;
+    background-color: rgba(32, 70, 78, 0.3);
+    margin-right: auto;
+    margin-left: auto;
+    align-content: center;
+    display: none;
+    border-radius: 10%;
+}
+.derrota{
+    margin-top: -26%;
+    background-color: rgba(206, 144, 76, 0.3);
+    margin-right: auto;
+    margin-left: auto;
+    align-content: center;
+    display: none;
+    border-radius: 10%;
+    z-index: 1000;
+}
+.botonFinPartida{
+    background-color: var(--amarilloFondo);
+    border-radius: 15px;
+    display: none;
+    text-align: center;
+    text-decoration: none;
+    color: var(--verdeOscuro);
+    cursor: pointer;
+    align-content: center;
+    border: #20464e ridge 2px;
+    font-size: 110%;
+    width: 33%;
+    height: 40px;
+    margin-top: 3%;
+    margin-right: auto;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+form div:last-child {
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    margin: 10px;
+}
+
+#imagen-elegir {
+    display: block;
+    margin: 10px auto;
+   
+}
+#nombre {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100px; /* Ajusta la altura si es necesario */
+}
