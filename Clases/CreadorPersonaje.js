@@ -13,8 +13,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const nombreArma2=document.querySelector("#nombre-arma2");
     const descripcionArma2=document.querySelector("#descripcion-arma2");
     const aumentoArma2=document.querySelector("#aumento-arma2");
-    const divArmas=document.querySelector("div-armas");
-
+    const divArmas=document.querySelector("#elegir-arma");
     const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
         "./Imagenes/humano.png",
         "./Imagenes/orco.png",
@@ -54,11 +53,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
     const elegirImagen = document.querySelector("#imagen-elegir");
     creadorSelect.addEventListener('change', ()=>{
-        divArmas.style.display="flex";
         let razaElegida = creadorSelect.value;
         let indiceRaza = razas.indexOf(razaElegida);
+        
         if(indiceRaza !== -1){
             elegirImagen.src=imagenesPersonaje[indiceRaza];
+            divArmas.style.display="flex";
         }else{
             alert("La raza no es válida");
         }
@@ -115,9 +115,4 @@ document.addEventListener('DOMContentLoaded',()=>{
             divArmas.style.display="none";
         }
     });
-
-
-
-
-
 });
