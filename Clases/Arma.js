@@ -33,16 +33,6 @@ export default class Arma{
       const arma = new Arma(json.nombre,json.descripcion,json.aumento,json.precio,json.nivel,json.raza,json.imagen);
       return arma;
     }
-
-    
-    mostrarArma(){
-      document.querySelector("#imagen-arma").src=this.#imagen;
-      document.querySelector("#nombre-arma").textContent=this.#nombre;
-      document.querySelector("#descripcion-arma").textContent=this.#descripcion;
-      document.querySelector("#aumento-arma").textContent=this.#aumento;
-      document.querySelector("#precio-arma").textContent=this.#precio;
-      document.querySelector("#nivel-arma").textContent=this.#nivel;
-   }
    
     /**
     * Getter para danho

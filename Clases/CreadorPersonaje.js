@@ -92,13 +92,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
    
         const valor = armaRadio.value;
-        console.log(armaRadio.value);
         const arma = armas[raza][valor];
         const imagen = imagenesPersonaje[indiceRaza];
         const personaje = new Personaje(nombre,raza,imagen);
         personaje.equiparArma(arma);
         personaje.inventario.agregarObjeto(arma);
-        console.log(personaje);
         //No se añade, se sobreescribe para que sólo haya 1
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
         alert("Bienvenido a la BATALLA DE LOS 5 PUEBLOS!");

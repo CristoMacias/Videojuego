@@ -1,9 +1,13 @@
 import Tienda from './Tienda.js';
 import Personaje from './Personaje.js';
+import Arma from './Arma.js';
+import Proteccion from './Proteccion.js';
+import Pocion from './Pocion.js';
 document.addEventListener('DOMContentLoaded',()=>{
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
     const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
+
     const armas=tienda.armas;//Array con las armas
     const protecciones=tienda.protecciones; //Array con las protecciones
     const pociones=tienda.pociones;//Array con las pociones
@@ -12,47 +16,85 @@ document.addEventListener('DOMContentLoaded',()=>{
     const amuletos=protecciones.amuleto; //Array con los amuletos
     const pocionesVida=pociones.salud; //Array con las pociones de vida
     const pocionesMana=pociones.mana; //Array con las pociones de maná
-    //Cuando se inicia la tienda muestra el primer objeto de cada array
-   //TODO: quitar estos metodos a los objetos e implementarlos aqui
-    armas[0].mostrarArma();
-    escudos[0].mostrarEscudo();
-    armaduras[0].mostrarArmadura();
-    amuletos[0].mostrarAmuleto();
-    pocionesVida[0].mostrarVida();
-    pocionesMana[0].mostrarMana();
 
-    //Carrousel Armas //TODO: Comproabar porque no se ven dos armas
+    const armaCero=armas[0];
+    const escudoCero=escudos[0];
+    const armaduraCero=armaduras[0];
+    const amuletoCero=amuletos[0];
+    const vidaCero=pocionesVida[0];
+    const manaCero=pocionesMana[0];
+
+    const prefArma="arma";
+    const prefEscudo="escudo";
+    const prefArmadura="armadura";
+    const prefAmuleto="amuleto"
+    const prefVida="vida";
+    const prefMana="mana";
+
+    const comprarArma=document.querySelector("#comprar-arma");
+    const comprarEscudo=document.querySelector("#comprar-escudo");
+    const comprarArmadura=document.querySelector("#comprar-armadura");
+    const comprarAmuleto=document.querySelector("#comprar-amuleto");
+    const comprarVida=document.querySelector("#comprar-vida");
+    const comprarMana=document.querySelector("#comprar-mana");
+
+    const spanCompraArma=document.querySelector("#span-comprar-arma");
+    const spanCompraArmadura=document.querySelector("#span-comprar-armadura");
+    const spanCompraEscudo=document.querySelector("#span-comprar-escudo");
+    const spanCompraAmuleto=document.querySelector("#span-comprar-amuleto");
+    
+    //Cuando se inicia la tienda muestra el primer objeto de cada array
+
+    /*
+    mostrarObjeto(armaCero,prefArma);
+    mostrarObjeto(escudoCero,prefEscudo);
+    mostrarObjeto(armaduraCero,prefArmadura);
+    mostrarObjeto(amuletoCero,prefAmuleto);*/
+    mostrarObjeto(vidaCero,prefVida);
+    mostrarObjeto(manaCero,prefMana);
+
+
+    //Carrousel Armas 
     const anteriorBotonArma=document.querySelector("#boton-anterior-arma");
     const siguienteBotonArma=document.querySelector("#boton-siguiente-arma");
     let indiceArma=0;
+    comprobarDisponibilidadObjeto(armas[indiceArma],spanCompraArma,comprarArma,prefArma);
      //Evento para elegir la opcion anterior
     anteriorBotonArma.addEventListener('click',()=>{
         indiceArma--;
         if(indiceArma<0){//evitamos que se salga del array
             indiceArma=0;
         }
-        armas[indiceArma].mostrarArma();
-        
+       // mostrarObjeto(armas[indiceArma],prefArma);
+        comprobarDisponibilidadObjeto(armas[indiceArma],spanCompraArma,comprarArma,prefArma);
+      
     });
+   
     //Evento para elegir la opcion siguiente
     siguienteBotonArma.addEventListener('click',()=>{
         indiceArma++;
         if(indiceArma>armas.length-1){//evitamos que se salga del array
             indiceArma = armas.length-1;
         }
-        armas[indiceArma].mostrarArma();
+        
+       // mostrarObjeto(armas[indiceArma],prefArma);
+        comprobarDisponibilidadObjeto(armas[indiceArma],spanCompraArma,comprarArma,prefArma);
     });
+
+     
     //Carrousel Escudos
     const anteriorBotonEscudos=document.querySelector("#boton-anterior-escudo");
     const siguienteBotonEscudos=document.querySelector("#boton-siguiente-escudo");
     let indiceEscudo=0;
+    comprobarDisponibilidadObjeto(escudos[indiceEscudo],spanCompraEscudo,comprarEscudo,prefEscudo);
      //Evento para elegir la opcion anterior
     anteriorBotonEscudos.addEventListener('click',()=>{
         indiceEscudo--;
         if(indiceEscudo<0){//evitamos que se salga del array
             indiceEscudo=0;
         }
-        escudos[indiceEscudo].mostrarEscudo();     
+       // mostrarObjeto(escudos[indiceEscudo],prefEscudo);    
+        comprobarDisponibilidadObjeto(escudos[indiceEscudo],spanCompraEscudo,comprarEscudo,prefEscudo);
     });
     //Evento para elegir la opcion siguiente
     siguienteBotonEscudos.addEventListener('click',()=>{
@@ -60,20 +102,23 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(indiceEscudo>escudos.length-1){//evitamos que se salga del array
             indiceEscudo=escudos.length-1;
         }
-        escudos[indiceEscudo].mostrarEscudo();
+       // mostrarObjeto(escudos[indiceEscudo],prefEscudo);        
+        comprobarDisponibilidadObjeto(escudos[indiceEscudo],spanCompraEscudo,comprarEscudo,prefEscudo);
     });
 
     //Carrousel Armaduras
     const anteriorBotonArmaduras=document.querySelector("#boton-anterior-armadura");
     const siguienteBotonArmaduras=document.querySelector("#boton-siguiente-armadura");
     let indiceArmadura=0;
+    comprobarDisponibilidadObjeto(armaduras[indiceArmadura],spanCompraArmadura,comprarArmadura,prefArmadura);
      //Evento para elegir la opcion anterior
     anteriorBotonArmaduras.addEventListener('click',()=>{
         indiceArmadura--;
         if(indiceArmadura<0){//evitamos que se salga del array
             indiceArmadura=0;
         }
-        armaduras[indiceArmadura].mostrarArmadura();
+       // mostrarObjeto(armaduras[indiceArmadura],prefArmadura);
+        comprobarDisponibilidadObjeto(armaduras[indiceArmadura],spanCompraArmadura,comprarArmadura,prefArmadura);
     });
     //Evento para elegir la opcion siguiente
     siguienteBotonArmaduras.addEventListener('click',()=>{
@@ -81,19 +126,22 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(indiceArmadura>armaduras.length-1){//evitamos que se salga del array
             indiceArmadura = armaduras.length-1;
         }
-        armaduras[indiceArmadura].mostrarArmadura();
+      //  mostrarObjeto(armaduras[indiceArmadura],prefArmadura);
+        comprobarDisponibilidadObjeto(armaduras[indiceArmadura],spanCompraArmadura,comprarArmadura,prefArmadura);
     });
     //Carrousel Amuletos
     const anteriorBotonAmuletos=document.querySelector("#boton-anterior-amuleto");
     const siguienteBotonAmuletos=document.querySelector("#boton-siguiente-amuleto");
     let indiceAmuleto=0;
+    comprobarDisponibilidadObjeto(amuletos[indiceAmuleto],spanCompraAmuleto,comprarAmuleto,prefAmuleto);
      //Evento para elegir la opcion anterior
     anteriorBotonAmuletos.addEventListener('click',()=>{
         indiceAmuleto--;
         if(indiceAmuleto<0){//evitamos que se salga del array
             indiceAmuleto=0;
         }
-        amuletos[indiceAmuleto].mostrarAmuleto();
+       // mostrarObjeto(amuletos[indiceAmuleto],prefAmuleto);
+        comprobarDisponibilidadObjeto(amuletos[indiceAmuleto],spanCompraAmuleto,comprarAmuleto,prefAmuleto);
     });
     //Evento para elegir la opcion siguiente
     siguienteBotonAmuletos.addEventListener('click',()=>{
@@ -101,8 +149,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(indiceAmuleto>amuletos.length-1){//evitamos que se salga del array
             indiceAmuleto=amuletos.length-1;
         }
-        amuletos[indiceAmuleto].mostrarAmuleto();
-    })
+       // mostrarObjeto(amuletos[indiceAmuleto],prefAmuleto);
+        comprobarDisponibilidadObjeto(amuletos[indiceAmuleto],spanCompraAmuleto,comprarAmuleto,prefAmuleto);
+    });
     //Carrousel de pociones de vida
     const anteriorBotonVida=document.querySelector("#boton-anterior-vida");
     const siguienteBotonVida=document.querySelector("#boton-siguiente-vida");
@@ -113,7 +162,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(indiceVida<0){//evitamos que se salga del array
             indiceVida=0;
         }
-        pocionesVida[indiceVida].mostrarVida();
+        mostrarObjeto(pocionesVida[indiceVida],prefVida);
     });
     //Evento para elegir la opcion siguiente
     siguienteBotonVida.addEventListener('click',()=>{
@@ -121,12 +170,12 @@ document.addEventListener('DOMContentLoaded',()=>{
        if(indiceVida>pocionesVida.length-1){//evitamos que se salga del array
         indiceVida=pocionesVida.length-1;
        } 
-       pocionesVida[indiceVida].mostrarVida();
+       mostrarObjeto(pocionesVida[indiceVida],prefVida);
     });
 
     //Carrousel de pociones de maná
     const anteriorBotonMana=document.querySelector("#boton-anterior-mana");
-    const siguienteBotonoMana=document.querySelector("#boton-siguiente-mana");
+    const siguienteBotonMana=document.querySelector("#boton-siguiente-mana");
     let indiceMana=0;
     //Evento para elegir la opcion anterior
     anteriorBotonMana.addEventListener('click',()=>{
@@ -134,37 +183,35 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(indiceMana<0){//evitamos que se salga del array
             indiceMana=0;
         }
-        pocionesMana[indiceMana].mostrarMana();
+        mostrarObjeto(pocionesMana[indiceMana],prefMana);
     });
     //Evento para elegir la opcion siguiente
-    siguienteBotonoMana.addEventListener('click',()=>{
+    siguienteBotonMana.addEventListener('click',()=>{
         indiceMana++;
         if(indiceMana>pocionesMana.length-1){//evitamos que se salga del array
             indiceMana=pocionesMana.length-1;
         }
-        pocionesMana[indiceMana].mostrarMana();
+        mostrarObjeto(pocionesMana[indiceMana],prefMana);
     });
     //Comprar armas
-    const comprarArma=document.querySelector("#comprar-arma");
+
     comprarArma.addEventListener('click',()=>{
         const armaComprar=armas[indiceArma];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>armaComprar.precio-1){
             personaje.comprarTienda(armaComprar);//Añadimos el arma
-          //  personaje.perderOro(armaComprar.precio);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
     });
 
-    const comprarEscudo=document.querySelector("#comprar-escudo");
+    
     comprarEscudo.addEventListener('click',()=>{
         const escudoComprar=escudos[indiceEscudo];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>escudoComprar.precio-1){
             personaje.comprarTienda(escudoComprar);//Añadimos el arma
-           // personaje.perderOro(escudoComprar.precio);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
@@ -172,20 +219,19 @@ document.addEventListener('DOMContentLoaded',()=>{
   
     });
 
-    const comprarArmadura=document.querySelector("#comprar-armadura");
+    
     comprarArmadura.addEventListener('click',()=>{
         const armaduraComprar=armaduras[indiceArmadura];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>armaduraComprar.precio-1){
             personaje.comprarTienda(armaduraComprar);//Restamos el oro del arma al oro del personaje
-          //  personaje.perderOro(armaduraComprar.precio);
         }else{ //Se muestra un mensaje dice que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
     });
 
-    const comprarAmuleto=document.querySelector("#comprar-amuleto");
+   
     comprarAmuleto.addEventListener('click',()=>{
         const amuletoComprar=amuletos[indiceAmuleto];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
@@ -197,10 +243,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma  
     });
 
-    const comprarVida=document.querySelector("#comprar-vida");
     comprarVida.addEventListener('click',()=>{
         const vidaComprar=pocionesVida[indiceVida];
-       console.log(vidaComprar);
+       
         //Comprobar que elvidapersonaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>vidaComprar.precio-1){
             personaje.comprarTienda(vidaComprar);//Restamos el oro del arma al oro del personaje
@@ -211,17 +256,84 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
 
 
-    const comprarMana=document.querySelector("#comprar-mana");
+    
     comprarMana.addEventListener('click',()=>{
         const manaComprar=pocionesMana[indiceMana];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
-        console.log(manaComprar);
         if(personaje.oro>manaComprar.precio-1){
             personaje.comprarTienda(manaComprar);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
-        });
+    });
 
+  
+    //Intento de REFACTORIZACION DE COGIDO PARA NO REPETIR Y TENER UNA FUNCION DE CADA FUNCION PARA TODO
+
+    /**
+     * Función única para mostrar todos los objetos
+     * @param {*} objeto Recibe el objeto que quiere mostrar
+     * @param {*} prefijo  Recibe el prefijo del tipo de objeto para escoger el id del dom
+     */
+    function mostrarObjeto(objeto,prefijo){
+        document.querySelector(`#imagen-${prefijo}`).src=objeto.imagen;
+        document.querySelector(`#nombre-${prefijo}`).textContent=objeto.nombre;
+        document.querySelector(`#descripcion-${prefijo}`).textContent=objeto.descripcion;
+        document.querySelector(`#precio-${prefijo}`).textContent=objeto.precio;
+        if(objeto instanceof Arma || objeto instanceof Pocion){
+            document.querySelector(`#aumento-${prefijo}`).textContent=objeto.aumento;
+        }else if(objeto.tipo==="amuleto"){
+            document.querySelector(`#resistenciaMagica-${prefijo}`).textContent=objeto.aumento;
+        }else{
+            document.querySelector(`#defensa-${prefijo}`).textContent=objeto.aumento;
+        }
+        if(objeto.nivel!==undefined){
+            document.querySelector(`#nivel-${prefijo}`).textContent=objeto.nivel;
+        }
+        
+    }
+
+
+
+     //Limitar compra de armas,armaduras,escudos y amuletos según los niveles
+
+    /**
+     * Función única para las armas,escudos,armaduras y amuletos para comprobar si el personaje puede comprarlos. Si el nivel del objeot es superior al nivel del arma, se bloquea el boton de compra, cambiando a estado bloqueado y disabled en true
+     * @param {*} objeto Recibe el objeto a comprobar
+     * @param {*} spanCompra  Recibe el span de compra del objeto
+     * @param {*} botonCompra Recibe el boton de compra
+     */
+    function comprobarDisponibilidadObjeto(objeto,spanCompra,botonCompra,prefijo){
+        if(objeto.nivel>personaje.nivel){
+            spanCompra.textContent="BLOQUEADO 🔒";
+            botonCompra.disabled=true;
+            bloquearObjeto(objeto,prefijo);
+        }else{
+            spanCompra.textContent="COMPRAR";
+            botonCompra.disabled=false;
+            mostrarObjeto(objeto,prefijo);
+        }
+    }
+
+    function bloquearObjeto(objeto,prefijo){
+        document.querySelector(`#imagen-${prefijo}`).src="./Imagenes/bloqueo_objetos.png";
+        document.querySelector(`#nombre-${prefijo}`).textContent="???";
+        document.querySelector(`#descripcion-${prefijo}`).textContent="???";
+        document.querySelector(`#precio-${prefijo}`).textContent="???";
+        if(objeto instanceof Arma || objeto instanceof Pocion){
+            document.querySelector(`#aumento-${prefijo}`).textContent="???";
+        }else if(objeto.tipo==="amuleto"){
+            document.querySelector(`#resistenciaMagica-${prefijo}`).textContent="???";
+        }else{
+            document.querySelector(`#defensa-${prefijo}`).textContent="???";
+        }
+        if(objeto.nivel!==undefined){
+            document.querySelector(`#nivel-${prefijo}`).textContent="???";
+        }
+        
+    }
+
+    
+    
 });

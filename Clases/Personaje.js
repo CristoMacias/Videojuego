@@ -58,14 +58,14 @@ export default class Personaje{
             mago:{vida:0.8,mana:1.3,ataque:0,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
             elfo:{vida:0.9,mana:1.2,ataque:0,defensa:1.0,magia:1.2,resistenciaMagica:1.0}
         };
-        this.#vidaMaxima=this.#vidaMaxima*razas[raza].vida;
-        this.#vidaActual=this.#vidaMaxima;
-        this.#manaMaximo=this.#manaMaximo*razas[raza].mana;
-        this.#manaActual=this.#manaMaximo;
-        this.#ataque = this.#ataque*razas[raza].ataque;
-        this.#defensa= this.#defensa*razas[raza].defensa;
-        this.#magia=this.#magia*razas[raza].magia;
-        this.#resistenciaMagica=this.#resistenciaMagica*razas[raza].resistenciaMagica;
+        this.#vidaMaxima=parseInt(this.#vidaMaxima*razas[raza].vida);
+        this.#vidaActual=parseInt(this.#vidaMaxima);
+        this.#manaMaximo=parseInt(this.#manaMaximo*razas[raza].mana);
+        this.#manaActual=parseInt(this.#manaMaximo);
+        this.#ataque = parseInt(this.#ataque*razas[raza].ataque);
+        this.#defensa= parseInt(this.#defensa*razas[raza].defensa);
+        this.#magia=parseInt(this.#magia*razas[raza].magia);
+        this.#resistenciaMagica=parseInt(this.#resistenciaMagica*razas[raza].resistenciaMagica);
     }
     /**
      * Método para convertir los atributos en público y poder convertirlos en JSON
@@ -157,10 +157,10 @@ export default class Personaje{
    recibirDanho(danhoEnemigo,esMagico){
       let danho;
       if(esMagico){
-         danho = danhoEnemigo-(this.#resistenciaMagica / 2);
+         danho = parseInt(danhoEnemigo-(this.#resistenciaMagica / 2));
          this.#vidaActual-= danho;
       }else{
-         danho = danhoEnemigo-(this.#defensa / 2);
+         danho = parseInt(danhoEnemigo-(this.#defensa / 2));
          this.#vidaActual-=danho;
       }
    }
@@ -185,9 +185,9 @@ export default class Personaje{
       let esMagico=false;
       if(this.#raza === "mago" || this.#raza === "elfo"){
          esMagico = true;
-         enemigo.recibirDanho(this.magia *1.30, esMagico);
+         enemigo.recibirDanho(parseInt(this.magia *1.30), esMagico);
       }else{
-         enemigo.recibirDanho(this.#ataque *1.30,esMagico);
+         enemigo.recibirDanho(parseInt(this.#ataque *1.30),esMagico);
       }
       
    }
@@ -343,25 +343,17 @@ export default class Personaje{
     * @param {*} indice Posicion en la que se encuentra del array
     */
    tirarObjeto(objeto,indice){
-      console.log("dentro de tirarobjeto");
-      console.log(objeto);
-      console.log(indice);
       if(objeto instanceof Arma){
          this.#inventario.tirarArma(indice);
       }
       else if(objeto instanceof Proteccion){
-
          if(objeto.tipo=== "amuleto"){
-
             this.#inventario.tirarAmuleto(indice);
          }else{
-            console.log("dentro de else armadura");
             this.#inventario.tirarArmadura(indice);
          }
       }else if(objeto instanceof Pocion){
-         console.log("dentro de objeto instance of pocion");
-         this.#inventario.tirarPocion(objeto.efecto,indice);
-         
+         this.#inventario.tirarPocion(objeto.efecto,indice); 
       }
    }
     
