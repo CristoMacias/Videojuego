@@ -187,15 +187,11 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonArmaSiguiente=document.querySelector("#boton-arma-siguiente");
     let indiceArma=0;
     botonArmaAnterior.addEventListener('click',()=>{
-
         indiceArma--;
-;
         if(indiceArma<0){
             indiceArma=arrayArmas.length-1;
         }
         actualizarArma();
-
-        console.log(indiceArma);
     });
 
     botonArmaSiguiente.addEventListener('click',()=>{
@@ -204,7 +200,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             indiceArma=0;
         }
         actualizarArma();
-        console.log(indiceArma);
     });
     /**
      * Función para actualizar el arma que se muestra por pantalla
@@ -412,7 +407,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonArmaTirar=document.querySelector("#boton-arma-tirar");
     botonArmaTirar.addEventListener('click',()=>{
         let armaTirar=arrayArmas[indiceArma];
-        console.log(armaTirar);
         personaje.tirarObjeto(armaTirar,indiceArma);
         if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){
             personaje.quitarArma();
