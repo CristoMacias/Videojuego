@@ -291,10 +291,16 @@ export default class Personaje{
       if(pocion.efecto==="salud"){
          let posicion  = this.#inventario.pocionesVida.indexOf(pocion);
          this.#vidaActual+=pocion.aumento;
+         if(this.#vidaActual>this.#vidaMaxima){
+            this.#vidaActual=this.#vidaMaxima;
+         }
          this.#inventario.pocionesVida.splice(posicion,1);
       }else{
          let posicion = this.#inventario.pocionesMana.indexOf(pocion);
          this.#manaActual+=pocion.aumento;
+         if(this.#manaActual>this.#manaMaximo){
+            this.#manaActual=this.#manaMaximo;
+         }
          this.#inventario.pocionesMana.splice(posicion,1);
       }
       alert(`Has usado la poción ${pocion.nombre}`);
@@ -304,19 +310,20 @@ export default class Personaje{
     * @param {*} experienciaGanada Recibe por parámetro la experiencia ganada en el combate
     */
    ganarExperiencia(experienciaGanada){
-      if(this.#experiencia+=experienciaGanada > this.#experienciaMaxima){
+
+      this.#experiencia+=experienciaGanada;
+      while(this.#experiencia>=this.#experienciaMaxima){
+         this.#experiencia-=this.#experienciaMaxima;
          this.subirNivel();
-         this.#experiencia=experienciaGanada- this.#experiencia;
-         this.#experienciaMaxima = Math.floor(this.#experienciaMaxima * 1.5);
-      }else{
-         this.#experiencia+=experienciaGanada;
+         this.#experienciaMaxima = Math.floor(this.#experienciaMaxima*1.5);
       }
+
    }
    /**
     * Método para subir de nivel y estadísticas
     */
    subirNivel(){
-      let aumento=this.#nivel*0.5;
+      let aumento=0.15;
       this.#nivel++;
       this.#vidaActual+=Math.floor(this.#vidaActual*aumento);
       this.#vidaMaxima+=Math.floor(this.#vidaMaxima*aumento);
