@@ -126,10 +126,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         }//Comrobar el array de pociones de vida
         if(arrayPocionVida.length>0){
             divVida.style.display="block";
-            imagenVida.src=arrayPocionVida[0].imagen;
-            nombreVida.textContent=arrayPocionVida[0].nombre;
-            descripcionVida.textContent=arrayPocionVida[0].descripcion;
-            aumentoVida.textContent=arrayPocionVida[0].aumento;
+            let pocion=arrayPocionVida[0];
+            imagenVida.src=pocion.imagen;
+            nombreVida.textContent=pocion.nombre;
+            descripcionVida.textContent=pocion.descripcion;
+            aumentoVida.textContent=pocion.aumento;
             totalPocionVida.textContent=arrayPocionVida.length;
         }else{
             divVida.style.display="none";
@@ -190,7 +191,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         indiceArma--;
 ;
         if(indiceArma<0){
-            console.log("se ha pasado del 0");
             indiceArma=arrayArmas.length-1;
         }
         actualizarArma();
@@ -214,7 +214,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArma.textContent=arrayArmas[indiceArma].nombre;
         descripcionArma.textContent=arrayArmas[indiceArma].descripcion;
         aumentoArma.textContent=arrayArmas[indiceArma].aumento;
-        console.log("se han cambiado los valores dentro de la funcion");
     };
 
     //Botones para lista de armaduras/escudos
@@ -347,11 +346,9 @@ document.addEventListener('DOMContentLoaded',()=>{
    
     const botonArmaDesequipar=document.querySelector("#boton-arma-desequipar");
     botonArmaDesequipar.addEventListener('click',()=>{
-        console.log("antes de quitar: ",armaEquipada);
         personaje.quitarArma();
         armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="none";
-        console.log("despues de quitar:",armaEquipada);
     });
 
 
@@ -360,9 +357,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const botonArmaEquipar=document.querySelector("#boton-arma-equipar");
     botonArmaEquipar.addEventListener('click',()=>{
-        console.log("antes de equipar",armaEquipada);
         let arma=arrayArmas[indiceArma];
-        console.log("incializado arma",arma);
         personaje.equiparArma(arma);
         armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="block";
@@ -370,8 +365,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArmaEquipada.textContent=arma.nombre;
         descripcionArmaEquipada.textContent=arma.descripcion;
         aumentoArmaEquipada.textContent=arma.aumento;
-        console.log("despues de equipar",armaEquipada);
-        
     });
     const botonArmaduraDesequipar=document.querySelector("#boton-armadura-desequipar");
     const botonArmaduraEquipar=document.querySelector("#boton-armadura-equipar");
@@ -386,7 +379,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         let armadura=arrayDefensa[indiceArmadura];
         personaje.equiparArmadura(armadura);
         armaduraEquipada=personaje.armaduraEquipada;
-        console.log(personaje.armaduraEquipada);
         divArmaduraEquipada.style.display="block";
         imagenArmaduraEquipada.src=armadura.imagen;
         nombreArmaduraEquipada.textContent=armadura.nombre;
