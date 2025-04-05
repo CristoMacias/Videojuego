@@ -1,4 +1,4 @@
-:root{
+/*:root{
     --verdeOscuro: #20464e;
     --amarilloFondo: #ce904c;
     
@@ -21,7 +21,7 @@ body {
 a{
     z-index: 10;  
 }
-/*
+
 .logo{
     margin-left: auto;
     margin-right: auto;
@@ -160,7 +160,7 @@ html .tienda{
     right: 0;
     box-sizing: border-box;
 }
-/* Estilos de arena*/
+/* Estilos de arena
 .arenaElementos{
     display: flex;
     border: white 3px ridge;
@@ -188,9 +188,9 @@ html .tienda{
     text-align: center; 
     z-index: -1;
 }
+*/
 
-
-/*Imagenes de la tienda de armas*/
+/*Imagenes de la tienda de armas
 .imagenItem{
     max-width: 100%; --La imagen no será más grande que su contenedor 
     height: auto; -- Mantiene la proporción 
@@ -206,7 +206,7 @@ html .tienda{
 
 
 
-/*Eleccion de armas básicas */
+/*Eleccion de armas básicas 
 #elegir-arma{
     display: flex;
     flex-wrap: wrap;
@@ -222,10 +222,10 @@ html .tienda{
     width: 48%;
     min-height: 20%; 
     padding: 10px;
-}
-.div-armas img {
-    width: 100%; /* Se ajusta al tamaño del contenedor */
-    max-width: 250px; /* Limita el tamaño máximo */
+}*/
+/*.div-armas img {
+    width: 100%;  Se ajusta al tamaño del contenedor */
+  /*  max-width: 250px;  Limita el tamaño máximo 
     aspect-ratio: 1/1; 
     object-fit:contain; 
 }
@@ -257,15 +257,15 @@ html .tienda{
 .div-armas p span {
     display: block;
     min-height: 20px;
-}
-/* Responsividad para pantallas medianas */
+}*/
+/* Responsividad para pantallas medianas 
 @media (max-width: 1024px) {
     .div-armas {
-        width: 100%; /* Hace que cada arma ocupe el ancho completo */
+        width: 100%;  Hace que cada arma ocupe el ancho completo 
     }
-}
+}*/
 
-/* Responsividad para móviles */
+/* Responsividad para móviles
 @media (max-width: 600px) {
     #elegir-arma {
         flex-direction: column;
@@ -273,12 +273,12 @@ html .tienda{
     }
 
     .div-armas img {
-        max-width: 200px; /* Reduce el tamaño en móviles */
+        max-width: 200px; /* Reduce el tamaño en móviles 
     }
-}
+} */
 
 
-/*h1 de eleccion de arma inicial*/
+/*h1 de eleccion de arma inicial
 #titulo-Crea {
     font-size: 36px;
     color: var(--amarilloFondo);
@@ -298,9 +298,9 @@ html .tienda{
 #nombre label{
     display: block;
     margin: 10px auto;
-}
+}*/
 
-/*h2 de eleccion de arma inicial*/
+/*h2 de eleccion de arma inicial
 #titulo-unico {
     font-size: 28px;
     color: var(--amarilloFondo);
@@ -312,9 +312,9 @@ html .tienda{
     border-bottom: 3px solid var(--amarilloFondo);
     text-shadow: 3px 3px 5px #c55b19;
     animation: titilar 3s infinite alternate;
-}
+}*/
 
-/*h3 de eleccion de arma inicial*/
+/*h3 de eleccion de arma inicial
 .subtitulo-especial {
     font-size: 24px;
     color: #008080; 
@@ -327,12 +327,12 @@ html .tienda{
     border-left: 5px solid var(--verdeOscuro);
     border-radius: 5px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); 
-}
+}*/
 
-/*Hacer invisible la input*/
+/*Hacer invisible la input
 input[type="radio"] {
-    opacity: 0; /* Hace que el radio sea invisible */
-    position: absolute; /* Lo saca del flujo normal */
+    opacity: 0;  Hace que el radio sea invisible 
+    position: absolute;  Lo saca del flujo normal 
     width: 0;
     height: 0;
 }
@@ -353,11 +353,11 @@ button {
 }
 #nombre {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100px; /* Ajusta la altura si es necesario */
+    justify-content: center;  Centra horizontalmente 
+    align-items: center;  Centra verticalmente 
+    height: 100px;  Ajusta la altura si es necesario 
 }
-
+*/
 
 
 
@@ -421,7 +421,7 @@ button {
     justify-content: center;  Centra horizontalmente 
     align-items: center;  Centra verticalmente 
     height: 100px; Ajusta la altura si es necesario 
-}*/
+}
 form div:last-child {
     text-align: center;
 }
@@ -438,13 +438,13 @@ button {
 }
 #nombre {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    height: 100px; /* Ajusta la altura si es necesario */
+    justify-content: center; /Centra horizontalmente 
+    align-items: center; Centra verticalmente 
+    height: 100px; Ajusta la altura si es necesario 
 }
 
 <<<<<<< HEAD
-/* Estilos de arena*/
+ Estilos de arena
 .arenaElementos{
     display: flex;
     border: white 3px ridge;
@@ -475,4 +475,4 @@ button {
 }
 
 
-/*Imagenes de la tienda de armas*/
+Imagenes de la tienda de armas*/
