@@ -214,7 +214,6 @@ export default class Personaje{
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
       }
-
    }
    /**
     * Metodo para quitar el arma al perosnaje
@@ -353,6 +352,22 @@ export default class Personaje{
       }else if(objeto instanceof Pocion){
          this.#inventario.tirarPocion(objeto.efecto,indice); 
       }
+   }
+   /**
+    * Método para aumentar la defensa 
+    */
+   defenderse(){
+      let  aumento=1.5;
+      this.#defensa+=parseInt(this.#defensa*aumento);
+      this.#resistenciaMagica+=parseInt(this.#resistenciaMagica*aumento);
+   }
+   /**
+    * Método para dejar se defenderse
+    */
+   dejarDefenderse(){
+      let aumento=1.5;
+      this.#defensa-=parseInt(this.#defensa/aumento);
+      this.#resistenciaMagica-=parseInt(this.resistenciaMagica/aumento);
    }
     
    /**
