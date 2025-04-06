@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="Estilos/Inventario.css">
 </head>
 <body>
-            <h1 id="titulo-inventario">INVENTARIO DE </h1>
+    <button id="boton-sonido">🔇</button>
+    <h1 id="titulo-inventario">INVENTARIO DE </h1>
     <div id="prueba">
 
             
@@ -61,7 +62,8 @@
             <p>Descripcion: <span id="descripcion-arma" ></span></p>
             <p>Aumento: <span id="aumento-arma"></span></p>
             <button id="boton-arma-equipar">EQUIPAR</button>
-            <button id="boton-arma-tirar">TIRAR</button>
+            <button id="boton-arma-tirar" class="botones-tirar">TIRAR</button>
+            <audio id="sonido-tirar"><source src="./Sonidos/Inventario/tirarObjeto.mp3" type="audio/mp3"></audio>
         </div>
         <div id="cajon-armaduras">
             <h3>ARMADURAS/ESCUDOS</h3>
@@ -74,7 +76,8 @@
             <p>Descripcion: <span id="descripcion-armadura"></span></p>
             <p>Aumento: <span id="aumento-armadura"></span></p>
             <button id="boton-armadura-equipar">EQUIPAR</button>
-            <button id="boton-armadura-tirar">TIRAR</button>
+            <button id="boton-armadura-tirar" class="botones-tirar">TIRAR</button>
+           
             
         </div>
         <div id="cajon-amuletos">
@@ -88,7 +91,7 @@
             <p>Descripcion: <span  id="descripcion-amuleto"></span></p>
             <p>Aumento: <span id="aumento-amuleto"></span></p>
             <button id="boton-amuleto-equipar">EQUIPAR</button>
-            <button id="boton-amuleto-tirar">TIRAR</button> 
+            <button id="boton-amuleto-tirar" class="botones-tirar">TIRAR</button> 
         </div>
         <div id="pociones">
             <div id="cajon-vida">
@@ -123,10 +126,12 @@
     <button id="boton-guardar">GUARDAR</button>
     <button id="boton-desequipar">DESEQUIPAR TODO</button>
     <a href="Lobby.html" id="boton-volver"><button>VOLVER</button></a>
-
+    <audio id="sonido-tirar"><source src="./Sonidos/Inventario/tirarObjeto.mp3" type="audio/mp3"></audio>
+    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>
     <script type="module" src="Clases/InventarioFuncionamiento.js"></script>
+    <script src="Sonido.js"></script>
 </body>
 </html>

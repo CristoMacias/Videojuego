@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./Estilos/Tienda.css">
 </head>
 <body class="tienda">
+    <button id="boton-sonido">🔇</button>
     <h1 id="titulo-tienda">TIENDA</h1>
     <div class="tarjetas">
         <button id="boton-anterior-arma"><</button>
@@ -15,9 +16,10 @@
             <img class= imagenItem id="imagen-arma" src="" alt="Imagen de Arma">
             <p>DESCRIPCION: <span id="descripcion-arma"></span></p>
             <p>AUMENTO: <span id="aumento-arma"></span></p>
-            <p>PRECIO: <span id="precio-arma"></span></p>
+            <p>PRECIO: <span id="precio-arma"></span>🪙</p>
             <p>NIVEL: <span id="nivel-arma"></span></p>
             <button class="botones-comprar" id="comprar-arma"><span id="span-comprar-arma">COMPRAR</span></button>
+            <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-arma">></button>
         <button id="boton-anterior-escudo"><</button>
@@ -26,9 +28,10 @@
             <img class= imagenItem id="imagen-escudo" src="" alt="Imagen de Escudo">
             <p>DESCRIPCION: <span id="descripcion-escudo"></span></p>
             <p>AUMENTO DEFENSA: <span id="defensa-escudo"></span></p>
-            <p>PRECIO: <span id="precio-escudo"></span></p>
+            <p>PRECIO: <span id="precio-escudo"></span>🪙</p>
             <p>NIVEL: <span id="nivel-escudo"></span></p>
            <button class="botones-comprar" id="comprar-escudo"><span id="span-comprar-escudo">COMPRAR</span></button>
+           <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-escudo">></button>
         <button id="boton-anterior-armadura"><</button>
@@ -37,9 +40,10 @@
             <img class= imagenItem id="imagen-armadura" src="" alt="Imagen de armadura">
             <p>DESCRIPCION: <span id="descripcion-armadura"></span></p>
             <p>AUMENTO DEFENSA: <span id="defensa-armadura"></span></p>
-            <p>PRECIO: <span id="precio-armadura"></span></p>
+            <p>PRECIO: <span id="precio-armadura"></span>🪙</p>
             <p>NIVEL: <span id="nivel-armadura"></span></p>
             <button class="botones-comprar" id="comprar-armadura"><span id="span-comprar-armadura">COMPRAR</span></button>
+            <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-armadura">></button>
         <button id="boton-anterior-amuleto"><</button>
@@ -48,9 +52,10 @@
             <img class= imagenItem id="imagen-amuleto" src="" alt="Imagen de Amuleto">
             <p>DESCRIPCION: <span id="descripcion-amuleto"></span></p>
             <p>AUMENTO RESISTENCIA MÁGICA <span id="resistenciaMagica-amuleto"></span></p>
-            <p>PRECIO: <span id="precio-amuleto"></span></p>
+            <p>PRECIO: <span id="precio-amuleto"></span>🪙</p>
             <p>NIVEL: <span id="nivel-amuleto"></span></p>
             <button class="botones-comprar" id="comprar-amuleto"><span id="span-comprar-amuleto">COMPRAR</span></button>
+            <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-amuleto">></button>
         <button id="boton-anterior-vida"><</button>
@@ -59,8 +64,9 @@
             <img class= imagenItem id="imagen-vida" src="" alt="Imagen Poción de Vida">
             <p>DESCRIPCION: <span id="descripcion-vida"></span></p> 
             <p>REGENERA: <span id="aumento-vida"></span></p>
-            <p>PRECIO: <span id="precio-vida"></span></p>
+            <p>PRECIO: <span id="precio-vida"></span>🪙</p>
             <button class="botones-comprar" id="comprar-vida">Comprar</button>
+            <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-vida">></button>
         <button id="boton-anterior-mana"><</button>
@@ -69,17 +75,21 @@
             <img class= imagenItem id="imagen-mana" src="" alt="Imagen Poción de Maná">
             <p>DESCRIPCION: <span id="descripcion-mana"></span></p> 
             <p>REFENERA: <span id="aumento-mana"></span></p>
-            <p>PRECIO: <span id="precio-mana"></span></p>
+            <p>PRECIO: <span id="precio-mana"></span>🪙</p>
             <button class="botones-comprar" id="comprar-mana">Comprar</button>
+            <p>ORO DISPONIBLE: <span class="span-oro"></span>💰</p>
         </div>
         <button id="boton-siguiente-mana">></button>
     
     </div>
 
     <p><a class="botonVolverLobby" href="./Lobby.html">Volver</a></p>
+    <audio id="sonido-comprar"><source src="./Sonidos/Tienda/comprar.mp3" type="audio/mp3"></audio>
+    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="./Clases/FondoAnimado.js"></script>
     <script type="module" src="./Clases/TiendaFuncionamiento.js"></script>
     <script type="module" src="./Clases/Tienda.js"></script>
+    <script src="Sonido.js"></script>
 </body>
 </html>

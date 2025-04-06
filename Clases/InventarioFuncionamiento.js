@@ -320,6 +320,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreVida.textContent=arrayPocionVida[indiceVida].nombre;
         descripcionVida.textContent=arrayPocionVida[indiceVida].descripcion;
         aumentoVida.textContent=arrayPocionVida[indiceVida].aumento;
+        totalPocionVida.textContent=arrayPocionVida.length;
     };
 
     //Botonoes para pociones de mana
@@ -349,6 +350,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreMana.textContent=arrayPocionMana[indiceMana].nombre;
         descripcionMana.textContent=arrayPocionMana[indiceMana].descripcion;
         aumentoMana.textContent=arrayPocionMana[indiceMana].aumento;
+        totalPocionMana.textContent=arrayPocionMana.length;
     };
 
     //Controlar cuando ocultar las tarjetas vascias
@@ -535,7 +537,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         actualizarEstadisitcas();
 
-    
     });
 
     //Añadir tarjeta de personaje
@@ -567,6 +568,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         barraResistencia.value=personaje.resistenciaMagica;
                 
     }
- 
+
+    //Sonidos
+
+    const botonesTirar=document.querySelectorAll(".botones-tirar");
+    const sonidoTirar=document.querySelector("#sonido-tirar");
+    botonesTirar.forEach(boton=>{
+        boton.addEventListener('click',()=>{
+            sonidoTirar.play();
+        });
+    });
 
 });

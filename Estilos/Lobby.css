@@ -108,3 +108,13 @@ a:hover{
     border: #ce904c ridge 2px;
     color: var(--amarilloFondo);  
 }
+/*Boton de audio*/
+#boton-sonido{
+    position: fixed;
+    top:20px;
+    right:20px;
+    border: 2px solid rgba(255, 217, 0, 0.205);
+    cursor: pointer;
+    font-size: 30px;
+    background-color: #08080828;
+  }

@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', ()=> {
-
+   
     const continuarPartida = document.querySelector("#continuarPartida");
     const eliminarDatos = document.querySelector("#eliminarDatos");
-
     /**
      * Si existe elemento en el localStorage muestra los botones
      */
@@ -21,7 +20,5 @@ document.addEventListener('DOMContentLoaded', ()=> {
         localStorage.removeItem('personaje');
     });
 
+
 });
-
-
-

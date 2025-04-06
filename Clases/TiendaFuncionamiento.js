@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+        actualizarOro();
     });
 
     
@@ -205,7 +206,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
-  
+        actualizarOro();
     });
 
     
@@ -218,6 +219,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+        actualizarOro();
     });
 
    
@@ -230,6 +232,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma  
+        actualizarOro();
     });
 
     comprarVida.addEventListener('click',()=>{
@@ -242,6 +245,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+        actualizarOro();
     });
 
 
@@ -255,6 +259,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             alert(`¡No tiene oro suficiente!`);
         }
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson())); //Añadimos el personaje al localstorage para que se guarde el arma
+        actualizarOro();
     });
 
   
@@ -280,7 +285,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(objeto.nivel!==undefined){
             document.querySelector(`#nivel-${prefijo}`).textContent=objeto.nivel;
         }
-        
+        actualizarOro();
     }
 
 
@@ -320,9 +325,25 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(objeto.nivel!==undefined){
             document.querySelector(`#nivel-${prefijo}`).textContent="???";
         }
+        actualizarOro();
         
     }
 
+    const botonesComprar=document.querySelectorAll(".botones-comprar");
+    const sonidoComprar=document.querySelector("#sonido-comprar");
+    
+    botonesComprar.forEach(boton=>{
+        boton.addEventListener('click',()=>{
+            sonidoComprar.play();
+        });
+    });
+
+    function actualizarOro(){
+        const spanOro=document.querySelectorAll(".span-oro");
+        spanOro.forEach(span=>{
+            span.textContent=personaje.oro;
+        })
+    }
     
     
 });

@@ -29,7 +29,7 @@ a{
 
 html .tienda{
     margin: 0;
-    padding: 0;
+    padding: 1.5%;
     overflow: auto;
     height: 100vh;
     max-width: 100%;
@@ -209,3 +209,14 @@ button:hover {
 button:disabled {
     background-color: rgba(221, 21, 21, 0.37);
 }
+
+/*Boton de audio*/
+#boton-sonido{
+    position: fixed;
+    top:20px;
+    right:20px;
+    border: 2px solid rgba(255, 217, 0, 0.205);
+    cursor: pointer;
+    font-size: 30px;
+    background-color: #08080828;
+  }

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="Estilos/Lobby.css">
 </head>
 <body>
+    <button id="boton-sonido">🔇</button>
     <div class="topLobby">
         <div class="imagenLobby">
             <img class="tamanioImagen" id="imagen" src="">
@@ -35,9 +36,11 @@
         <p>Oro<span id="spanOro"></span></p>
     </div>
     <p><a class="botonVolverLobby" href="Index.html">Volver</a></p>
+    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script type="module" src="Clases/Lobby.js"></script>
     <script type="module" src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/CrearEnemigo.js"></script>
+    <script src="Sonido.js"></script>
 </body>
 </html>
