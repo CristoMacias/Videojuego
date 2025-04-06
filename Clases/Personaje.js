@@ -1,5 +1,4 @@
 import Inventario from './Inventario.js';
-import Enemigo from './Enemigos.js';
 import Arma from './Arma.js';
 import Proteccion from './Proteccion.js';
 import Pocion from './Pocion.js';
@@ -188,8 +187,7 @@ export default class Personaje{
          enemigo.recibirDanho(parseInt(this.magia *1.30), esMagico);
       }else{
          enemigo.recibirDanho(parseInt(this.#ataque *1.30),esMagico);
-      }
-      
+      }  
    }
    /**
     * Método para equipar el arma al personaje para el combate
@@ -199,20 +197,20 @@ export default class Personaje{
       let armaAnterior=this.#armaEquipada;
       if(this.#armaEquipada !== null){ //Comprobamos que el arma equipada no esté vacía
          if(this.#raza === "mago" || this.#raza === "elfo"){
-            this.#magia/=armaAnterior.aumento;
-            this.#magia*=arma.aumento;
-            this.#armaEquipada=arma;
+            this.magia=parseInt(this.#magia/armaAnterior.aumento);//Le quitamos el aumento del arma anterior
+            this.magia=parseInt(this.#magia*arma.aumento);//Le añadimos el aumento del arma a equipar
+            this.#armaEquipada=arma; //Añadimos el arma al personaje
          }else{
-            this.#ataque/=armaAnterior.aumento;//Le quitamos el aumento del arma anterior
-            this.#ataque*=arma.aumento; //Le añadimos el aumento del arma a equipar
+            this.ataque=parseInt(this.#ataque/armaAnterior.aumento);//Le quitamos el aumento del arma anterior
+            this.ataque=parseInt(this.#ataque*arma.aumento);//Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
       }else{
          if(this.#raza === "mago" || this.#raza === "elfo"){
-            this.#magia*=arma.aumento;
-            this.#armaEquipada=arma;
+            this.magia=parseInt(this.#magia*arma.aumento);
+            this.#armaEquipada=arma; //Añadimos el arma al personaje
          }else{
-            this.#ataque*=arma.aumento; //Le añadimos el aumento del arma a equipar
+            this.ataque=parseInt(this.#ataque*arma.aumento); //Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
       }
@@ -224,9 +222,9 @@ export default class Personaje{
     */
    quitarArma(){
       if(this.#raza === "elfo" || this.#raza === "mago"){
-         this.#magia/=this.#armaEquipada.aumento;
+         this.magia=parseInt(this.#magia/this.#armaEquipada.aumento);
       }else{
-         this.#ataque/=this.#armaEquipada.aumento;
+         this.#ataque=parseInt(this.#ataque/this.#armaEquipada.aumento);
       }
       this.#armaEquipada=null;
    }
@@ -237,11 +235,11 @@ export default class Personaje{
    equiparArmadura(armadura){
       let armaduraAnterior=this.#armaduraEquipada;
       if(this.#armaduraEquipada !== null){
-         this.#defensa/=armaduraAnterior.aumento;
-         this.#defensa *= armadura.aumento;
+         this.#defensa=parseInt(this.#defensa/armaduraAnterior.aumento);
+         this.#defensa=parseInt(this.#defensa*armadura.aumento);
          this.#armaduraEquipada=armadura;
       }else{
-         this.defensa*=armadura.aumento;
+         this.#defensa=parseInt(this.#defensa*armadura.aumento);
          this.#armaduraEquipada=armadura;
       }
       
@@ -250,7 +248,7 @@ export default class Personaje{
     * Método para quitar la armadura al personaje
     */
    quitarArmadura(){
-      this.#defensa/=this.#armaduraEquipada.aumento;;
+      this.#defensa=parseInt(this.#defensa/this.#armaduraEquipada.aumento);
       this.#armaduraEquipada=null;
    }
    /**
@@ -260,11 +258,11 @@ export default class Personaje{
    equiparAmuleto(amuleto){
       let amuletoAnterior = this.#amuletoEquipado;
       if(this.#amuletoEquipado !== null){
-         this.#resistenciaMagica /= amuletoAnterior.aumento;
-         this.#resistenciaMagica*= amuleto.aumento;
+         this.#resistenciaMagica=parseInt(this.#resistenciaMagica/amuletoAnterior.aumento);
+         this.#resistenciaMagica=parseInt(this.#resistenciaMagica*amuleto.aumento);
          this.#amuletoEquipado=amuleto;
       }else{
-         this.#resistenciaMagica*=amuleto.aumento;
+         this.#resistenciaMagica=parseInt(this.#resistenciaMagica*amuleto.aumento);
          this.#amuletoEquipado=amuleto;
       }
    }
@@ -272,16 +270,16 @@ export default class Personaje{
     * Método para quitar el amuleto al personaje
     */
    quitarAmuleto(){
-      this.#resistenciaMagica/=this.#amuletoEquipado.aumento;
+      this.#resistenciaMagica=parseInt(this.#resistenciaMagica/this.#amuletoEquipado.aumento);
       this.#amuletoEquipado=null;
    }
    /**
     * Método para desequipar de golpe el arma y objetos de defensa
     */
    desequiparTodo(){
-      this.#armaEquipada=null;
-      this.#armaduraEquipada=null;
-      this.#amuletoEquipado=null;
+      this.quitarArma();
+      this.quitarArmadura();
+      this.quitarAmuleto();
    }
    /**
     * Método para que el personaje beba una pocion de salud o de mana
@@ -315,7 +313,7 @@ export default class Personaje{
       while(this.#experiencia>=this.#experienciaMaxima){
          this.#experiencia-=this.#experienciaMaxima;
          this.subirNivel();
-         this.#experienciaMaxima = Math.floor(this.#experienciaMaxima*1.5);
+         this.#experienciaMaxima = parseInt(this.#experienciaMaxima*1.5);
       }
 
    }
@@ -325,16 +323,16 @@ export default class Personaje{
    subirNivel(){
       let aumento=0.15;
       this.#nivel++;
-      this.#vidaActual+=Math.floor(this.#vidaActual*aumento);
-      this.#vidaMaxima+=Math.floor(this.#vidaMaxima*aumento);
-      this.#defensa+=Math.floor(this.#defensa*aumento);
-      this.resistenciaMagica+=Math.floor(this.#resistenciaMagica*aumento);
-      this.#manaMaximo+=Math.floor(this.#manaMaximo*aumento);
-      this.#manaActual+=Math.floor(this.#manaActual * aumento);
+      this.#vidaActual+=parseInt(this.#vidaActual*aumento);
+      this.#vidaMaxima+=parseInt(this.#vidaMaxima*aumento);
+      this.#defensa+=parseInt(this.#defensa*aumento);
+      this.resistenciaMagica+=parseInt(this.#resistenciaMagica*aumento);
+      this.#manaMaximo+=parseInt(this.#manaMaximo*aumento);
+      this.#manaActual+=parseInt(this.#manaActual * aumento);
       if(this.#raza === "elfo" || this.#raza === "mago"){
-         this.#magia+=Math.floor(this.#magia*aumento);
+         this.#magia+=parseInt(this.#magia*aumento);
       }else{
-         this.#ataque+=Math.floor(this.#ataque*aumento);
+         this.#ataque+=parseInt(this.#ataque*aumento);
       }
    }
    /**

@@ -1,6 +1,4 @@
 import Personaje from './Personaje.js';
-import Inventario from './Inventario.js';
-import Arma from './Arma.js';
 document.addEventListener('DOMContentLoaded',()=>{
     //Reconstruir peresonaje
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
@@ -92,6 +90,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     //Variable mostrar total pociones
     const totalPocionVida=document.querySelector("#total-pociones-vida");
     const totalPocionMana=document.querySelector("#total-pociones-mana");
+
+    //Variables de estadisticas del jugador
+    const imagenPersonaje=document.querySelector("#imagen-personaje");
+    const spanVidaActual=document.querySelector("#span-vida-actual");
+    const spanVidaMax=document.querySelector("#span-vida-max")
+    const spanManaActual=document.querySelector("#span-mana-actual");
+    const spanManaMax=document.querySelector("#span-mana-max");
+    const spanDanio=document.querySelector("#span-danio");
+    const spanDanioAumento=document.querySelector("#span-danio-aumento");
+    const spanDefensa =document.querySelector("#span-defensa");
+    const spanDefensaAumento=document.querySelector("#span-defensa-aumento");
+    const spanResistencia=document.querySelector("#span-resistencia");
+    const spanResistenciaAumento=document.querySelector("#span-resistencia-aumento");
+
+    const barraVida=document.querySelector("#barra-vida");
+    const barraMana=document.querySelector("#barra-mana");
+    const barraDanio=document.querySelector("#barra-danio");
+    const barraDefensa=document.querySelector("#barra-defensa");
+    const barraResistencia=document.querySelector("#barra-resistencia");
     
     function comprobarVacios(){
         //Comprobar el array Armas
@@ -180,6 +197,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     comprobarVacios();
     comprobarEquipados();
+    actualizarEstadisitcas();
 
 
     //Botones para lista de armas
@@ -344,6 +362,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarArma();
         armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="none";
+        actualizarEstadisitcas();
+
     });
 
 
@@ -360,6 +380,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArmaEquipada.textContent=arma.nombre;
         descripcionArmaEquipada.textContent=arma.descripcion;
         aumentoArmaEquipada.textContent=arma.aumento;
+        actualizarEstadisitcas();
+
     });
     const botonArmaduraDesequipar=document.querySelector("#boton-armadura-desequipar");
     const botonArmaduraEquipar=document.querySelector("#boton-armadura-equipar");
@@ -368,6 +390,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarArmadura();
         armaduraEquipada=personaje.armaduraEquipada;
         divArmaduraEquipada.style.display="none";
+        actualizarEstadisitcas();
+
     });
 
     botonArmaduraEquipar.addEventListener('click',()=>{
@@ -379,6 +403,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArmaduraEquipada.textContent=armadura.nombre;
         descripcionArmaduraEquipada.textContent=armadura.descripcion;
         aumentoArmaduraEquipada.textContent=armadura.aumento;
+        actualizarEstadisitcas();
+
     });
 
     const botonAmuletoDesequipar=document.querySelector("#boton-amuleto-desequipar");
@@ -388,6 +414,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarAmuleto();
         amuletoEquipado=personaje.amuletoEquipado;
         divAmuletoEquipado.style.display="none";
+        actualizarEstadisitcas();
     });
 
     botonAmuletoEquipar.addEventListener('click',()=>{
@@ -399,6 +426,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreAmuletoEquipado.textContent=amuleto.nombre;
         descripcionAmuletoEquipado.textContent=amuleto.descripcion;
         aumentoAmuletoEquipado.textContent=amuleto.aumento;
+        actualizarEstadisitcas();
+
     });
 
     //Funcionamiento de botones de Tirar los objetod de los arrays
@@ -406,11 +435,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         //Tirar Armas
     const botonArmaTirar=document.querySelector("#boton-arma-tirar");
     botonArmaTirar.addEventListener('click',()=>{
+        let armaEquipada=personaje.armaEquipada;
         let armaTirar=arrayArmas[indiceArma];
         personaje.tirarObjeto(armaTirar,indiceArma);
         if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){
             personaje.quitarArma();
             divArmaEquipada.style.display="none";
+            actualizarEstadisitcas();
         }  
         indiceArma--;
         if(indiceArma<0){
@@ -427,11 +458,14 @@ document.addEventListener('DOMContentLoaded',()=>{
         //Tirar armadura
     const botonArmaduraTirar=document.querySelector("#boton-armadura-tirar");
     botonArmaduraTirar.addEventListener('click',()=>{
+        let armaduraEquipada=personaje.armaduraEquipada;
         let armaduraTirar=arrayDefensa[indiceArmadura];
         personaje.tirarObjeto(armaduraTirar,indiceArmadura);
         if(armaduraEquipada!== null && armaduraEquipada.nombre===armaduraTirar.nombre){
             personaje.quitarArmadura();
             divArmaduraEquipada.style.display="none";
+            actualizarEstadisitcas();
+
         }
         indiceArmadura--;
         if(indiceArmadura<0){
@@ -447,11 +481,14 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const botonAmuletoTirar=document.querySelector("#boton-amuleto-tirar");
     botonAmuletoTirar.addEventListener('click',()=>{
+        let amuletoEquipado=personaje.amuletoEquipado;
         let amuletoTirar=arrayAmuletos[indiceAmuleto];
         personaje.tirarObjeto(amuletoTirar,indiceAmuleto);
         if(amuletoEquipado !==null && amuletoEquipado.nombre===amuletoTirar.nombre){
             personaje.quitarAmuleto();
             divAmuletoEquipado.style.display="none";
+            actualizarEstadisitcas();
+
         }
         indiceAmuleto--;
         if(indiceAmuleto<0){
@@ -464,8 +501,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             divAMuletos.style.display="none";
         }
     });
-    //TODO: Modificar método de tomarPocion para pasar el indice
-    // y así ahorrar sacar el indice en el metodo
+
 
     const botonPocionBeberVida=document.querySelector("#boton-beber-vida");
     botonPocionBeberVida.addEventListener('click',()=>{
@@ -480,6 +516,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             divVida.style.display="none";
         }
+        actualizarEstadisitcas();
+
     });
 
     const botonBeberMana=document.querySelector("#boton-beber-mana");
@@ -495,6 +533,40 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             divMana.style.display="none";
         }
+        actualizarEstadisitcas();
+
     
     });
+
+    //Añadir tarjeta de personaje
+
+
+    function actualizarEstadisitcas(){
+        imagenPersonaje.src=personaje.imagen;
+
+        spanVidaActual.textContent=personaje.vidaActual;
+        spanVidaMax.textContent=personaje.vidaMaxima;
+        barraVida.value=personaje.vidaActual;
+        barraVida.max=personaje.vidaMaxima;
+
+        spanManaActual.textContent=personaje.manaActual;
+        spanManaMax.textContent=personaje.manaMaximo;
+        barraMana.value=personaje.manaActual;
+        barraMana.max=personaje.manaMaximo;
+        if(personaje.raza==="mago" || personaje.raza==="elfo"){
+            spanDanio.textContent="MAGIA: "+personaje.magia;
+            barraDanio.value=personaje.magia;
+        }else{
+            spanDanio.textContent="ATAQUE: "+personaje.ataque;
+            barraDanio.value=personaje.ataque;
+        }
+        spanDefensa.textContent=personaje.defensa;
+        barraDefensa.value=personaje.defensa;
+
+        spanResistencia.textContent=personaje.resistenciaMagica;
+        barraResistencia.value=personaje.resistenciaMagica;
+                
+    }
+ 
+
 });

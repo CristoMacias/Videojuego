@@ -23,7 +23,7 @@ export default class Inventario{
     agregarObjeto(objeto){
         if(objeto instanceof Arma && this.#armas.length<5){
             this.#armas.push(objeto);
-        }else if(objeto instanceof Proteccion && this.#defensa.length<4){
+        }else if(objeto instanceof Proteccion &&( this.#defensa.length<4 || this.amuletos.length)){
             if(objeto.tipo==="escudo" || objeto.tipo==="armadura"){
                 this.#defensa.push(objeto);
             }else{

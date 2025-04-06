@@ -1,7 +1,6 @@
 import Tienda from './Tienda.js';
 import Personaje from './Personaje.js';
 import Arma from './Arma.js';
-import Proteccion from './Proteccion.js';
 import Pocion from './Pocion.js';
 document.addEventListener('DOMContentLoaded',()=>{
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
@@ -43,22 +42,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     const spanCompraEscudo=document.querySelector("#span-comprar-escudo");
     const spanCompraAmuleto=document.querySelector("#span-comprar-amuleto");
     
-    //Cuando se inicia la tienda muestra el primer objeto de cada array
-
-    /*
-    mostrarObjeto(armaCero,prefArma);
-    mostrarObjeto(escudoCero,prefEscudo);
-    mostrarObjeto(armaduraCero,prefArmadura);
-    mostrarObjeto(amuletoCero,prefAmuleto);*/
     mostrarObjeto(vidaCero,prefVida);
     mostrarObjeto(manaCero,prefMana);
-
-
     //Carrousel Armas 
     const anteriorBotonArma=document.querySelector("#boton-anterior-arma");
     const siguienteBotonArma=document.querySelector("#boton-siguiente-arma");
     let indiceArma=0;
-    comprobarDisponibilidadObjeto(armas[indiceArma],spanCompraArma,comprarArma,prefArma);
+    comprobarDisponibilidadObjeto(armaCero,spanCompraArma,comprarArma,prefArma);
      //Evento para elegir la opcion anterior
     anteriorBotonArma.addEventListener('click',()=>{
         indiceArma--;
@@ -67,7 +57,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
        // mostrarObjeto(armas[indiceArma],prefArma);
         comprobarDisponibilidadObjeto(armas[indiceArma],spanCompraArma,comprarArma,prefArma);
-      
     });
    
     //Evento para elegir la opcion siguiente
@@ -86,7 +75,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonEscudos=document.querySelector("#boton-anterior-escudo");
     const siguienteBotonEscudos=document.querySelector("#boton-siguiente-escudo");
     let indiceEscudo=0;
-    comprobarDisponibilidadObjeto(escudos[indiceEscudo],spanCompraEscudo,comprarEscudo,prefEscudo);
+    comprobarDisponibilidadObjeto(escudoCero,spanCompraEscudo,comprarEscudo,prefEscudo);
      //Evento para elegir la opcion anterior
     anteriorBotonEscudos.addEventListener('click',()=>{
         indiceEscudo--;
@@ -110,7 +99,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonArmaduras=document.querySelector("#boton-anterior-armadura");
     const siguienteBotonArmaduras=document.querySelector("#boton-siguiente-armadura");
     let indiceArmadura=0;
-    comprobarDisponibilidadObjeto(armaduras[indiceArmadura],spanCompraArmadura,comprarArmadura,prefArmadura);
+    comprobarDisponibilidadObjeto(armaduraCero,spanCompraArmadura,comprarArmadura,prefArmadura);
      //Evento para elegir la opcion anterior
     anteriorBotonArmaduras.addEventListener('click',()=>{
         indiceArmadura--;
@@ -133,7 +122,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const anteriorBotonAmuletos=document.querySelector("#boton-anterior-amuleto");
     const siguienteBotonAmuletos=document.querySelector("#boton-siguiente-amuleto");
     let indiceAmuleto=0;
-    comprobarDisponibilidadObjeto(amuletos[indiceAmuleto],spanCompraAmuleto,comprarAmuleto,prefAmuleto);
+    comprobarDisponibilidadObjeto(amuletoCero,spanCompraAmuleto,comprarAmuleto,prefAmuleto);
      //Evento para elegir la opcion anterior
     anteriorBotonAmuletos.addEventListener('click',()=>{
         indiceAmuleto--;
