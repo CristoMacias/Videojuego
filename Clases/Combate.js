@@ -40,6 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const inventarioPersonaje = personaje.inventario;
     let pocionesVida = inventarioPersonaje.pocionesVida;
 
+    let contadorDefensa = 1;
+    let turnos = -1;
+
     if (personaje) {
         //Mostrar los atributos de personajes
         spanNombreAliado.textContent = " : " + personaje.nombre;
@@ -68,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             else{
                 spanVidaEnemigo.textContent = " : " + enemigo.vida;
             }
-        
-        ataqueEnemigo();
 
+        controlarTurnos();
+        ataqueEnemigo();
         controlarVida();
 
     }
@@ -93,9 +96,17 @@ document.addEventListener('DOMContentLoaded', () => {
      * Método de defender
      */
     const defender = function () {
-        
-        personaje
 
+        if(contadorDefensa > 0){
+        turnos = 3;
+        personaje.defenderse();
+        alert("Has activado la defensa.")
+        contadorDefensa--;
+        }
+        else{
+            botonDefender.disabled = true;
+            alert("Esta opción solo se puede usar 1 vez por combate");
+        }
     }
     botonDefender.addEventListener("click", defender);
 
@@ -114,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             else{
                     spanVidaEnemigo.textContent = " : " + enemigo.vida;
             }
-                
+            controlarTurnos();
             ataqueEnemigo();
     }
     else if(personaje.manaActual < 40){
@@ -198,5 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
         personaje.oro += 100;
     }
 
+    function controlarTurnos(){
+        if(turnos > 0){
+            turnos--;
+        }
+        else if(turnos === 0){
+            personaje.dejarDefenderse();
+            turnos--;
+        }
+    }
 
 });
