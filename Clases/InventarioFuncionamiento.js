@@ -568,15 +568,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         barraResistencia.value=personaje.resistenciaMagica;
                 
     }
-
-    //Sonidos
-
-    const botonesTirar=document.querySelectorAll(".botones-tirar");
-    const sonidoTirar=document.querySelector("#sonido-tirar");
-    botonesTirar.forEach(boton=>{
-        boton.addEventListener('click',()=>{
-            sonidoTirar.play();
-        });
-    });
-
+    function sonidoArma(){
+        const sourceArma=document.querySelector("#sonido-arma");
+        if(personaje.raza==="elfo" || personaje.raza==="mago"){
+            sourceArma.src="Sonidos/Inventario/equiparMagia.mp3";
+        }else{
+            sourceArma.src="Sonidos/Inventario/equiparArma.mp3";
+        }
+    }
+    sonidoArma();
 });

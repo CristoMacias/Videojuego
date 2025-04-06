@@ -3,10 +3,15 @@
     --amarilloFondo: #ce904c;
     
 }
-
+*{
+    cursor: inherit;
+  }
+  html{
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
+  }
 body {
     margin: 0;
-    
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
     background-color: black;
     color: white;
     z-index: relative;
@@ -95,7 +100,6 @@ a{
     text-align: center;
     text-decoration: none;
     color: var(--verdeOscuro);
-    cursor: pointer;
     align-content: center;
     border: #20464e ridge 2px;
     font-size: 110%;
@@ -114,7 +118,6 @@ a:hover{
     top:20px;
     right:20px;
     border: 2px solid rgba(255, 217, 0, 0.205);
-    cursor: pointer;
     font-size: 30px;
     background-color: #08080828;
   }

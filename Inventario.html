@@ -31,7 +31,7 @@
             <p> <span id="nombre-arma-equipada"></span></p>
             <p>Descripcion: <span id="descripcion-arma-equipada"></span></p>
             <p>Aumento: <span id="aumento-arma-equipada"></span></p>
-            <button id="boton-arma-desequipar">DESEQUIPAR</button>
+            <button class="botones equipar" id="boton-arma-desequipar">DESEQUIPAR</button>
         </div>
         <div id="armadura-equipada">
             <p>ARMADURA/ESCUDO EQUIPADO</p>
@@ -39,7 +39,7 @@
             <p> <span id="nombre-armadura-equipada"></span></p>
             <p>Descripcion: <span id="descripcion-armadura-equipada"></span></p>
             <p>Aumento: <span id="aumento-armadura-equipada"></span></p>
-            <button id="boton-armadura-desequipar">DESEQUIPAR</button>
+            <button class="botones equipar" id="boton-armadura-desequipar">DESEQUIPAR</button>
         </div>
         <div id="amuleto-equipado">
             <p>AMULETO EQUIPADO</p>
@@ -47,87 +47,93 @@
             <p> <span id="nombre-amuleto-equipado"></span></p>
             <p>Descripcion: <span id="descripcion-amuleto-equipado"></span></p>
             <p>Aumento: <span id="aumento-amuleto-equipado"></span></p>
-            <button id="boton-amuleto-desequipar">DESEQUIPAR</button>
+            <button class="botones equipar" id="boton-amuleto-desequipar">DESEQUIPAR</button>
         </div>
     </div>
     <div id="carrousel">
         <div id="cajon-armas">
             <h3>ARMAS</h3>
             <div id="cajon-arma-imagen">
-                <button id="boton-arma-anterior"><</button>
-                    <button id="boton-arma-siguiente">></button>
+                <button id="boton-arma-anterior" class="botones"><</button>
+                    <button id="boton-arma-siguiente" class="botones">></button>
                 <img id="imagen-arma" src="" alt="Imagen del arma">
             </div>
             <p><span id="nombre-arma"></span></p>
             <p>Descripcion: <span id="descripcion-arma" ></span></p>
             <p>Aumento: <span id="aumento-arma"></span></p>
-            <button id="boton-arma-equipar">EQUIPAR</button>
-            <button id="boton-arma-tirar" class="botones-tirar">TIRAR</button>
+            <button class="botones equipar-defensa" id="boton-arma-equipar">EQUIPAR</button>
+            <button id="boton-arma-tirar" class="botones-tirar botones">TIRAR</button>
             <audio id="sonido-tirar"><source src="./Sonidos/Inventario/tirarObjeto.mp3" type="audio/mp3"></audio>
         </div>
         <div id="cajon-armaduras">
             <h3>ARMADURAS/ESCUDOS</h3>
-            <button id="boton-armadura-anterior"><</button>
-            <button id="boton-armadura-siguiente">></button>
+            <button id="boton-armadura-anterior" class="botones"><</button>
+            <button id="boton-armadura-siguiente" class="botones">></button>
             <div id="cajon-armadura-imagen">   
                 <img id="imagen-armadura" src="" alt="Imagen del arma">  
             </div>
             <p><span id="nombre-armadura"></span></p>
             <p>Descripcion: <span id="descripcion-armadura"></span></p>
             <p>Aumento: <span id="aumento-armadura"></span></p>
-            <button id="boton-armadura-equipar">EQUIPAR</button>
-            <button id="boton-armadura-tirar" class="botones-tirar">TIRAR</button>
+            <button class="botones equipar-defensa" id="boton-armadura-equipar">EQUIPAR</button>
+            <button id="boton-armadura-tirar" class="botones-tirar botones">TIRAR</button>
            
             
         </div>
         <div id="cajon-amuletos">
             <h3>AMULETOS</h3>
-            <button id="boton-amuleto-anterior"><</button>
-            <button id="boton-amuleto-siguiente">></button>
+            <button id="boton-amuleto-anterior" class="botones"><</button>
+            <button id="boton-amuleto-siguiente" class="botones">></button>
             <div id="cajon-amuleto-imagen">
                 <img id="imagen-amuleto" src="" alt="Imagen del amuleto">
             </div>
             <p><span id="nombre-amuleto"></span></p>
             <p>Descripcion: <span  id="descripcion-amuleto"></span></p>
             <p>Aumento: <span id="aumento-amuleto"></span></p>
-            <button id="boton-amuleto-equipar">EQUIPAR</button>
-            <button id="boton-amuleto-tirar" class="botones-tirar">TIRAR</button> 
+            <button class="botones" id="boton-amuleto-equipar">EQUIPAR</button>
+            <button id="boton-amuleto-tirar" class="botones-tirar botones">TIRAR</button> 
         </div>
         <div id="pociones">
             <div id="cajon-vida">
                 <h3>Pociones de Salud: <span id="total-pociones-vida"></span></h3>
-                <button id="boton-vida-anterior"><</button>
-                <button id="boton-vida-siguiente">></button>
+                <button id="boton-vida-anterior" class="botones"><</button>
+                <button id="boton-vida-siguiente" class="botones">></button>
                 <div>
                     <p><span id="nombre-vida"></span></p>
                     <p >Descripcion: <span id="descripcion-vida"></span></p>
                     <p> Aumento: <span id="aumento-vida"></span></p>
                     <img src="" id="imagen-vida" alt="Imagen pocion de vida"></img>
-                    <button id="boton-beber-vida">BEBER</button>
+                    <button class="botones beber" id="boton-beber-vida">BEBER</button>
                     
                 </div>
             </div>
             <div id="cajon-mana">
                 <h3>Pociones de Mana <span id="total-pociones-mana"></span></h3>
-                <button id="boton-mana-anterior"><</button>
-                <button id="boton-mana-siguiente">></button>
+                <button id="boton-mana-anterior" class="botones"><</button>
+                <button id="boton-mana-siguiente" class="botones">></button>
                 <div>
                     <p><span id="nombre-mana"></span></p>
                     <p>Descripcion: <span id="descripcion-mana"></span></p>
                     <p> Aumento: <span id="aumento-mana"></span></p>
                     <img id="imagen-mana" src="" alt="Imagen pocion de Mana">
-                    <button id="boton-beber-mana">BEBER</button> 
+                    <button class="botones beber" id="boton-beber-mana">BEBER</button> 
                 </div>
             </div>
         </div>
     </div>
 
 
-    <button id="boton-guardar">GUARDAR</button>
-    <button id="boton-desequipar">DESEQUIPAR TODO</button>
-    <a href="Lobby.html" id="boton-volver"><button>VOLVER</button></a>
+    <button class="botones equipar" id="boton-guardar">GUARDAR</button>
+    <button class="botones equipar" id="boton-desequipar">DESEQUIPAR TODO</button>
+    <a href="Lobby.html" id="boton-volver"><button class="botones">VOLVER</button></a>
     <audio id="sonido-tirar"><source src="./Sonidos/Inventario/tirarObjeto.mp3" type="audio/mp3"></audio>
-    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio.mp3" type="audio/mp3"></audio>
+    <audio id="sonido-beber"><source src="./Sonidos/Inventario/beber.mp3" type="audio/mp3"></audio>
+    <audio id="sonido-amuleto"><source src="./Sonidos/Inventario/colgante.mp3" type="audio/mp3"></audio>
+    <audio id="sonido-defensa"><source src="./Sonidos/Inventario/armadura.mp3"></audio>
+    <audio id="sonido-arma"><source src="" type="audio/mp3" id="source-arma"></audio>
+    <audio id="sonido-equipar"><source src="./Sonidos/Inventario/equipar.mp3" type="audio/mp3"></audio>
+    <audio id="sonido-general"><source src="./Sonidos/botonesGeneral.mp3" type="audio/mp3"></audio>
+    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>

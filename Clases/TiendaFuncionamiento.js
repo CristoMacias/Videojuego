@@ -328,7 +328,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         actualizarOro();
         
     }
-
+    //Debe ir aqui la logica del sonido para que funcione solo ucando tiene suficiente oro
     const botonesComprar=document.querySelectorAll(".botones-comprar");
     const sonidoComprar=document.querySelector("#sonido-comprar");
     
@@ -344,6 +344,6 @@ document.addEventListener('DOMContentLoaded',()=>{
             span.textContent=personaje.oro;
         })
     }
-    
+
     
 });

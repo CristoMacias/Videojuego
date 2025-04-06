@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const descripcionArma2=document.querySelector("#descripcion-arma2");
     const aumentoArma2=document.querySelector("#aumento-arma2");
     const divArmas=document.querySelector("#elegir-arma");
+    const body=document.querySelector("body");
     const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
         "./Imagenes/humano.png",
         "./Imagenes/orco.png",
@@ -58,11 +59,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         
         if(indiceRaza !== -1){
             elegirImagen.src=imagenesPersonaje[indiceRaza];
+            cambiarCursor(razaElegida);
             divArmas.style.display="flex";
         }else{
             alert("La raza no es válida");
         }
-        
         let arrayArmas=armas[razaElegida];
         let arma1=arrayArmas[0];
         let arma2=arrayArmas[1];
@@ -76,6 +77,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         aumentoArma2.textContent=arma2.aumento;
 
     });
+    function cambiarCursor(raza){
+        if(raza==="humano"){
+            document.documentElement.style.cursor ="url('./Imagenes/cursores/cursorHumano.svg') 16 16, auto";
+            body.style.cursor="url('./Imagenes/cursores/cursorHumano.svg') 16 16, auto";
+        }else if(raza==="orco"){
+            document.documentElement.style.cursor ="url('./Imagenes/cursores/cursorOrco.svg') 16 16, auto";
+            body.style.cursor="url('./Imagenes/cursores/cursorOrco.svg') 16 16, auto";
+        }else if(raza==="enano"){
+            document.documentElement.style.cursor ="url('./Imagenes/cursores/cursorEnano.svg') 16 16, auto";
+            body.style.cursor="url('./Imagenes/cursores/cursorEnano.svg') 16 16, auto";
+        }else if(raza==="elfo"){
+            document.documentElement.style.cursor ="url('./Imagenes/cursores/cursorElfo.svg') 16 16, auto";
+            body.style.cursor="url('./Imagenes/cursores/cursorElfo.svg') 16 16, auto";
+        }else{
+            document.documentElement.style.cursor ="url('./Imagenes/cursores/cursorMago.svg') 16 16, auto";
+            body.style.cursor="url('./Imagenes/cursores/cursorMago.svg') 16 16, auto";
+        }
+    }
 
     /**
      * Evento para que se cree el personaje al hacer submit

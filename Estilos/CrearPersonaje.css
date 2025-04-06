@@ -3,10 +3,16 @@
     --amarilloFondo: #ce904c;
     
 }
+*{
+    cursor: inherit;
+}
+html{
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
+}
 
 body {
     margin: 0;
-    
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
     background-color: black;
     color: white;
     z-index: relative;
@@ -22,7 +28,9 @@ a{
     z-index: 10;
 }
 
-
+*{
+    cursor: inherit;
+}
 
 
 /*h1 de eleccion de arma inicial*/
@@ -216,7 +224,6 @@ a{
     text-align: center;
     text-decoration: none;
     color: var(--verdeOscuro);
-    cursor: pointer;
     align-content: center;
     border: #20464e ridge 2px;
     font-size: 110%;
@@ -236,7 +243,6 @@ a:hover{
     border: none;
     padding: 10px 20px;
     font-size: 18px;
-    cursor: pointer;
     border-radius: 15px;
     transition: background-color 0.3s ease;
     color: #20464e;
@@ -259,6 +265,7 @@ a:hover{
     align-items: center;
     gap: 15px;
     margin-top: 20px;
+
 }
 
 /*Boton de audio*/
@@ -267,7 +274,16 @@ a:hover{
     top:20px;
     right:20px;
     border: 2px solid rgba(255, 217, 0, 0.205);
-    cursor: pointer;
     font-size: 30px;
     background-color: #08080828;
 }
+
+select{
+    background-color: #008080;
+    font-size: 30px;
+    border-radius: 20px;
+    padding:5px;
+    box-shadow: 0px 1px 10px 1px rgb(248, 229, 118);
+    border: 1px solid rgba(223, 215, 146, 0.623);
+}
+
