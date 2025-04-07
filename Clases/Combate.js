@@ -256,8 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Salud Pequeña🍷");
 
         if (index !== -1) {
-            personaje.inventario.pocionesVida.splice(index, 1); 
-            personaje.tomarPocion("salud");
+            let pocion = pocionesVida[index];
+            personaje.tomarPocion(pocion);
             spanVidaAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud pequeña usada.");
         } else {
@@ -265,8 +265,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
-
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
     }
     botonPocionSaludPequenha.addEventListener("click", tomarPocionPequenha);
 
@@ -277,8 +275,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Salud Media🥂");
 
         if (index !== -1) {
-            personaje.inventario.pocionesVida.splice(index, 1); 
-            personaje.tomarPocion("salud"); 
+            let pocion = pocionesVida[index];
+            personaje.tomarPocion(pocion);
             spanVidaAliado.textContent = " : " + personaje.vidaActual; 
             alert("Poción de salud mediana usada.");
         } else {
@@ -286,8 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
-    
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
+
     }
     botonPocionSaludMediana.addEventListener("click", tomarPocionMediana);
 
@@ -298,8 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Salud Grande🍾");
 
         if (index !== -1) {
-            personaje.inventario.pocionesVida.splice(index, 1); 
-            personaje.tomarPocion("salud");
+            let pocion = pocionesVida[index];
+            personaje.tomarPocion(pocion);
             spanVidaAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud grande usada.");
         } else {
@@ -307,8 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
-    
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
+
     }
     botonPocionSaludGrande.addEventListener("click", tomarPocionGrande);
 
@@ -319,8 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción Milagrosa✨");
 
         if (index !== -1) {
-            personaje.inventario.pocionesVida.splice(index, 1); 
-            personaje.tomarPocion("salud"); 
+            let pocion = pocionesVida[index];
+            personaje.tomarPocion(pocion);
             spanVidaAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud milagrosa usada.");
         } else {
@@ -328,8 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
-    
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
+
     }
     botonPocionSaludMilagrosa.addEventListener("click", tomarPocionMilagrosa);
 
@@ -340,8 +335,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Pequeña🔵");
 
         if (index !== -1) {
-            personaje.inventario.pocionesMana.splice(index, 1);
-            personaje.tomarPocion("mana"); 
+            let pocion = pocionesMana[index];
+            personaje.tomarPocion(pocion);
             spanManaAliado.textContent = " : " + personaje.vidaMana;
             alert("Poción de mana pequeña usada.");
         } else {
@@ -349,8 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
-    
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
+
     }
     botonPocionManaPequenha.addEventListener("click", tomarPocionManaPequenha);
 
@@ -361,8 +355,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Media🔷");
 
         if (index !== -1) {
-            personaje.inventario.pocionesMana.splice(index, 1); 
-            personaje.tomarPocion("mana"); 
+            let pocion = pocionesMana[index];
+            personaje.tomarPocion(pocion); 
             spanManaAliado.textContent = " : " + personaje.vidaMana; 
             alert("Poción de mana mediana usada.");
         } else {
@@ -371,8 +365,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
     
-        
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
     }
     botonPocionManaMediana.addEventListener("click", tomarPocionManaMediana);
 
@@ -383,8 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Grande🔮");
 
         if (index !== -1) {
-            personaje.inventario.pocionesMana.splice(index, 1);
-            personaje.tomarPocion("mana"); 
+            let pocion = pocionesMana[index];
+            personaje.tomarPocion(pocion);
             spanManaAliado.textContent = " : " + personaje.vidaMana;
             alert("Poción de mana grande usada.");
         } else {
@@ -393,8 +385,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
     
-        
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
     }
     botonPocionManaGrande.addEventListener("click", tomarPocionManaGrande);
 
@@ -403,8 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let index = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Maná Divina✨");
 
         if (index !== -1) {
-            personaje.inventario.pocionesMana.splice(index, 1); 
-            personaje.tomarPocion("mana"); 
+            let pocion = pocionesMana[index];
+            personaje.tomarPocion(pocion); 
             spanManaAliado.textContent = " : " + personaje.vidaMana;
             alert("Poción de mana divina usada.");
         } else {
@@ -413,8 +403,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
         divPociones.classList.replace("tiposPocionesVisto" ,"tiposPocionesOculto");
     
-       
-        localStorage.setItem("personaje", JSON.stringify(personaje.convertirJson()));
     }
     botonPocionManaDivina.addEventListener("click", tomarPocionDivina);
 
