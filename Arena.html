@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arena de Combate</title>
     <link rel="stylesheet" href="./Estilos/Arena.css">
+    <link rel="icon" type="image/x-icon" href="./Imagenes/favicon.png">
 </head>
 <body>
+    <button id="boton-sonido">🔇</button>
     <div class="arenaElementos">
         <div class="arenaImagenes">
             <p>imagen</p>
@@ -72,9 +74,11 @@
         <a class="botonFinPartida" id="botonFinPartida" href="Lobby.html">Volver</a>
     </div>
 
-    
+    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="./Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Combate.js" ></script>
+    <script type="module" src="./Clases/Cursor.js"></script>
+    <script src="./Clases/Sonido.js"></script>
 </body>
 </html>

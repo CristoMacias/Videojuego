@@ -2,9 +2,11 @@ import Tienda from './Tienda.js';
 import Personaje from './Personaje.js';
 import Arma from './Arma.js';
 import Pocion from './Pocion.js';
+import {cambiarCursor} from "./Cursor.js";
 document.addEventListener('DOMContentLoaded',()=>{
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
     const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
+    cambiarCursor(personaje.raza);//Llamada al metodo de cambiarCursor para cambiar el cursor en funcion de la raza
     const tienda = new Tienda(personaje.raza); // Para controlar las armas disponibles para comprar
 
     const armas=tienda.armas;//Array con las armas
@@ -41,6 +43,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const spanCompraArmadura=document.querySelector("#span-comprar-armadura");
     const spanCompraEscudo=document.querySelector("#span-comprar-escudo");
     const spanCompraAmuleto=document.querySelector("#span-comprar-amuleto");
+
+    const sonidoComprar=document.querySelector("#sonido-comprar");
     
     mostrarObjeto(vidaCero,prefVida);
     mostrarObjeto(manaCero,prefMana);
@@ -188,6 +192,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const armaComprar=armas[indiceArma];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>armaComprar.precio-1){
+            sonidoComprar.play();
             personaje.comprarTienda(armaComprar);//Añadimos el arma
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
@@ -200,8 +205,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     comprarEscudo.addEventListener('click',()=>{
         const escudoComprar=escudos[indiceEscudo];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
-        if(personaje.oro>escudoComprar.precio-1){
-            personaje.comprarTienda(escudoComprar);//Añadimos el arma
+        if((personaje.oro>escudoComprar.precio-1) ){
+            if(personaje.inventario.defensa.length<4){
+                 sonidoComprar.play();
+                 personaje.comprarTienda(escudoComprar);        //Añadimos el arma
+            }else{
+                alert('No hay suficiente espacio');
+            }
+           
+    
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
@@ -214,6 +226,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const armaduraComprar=armaduras[indiceArmadura];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>armaduraComprar.precio-1){
+            sonidoComprar.play();
             personaje.comprarTienda(armaduraComprar);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dice que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
@@ -227,6 +240,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         const amuletoComprar=amuletos[indiceAmuleto];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>amuletoComprar.precio-1){
+            sonidoComprar.play();
             personaje.comprarTienda(amuletoComprar);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
@@ -240,6 +254,7 @@ document.addEventListener('DOMContentLoaded',()=>{
        
         //Comprobar que elvidapersonaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>vidaComprar.precio-1){
+            sonidoComprar.play();
             personaje.comprarTienda(vidaComprar);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
@@ -254,7 +269,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         const manaComprar=pocionesMana[indiceMana];
         //Comprobar que el personaje tenga suficiente dinero para comprar el arma
         if(personaje.oro>manaComprar.precio-1){
-            personaje.comprarTienda(manaComprar);//Restamos el oro del arma al oro del personaje
+            if(personaje.inventario.pocionesMana.length<7)
+                sonidoComprar.play();
+                personaje.comprarTienda(manaComprar);//Restamos el oro del arma al oro del personaje
         }else{ //Se muestra un mensaje dicneod que no tiene suficiente oro
             alert(`¡No tiene oro suficiente!`);
         }
@@ -328,15 +345,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         actualizarOro();
         
     }
-    //Debe ir aqui la logica del sonido para que funcione solo ucando tiene suficiente oro
-    const botonesComprar=document.querySelectorAll(".botones-comprar");
-    const sonidoComprar=document.querySelector("#sonido-comprar");
-    
-    botonesComprar.forEach(boton=>{
-        boton.addEventListener('click',()=>{
-            sonidoComprar.play();
-        });
-    });
+
 
     function actualizarOro(){
         const spanOro=document.querySelectorAll(".span-oro");

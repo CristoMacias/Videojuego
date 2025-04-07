@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>👜Inventario</title>
+    <title>Inventario</title>
     <link rel="stylesheet" href="Estilos/Inventario.css">
+    <link rel="icon" type="image/x-icon" href="./Imagenes/favicon.png">
 </head>
 <body>
     <button id="boton-sonido">🔇</button>
@@ -61,7 +62,7 @@
             <p><span id="nombre-arma"></span></p>
             <p>Descripcion: <span id="descripcion-arma" ></span></p>
             <p>Aumento: <span id="aumento-arma"></span></p>
-            <button class="botones equipar-defensa" id="boton-arma-equipar">EQUIPAR</button>
+            <button class="botones" id="boton-arma-equipar">EQUIPAR</button>
             <button id="boton-arma-tirar" class="botones-tirar botones">TIRAR</button>
             <audio id="sonido-tirar"><source src="./Sonidos/Inventario/tirarObjeto.mp3" type="audio/mp3"></audio>
         </div>
@@ -138,6 +139,7 @@
     <script src="Clases/FondoAnimado.js"></script>
     <script type="module" src="Clases/Inventario.js"></script>
     <script type="module" src="Clases/InventarioFuncionamiento.js"></script>
-    <script src="Sonido.js"></script>
+    <script type="module" src="./Clases/Cursor.js"></script>
+    <script src="./Clases/Sonido.js"></script>
 </body>
 </html>
