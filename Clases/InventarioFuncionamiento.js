@@ -88,6 +88,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const aumentoAmuletoEquipado=document.querySelector("#aumento-amuleto-equipado");
 
     //Variable mostrar total pociones
+    const totalArmas=document.querySelector("#total-armas");
+    const totalDefensa=document.querySelector("#total-defensa");
+    const totalAmuletos=document.querySelector("#total-amuletos");
     const totalPocionVida=document.querySelector("#total-pociones-vida");
     const totalPocionMana=document.querySelector("#total-pociones-mana");
 
@@ -118,6 +121,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             nombreArma.textContent=arrayArmas[0].nombre;
             descripcionArma.textContent=arrayArmas[0].descripcion;
             aumentoArma.textContent=arrayArmas[0].aumento;
+            totalArmas.textContent=arrayArmas.length;
         }else{
             divArmas.style.display="none";
         }
@@ -128,6 +132,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             nombreArmadura.textContent=arrayDefensa[0].nombre;
             descripcionArmadura.textContent=arrayDefensa[0].descripcion;
             aumentoArmadura.textContent=arrayDefensa[0].aumento;
+            totalDefensa.textContent=arrayDefensa.length;
         }else{
             divArmaduras.style.display="none";
         }
@@ -138,6 +143,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             nombreAmuleto.textContent=arrayAmuletos[0].nombre;
             descripcionAmuleto.textContent=arrayAmuletos[0].descripcion;
             aumentoAmuleto.textCOntent=arrayAmuletos[0].aumento;
+            totalAmuletos.textContent=arrayAmuletos.length;
         }else{
             divAMuletos.style.display="none";
         }//Comrobar el array de pociones de vida

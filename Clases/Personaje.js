@@ -14,10 +14,10 @@ export default class Personaje{
     #defensa=100;//Puntos de defensa
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
-    #nivel=1;//Nivel actual
+    #nivel=100;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=0; // Total de oro 
+    #oro=10000; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;
@@ -157,10 +157,14 @@ export default class Personaje{
       let danho;
       if(esMagico){
          danho = parseInt(danhoEnemigo-(this.#resistenciaMagica / 2));
-         this.#vidaActual-= danho;
+         if(danho>0){
+            this.#vidaActual-= danho;
+         }
       }else{
          danho = parseInt(danhoEnemigo-(this.#defensa / 2));
-         this.#vidaActual-=danho;
+         if(danho>0){
+            this.#vidaActual-=danho;
+         }
       }
    }
    /**
