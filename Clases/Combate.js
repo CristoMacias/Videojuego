@@ -205,8 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonHuir.classList.add("botonesArenaBlock");
                 derrota.style.display = "flex";
                 botonFinPartida.style.display = "flex";
+                botonHuir.disabled = true;
+                botonAtacar.disabled = true;
+                botonDefender.disabled = true;
+                botonCritico.disabled = true;
+                botonPocion.disabled = true;
                 personaje.vidaActual = personaje.vidaMaxima;
                 personaje.inventario.pocionesVida
+
             }
             else{
                 botonAtacar.classList.add("botonesArenaBlock");
@@ -214,8 +220,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonCritico.classList.add("botonesArenaBlock");
                 botonPocion.classList.add("botonesArenaBlock");
                 botonHuir.classList.add("botonesArenaBlock");
+                botonHuir.disabled = true;
+                botonAtacar.disabled = true;
+                botonDefender.disabled = true;
+                botonCritico.disabled = true;
+                botonPocion.disabled = true;
                 victoria.style.display = "flex";
                 botonFinPartida.style.display = "flex";
+                botonHuir.disabled = true;
                 darExperiencia();
                 darOro();
             }
