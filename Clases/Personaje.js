@@ -57,14 +57,14 @@ export default class Personaje{
             mago:{vida:0.8,mana:1.3,ataque:0,defensa:0.9,magia:1.3,resistenciaMagica:1.25},
             elfo:{vida:0.9,mana:1.2,ataque:0,defensa:1.0,magia:1.2,resistenciaMagica:1.0}
         };
-        this.#vidaMaxima=parseInt(this.#vidaMaxima*razas[raza].vida);
-        this.#vidaActual=parseInt(this.#vidaMaxima);
-        this.#manaMaximo=parseInt(this.#manaMaximo*razas[raza].mana);
-        this.#manaActual=parseInt(this.#manaMaximo);
-        this.#ataque = parseInt(this.#ataque*razas[raza].ataque);
-        this.#defensa= parseInt(this.#defensa*razas[raza].defensa);
-        this.#magia=parseInt(this.#magia*razas[raza].magia);
-        this.#resistenciaMagica=parseInt(this.#resistenciaMagica*razas[raza].resistenciaMagica);
+        this.#vidaMaxima=this.#vidaMaxima*razas[raza].vida;
+        this.#vidaActual=this.#vidaMaxima;
+        this.#manaMaximo=this.#manaMaximo*razas[raza].mana;
+        this.#manaActual=this.#manaMaximo;
+        this.#ataque = this.#ataque*razas[raza].ataque;
+        this.#defensa= this.#defensa*razas[raza].defensa;
+        this.#magia=this.#magia*razas[raza].magia;
+        this.#resistenciaMagica=this.#resistenciaMagica*razas[raza].resistenciaMagica;
     }
     /**
      * Método para convertir los atributos en público y poder convertirlos en JSON
@@ -156,12 +156,12 @@ export default class Personaje{
    recibirDanho(danhoEnemigo,esMagico){
       let danho;
       if(esMagico){
-         danho = parseInt(danhoEnemigo-(this.#resistenciaMagica / 2));
+         danho = danhoEnemigo-(this.#resistenciaMagica / 2);
          if(danho>0){
             this.#vidaActual-= danho;
          }
       }else{
-         danho = parseInt(danhoEnemigo-(this.#defensa / 2));
+         danho = danhoEnemigo-(this.#defensa / 2);
          if(danho>0){
             this.#vidaActual-=danho;
          }
@@ -201,20 +201,20 @@ export default class Personaje{
       let armaAnterior=this.#armaEquipada;
       if(this.#armaEquipada !== null){ //Comprobamos que el arma equipada no esté vacía
          if(this.#raza === "mago" || this.#raza === "elfo"){
-            this.magia=parseInt(this.#magia/armaAnterior.aumento);//Le quitamos el aumento del arma anterior
-            this.magia=parseInt(this.#magia*arma.aumento);//Le añadimos el aumento del arma a equipar
+            this.magia=this.#magia/armaAnterior.aumento;//Le quitamos el aumento del arma anterior
+            this.magia=this.#magia*arma.aumento;//Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }else{
-            this.ataque=parseInt(this.#ataque/armaAnterior.aumento);//Le quitamos el aumento del arma anterior
-            this.ataque=parseInt(this.#ataque*arma.aumento);//Le añadimos el aumento del arma a equipar
+            this.ataque=pthis.#ataque/armaAnterior.aumento;//Le quitamos el aumento del arma anterior
+            this.ataque=this.#ataque*arma.aumento;//Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
       }else{
          if(this.#raza === "mago" || this.#raza === "elfo"){
-            this.magia=parseInt(this.#magia*arma.aumento);
+            this.magia=this.#magia*arma.aumento;
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }else{
-            this.ataque=parseInt(this.#ataque*arma.aumento); //Le añadimos el aumento del arma a equipar
+            this.ataque=this.#ataque*arma.aumento; //Le añadimos el aumento del arma a equipar
             this.#armaEquipada=arma; //Añadimos el arma al personaje
          }
       }
@@ -225,9 +225,9 @@ export default class Personaje{
     */
    quitarArma(){
       if(this.#raza === "elfo" || this.#raza === "mago"){
-         this.magia=parseInt(this.#magia/this.#armaEquipada.aumento);
+         this.magia=this.#magia/this.#armaEquipada.aumento;
       }else{
-         this.#ataque=parseInt(this.#ataque/this.#armaEquipada.aumento);
+         this.#ataque=this.#ataque/this.#armaEquipada.aumento;
       }
       this.#armaEquipada=null;
    }
@@ -238,11 +238,11 @@ export default class Personaje{
    equiparArmadura(armadura){
       let armaduraAnterior=this.#armaduraEquipada;
       if(this.#armaduraEquipada !== null){
-         this.#defensa=parseInt(this.#defensa/armaduraAnterior.aumento);
-         this.#defensa=parseInt(this.#defensa*armadura.aumento);
+         this.#defensa=this.#defensa/armaduraAnterior.aumento;
+         this.#defensa=this.#defensa*armadura.aumento;
          this.#armaduraEquipada=armadura;
       }else{
-         this.#defensa=parseInt(this.#defensa*armadura.aumento);
+         this.#defensa=this.#defensa*armadura.aumento;
          this.#armaduraEquipada=armadura;
       }
       
@@ -251,7 +251,7 @@ export default class Personaje{
     * Método para quitar la armadura al personaje
     */
    quitarArmadura(){
-      this.#defensa=parseInt(this.#defensa/this.#armaduraEquipada.aumento);
+      this.#defensa=this.#defensa/this.#armaduraEquipada.aumento;
       this.#armaduraEquipada=null;
    }
    /**
@@ -261,11 +261,11 @@ export default class Personaje{
    equiparAmuleto(amuleto){
       let amuletoAnterior = this.#amuletoEquipado;
       if(this.#amuletoEquipado !== null){
-         this.#resistenciaMagica=parseInt(this.#resistenciaMagica/amuletoAnterior.aumento);
-         this.#resistenciaMagica=parseInt(this.#resistenciaMagica*amuleto.aumento);
+         this.#resistenciaMagica=this.#resistenciaMagica/amuletoAnterior.aumento;
+         this.#resistenciaMagica=this.#resistenciaMagica*amuleto.aumento;
          this.#amuletoEquipado=amuleto;
       }else{
-         this.#resistenciaMagica=parseInt(this.#resistenciaMagica*amuleto.aumento);
+         this.#resistenciaMagica=this.#resistenciaMagica*amuleto.aumento;
          this.#amuletoEquipado=amuleto;
       }
    }
@@ -273,7 +273,7 @@ export default class Personaje{
     * Método para quitar el amuleto al personaje
     */
    quitarAmuleto(){
-      this.#resistenciaMagica=parseInt(this.#resistenciaMagica/this.#amuletoEquipado.aumento);
+      this.#resistenciaMagica=this.#resistenciaMagica/this.#amuletoEquipado.aumento;
       this.#amuletoEquipado=null;
    }
    /**
@@ -316,7 +316,7 @@ export default class Personaje{
       while(this.#experiencia>=this.#experienciaMaxima){
          this.#experiencia-=this.#experienciaMaxima;
          this.subirNivel();
-         this.#experienciaMaxima = parseInt(this.#experienciaMaxima*1.5);
+         this.#experienciaMaxima = this.#experienciaMaxima*1.5;
       }
 
    }
@@ -326,16 +326,16 @@ export default class Personaje{
    subirNivel(){
       let aumento=0.15;
       this.#nivel++;
-      this.#vidaActual+=parseInt(this.#vidaActual*aumento);
-      this.#vidaMaxima+=parseInt(this.#vidaMaxima*aumento);
-      this.#defensa+=parseInt(this.#defensa*aumento);
-      this.resistenciaMagica+=parseInt(this.#resistenciaMagica*aumento);
-      this.#manaMaximo+=parseInt(this.#manaMaximo*aumento);
-      this.#manaActual+=parseInt(this.#manaActual * aumento);
+      this.#vidaActual+=this.#vidaActual*aumento;
+      this.#vidaMaxima+=this.#vidaMaxima*aumento;
+      this.#defensa+=pthis.#defensa*aumento;
+      this.resistenciaMagica+=this.#resistenciaMagica*aumento;
+      this.#manaMaximo+=this.#manaMaximo*aumento;
+      this.#manaActual+=this.#manaActual * aumento;
       if(this.#raza === "elfo" || this.#raza === "mago"){
-         this.#magia+=parseInt(this.#magia*aumento);
+         this.#magia+=this.#magia*aumento;
       }else{
-         this.#ataque+=parseInt(this.#ataque*aumento);
+         this.#ataque+=this.#ataque*aumento;
       }
    }
    /**
@@ -362,16 +362,16 @@ export default class Personaje{
     */
    defenderse(){
       let  aumento=1.5;
-      this.#defensa+=parseInt(this.#defensa*aumento);
-      this.#resistenciaMagica+=parseInt(this.#resistenciaMagica*aumento);
+      this.#defensa+=this.#defensa*aumento;
+      this.#resistenciaMagica+=this.#resistenciaMagica*aumento;
    }
    /**
     * Método para dejar se defenderse
     */
    dejarDefenderse(){
       let aumento=1.5;
-      this.#defensa-=parseInt(this.#defensa/aumento);
-      this.#resistenciaMagica-=parseInt(this.resistenciaMagica/aumento);
+      this.#defensa-=this.#defensa/aumento;
+      this.#resistenciaMagica-=this.resistenciaMagica/aumento;
    }
     
    /**

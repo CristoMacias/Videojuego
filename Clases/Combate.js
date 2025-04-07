@@ -1,11 +1,11 @@
 import Personaje from "./Personaje.js";
 import Enemigos from "./Enemigos.js";
-
+import {cambiarCursor} from "./Cursor.js";
 document.addEventListener('DOMContentLoaded', () => {
 
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));
     const personaje = Personaje.reconstruirJson(jsonpersonaje);
-
+    cambiarCursor(personaje.raza);
     const jsonenemigo = JSON.parse(localStorage.getItem('enemigo'));
     console.log(jsonenemigo);
     const enemigo = Enemigos.reconstruirJson(jsonenemigo);

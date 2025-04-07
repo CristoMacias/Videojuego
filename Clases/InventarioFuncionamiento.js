@@ -1,8 +1,10 @@
 import Personaje from './Personaje.js';
+import {cambiarCursor} from "./Cursor.js";
 document.addEventListener('DOMContentLoaded',()=>{
     //Reconstruir peresonaje
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));//Traer personaje del localstorage
     const personaje=Personaje.reconstruirJson(jsonpersonaje); //Recuperar todos los atributos de personaje
+    cambiarCursor(personaje.raza);//Llamada al metodo de cambiarCursor para cambiar el cursor en funcion de la raza
     //Funcion de guardar
     const botonGuardar=document.querySelector("#boton-guardar");
     botonGuardar.addEventListener('click',()=>{
@@ -551,30 +553,30 @@ document.addEventListener('DOMContentLoaded',()=>{
     function actualizarEstadisitcas(){
         imagenPersonaje.src=personaje.imagen;
 
-        spanVidaActual.textContent=personaje.vidaActual;
-        spanVidaMax.textContent=personaje.vidaMaxima;
-        barraVida.value=personaje.vidaActual;
-        barraVida.max=personaje.vidaMaxima;
+        spanVidaActual.textContent=Math.round(personaje.vidaActual);
+        spanVidaMax.textContent=Math.round(personaje.vidaMaxima);
+        barraVida.value=Math.round(personaje.vidaActual);
+        barraVida.max=Math.round(personaje.vidaMaxima);
 
-        spanManaActual.textContent=personaje.manaActual;
-        spanManaMax.textContent=personaje.manaMaximo;
-        barraMana.value=personaje.manaActual;
-        barraMana.max=personaje.manaMaximo;
+        spanManaActual.textContent=Math.round(personaje.manaActual);
+        spanManaMax.textContent=Math.round(personaje.manaMaximo);
+        barraMana.value=Math.round(personaje.manaActual);
+        barraMana.max=Math.round(personaje.manaMaximo);
         if(personaje.raza==="mago" || personaje.raza==="elfo"){
-            spanDanio.textContent="MAGIA: "+personaje.magia;
-            barraDanio.value=personaje.magia;
+            spanDanio.textContent="MAGIA: "+Math.round(personaje.magia);
+            barraDanio.value=Math.round(personaje.magia);
         }else{
-            spanDanio.textContent="ATAQUE: "+personaje.ataque;
-            barraDanio.value=personaje.ataque;
+            spanDanio.textContent="ATAQUE: "+Math.round(personaje.ataque);
+            barraDanio.value=Math.round(personaje.ataque);
         }
-        spanDefensa.textContent=personaje.defensa;
-        barraDefensa.value=personaje.defensa;
+        spanDefensa.textContent=Math.round(personaje.defensa);
+        barraDefensa.value=Math.round(personaje.defensa);
 
-        spanResistencia.textContent=personaje.resistenciaMagica;
-        barraResistencia.value=personaje.resistenciaMagica;
+        spanResistencia.textContent=Math.round(personaje.resistenciaMagica);
+        barraResistencia.value=Math.round(personaje.resistenciaMagica);
                 
     }
-    function sonidoArma(){
+    function sonidoArma(){//Funcion para meter un sonido u otro en funcion de la raza
         const sourceArma=document.querySelector("#sonido-arma");
         if(personaje.raza==="elfo" || personaje.raza==="mago"){
             sourceArma.src="Sonidos/Inventario/equiparMagia.mp3";

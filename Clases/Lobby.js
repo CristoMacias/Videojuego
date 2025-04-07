@@ -1,5 +1,5 @@
 import Personaje from "./Personaje.js";
-
+import {cambiarCursor} from "./Cursor.js";
 document.addEventListener('DOMContentLoaded', ()=> {
 
     //Atributos parte superior
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
     const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));
     const personaje = Personaje.reconstruirJson(jsonpersonaje);
-
+    cambiarCursor(personaje.raza);
     if(personaje){
         //TODO: Añadir vida y mana maximos
     spanVida.textContent = " : " + personaje.vidaActual;
