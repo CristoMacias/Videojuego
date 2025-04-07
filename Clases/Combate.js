@@ -184,8 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
      * Botón de volver al Lobby, esto subirá los cambios del aliado.
      */
     const volverLobby = function () {
+        personaje.dejarDefenderse();
         localStorage.removeItem('enemigo');
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
+        
     }
     botonFinPartida.addEventListener("click", volverLobby);
 

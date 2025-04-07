@@ -158,13 +158,18 @@ export default class Enemigos {
 
       let danhoTotal;
 
-      if (esMagico === true) {
-         danhoTotal = danhoPersonaje - (this.#resistenciaMagica / 2);
+      if (esMagico) {
+         danhoTotal = parseInt(danhoPersonaje - (this.#resistenciaMagica / 2));
+         if(danhoTotal>0){
          this.#vida -= danhoTotal;
+         }
       }
       else {
-         danhoTotal = danhoPersonaje - (this.#defensa / 2);
-         this.#vida -= danhoTotal;
+         danhoTotal = parseInt(danhoPersonaje - (this.#defensa / 2));
+         if(danhoTotal>0){
+            this.#vida -= danhoTotal;
+         }
+         
       }
    }
    ataqueCritico(personaje) {
