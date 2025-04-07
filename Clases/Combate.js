@@ -184,7 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
      * Botón de volver al Lobby, esto subirá los cambios del aliado.
      */
     const volverLobby = function () {
-        personaje.dejarDefenderse();
+        if(turnos>0){
+            personaje.dejarDefenderse();
+        }
         localStorage.removeItem('enemigo');
         localStorage.setItem('personaje',JSON.stringify(personaje.convertirJson()));
         
@@ -339,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaAliado.textContent = " : " + personaje.vidaMana;
+            spanManaAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana pequeña usada.");
         } else {
             alert("No quedan más pociones de mana pequeñas.");
@@ -359,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaAliado.textContent = " : " + personaje.vidaMana; 
+            spanManaAliado.textContent = " : " + personaje.manaActual; 
             alert("Poción de mana mediana usada.");
         } else {
             alert("No quedan más pociones de mana medianas.");
@@ -379,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaAliado.textContent = " : " + personaje.vidaMana;
+            spanManaAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana grande usada.");
         } else {
             alert("No quedan más pociones de mana grandes.");
@@ -397,7 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaAliado.textContent = " : " + personaje.vidaMana;
+            spanManaAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana divina usada.");
         } else {
             alert("No quedan más pociones de mana divinas.");
