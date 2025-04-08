@@ -237,15 +237,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function darExperiencia(){
         let experienciaGanada = 0;
-
         if(personaje.nivel === enemigo.nivel || personaje.nivel > enemigo.nivel){
             experienciaGanada = 100;
         }
         else{
             experienciaGanada = (enemigo.nivel - personaje.nivel) * 100;
         }
-        
-
         personaje.ganarExperiencia(experienciaGanada);
         
     }
