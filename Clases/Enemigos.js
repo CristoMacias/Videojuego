@@ -13,12 +13,14 @@ export default class Enemigos {
    #magia; //=100;//Puntos de magia
    #resistenciaMagica = 100;//Puntos de resistencia mágica
    #nivel = 1;//Nivel actual
+   #imagen;
 
-   constructor(nombre, raza, nivel) {
+   constructor(nombre, raza, nivel, imagen) {
 
       this.#nombre = nombre;
       this.#nivel = nivel;
       this.#raza = raza;
+      this.#imagen = imagen;
 
       if (raza === "mago" || raza === "elfo") {
          this.#magia = 100;
@@ -118,11 +120,35 @@ export default class Enemigos {
       return this.#vida;
    }
 
+   /**
+   * Getter para imagen
+   * @return imagen Devuelve el valor de imagen;
+   */
+   get imagen() {
+      return this.#imagen;
+   }
+
+   /**
+   * Getter para imagen
+   * @return imagen Devuelve el valor de imagen;
+   */
+   get imagen() {
+      return this.#imagen;
+   }
+   
+   /**
+   * Setter para imagen
+   * @param {*} value Recibe el valor de value para modificar
+   */
+   set imagen(value) {
+      this.#imagen = value;
+   }
+
    convertirJson() {
       return {
          nombre: this.#nombre,
          raza: this.#raza,
-         //imagen: this.#imagen,
+         imagen: this.#imagen,
          vida: this.#vida,
          mana: this.#mana,
          ataque: this.#ataque,
@@ -135,7 +161,7 @@ export default class Enemigos {
    }
 
      static reconstruirJson(json){
-         const enemigo = new Enemigos(json.nombre, json.raza, json.nivel);
+         const enemigo = new Enemigos(json.nombre, json.raza, json.nivel, json.imagen);
          return enemigo;
    
        }
@@ -183,9 +209,4 @@ export default class Enemigos {
          personaje.recibirDanho(this.#ataque * 1.30, esMagico);
       }
    }
-
-   defensa() {
-
-   }
-
 }
