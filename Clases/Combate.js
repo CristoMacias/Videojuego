@@ -72,9 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
         spanNombreEnemigo.textContent = " : " + enemigo.nombre;
         spanNivelAliado.textContent = " : " + personaje.nivel;
         spanNivelEnemigo.textContent = " : " + enemigo.nivel;
-        spanVidaAliado.textContent = " : " + personaje.vidaActual;
-        spanVidaEnemigo.textContent = " : " + enemigo.vida;
-        spanManaAliado.textContent = " : " + personaje.manaActual;
+        spanVidaAliado.textContent = " : " + Math.floor(personaje.vidaActual);
+        spanVidaEnemigo.textContent = " : " + Math.floor(enemigo.vida);
+        spanManaAliado.textContent = " : " + Math.floor(personaje.manaActual);
         imagenPersonaje.src = personaje.imagen;
         imagenEnemigo.src = enemigo.imagen;
     }
@@ -189,15 +189,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else{
             spanVidaEnemigo.textContent = ": " + Math.floor(enemigo.vida);
-            enemigoBarraVida.value = Math.round(enemigo.vida);
-            enemigoBarraVida.max = Math.round(enemigo.vidaMax);
+            enemigoBarraVida.value = Math.floor(enemigo.vida);
+            enemigoBarraVida.max = Math.floor(enemigo.vidaMax);
             
         }
 
         if(personaje.vidaActual <= 0){
             spanVidaAliado.textContent = " Eliminado ";
         }else{
-            spanVidaAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaAliado.textContent = " : " + Math.floor(personaje.vidaActual);
         }
 
     }

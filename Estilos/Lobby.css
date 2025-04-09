@@ -15,6 +15,10 @@ body {
     background-color: black;
     color: white;
     z-index: relative;
+    background-image: url("/Videojuego/Imagenes/fondos/lobby.jpg");
+    background-size: cover;
+    background-position: center;
+   
 }
 .canvas{
     z-index: -1;
@@ -41,6 +45,7 @@ a{
     border-radius: 15px;
     border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
     margin-right: 5%;
+    background: rgba(206, 144, 76, 0.20);
     overflow:hidden ;
     
     
@@ -66,11 +71,11 @@ a{
 
 .caracteristicasLobby{
     display: block;
-    width: 30%;
-    margin-top: -15%;
+    width: 25.5%;
+    margin-top: -17%;
     margin-left: 3%;
     margin-bottom: 3%;
-    background-color: var(--verdeOscuro);
+    background-color: rgba(32, 70, 78, 0.7);
     padding: 3%;
     z-index: 2;
     border-radius: 15px;
@@ -78,6 +83,7 @@ a{
 }
 
 .botonVolverLobby{
+   
     width: 20%;
     height: 32px;
     margin-left: 3%;
