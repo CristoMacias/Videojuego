@@ -14,6 +14,7 @@ export default class Enemigos {
    #resistenciaMagica = 100;//Puntos de resistencia mágica
    #nivel = 1;//Nivel actual
    #imagen;
+   #vidaMax = 100;
 
    constructor(nombre, raza, nivel, imagen) {
 
@@ -53,6 +54,7 @@ export default class Enemigos {
          this.#defensa = this.#defensa * (razas[raza].defensa * (nivel * 0.4));
          this.#magia = this.#magia * (razas[raza].magia * (nivel * 0.4));
          this.#resistenciaMagica = this.#resistenciaMagica * (razas[raza].resistenciaMagica * (nivel * 0.4));
+         this.#vidaMax = this.#vidaMax * (razas[raza].vida * (nivel * 0.5));
       }
       else{
          this.#vida = this.#vida * razas[raza].vida;
@@ -61,87 +63,8 @@ export default class Enemigos {
          this.#defensa = this.#defensa * razas[raza].defensa;
          this.#magia = this.#magia * razas[raza].magia;
          this.#resistenciaMagica = this.#resistenciaMagica * razas[raza].resistenciaMagica;
+         this.#vidaMax = this.#vidaMax * razas[raza].vida;
       }
-   }
-
-   /**
-   * Getter para nombre
-   * @return nombre Devuelve el valor de nombre;
-   */
-   get nombre() {
-      return this.#nombre;
-   }
-
-   /**
-   * Setter para nombre
-   * @param {*} nombre Recibe el valor de nombre para modificar
-   */
-   set nombre(nombre) {
-      this.#nombre = nombre;
-   }
-
-   /**
-   * Getter para raza
-   * @return raza Devuelve el valor de raza;
-   */
-   get raza() {
-      return this.#raza;
-   }
-
-   /**
-   * Getter para raza
-   * @return raza Devuelve el valor de raza;
-   */
-   get raza() {
-      return this.#raza;
-   }
-
-   /**
-   * Setter para raza
-   * @param {*} raza Recibe el valor de raza para modificar
-   */
-   set raza(raza) {
-      this.#raza = raza;
-   }
-
-   /**
-   * Getter para nivel
-   * @return nivel Devuelve el valor de nivel;
-   */
-   get nivel() {
-      return this.#nivel;
-   }
-
-   /**
-   * Getter para vida
-   * @return vida Devuelve el valor de vida;
-   */
-   get vida() {
-      return this.#vida;
-   }
-
-   /**
-   * Getter para imagen
-   * @return imagen Devuelve el valor de imagen;
-   */
-   get imagen() {
-      return this.#imagen;
-   }
-
-   /**
-   * Getter para imagen
-   * @return imagen Devuelve el valor de imagen;
-   */
-   get imagen() {
-      return this.#imagen;
-   }
-   
-   /**
-   * Setter para imagen
-   * @param {*} value Recibe el valor de value para modificar
-   */
-   set imagen(value) {
-      this.#imagen = value;
    }
 
    convertirJson() {
@@ -150,6 +73,7 @@ export default class Enemigos {
          raza: this.#raza,
          imagen: this.#imagen,
          vida: this.#vida,
+         vidaMax: this.#vidaMax,
          mana: this.#mana,
          ataque: this.#ataque,
          defensa: this.#defensa,
@@ -209,4 +133,110 @@ export default class Enemigos {
          personaje.recibirDanho(this.#ataque * 1.30, esMagico);
       }
    }
+
+   //GETTERS Y SETTERS
+
+      /**
+   * Getter para nombre
+   * @return nombre Devuelve el valor de nombre;
+   */
+      get nombre() {
+         return this.#nombre;
+      }
+   
+      /**
+      * Setter para nombre
+      * @param {*} nombre Recibe el valor de nombre para modificar
+      */
+      set nombre(nombre) {
+         this.#nombre = nombre;
+      }
+   
+      /**
+      * Getter para raza
+      * @return raza Devuelve el valor de raza;
+      */
+      get raza() {
+         return this.#raza;
+      }
+   
+      /**
+      * Getter para raza
+      * @return raza Devuelve el valor de raza;
+      */
+      get raza() {
+         return this.#raza;
+      }
+   
+      /**
+      * Setter para raza
+      * @param {*} raza Recibe el valor de raza para modificar
+      */
+      set raza(raza) {
+         this.#raza = raza;
+      }
+   
+      /**
+      * Getter para nivel
+      * @return nivel Devuelve el valor de nivel;
+      */
+      get nivel() {
+         return this.#nivel;
+      }
+   
+      /**
+      * Getter para vida
+      * @return vida Devuelve el valor de vida;
+      */
+      get vida() {
+         return this.#vida;
+      }
+   
+      /**
+      * Getter para imagen
+      * @return imagen Devuelve el valor de imagen;
+      */
+      get imagen() {
+         return this.#imagen;
+      }
+   
+      /**
+      * Getter para imagen
+      * @return imagen Devuelve el valor de imagen;
+      */
+      get imagen() {
+         return this.#imagen;
+      }
+      
+      /**
+      * Setter para imagen
+      * @param {*} value Recibe el valor de value para modificar
+      */
+      set imagen(value) {
+         this.#imagen = value;
+      }
+   
+      /**
+      * Getter para vidaMax
+      * @return vidaMax Devuelve el valor de vidaMax;
+      */
+      get vidaMax() {
+         return this.#vidaMax;
+      }
+      /**
+      * Getter para vidaMax
+      * @return vidaMax Devuelve el valor de vidaMax;
+      */
+      get vidaMax() {
+         return this.#vidaMax;
+      }
+      
+      /**
+      * Setter para vidaMax
+      * @param {*} value Recibe el valor de value para modificar
+      */
+      set vidaMax(value) {
+         this.#vidaMax = value;
+      }
+
 }

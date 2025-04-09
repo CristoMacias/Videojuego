@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    
+    color: var(--amarilloFondo);
     background-color: black;
     color: white;
     z-index: relative;
@@ -31,8 +31,9 @@ a{
     z-index: -1;
 }
 .arenaImagenes{
-    border: brown 3px ridge;
-    height: 200px;
+    border: var(--amarilloFondo) 5px ridge;
+    background: rgba(206, 144, 76, 0.15);
+    height: 20%;
     align-content: center;
     width: 20%;
     text-align: center;
@@ -53,7 +54,12 @@ a{
 }
 
 
-
+.imagenPersonaje{
+    width: 95%;
+}
+.imagenEnemigo{
+    width: 95%;
+}
 
 .topArena{
     display: flex;
@@ -176,4 +182,22 @@ button {
     right:80px;
     border: 2px solid rgba(255, 217, 0, 0.205);
     background-color: #08080828;
+  }
+
+  #personajeBarraVida[value]::-webkit-progress-value{
+    background-color: #4cac42;
+    border-radius: 15px;
+  }
+  #personajeBarraVida[value]::-webkit-progress-bar{
+    background-color: #00a68a88;
+    border-radius: 15px;
+  }
+
+  #enemigoBarraVida[value]::-webkit-progress-value{
+    background-color: #247e1a;
+    border-radius: 15px;
+  }
+  #enemigoBarraVida[value]::-webkit-progress-bar{
+    background-color: #be5e3d88;
+    border-radius: 15px;
   }

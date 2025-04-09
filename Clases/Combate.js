@@ -23,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanVidaAliado = document.querySelector("#vidaAliado");
     const spanVidaEnemigo = document.querySelector("#vidaEnemigo");
     const spanManaAliado = document.querySelector("#manaAliado");
+    const personajeBarraVida = document.querySelector("#personajeBarraVida");
+    const enemigoBarraVida = document.querySelector("#enemigoBarraVida");
+    const spanPersonajeVidaMax = document.querySelector("#spanPersonajeVidaMax");
+    const spanEnemigoVidaMax = document.querySelector("#spanEnemigoVidaMax");
 
     //IMAGENES
     const imagenPersonaje = document.querySelector("#imagenPersonaje");
@@ -54,13 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
    
     //Contar total de pociones.
     const hayPocionPequena = personaje.inventario.pocionesVida.some(p => p.nombre === "Poción de Salud Pequeña🍷");
-    let cantidadVidaMedianas = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Salud Media🥂").length;
-    let cantidadVidaGrandes = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Salud Grande🍾").length;
-    let cantidadVidaMilagrosa = personaje.inventario.pocionesVida.findIndex(p => p.nombre === "Poción de Maná Pequeña🔵").length;
-    let cantidadManaPequenas = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Pequeña🔵").length;
-    let cantidadManaMedianas = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Media🔷").length;
-    let cantidadManaGrandes = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Grande🔮").length;
-    let cantidadManaDivinas = personaje.inventario.pocionesMana.findIndex(p => p.nombre === "Poción de Maná Pequeña🔵").length;
    
     const inventarioPersonaje = personaje.inventario;
     let pocionesVida = inventarioPersonaje.pocionesVida;
@@ -90,13 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const atacar = function () {
         
         personaje.atacarEnemigo(enemigo);
-            if(enemigo.vida <= 0){
-                spanVidaEnemigo.textContent = " Eliminado ";
-            }
-            else{
-                spanVidaEnemigo.textContent = " : " + enemigo.vida;
-            }
 
+        actualizarVida();
         controlarTurnos();
         ataqueEnemigo();
         controlarVida();
@@ -110,12 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function ataqueEnemigo(){
         if(enemigo.vida > 0){
             enemigo.atacar(personaje);
-            if(personaje.vidaActual <= 0){
-                spanVidaAliado.textContent = " Eliminado ";
-            }else{
-                spanVidaAliado.textContent = " : " + personaje.vidaActual;
-            }
-        }  
+        }
+        actualizarVida();
         controlarVida(); 
     }
 
@@ -147,12 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             personaje.ataqueCritico(enemigo);
             personaje.manaActual -= 40;
             spanManaAliado.textContent = " : " + personaje.manaActual;
-            if(enemigo.vida <= 0){
-                    spanVidaEnemigo.textContent = " Eliminado ";
-            }
-            else{
-                    spanVidaEnemigo.textContent = " : " + enemigo.vida;
-            }
+            actualizarVida();
             controlarTurnos();
             ataqueEnemigo();
     }
@@ -199,7 +182,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     botonFinPartida.addEventListener("click", volverLobby);
 
-    
+
+    function actualizarVida(){
+        if(enemigo.vida <= 0){
+            spanVidaEnemigo.textContent = " Eliminado ";   
+        }
+        else{
+            spanVidaEnemigo.textContent = ": " + Math.floor(enemigo.vida);
+            enemigoBarraVida.value = Math.round(enemigo.vida);
+            enemigoBarraVida.max = Math.round(enemigo.vidaMax);
+            
+        }
+
+        if(personaje.vidaActual <= 0){
+            spanVidaAliado.textContent = " Eliminado ";
+        }else{
+            spanVidaAliado.textContent = " : " + personaje.vidaActual;
+        }
+
+    }
 
     function controlarVida(){
         if (personaje.vidaActual <= 0 || enemigo.vida <= 0){
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
     }
     function darOro(){
-        personaje.oro += 100;
+        personaje.ganarOro(100);
     }
 
     function controlarTurnos(){
