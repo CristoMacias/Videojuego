@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <button id="boton-sonido">🔇</button>
+    <button id="silenciar-botones"><img src="./Imagenes/botones_sonidos/play.svg" id="imagen-silenciar"></button>
+    <button id="boton-musica"><img src="./Imagenes/botones_sonidos/pause.svg" id="imagen-musica"></button>
     <div class="menu_principal">
         <img class="logo" src="./logo_batallas.png">
         <p><a class="opcionIndex" class="noPersonaje" id="continuarPartida" href="Lobby.html">Continuar partida</a></p>
@@ -19,7 +20,7 @@
  
     </div>
     <audio id="sonido-general"><source src="./Sonidos/botonesGeneral.mp3" type="audio/mp3"></audio>
-    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
+    <audio id="audio-musica" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="Clases/Inicio.js"></script>
     <script src="Clases/FondoAnimado.js"></script>

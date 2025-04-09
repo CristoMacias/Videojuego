@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     comprobarVacios();
     comprobarEquipados();
-    actualizarEstadisitcas();
+    actualizarEstadisticas();
 
 
     //Botones para lista de armas
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarArma();
         armaEquipada=personaje.armaEquipada;
         divArmaEquipada.style.display="none";
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
@@ -390,7 +390,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArmaEquipada.textContent=arma.nombre;
         descripcionArmaEquipada.textContent=arma.descripcion;
         aumentoArmaEquipada.textContent=arma.aumento;
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
     const botonArmaduraDesequipar=document.querySelector("#boton-armadura-desequipar");
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarArmadura();
         armaduraEquipada=personaje.armaduraEquipada;
         divArmaduraEquipada.style.display="none";
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
@@ -413,7 +413,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArmaduraEquipada.textContent=armadura.nombre;
         descripcionArmaduraEquipada.textContent=armadura.descripcion;
         aumentoArmaduraEquipada.textContent=armadura.aumento;
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
@@ -424,7 +424,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         personaje.quitarAmuleto();
         amuletoEquipado=personaje.amuletoEquipado;
         divAmuletoEquipado.style.display="none";
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
     });
 
     botonAmuletoEquipar.addEventListener('click',()=>{
@@ -436,7 +436,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreAmuletoEquipado.textContent=amuleto.nombre;
         descripcionAmuletoEquipado.textContent=amuleto.descripcion;
         aumentoAmuletoEquipado.textContent=amuleto.aumento;
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
@@ -451,7 +451,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){
             personaje.quitarArma();
             divArmaEquipada.style.display="none";
-            actualizarEstadisitcas();
+            actualizarEstadisticas();
         }  
         indiceArma--;
         if(indiceArma<0){
@@ -474,7 +474,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(armaduraEquipada!== null && armaduraEquipada.nombre===armaduraTirar.nombre){
             personaje.quitarArmadura();
             divArmaduraEquipada.style.display="none";
-            actualizarEstadisitcas();
+            actualizarEstadisticas();
 
         }
         indiceArmadura--;
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         if(amuletoEquipado !==null && amuletoEquipado.nombre===amuletoTirar.nombre){
             personaje.quitarAmuleto();
             divAmuletoEquipado.style.display="none";
-            actualizarEstadisitcas();
+            actualizarEstadisticas();
 
         }
         indiceAmuleto--;
@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             divVida.style.display="none";
         }
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
@@ -543,14 +543,14 @@ document.addEventListener('DOMContentLoaded',()=>{
         }else{
             divMana.style.display="none";
         }
-        actualizarEstadisitcas();
+        actualizarEstadisticas();
 
     });
 
     //Añadir tarjeta de personaje
 
 
-    function actualizarEstadisitcas(){
+    function actualizarEstadisticas(){
         imagenPersonaje.src=personaje.imagen;
 
         spanVidaActual.textContent=Math.round(personaje.vidaActual);

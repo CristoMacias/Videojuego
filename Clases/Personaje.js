@@ -126,7 +126,6 @@ export default class Personaje{
      */
     comprarTienda(objeto){
       this.#inventario.agregarObjeto(objeto);
-      this.perderOro(objeto.precio);
     }
 
    /**
