@@ -25,12 +25,21 @@ document.addEventListener('DOMContentLoaded', ()=> {
     cambiarCursor(personaje.raza);
     if(personaje){
         //TODO: Añadir vida y mana maximos
-    spanVida.textContent = " : " + personaje.vidaActual;
-    spanMana.textContent = " : " + personaje.manaActual;
-    spanDanioFisico.textContent = " : " + personaje.ataque;
-    spanArmadura.textContent = " : " + personaje.defensa;
-    spanPoderMagico.textContent = " : " + personaje.magia;
-    spanResistenciaMagica.textContent = " : " + personaje.resistenciaMagica;
+
+    if(personaje.raza === "elfo" || personaje.raza === "mago"){
+        spanVida.textContent = "VIDA: " + Math.floor(personaje.vidaActual);
+        spanMana.textContent = "MANA: " + Math.floor(personaje.manaActual);
+        spanArmadura.textContent ="ARMADURA: " + Math.floor(personaje.defensa);
+        spanPoderMagico.textContent = "PODER MÁGICO: " + Math.floor(personaje.magia);
+        spanResistenciaMagica.textContent = "RESISTENCIA MÁGICA: " + Math.floor(personaje.resistenciaMagica);
+    }
+    else{
+        spanVida.textContent = "VIDA: " + Math.floor(personaje.vidaActual);
+        spanMana.textContent = "MANA: " + Math.floor(personaje.manaActual);
+        spanDanioFisico.textContent = "DAÑO FÍSICO: " + Math.floor(personaje.ataque);
+        spanArmadura.textContent = "ARMADURA: " + Math.floor(personaje.defensa);
+        spanResistenciaMagica.textContent = "RESISTENCIA MÁGICA: " + Math.floor(personaje.resistenciaMagica);
+    }
 
     spanNombre.textContent = " : " + personaje.nombre;
     spanRaza.textContent = " : " + personaje.raza;
