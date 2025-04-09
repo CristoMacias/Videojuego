@@ -23,13 +23,13 @@ export default class Inventario{
     agregarObjeto(objeto){
         if(objeto instanceof Arma && this.#armas.length<5){
             this.#armas.push(objeto);
-        }else if(((objeto.tipo==="armadura" || objeto.tipo==="escudo") && this.#defensa.length<4)){
+        }else if(((objeto.tipo==="armadura" || objeto.tipo==="escudo") && this.#defensa.length<5)){
             this.#defensa.push(objeto);
-        }else if(objeto.tipo==="amuleto" && this.#amuletos.length<4 ){
+        }else if(objeto.tipo==="amuleto" && this.#amuletos.length<5 ){
                 this.#amuletos.push(objeto);
-        }else if(objeto.efecto==="salud"&& this.#pocionesVida.length<7){
+        }else if(objeto.efecto==="salud"&& this.#pocionesVida.length<8){
                 this.#pocionesVida.push(objeto);
-        }else if(objeto.efecto==="mana" && this.#pocionesMana.length<7){
+        }else if(objeto.efecto==="mana" && this.#pocionesMana.length<8){
                 this.#pocionesMana.push(objeto);
         }else{
             alert(`¡No se ha podido añadir ${objeto.nombre} al inventario porque está lleno!`);
