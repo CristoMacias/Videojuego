@@ -4,6 +4,7 @@ import Personaje from "./Personaje.js";
 document.addEventListener('DOMContentLoaded', ()=> {
 
 const iniciarCombate = document.querySelector("#combate");
+let numeroRaza = 0;
 
 const nombres = ["Malgor", 
                 "Zorath", 
@@ -16,11 +17,20 @@ const nombres = ["Malgor",
                 "Kharaz",
                 "Vorath"];
 
+                
 const razas = ["orco",
                 "enano",
                 "humano",
                 "mago",
                 "elfo"];
+
+const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
+        "./Imagenes/orco.png",
+        "./Imagenes/enano.png",
+        "./Imagenes/humano.png",
+        "./Imagenes/mago.png",
+        "./Imagenes/elfo.png"
+];
 
 
 /**
@@ -30,7 +40,8 @@ const subirPersonaje = function (){
     const nombre = elegirNombre();
     const raza = elegirRaza();
     const nivel = elegirNivel();
-    const enemigo = new Enemigos(nombre, raza, nivel);
+    const imagen = aplicarImagen();
+    const enemigo = new Enemigos(nombre, raza, nivel, imagen);
     localStorage.setItem('enemigo',JSON.stringify(enemigo.convertirJson()));
 }
 iniciarCombate.addEventListener("click", subirPersonaje);
@@ -40,9 +51,7 @@ iniciarCombate.addEventListener("click", subirPersonaje);
  * @returns 
  */
 function elegirRaza(){
-    let numeroRaza = Math.floor(Math.random() * (razas.length));
-    console.log(numeroRaza);
-    console.log(razas[numeroRaza]);
+    numeroRaza = Math.floor(Math.random() * (razas.length));
     return razas[numeroRaza];
 }
 
@@ -57,7 +66,7 @@ function elegirNombre(){
     return nombres[numeroNombre];
 }
 
-function elegirNivel(personaje){
+function elegirNivel(){
     let nivelPersonaje = 5;
     let numeroNivel;
     let bandera = false;
@@ -89,5 +98,9 @@ function elegirNivel(personaje){
 
     return numeroNivel;   
       
-}
+    }
+    function aplicarImagen(){
+        return imagenesPersonaje[numeroRaza];
+    }
+
 });

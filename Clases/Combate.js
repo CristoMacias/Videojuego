@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanVidaEnemigo = document.querySelector("#vidaEnemigo");
     const spanManaAliado = document.querySelector("#manaAliado");
 
+    //IMAGENES
+    const imagenPersonaje = document.querySelector("#imagenPersonaje");
+    const imagenEnemigo = document.querySelector("#imagenEnemigo");
+
     //Declarar botones
     const botonAtacar = document.querySelector("#botonAtacar");
     const botonDefender = document.querySelector("#botonDefender");
@@ -74,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
         spanVidaAliado.textContent = " : " + personaje.vidaActual;
         spanVidaEnemigo.textContent = " : " + enemigo.vida;
         spanManaAliado.textContent = " : " + personaje.manaActual;
+        imagenPersonaje.src = personaje.imagen;
+        imagenEnemigo.src = enemigo.imagen;
     }
 
     let contadorCriticoEnemigo = Math.floor(Math.random() * 10);
