@@ -140,12 +140,7 @@ export default class Personaje{
     * @param {*} oro 
     */
    perderOro(oro){
-      //Comprobar que la resta del oro actual menos el oro a perder sea mayor o igual a 0 
-      if(this.#oro-oro>-1){
          this.#oro-=oro;
-      }else{
-         this.#oro=0;
-      }
    }
    /**
     * Método para recibir daño y restar la vida al jugador 
