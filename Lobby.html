@@ -7,7 +7,8 @@
     <link rel="icon" type="image/x-icon" href="./Imagenes/favicon.png">
 </head>
 <body>
-    <button id="boton-sonido">🔇</button>
+    <button id="silenciar-botones"><img src="./Imagenes/botones_sonidos/play.svg" id="imagen-silenciar"></button>
+    <button id="boton-musica"><img src="./Imagenes/botones_sonidos/pause.svg" id="imagen-musica"></button>
     <div class="topLobby">
         <div class="imagenLobby">
             <img class="tamanioImagen" id="imagen" src="">
@@ -38,7 +39,7 @@
     </div>
     <p><a class="botonVolverLobby" href="Index.html">Volver</a></p>
     <audio id="sonido-general"><source src="./Sonidos/botonesGeneral.mp3" type="audio/mp3"></audio>
-    <audio id="audio-inicio" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
+    <audio id="audio-musica" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script type="module" src="Clases/Lobby.js"></script>
     <script type="module" src="Clases/FondoAnimado.js"></script>

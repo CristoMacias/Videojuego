@@ -156,11 +156,24 @@ button {
     
 }
 /*Boton de audio*/
-#boton-sonido{
+#boton-musica{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top:20px;
     right:20px;
     border: 2px solid rgba(255, 217, 0, 0.205);
-    font-size: 30px;
+    background-color: #08080828;
+  }
+  /*Botón de silencio*/
+  #silenciar-botones{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top:20px;
+    right:80px;
+    border: 2px solid rgba(255, 217, 0, 0.205);
     background-color: #08080828;
   }
