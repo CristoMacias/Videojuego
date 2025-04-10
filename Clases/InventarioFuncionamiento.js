@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             imagenAmuleto.src=arrayAmuletos[0].imagen;
             nombreAmuleto.textContent=arrayAmuletos[0].nombre;
             descripcionAmuleto.textContent=arrayAmuletos[0].descripcion;
-            aumentoAmuleto.textCOntent=arrayAmuletos[0].aumento;
+            aumentoAmuleto.textContent=arrayAmuletos[0].aumento;
             totalAmuletos.textContent=arrayAmuletos.length;
         }else{
             divAMuletos.style.display="none";

@@ -14,10 +14,10 @@ export default class Personaje{
     #defensa=100;//Puntos de defensa
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
-    #nivel=1;//Nivel actual
+    #nivel=5;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=0; // Total de oro 
+    #oro=5000; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;
