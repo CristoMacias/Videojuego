@@ -3,7 +3,12 @@
     --amarilloFondo: #ce904c;
     
 }
-
+*{
+    cursor: inherit;
+}
+html{
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
+}
 body {
     margin: 0;
     color: var(--amarilloFondo);
@@ -11,7 +16,7 @@ body {
     color: white;
     z-index: relative;
     background-image: url("../Imagenes/fondos/fondobatalla.jpg");
-    
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
    
     
 }
@@ -34,6 +39,7 @@ a{
     z-index: -1;
     color: var(--amarilloFondo);
     font-size: 150%;
+    
     
 }
 .arenaImagenes{
@@ -168,8 +174,10 @@ button {
 .botonesPociones{
     width: 100%;
     height: 100%;
-    
-    
+}
+
+.arenaMana{
+    margin-left: -9%;
 }
 /*Boton de audio*/
 #boton-musica{
@@ -197,30 +205,31 @@ progress{
     appearance: none;
     box-shadow: 1px 0px 7px 1px rgba(245, 238, 136, 0.637);
     border-radius: 10px;
-    transition: width 10s ease;
+    transition: width 3s ease;
 }
   #personajeBarraVida[value]::-webkit-progress-value{
-    background-color: #3ab82c;
+    background-color: #1e331b;
     border-radius: 15px;
   }
   #personajeBarraVida[value]::-webkit-progress-bar{
-    background-color: #21611c9d;
+    background-color: #334b30e5;
     border-radius: 15px;
   }
 
   #enemigoBarraVida[value]::-webkit-progress-value{
-    background-color: #3ab82c;
+    background-color: #1e331b;
     border-radius: 15px;
   }
   #enemigoBarraVida[value]::-webkit-progress-bar{
-    background-color: #21611c9d;
+    background-color: #334b30e5;
     border-radius: 15px;
   }
   #personajeBarraMana[value]::-webkit-progress-value{
-    background-color: rgb(32, 32, 114);
+    background-color: rgb(18, 18, 92);
     border-radius: 15px;
+    
   }
   #personajeBarraMana[value]::-webkit-progress-bar{
-    background-color: rgba(57, 79, 119, 0.74);
+    background-color: rgb(53, 68, 97);
     border-radius: 15px;
   }
