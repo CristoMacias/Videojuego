@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             document.querySelector(`#defensa-${prefijo}`).textContent="???";
         }
         if(objeto.nivel!==undefined){
-            document.querySelector(`#nivel-${prefijo}`).textContent="???";
+            document.querySelector(`#nivel-${prefijo}`).textContent=objeto.nivel;
         }
         actualizarOro();
         

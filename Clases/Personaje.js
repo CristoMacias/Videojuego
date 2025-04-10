@@ -274,9 +274,14 @@ export default class Personaje{
     * Método para desequipar de golpe el arma y objetos de defensa
     */
    desequiparTodo(){
-      this.quitarArma();
-      this.quitarArmadura();
-      this.quitarAmuleto();
+      if(this.armaEquipada!==null){
+         this.quitarArma();
+      }
+      if(this.armaduraEquipada!==null){
+          this.quitarArmadura();
+      }if(this.amuletoEquipado!==null){
+         this.quitarAmuleto();
+      }
    }
    /**
     * Método para que el personaje beba una pocion de salud o de mana

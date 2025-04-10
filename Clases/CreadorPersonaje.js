@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     const descripcionArma2=document.querySelector("#descripcion-arma2");
     const aumentoArma2=document.querySelector("#aumento-arma2");
     const divArmas=document.querySelector("#elegir-arma");
-    const body=document.querySelector("body");
+    const divArma1=document.querySelector("#arma1");
+    let armaRadio=document.querySelector('input[name="arma"]:checked');
     const imagenesPersonaje=[ // "Array donde guardamos las imagenes para elegir"
         "./Imagenes/humano.png",
         "./Imagenes/orco.png",
@@ -57,7 +58,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     creadorSelect.addEventListener('change', ()=>{
         let razaElegida = creadorSelect.value;
         let indiceRaza = razas.indexOf(razaElegida);
-        
         if(indiceRaza !== -1){
             elegirImagen.src=imagenesPersonaje[indiceRaza];
             cambiarCursor(razaElegida);
@@ -76,7 +76,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         nombreArma2.textContent=arma2.nombre;
         descripcionArma2.textContent=arma2.descripcion;
         aumentoArma2.textContent=arma2.aumento;
-
+        if(armaRadio){
+            const armaSeleccionada = armaRadio.id === "radio-arma1" ? "arma1" : "arma2";
+            cambiarEstilosSeleccion(armaSeleccionada);
+        }
     });
 
 
@@ -88,14 +91,17 @@ document.addEventListener('DOMContentLoaded',()=>{
         const nombre = nombreFormulario.value.toUpperCase().trim();
         const raza = creadorSelect.value;
         const indiceRaza= razas.indexOf(raza);
-        let armaRadio=document.querySelector('input[name="arma"]:checked');
+        let armaRadio = document.querySelector('input[name="arma"]:checked');
+        divArma1.style.backgroundColor= "rgba(206, 144, 76, 0.1)";
+        divArma1.style.border="var(--amarilloFondo) 3px ridge";
         if(nombre === "" || indiceRaza===-1 || !armaRadio){
             alert("Ingresa un nombre, elige una raza y un arma");
             return;
         }
-   
+
         const valor = armaRadio.value;
         const arma = armas[raza][valor];
+  
         const imagen = imagenesPersonaje[indiceRaza];
         const personaje = new Personaje(nombre,raza,imagen);
         personaje.equiparArma(arma);
@@ -116,4 +122,29 @@ document.addEventListener('DOMContentLoaded',()=>{
             divArmas.style.display="none";
         }
     });
+
+    function cambiarEstilosSeleccion(armaSeleccionada){
+        const divArma1=document.querySelector("#arma1");
+        const divArma2=document.querySelector("#arma2");
+
+        if (armaSeleccionada === "arma1") {
+            divArma1.style.backgroundColor = "rgba(206, 144, 76, 0.1)";
+            divArma1.style.border = "var(--amarilloFondo) 3px ridge";
+            divArma2.style.backgroundColor = "";
+            divArma2.style.border = "";
+        } else if (armaSeleccionada === "arma2") {
+            divArma2.style.backgroundColor = "rgba(206, 144, 76, 0.1)";
+            divArma2.style.border = "var(--amarilloFondo) 3px ridge";
+            divArma1.style.backgroundColor = "";
+        divArma1.style.border = "";
+        }
+    }
+    const radiosArmas=document.querySelectorAll('input[name="arma"]');
+    radiosArmas.forEach(radio=>{
+        radio.addEventListener('change',()=>{
+            const armaSeleccionada = radio.id === 'radio-arma1' ? "arma1" : "arma2";
+            cambiarEstilosSeleccion(armaSeleccionada)
+        });
+    });
+
 });
