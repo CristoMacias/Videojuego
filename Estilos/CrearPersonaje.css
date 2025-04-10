@@ -130,6 +130,7 @@ a{
     min-height: 20%; 
     padding: 10px;
     background-color: rgba(206, 144, 76, 0.1);
+    border: 3px solid #20464e;
 }
 .div-armas-seleccionada{ 
     display: flex;
