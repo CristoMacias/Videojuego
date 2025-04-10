@@ -12,7 +12,7 @@ export default class Enemigos {
    #defensa = 100;//Puntos de defensa
    #magia; //=100;//Puntos de magia
    #resistenciaMagica = 100;//Puntos de resistencia mágica
-   #nivel = 1;//Nivel actual
+   #nivel;//Nivel actual
    #imagen;
    #vidaMax = 100;
 

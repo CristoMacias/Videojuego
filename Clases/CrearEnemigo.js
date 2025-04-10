@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
 const iniciarCombate = document.querySelector("#combate");
 let numeroRaza = 0;
 
+    const jsonpersonaje = JSON.parse(localStorage.getItem('personaje'));
+    const personaje = Personaje.reconstruirJson(jsonpersonaje);
+
 const nombres = ["Malgor", 
                 "Zorath", 
                 "Krythar", 
@@ -67,7 +70,7 @@ function elegirNombre(){
 }
 
 function elegirNivel(){
-    let nivelPersonaje = 5;
+    let nivelPersonaje = personaje.nivel;
     let numeroNivel;
     let bandera = false;
     let escalaNiveles = 10;
