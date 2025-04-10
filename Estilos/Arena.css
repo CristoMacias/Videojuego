@@ -60,7 +60,9 @@ a{
     font-size: 120%;
     background-color: var(--verdeOscuro);
     border: var(--amarilloFondo) 2px ridge;
-
+}
+.botonHuir{
+    text-decoration: none;
 }
 .botonesArenaBlock{
     display: flex;
@@ -87,29 +89,29 @@ a{
 }
 
 
-
-
-
 /*Victoria o derrota*/
 .victoria{
     margin-top: -40%;
-    background-color: rgba(32, 70, 78, 0.3);
+    background-color: rgba(32, 70, 78, 0.8);
     margin-right: auto;
     margin-left: auto;
     align-content: center;
     display: none;
     border-radius: 10%;
     border: var(--amarilloFondo) 5px ridge;
+    position: relative;
+    z-index: 9999;
 }
 .derrota{
     margin-top: -40%;
-    background-color: rgba(206, 144, 76, 0.3);
+    background-color: rgba(206, 144, 76, 0.8);
     margin-right: auto;
     margin-left: auto;
     align-content: center;
     display: none;
     border-radius: 10%;
-    z-index: 1000;
+    position: relative;
+    z-index: 9999;
     border: var(--verdeOscuro) 5px ridge;
 }
 .botonFinPartida{
