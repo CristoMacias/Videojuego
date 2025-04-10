@@ -150,37 +150,41 @@ a:hover{
     width: 25%;
   }
   #barra-vida[value]::-webkit-progress-value{
-    background-color: #3ab82c;
+    background-color: #1e331b;
     border-radius: 15px;
+    
     
   }
   #barra-vida[value]::-webkit-progress-bar{
-    background-color: #21611c9d;
+    background-color: #334b30e5;
     border-radius: 15px;
+    margin-left: 5%;
   }
   #barra-mana[value]::-webkit-progress-value{
-    background-color: rgb(32, 32, 114);
+    background-color: rgb(18, 18, 92);
     border-radius: 15px;
   }
   #barra-mana[value]::-webkit-progress-bar{
-    background-color: rgba(57, 79, 119, 0.74);
+    background-color: rgb(53, 68, 97);
     border-radius: 15px;
   }
   #barra-danio[value]::-webkit-progress-value{
-    background-color: rgb(177, 93, 33);
+    background-color: rgb(48, 9, 17);
     border-radius: 15px;
+    margin-left: 9%;
   }
   #barra-danio[value]::-webkit-progress-bar{
     border-radius: 15px;
   }
   #barra-armadura[value]::-webkit-progress-value{
-    background-color: rgb(165, 45, 45);
+    background-color: rgb(48, 17, 3);
     border-radius: 15px;
+    margin-left: 8%;
   }
   #barra-armadura[value]::-webkit-progress-bar{
     border-radius: 15px;
   }#barra-resistencia[value]::-webkit-progress-value{
-    background-color: rgb(112, 31, 112);
+    background-color: rgb(31, 2, 31);
     border-radius: 15px;
   }
   #barra-resistencia[value]::-webkit-progress-bar{

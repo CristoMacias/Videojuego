@@ -231,43 +231,43 @@ progress[value]{
 
 /*Cambiar los colores de cada barra */
 #barra-vida[value]::-webkit-progress-value{
-  background-color: #4cac42;
+  background-color: #1e331b;
   border-radius: 15px;
 }
 #barra-vida[value]::-webkit-progress-bar{
-  background-color: #00a68a88;
+  background-color: #334b30e5;
   border-radius: 15px;
 }
 #barra-mana[value]::-webkit-progress-value{
-  background-color: rgb(57, 57, 248);
+  background-color: rgb(18, 18, 92);
   border-radius: 15px;
 }
 #barra-mana[value]::-webkit-progress-bar{
-  background-color: cadetblue;
+  background-color: rgb(53, 68, 97);
   border-radius: 15px;
 }
 #barra-danio[value]::-webkit-progress-value{
-  background-color: rgb(236, 145, 79);
+  background-color: rgb(48, 9, 17);
   border-radius: 15px;
 }
 #barra-danio[value]::-webkit-progress-bar{
-  background-color: rgba(210, 105, 30, 0.534);
+  background-color: rgb(48, 9, 17);
   border-radius: 15px;
 }
 #barra-defensa[value]::-webkit-progress-value{
-  background-color: rgb(236, 62, 97);
+  background-color: rgb(48, 17, 3);
   border-radius: 15px;
 }
 #barra-defensa[value]::-webkit-progress-bar{
-  background-color: rgba(220, 20, 60, 0.582);
+  background-color: rgb(48, 17, 3);
   border-radius: 15px;
 }
 #barra-resistencia[value]::-webkit-progress-value{
-  background-color: rgb(223, 74, 223);
+  background-color: rgb(31, 2, 31);
   border-radius: 15px;
 }
 #barra-resistencia[value]::-webkit-progress-bar{
-  background-color: rgba(109, 8, 109, 0.507);
+  background-color: rgb(31, 2, 31);
   border-radius: 15px;
 }
 #prueba{
