@@ -149,12 +149,12 @@ a:hover{
     width: 25%;
   }
   #barra-vida[value]::-webkit-progress-value{
-    background-color: #36832d;
+    background-color: #3ab82c;
     border-radius: 15px;
     
   }
   #barra-vida[value]::-webkit-progress-bar{
-    background-color: #21611ce5;
+    background-color: #21611c9d;
     border-radius: 15px;
   }
   #barra-mana[value]::-webkit-progress-value{
@@ -162,7 +162,7 @@ a:hover{
     border-radius: 15px;
   }
   #barra-mana[value]::-webkit-progress-bar{
-    background-color: rgb(57, 79, 119);
+    background-color: rgba(57, 79, 119, 0.74);
     border-radius: 15px;
   }
   #barra-danio[value]::-webkit-progress-value{
