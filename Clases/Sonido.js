@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const sonidoTirar=document.querySelector("#sonido-tirar");
     const audioMusica=document.querySelector("#audio-musica");
     const sonidoAtaque=document.querySelector("#sonido-ataque");
+    const sonidoGuardar=document.querySelector("#sonido-guardar");
     const enlaces=document.querySelectorAll("a");
     const efectos=[];//Array donde guardar los efectos de sonido de la pagina actual
     const imagenMusica=document.querySelector("#imagen-musica");
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     comprobarAudioAnhadirEfectos(sonidoDesequipar);
     comprobarAudioAnhadirEfectos(sonidoTirar);
     comprobarAudioAnhadirEfectos(sonidoAtaque);
+    comprobarAudioAnhadirEfectos(sonidoGuardar);
     function pasarRaton(botones,sonido){
         if(botones && sonido){
             botones.forEach(boton=>{//Iteramos sobre todos los botones de enlac
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     asignarSonidoUnico("#boton-arma-equipar","#sonido-arma");
     asignarSonidoUnico("#boton-amuleto-equipar","#sonido-amuleto");
     asignarSonidoUnico("#botonAtacar","#sonido-ataque");
+    asignarSonidoUnico("#boton-guardar","#sonido-guardar");
 
     asignarSonidoVarios(".botones-tirar","#sonido-tirar");
     asignarSonidoVarios(".beber","#sonido-beber");
