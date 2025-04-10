@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     comprobarAudioAnhadirEfectos(sonidoDefensa);
     comprobarAudioAnhadirEfectos(sonidoDesequipar);
     comprobarAudioAnhadirEfectos(sonidoTirar);
-    //let sonidosHabitiliado=sessionStorage.getItem('sonidosHabilitados') === true;
-    //let musicaHabilitada=sessionStorage.getItem('musicaHabilitada')===true;;
-    if(musicaGeneral){
+    let sonidosHabilitados=sessionStorage.getItem('sonidosHabilitados') === 'true';
+    let musicaHabilitada=sessionStorage.getItem('musicaHabilitada')==='true';
+    if(musicaGeneral && sonidosHabilitados){
         enlaces.forEach(enlace=>{//Iteramos sobre todos los botones de enlace
             enlace.addEventListener('mouseover',()=>{//Evento para que cuando pase el botón por encima se escuche el sonido general
                 musicaGeneral.play();
@@ -50,7 +50,10 @@ document.addEventListener('DOMContentLoaded',()=>{
                     sonidos.forEach(sonido=>{
                         if(sonido){
                             sonido.muted=false;
-                            if(sonido===audioMusica)sonido.play();
+                            if(sonido===audioMusica){
+                                sonido.play();
+                                sessionStorage.setItem('musicaHabilitada','false');
+                            }  
                         }
                     });
                 }else{
@@ -58,6 +61,11 @@ document.addEventListener('DOMContentLoaded',()=>{
                         console.log(sonido);
                         if(sonido){
                              sonido.muted=true;
+                             if(sonido!==audioMusica){
+                                sessionStorage.setItem('sonidosHabilitados','true');
+                             }else{
+                                sessionStorage.setItem('musicaHabilitada','true');
+                             }
                         }
                     })
                 }

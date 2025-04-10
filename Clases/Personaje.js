@@ -322,7 +322,7 @@ export default class Personaje{
       this.#nivel++;
       this.#vidaActual+=this.#vidaActual*aumento;
       this.#vidaMaxima+=this.#vidaMaxima*aumento;
-      this.#defensa+=pthis.#defensa*aumento;
+      this.#defensa+=this.#defensa*aumento;
       this.resistenciaMagica+=this.#resistenciaMagica*aumento;
       this.#manaMaximo+=this.#manaMaximo*aumento;
       this.#manaActual+=this.#manaActual * aumento;
