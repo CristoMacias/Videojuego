@@ -203,7 +203,7 @@ a{
 
 
 /*Hacer invisible la input*/
-input[type="radio"] {
+input.tipo-radio {
     opacity: 0; /* Hace que el radio sea invisible */
     position: absolute; /* Lo saca del flujo normal */
     width: 0;
@@ -213,20 +213,8 @@ input:focus {
     border: 2px solid rgb(125, 204, 136);
     outline: none;
 }
-/*
-.botonVolverLobby{
-    width: 20%;
-    height: 32px;
-    margin-left: 3%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-   
-}*/
-.botonVolverLobby {
+
+.botonVolver{
     display: flex;
     justify-content: center;
     align-items: center;

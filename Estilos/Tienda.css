@@ -78,31 +78,13 @@ html .tienda{
 
 
 
-/*
-.tarjetas div{
-    border: 2px solid white;
-    flex: 1 1 250px;  Se adapta al espacio disponible pero con mínimo de 250px 
-    max-width: 300px;
-    padding: 10px;
-    box-sizing: border-box;
-
-}*/
-
 @media (max-width: 768px) {
     #titulo-tienda {
         font-size: 22px;
     }
 
 
-/*Imagenes de la tienda de armas
-.imagenItem{
-    max-width: 100%;  La imagen no será más grande que su contenedor 
-    height: auto;  Mantiene la proporción 
-    display: block;  Evita espacios adicionales 
-    margin: 0 auto; /Centra la imagen 
-    
-    
-}*/
+
 .imagenItem {
     max-width: 100%;
     max-height: 120px;
@@ -112,16 +94,6 @@ html .tienda{
 }
 
 
-
-/*
-.botones-comprar{
-    width: 40%;
-    height: 40px;
-    margin-left: 3%;
-    background-color: #20464e;
-    border: #ce904c ridge 2px;
-    color: var(--amarilloFondo);  
-}*/
 .botones-comprar {
     width: 80%;
     margin: 10px auto;
@@ -135,20 +107,15 @@ html .tienda{
 .tarjetas div {
     width: 90%;
 }
-
+/*Este selector aplica a todos los elementos tipo button cuyo atributo id comienza con boton-*/
 button[id^="boton-"] {
     font-size: 18px;
     padding: 6px 12px;
 }
 }
-/*
-.botonVolverLobby{
-    width: 20%;
-    height: 32px;
-    margin-left: 3%;
-}*/
 
-.botonVolverLobby {
+
+.botonVolver {
     width: 55%;
     margin: 10px auto;
     display: block;
@@ -188,13 +155,12 @@ a:hover{
     font-size: 28px;
     color: var(--amarilloFondo);
     font-weight: bold;
-    text-transform: uppercase;
     text-align: center;
     padding: 10px;
     margin: 20px 0;
     border-bottom: 3px solid var(--amarilloFondo);
     text-shadow: 3px 3px 5px #c55b19;
-    animation: titilar 3s infinite alternate;
+
 }
 
 button {
@@ -211,6 +177,13 @@ button:hover {
     transform: scale(1.05);
     transition: 0.3s;
 }
+
+
+
+
+
+
+
 /*Añadir fondo a los botones desabilitados de color rojo */
 button:disabled {
     background-color: rgba(221, 21, 21, 0.37);
