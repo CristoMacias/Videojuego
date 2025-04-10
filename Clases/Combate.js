@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function actualizarVida(){
         if(enemigo.vida <= 0){
-            spanVidaActualEnemigo.textContent = " Eliminado ";   
+            spanVidaActualEnemigo.textContent = ": Eliminado ";   
         }
         else{
             spanVidaActualEnemigo.textContent = ": " + Math.round(enemigo.vida);
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if(personaje.vidaActual <= 0){
-            spanVidaActualAliado.textContent = " Eliminado ";
+            spanVidaActualAliado.textContent = ": Eliminado ";
         }else{
             spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual);
             personajeBarraVida.value=Math.round(personaje.vidaActual);
@@ -230,7 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonCritico.disabled = true;
                 botonPocion.disabled = true;
                 personaje.vidaActual = personaje.vidaMaxima;
-                personaje.inventario.pocionesVida
+                personaje.inventario.pocionesVida;
+                botonHuir.style.display = "none";
+                
 
             }
             else{
@@ -249,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 botonHuir.disabled = true;
                 darExperiencia();
                 darOro();
+                botonHuir.style.display = "none";
             }
 
         }
