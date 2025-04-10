@@ -20,14 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const spanNombreEnemigo = document.querySelector("#nombreEnemigo");
     const spanNivelAliado = document.querySelector("#nivelAliado");
     const spanNivelEnemigo = document.querySelector("#nivelEnemigo");
-    const spanVidaAliado = document.querySelector("#vidaAliado");
-    const spanVidaEnemigo = document.querySelector("#vidaEnemigo");
-    const spanManaAliado = document.querySelector("#manaAliado");
+    const spanVidaActualAliado = document.querySelector("#vidaActualAliado");
+    const spanVidaActualEnemigo = document.querySelector("#vidaActualEnemigo");
+    const spanManaActualAliado = document.querySelector("#manaActualAliado");
     const personajeBarraVida = document.querySelector("#personajeBarraVida");
     const enemigoBarraVida = document.querySelector("#enemigoBarraVida");
     const spanPersonajeVidaMax = document.querySelector("#spanPersonajeVidaMax");
+    const spanPersonajeManaMax=document.querySelector("#spanPersonajeManaMax");
     const spanEnemigoVidaMax = document.querySelector("#spanEnemigoVidaMax");
-
+    const personajeBarraMana=document.querySelector("#personajeBarraMana");
     //IMAGENES
     const imagenPersonaje = document.querySelector("#imagenPersonaje");
     const imagenEnemigo = document.querySelector("#imagenEnemigo");
@@ -72,11 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
         spanNombreEnemigo.textContent = " : " + enemigo.nombre;
         spanNivelAliado.textContent = " : " + personaje.nivel;
         spanNivelEnemigo.textContent = " : " + enemigo.nivel;
-        spanVidaAliado.textContent = " : " + Math.floor(personaje.vidaActual);
-        spanVidaEnemigo.textContent = " : " + Math.floor(enemigo.vida);
-        spanManaAliado.textContent = " : " + Math.floor(personaje.manaActual);
+        spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual)+" ";
+        spanPersonajeVidaMax.textContent=" "+Math.round(personaje.vidaMaxima);
+        spanVidaActualEnemigo.textContent = " : " + Math.round(enemigo.vida)+" ";
+        spanEnemigoVidaMax.textContent=" "+Math.round(enemigo.vidaMax);
+        spanManaActualAliado.textContent = " : " + Math.floor(personaje.manaActual)+" ";
+        spanPersonajeManaMax.textContent=" "+Math.round(personaje.manaMaximo);
         imagenPersonaje.src = personaje.imagen;
         imagenEnemigo.src = enemigo.imagen;
+
+        personajeBarraVida.value=Math.round(personaje.vidaActual);
+        personajeBarraVida.max=Math.round(personaje.vidaMaxima);
+        personajeBarraMana.value=Math.round(personaje.manaActual);
+        personajeBarraMana.max=Math.round(personaje.manaMaximo);
+        enemigoBarraVida.value=Math.round(enemigo.vida);
+        enemigoBarraVida.max=Math.round(enemigo.vidaMax);
     }
 
     let contadorCriticoEnemigo = Math.floor(Math.random() * 10);
@@ -134,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(personaje.manaActual > 0 && personaje.manaActual > 39){
             personaje.ataqueCritico(enemigo);
             personaje.manaActual -= 40;
-            spanManaAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + Math.round(personaje.manaActual);
             actualizarVida();
             controlarTurnos();
             ataqueEnemigo();
@@ -185,19 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function actualizarVida(){
         if(enemigo.vida <= 0){
-            spanVidaEnemigo.textContent = " Eliminado ";   
+            spanVidaActualEnemigo.textContent = " Eliminado ";   
         }
         else{
-            spanVidaEnemigo.textContent = ": " + Math.floor(enemigo.vida);
-            enemigoBarraVida.value = Math.floor(enemigo.vida);
-            enemigoBarraVida.max = Math.floor(enemigo.vidaMax);
+            spanVidaActualEnemigo.textContent = ": " + Math.round(enemigo.vida);
+            enemigoBarraVida.value = Math.round(enemigo.vida);
+            enemigoBarraVida.max = Math.round(enemigo.vidaMax);
             
         }
 
         if(personaje.vidaActual <= 0){
-            spanVidaAliado.textContent = " Eliminado ";
+            spanVidaActualAliado.textContent = " Eliminado ";
         }else{
-            spanVidaAliado.textContent = " : " + Math.floor(personaje.vidaActual);
+            spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual);
+            personajeBarraVida.value=Math.round(personaje.vidaActual);
         }
 
     }
@@ -278,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud pequeña usada.");
         } else {
             alert("No quedan más pociones de salud pequeñas.");
@@ -297,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaAliado.textContent = " : " + personaje.vidaActual; 
+            spanVidaActualAliado.textContent = " : " + personaje.vidaActual; 
             alert("Poción de salud mediana usada.");
         } else {
             alert("No quedan más pociones de salud medianas.");
@@ -317,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud grande usada.");
         } else {
             alert("No quedan más pociones de salud grandes.");
@@ -337,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
             alert("Poción de salud milagrosa usada.");
         } else {
             alert("No quedan más pociones de salud milagrosas.");
@@ -357,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana pequeña usada.");
         } else {
             alert("No quedan más pociones de mana pequeñas.");
@@ -377,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaAliado.textContent = " : " + personaje.manaActual; 
+            spanManaActualAliado.textContent = " : " + personaje.manaActual; 
             alert("Poción de mana mediana usada.");
         } else {
             alert("No quedan más pociones de mana medianas.");
@@ -397,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana grande usada.");
         } else {
             alert("No quedan más pociones de mana grandes.");
@@ -415,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + personaje.manaActual;
             alert("Poción de mana divina usada.");
         } else {
             alert("No quedan más pociones de mana divinas.");
