@@ -103,18 +103,19 @@ document.addEventListener('DOMContentLoaded',()=>{
     const spanManaActual=document.querySelector("#span-mana-actual");
     const spanManaMax=document.querySelector("#span-mana-max");
     const spanDanio=document.querySelector("#span-danio");
-    const spanDanioAumento=document.querySelector("#span-danio-aumento");
     const spanDefensa =document.querySelector("#span-defensa");
-    const spanDefensaAumento=document.querySelector("#span-defensa-aumento");
     const spanResistencia=document.querySelector("#span-resistencia");
-    const spanResistenciaAumento=document.querySelector("#span-resistencia-aumento");
-
+   
+    //Variables con el DOM de las barras
     const barraVida=document.querySelector("#barra-vida");
     const barraMana=document.querySelector("#barra-mana");
     const barraDanio=document.querySelector("#barra-danio");
     const barraDefensa=document.querySelector("#barra-defensa");
     const barraResistencia=document.querySelector("#barra-resistencia");
     
+    /**
+     * Método para comprobar si los arrays de inventarios están vacios,y si es así no mostrarlos.
+     */
     function comprobarVacios(){
         //Comprobar el array Armas
         if(arrayArmas.length>0){
@@ -174,6 +175,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         
     }
+    //Métodod para comprobar si tienes armas equipadas y msotrarlas,si no no las muestra
     function comprobarEquipados(){
         if(armaEquipada){
             divArmaEquipada.style.display="block"
@@ -212,6 +214,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const botonArmaAnterior=document.querySelector("#boton-arma-anterior");
     const botonArmaSiguiente=document.querySelector("#boton-arma-siguiente");
     let indiceArma=0;
+    //Evento para cambiar el arma en el carrousel al anterior en el array
     botonArmaAnterior.addEventListener('click',()=>{
         indiceArma--;
         if(indiceArma<0){
@@ -219,7 +222,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
         actualizarArma();
     });
-
+    //Evento para cambiar el arma en el carrousel al siguiente en el array
     botonArmaSiguiente.addEventListener('click',()=>{
         indiceArma++;
         if(indiceArma>arrayArmas.length-1){
@@ -361,13 +364,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         totalPocionMana.textContent=arrayPocionMana.length;
     };
 
-    //Controlar cuando ocultar las tarjetas vascias
-
-
-
     //Funciones para equipar,desequipar y beber
-   
     const botonArmaDesequipar=document.querySelector("#boton-arma-desequipar");
+    //Evento para desequipar un arma,que se quite del inventario y no se vea el div
     botonArmaDesequipar.addEventListener('click',()=>{
         personaje.quitarArma();
         armaEquipada=personaje.armaEquipada;
@@ -375,12 +374,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         actualizarEstadisticas();
 
     });
-
-
-
-
-
     const botonArmaEquipar=document.querySelector("#boton-arma-equipar");
+    //Evento para equipar un arma , se añada al inventario y se muestre
     botonArmaEquipar.addEventListener('click',()=>{
         let arma=arrayArmas[indiceArma];
         personaje.equiparArma(arma);
@@ -395,7 +390,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
     const botonArmaduraDesequipar=document.querySelector("#boton-armadura-desequipar");
     const botonArmaduraEquipar=document.querySelector("#boton-armadura-equipar");
-
     botonArmaduraDesequipar.addEventListener('click',()=>{
         personaje.quitarArmadura();
         armaduraEquipada=personaje.armaduraEquipada;
@@ -445,21 +439,21 @@ document.addEventListener('DOMContentLoaded',()=>{
         //Tirar Armas
     const botonArmaTirar=document.querySelector("#boton-arma-tirar");
     botonArmaTirar.addEventListener('click',()=>{
-        let armaEquipada=personaje.armaEquipada;
-        let armaTirar=arrayArmas[indiceArma];
-        personaje.tirarObjeto(armaTirar,indiceArma);
-        if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){
-            personaje.quitarArma();
-            divArmaEquipada.style.display="none";
-            actualizarEstadisticas();
+        let armaEquipada=personaje.armaEquipada;//Recogemos el arma que está equipada
+        let armaTirar=arrayArmas[indiceArma];//Recogemos el arma a tirar segun el indice que del ararma que se muestre
+        personaje.tirarObjeto(armaTirar,indiceArma);//Tiramos el arma
+        if(armaEquipada!==null && armaEquipada.nombre===armaTirar.nombre){//Comprobamos si el arma equipada es la misma que la que queremos tirar
+            personaje.quitarArma();//Si lo es, quitamos el arma equipada
+            divArmaEquipada.style.display="none";//Ocultamos el div de equipada
+            actualizarEstadisticas();//ACtualizamos las estadisticas para que desaparezca el aumento
         }  
-        indiceArma--;
-        if(indiceArma<0){
+        indiceArma--;//Restamos al indice de armas
+        if(indiceArma<0){//Si es negativo la dehamos en 0
             indiceArma=0;
         }
-        if(arrayArmas.length>0){
-             actualizarArma();
-        }else{
+        if(arrayArmas.length>0){//Si sigue habiendo armas se sigue mostrando
+             actualizarArma();//Se actualizan las caracteristicas
+        }else{//Si ya no hay ocultamos los divs
             divArmaEquipada.style.display="none";
             divArmas.style.display="none";
         }
@@ -514,19 +508,20 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 
     const botonPocionBeberVida=document.querySelector("#boton-beber-vida");
+    //Evemto para beber pocion de vida
     botonPocionBeberVida.addEventListener('click',()=>{
-        let pocionBeber = arrayPocionVida[indiceVida];
-        personaje.tomarPocion(pocionBeber);
-        indiceVida--;
-        if(indiceVida<0){
+        let pocionBeber = arrayPocionVida[indiceVida];//AObtenemos la pocion abeber
+        personaje.tomarPocion(pocionBeber);//El personaje bebe la poción
+        indiceVida--;//Restamos indice del array de pociones vida
+        if(indiceVida<0){//Si es negativo igualamos a 0
             indiceVida=0;
         }
-        if(arrayPocionVida.length>0){
-            actualizarPocionVida();
+        if(arrayPocionVida.length>0){//Si sigue habiendo mostramos
+            actualizarPocionVida();//Actuazliamos
         }else{
-            divVida.style.display="none";
+            divVida.style.display="none";//Si no se quita el div de pociones
         }
-        actualizarEstadisticas();
+        actualizarEstadisticas();//Actualizamos 
 
     });
 
@@ -549,7 +544,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     //Añadir tarjeta de personaje
 
-
+    //Método para actualizar la trjte de personaje con la sestadisiticas
     function actualizarEstadisticas(){
         imagenPersonaje.src=personaje.imagen;
 
@@ -562,7 +557,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         spanManaMax.textContent=Math.round(personaje.manaMaximo);
         barraMana.value=Math.round(personaje.manaActual);
         barraMana.max=Math.round(personaje.manaMaximo);
-        if(personaje.raza==="mago" || personaje.raza==="elfo"){
+        if(personaje.raza==="mago" || personaje.raza==="elfo"){//En funcion e la raza mostramos  magia o ataque
             spanDanio.textContent="MAGIA: "+Math.round(personaje.magia);
             barraDanio.value=Math.round(personaje.magia);
         }else{

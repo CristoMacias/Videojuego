@@ -14,10 +14,10 @@ export default class Personaje{
     #defensa=100;//Puntos de defensa
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
-    #nivel=1;//Nivel actual
+    #nivel=100;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=0; // Total de oro 
+    #oro=10000; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;
@@ -274,9 +274,14 @@ export default class Personaje{
     * Método para desequipar de golpe el arma y objetos de defensa
     */
    desequiparTodo(){
-      this.quitarArma();
-      this.quitarArmadura();
-      this.quitarAmuleto();
+      if(this.armaEquipada!==null){
+         this.quitarArma();
+      }
+      if(this.armaduraEquipada!==null){
+          this.quitarArmadura();
+      }if(this.amuletoEquipado!==null){
+         this.quitarAmuleto();
+      }
    }
    /**
     * Método para que el personaje beba una pocion de salud o de mana

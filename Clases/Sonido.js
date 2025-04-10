@@ -9,13 +9,14 @@ document.addEventListener('DOMContentLoaded',()=>{
     const sonidoDesequipar=document.querySelector("#sonido-equipar");
     const sonidoTirar=document.querySelector("#sonido-tirar");
     const audioMusica=document.querySelector("#audio-musica");
+    const sonidoAtaque=document.querySelector("#sonido-ataque");
     const enlaces=document.querySelectorAll("a");
     const efectos=[];//Array donde guardar los efectos de sonido de la pagina actual
-    const botonesLobby=document.querySelectorAll(".botones-arena");
     const imagenMusica=document.querySelector("#imagen-musica");
     const imagenSilenciar=document.querySelector("#imagen-silenciar");
     const imagenPlay = "./Imagenes/botones_sonidos/play.svg";
     const imagenPause = "./Imagenes/botones_sonidos/pause.svg";
+
     //Llamar a al funcion para comprobar si el id existe
     comprobarAudioAnhadirEfectos(musicaGeneral);
     comprobarAudioAnhadirEfectos(sonidoArma);
@@ -24,8 +25,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     comprobarAudioAnhadirEfectos(sonidoDefensa);
     comprobarAudioAnhadirEfectos(sonidoDesequipar);
     comprobarAudioAnhadirEfectos(sonidoTirar);
-    let sonidosHabilitados=sessionStorage.getItem('sonidosHabilitados') === 'true';
-    let musicaHabilitada=sessionStorage.getItem('musicaHabilitada')==='true';
+    comprobarAudioAnhadirEfectos(sonidoAtaque);
     function pasarRaton(botones,sonido){
         if(botones && sonido){
             botones.forEach(boton=>{//Iteramos sobre todos los botones de enlac
@@ -35,69 +35,83 @@ document.addEventListener('DOMContentLoaded',()=>{
             })
         }
     }
+    //Lmamos a las funciones para activar los sonidos cuando pasen el rato por encima
     pasarRaton(enlaces,musicaGeneral);
-    pasarRaton(botonesLobby,musicaGeneral)
-
-    
     /**
     * Evento para que se inicie la música al cargar la página
     */
     window.addEventListener('load',()=>{
+        let sonidosHabilitados=sessionStorage.getItem('sonidosHabilitados') === 'true';
+        let musicaHabilitada=sessionStorage.getItem('musicaHabilitada')==='true';
         actualizarBoton(imagenMusica,musicaHabilitada,imagenPlay,imagenPause);
-        actualizarBoton(imagenMusica,sonidosHabilitados,imagenPlay,imagenPause);
+        actualizarBoton(imagenSilenciar,sonidosHabilitados,imagenPlay,imagenPause);
         efectos.forEach(sonido=>{
             if(sonido)
             sonido.muted=sonidosHabilitados;
         });
         audioMusica.muted=musicaHabilitada;
-        document.querySelector("#audio-musica").play();
+        audioMusica.play();
     })
+    /**
+     * Método para para actualizar el boton de sonidos segun esté muteado o no
+     * @param {*} imagen 
+     * @param {*} muted 
+     * @param {*} imagenPlay 
+     * @param {*} imagenPause 
+     */
     function actualizarBoton(imagen,muted,imagenPlay,imagenPause){
         if(imagen){
             imagen.src=muted ? imagenPause:imagenPlay;
         }
 
     }
+    /**
+     * Método genérico para activar o desactivar la musica y efectos de los botones. Recibimos el id del boton, el id de la imagne para el icono, los sonidos y las dos imagenes de play y pause
+     * @param {*} idBoton 
+     * @param {*} imagen 
+     * @param {*} sonidosEfectos 
+     * @param {*} imagenPlay 
+     * @param {*} imagenPause 
+     */
     function botonesSonido(idBoton,imagen,sonidosEfectos,imagenPlay,imagenPause){
-        const boton=document.querySelector(idBoton);
-        let sonidos=[sonidosEfectos];
-        if(Array.isArray(sonidosEfectos)){
-            sonidos=sonidosEfectos;
+        const boton=document.querySelector(idBoton);//Recibimos el id del boton 
+        let sonidos=[sonidosEfectos];//Creamos array
+        if(Array.isArray(sonidosEfectos)){//Si lo que nos viene ya e sun array
+            sonidos=sonidosEfectos;//Lo igualamos para que no sea un array de arrays
         }
-        if(boton && imagen && sonidos && sonidos.length){ 
-            boton.addEventListener('click',()=>{
-                const muteados=sonidos.every(sonido=> sonido.muted);
-                if(muteados){
-                    sonidos.forEach(sonido=>{
-                        if(sonido){
-                            sonido.muted=false;
-                            if(sonido===audioMusica){
-                                sonido.play();
-                                sessionStorage.setItem('musicaHabilitada','false');
+        if(boton && imagen && sonidos && sonidos.length){ //Comprobamos que existen todos en el DOM
+            boton.addEventListener('click',()=>{//Para el evento de click en el boton
+                const muteados=sonidos.every(sonido=> sonido.muted); //Recorremos todo el array de sonidos para capturar el muted
+                if(muteados){//Si están muteado en true
+                    sonidos.forEach(sonido=>{ //Recorremos sonidos
+                        if(sonido){//Si sonido existe en el DOM (esto es para controlar lo sonidos en otras páginas ya que esto funciona para todos los html)
+                            sonido.muted=false;//Quitamos el muteo
+                            if(sonido===audioMusica){ //Controlamos si en concreto es el audio de musica de fondo
+                                sonido.play();//Reproducimos la musica
+                                sessionStorage.setItem('musicaHabilitada','false');// Añadimos a sesion storage el estado de la musica para que persista entre paginas 
                             }else{
-                                sessionStorage.setItem('sonidoHabilitados','false');
+                                sessionStorage.setItem('sonidosHabilitados','false');//Aañadimos a sesion storage el estado de los sonidos para que persista entre paginas
                             }  
                             
                         }
                     });
-                }else{
-                    sonidos.forEach(sonido=>{
-                        console.log(sonido);
-                        if(sonido){
-                             sonido.muted=true;
-                             if(sonido!==audioMusica){
-                                sessionStorage.setItem('sonidosHabilitados','true');
+                }else{//Si no están muteados, los apaga
+                    sonidos.forEach(sonido=>{//Recorremos el array de sonidos
+                        if(sonido){//Si sonido existe en el DOM
+                             sonido.muted=true; //Mutea a true para silenciar
+                             if(sonido!==audioMusica){//Si sonido es distinto a la musica de fondo
+                                sessionStorage.setItem('sonidosHabilitados','true'); //Añadimos al session storage los sonidos a true muteados
                              }else{
-                                sessionStorage.setItem('musicaHabilitada','true');
+                                sessionStorage.setItem('musicaHabilitada','true');//Añadimos al session stotage la musica a true muteado
                              }
                         }
                     })
                 }
-                imagen.src=muteados ? imagenPlay : imagenPause;
+                imagen.src=muteados ? imagenPlay : imagenPause;//Cambiamos la imagen según esté reproduciendo o no
             });
         }
     }
-
+    //Llamada a la funcióno para activar o desactivar los sonidos/musica
     botonesSonido("#boton-musica",imagenMusica,audioMusica,imagenPlay,imagenPause);
     botonesSonido("#silenciar-botones",imagenSilenciar,efectos,imagenPlay,imagenPause);
     /**
@@ -129,16 +143,20 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
 
     }
-
+    //Lllamada a las funciones para activar los sonidos en los botones
     asignarSonidoUnico("#boton-arma-equipar","#sonido-arma");
     asignarSonidoUnico("#boton-amuleto-equipar","#sonido-amuleto");
+    asignarSonidoUnico("#botonAtacar","#sonido-ataque");
 
     asignarSonidoVarios(".botones-tirar","#sonido-tirar");
     asignarSonidoVarios(".beber","#sonido-beber");
     asignarSonidoVarios(".desequipar","#sonido-equipar");
     asignarSonidoVarios(".equipar-defensa","#sonido-defensa");
     asignarSonidoVarios(".botonesArena","#musica");
-
+    /**
+     * Comprueba que existe el el audio en el DOM para añadirlo al array de sonidos
+     * @param {*} sonido 
+     */
     function comprobarAudioAnhadirEfectos(sonido){
         if(sonido){
             efectos.push(sonido);
