@@ -15,6 +15,10 @@ body {
     background-color: black;
     color: white;
     z-index: relative;
+    background-image: url("../Imagenes/fondos/tienda.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 .canvas{
     z-index: -1;
@@ -36,7 +40,6 @@ html .tienda{
     margin: 0;
     padding: 1.5%;
     overflow: auto;
-    height: 100vh;
     max-width: 100%;
     right: 0;
     box-sizing: border-box;
@@ -52,16 +55,16 @@ html .tienda{
 }
 .tarjetas div {
     border: 2px solid white;
-    flex: 1 1 250px;
-    max-width: 300px;
+    max-width: 16%;
     padding: 10px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between; /* Espaciado equilibrado */
-    min-height: 450px; /* Asegura que todos tengan mismo alto */
+    min-height: 20%; /* Asegura que todos tengan mismo alto */
     text-align: center;
+    background-color: rgba(206, 144, 76, 0.1);
 }
 
 .tarjetas div p {

@@ -10,11 +10,12 @@ html{
   cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
 }
 body {
-  margin: 0;
   cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
   background-color: black;
   color: white;
   z-index: relative;
+  background-image: url("../Imagenes/fondos/inventario.jpg");
+  background-size: cover;
 }
 
 .canvas {
@@ -115,6 +116,7 @@ button:active {
   border-radius: 24px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
   width: 300px;
+  border: var(--amarilloFondo) 3px ridge;
 }
 
 #equipados img {
@@ -138,6 +140,7 @@ button:active {
   border-radius: 24px;
   max-width: 600px;
   box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+  border: var(--amarilloFondo) 3px ridge;
 }
 
 #cajon-armas img,
@@ -191,6 +194,7 @@ h3 {
   background-color: rgba(30, 30, 30, 0.9);
   border-radius: 24px;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  border: var(--amarilloFondo) 3px ridge;
 }
 #info-personaje img{
   width:30%;
@@ -269,11 +273,13 @@ progress[value]{
 #prueba{
   width:60%;
   max-width:700px;
-  margin:20px auto;
+  margin: auto;
   padding:5%;
   font-size:1rem;
   transform:scale(0.9);
   display:block;
+ 
+  margin-top: -10%;
 
 }
 /*Boton de audio*/

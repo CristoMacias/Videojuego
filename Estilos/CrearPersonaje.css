@@ -16,6 +16,7 @@ body {
     background-color: black;
     color: white;
     z-index: relative;
+    background-image: url("../Imagenes/fondos/creador.png");
 }
 .canvas{
     z-index: -1;
@@ -35,7 +36,7 @@ a{
 
 /*h1 de eleccion de arma inicial*/
 #titulo-Crea {
-    font-size: 36px;
+    font-size: 25px;
     color: var(--amarilloFondo);
     font-weight: bold;
     text-transform: uppercase;
@@ -50,11 +51,14 @@ a{
 #creador{
     display: block;
     margin: 10px auto;
+    height: 5%;
 }
 
 #imagen-elegir {
     display: block;
     margin: 10px auto;
+    width: 17%;
+    
 }
 
 #nombre {
@@ -79,7 +83,7 @@ a{
 
 /*h2 de eleccion de arma inicial*/
 #titulo-unico {
-    font-size: 28px;
+    font-size: 25px;
     color: var(--amarilloFondo);
     font-weight: bold;
     text-transform: uppercase;
@@ -113,6 +117,8 @@ a{
     align-items: stretch;
     justify-content: center;
     gap: 10px;
+    
+    
 }
 
 .div-armas{ 
@@ -120,9 +126,20 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    width: 48%;
+    width: 30%;
     min-height: 20%; 
     padding: 10px;
+    background-color: rgba(206, 144, 76, 0.1);
+}
+.div-armas-seleccionada{ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 30%;
+    min-height: 20%; 
+    padding: 10px;
+    border: var(--amarilloFondo) 3px ridge;
 }
 
 .div-armas img {
@@ -136,8 +153,8 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 10px; 
+    justify-content: center; 
+    
 }
 
 .div-armas img:hover{
@@ -154,11 +171,13 @@ a{
     display: flex;
     align-items: center;
     justify-content:center;
+    background: rgba(206, 144, 76, 0.2);
 }
 
 .div-armas p span {
     display: block;
     min-height: 20px;
+    
 }
 
 
@@ -291,10 +310,11 @@ a:hover{
   }
 select{
     background-color: #008080;
-    font-size: 30px;
+    font-size: 15px;
     border-radius: 20px;
     padding:5px;
     box-shadow: 0px 1px 10px 1px rgb(248, 229, 118);
     border: 1px solid rgba(223, 215, 146, 0.623);
+    height: 5%;
 }
 

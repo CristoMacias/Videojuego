@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded',()=>{
      */
     formulario.addEventListener('submit',(event)=>{
         event.preventDefault();//Para bloquear la actualización automática
-        const nombre = nombreFormulario.value.trim();
+        const nombre = nombreFormulario.value.toUpperCase().trim();
         const raza = creadorSelect.value;
         const indiceRaza= razas.indexOf(raza);
         let armaRadio=document.querySelector('input[name="arma"]:checked');
