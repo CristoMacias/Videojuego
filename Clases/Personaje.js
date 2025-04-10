@@ -14,10 +14,10 @@ export default class Personaje{
     #defensa=100;//Puntos de defensa
     #magia=100;//Puntos de magia
     #resistenciaMagica=100;//Puntos de resistencia mágica
-    #nivel=100;//Nivel actual
+    #nivel=1;//Nivel actual
     #experiencia=0;
     #experienciaMaxima=100;//Experiencia
-    #oro=10000; // Total de oro 
+    #oro=0; // Total de oro 
     #imagen; // Imagen elegida
     #inventario;
     #armaEquipada;
@@ -305,14 +305,16 @@ export default class Personaje{
     * @param {*} experienciaGanada Recibe por parámetro la experiencia ganada en el combate
     */
    ganarExperiencia(experienciaGanada){
-
-      this.#experiencia+=experienciaGanada;
-      while(this.#experiencia>=this.#experienciaMaxima){
+      if(this.nivel!==100){
+         this.#experiencia+=experienciaGanada;
+         while(this.#experiencia>=this.#experienciaMaxima){
          this.#experiencia-=this.#experienciaMaxima;
          this.subirNivel();
          this.#experienciaMaxima = this.#experienciaMaxima*1.5;
+         }
+      }else{
+         this.experiencia=this.experienciaMaxima;
       }
-
    }
    /**
     * Método para subir de nivel y estadísticas

@@ -3,7 +3,12 @@
     --amarilloFondo: #ce904c;
     
 }
-
+*{
+    cursor: inherit;
+}
+html{
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
+}
 body {
     margin: 0;
     color: var(--amarilloFondo);
@@ -11,7 +16,7 @@ body {
     color: white;
     z-index: relative;
     background-image: url("../Imagenes/fondos/fondobatalla.jpg");
-    
+    cursor: url("../Imagenes/cursores/cursor1.svg") 16 16,auto;
    
     
 }
@@ -197,7 +202,7 @@ progress{
     appearance: none;
     box-shadow: 1px 0px 7px 1px rgba(245, 238, 136, 0.637);
     border-radius: 10px;
-    transition: width 10s ease;
+    transition: width 3s ease;
 }
   #personajeBarraVida[value]::-webkit-progress-value{
     background-color: #3ab82c;

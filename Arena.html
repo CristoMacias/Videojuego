@@ -56,14 +56,14 @@
         <button class="botonesArena" id="botonCritico" >Golpe critico</button>
         <button class="botonesArena" id="botonPocion" >Pocion</button>  
         <div class="tiposPocionesOculto" id="divPociones">
-            <button><img class="botonesPociones" id="botonPocionSaludPequenha" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Pequenha.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionSaludMediana" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Mediana.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionSaludGrande" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Grande.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionSaludMilagrosa" src="Imagenes/Protecciones_Pociones/Pocion_Milagrosa.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionManaPequenha" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Pequenha.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionManaMediana" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Mediana.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionManaGrande" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Grande.png" alt=""></button>
-            <button><img class="botonesPociones" id="botonPocionManaDivina" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Divina.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionSaludPequenha" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Pequenha.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionSaludMediana" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Mediana.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionSaludGrande" src="Imagenes/Protecciones_Pociones/Pocion_Salud_Grande.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionSaludMilagrosa" src="Imagenes/Protecciones_Pociones/Pocion_Milagrosa.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionManaPequenha" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Pequenha.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionManaMediana" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Mediana.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionManaGrande" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Grande.png" alt=""></button>
+            <button><img class="botonesPociones beber" id="botonPocionManaDivina" src="Imagenes/Protecciones_Pociones/Pocion_Mana_Divina.png" alt=""></button>
         </div>
         <a href="Lobby.html" ><button class="botonesArena" id="botonHuir">Huir</button></a>
         
@@ -74,7 +74,8 @@
         <img class="derrota" id="derrota" src="Imagenes/Perder.png">
         <a class="botonFinPartida" id="botonFinPartida" href="Lobby.html">Volver</a>
     </div>
-
+    <audio id="sonido-beber"><source src="./Sonidos/Inventario/beber.mp3" type="audio/mp3"></audio>
+    <audio id="sonido-general"><source src="./Sonidos/botonesGeneral.mp3" type="audio/mp3"></audio>
     <audio id="audio-musica" autoplay loop muted><source src="./Sonidos/prueba_inicio2.mp3" type="audio/mp3"></audio>
     <canvas class="canvas" id="backgroundCanvas"></canvas>
     <script src="./Clases/FondoAnimado.js"></script>

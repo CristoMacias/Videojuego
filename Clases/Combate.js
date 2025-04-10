@@ -290,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual);
             alert("Poción de salud pequeña usada.");
         } else {
             alert("No quedan más pociones de salud pequeñas.");
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaActualAliado.textContent = " : " + personaje.vidaActual; 
+            spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual); 
             alert("Poción de salud mediana usada.");
         } else {
             alert("No quedan más pociones de salud medianas.");
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual);
             alert("Poción de salud grande usada.");
         } else {
             alert("No quedan más pociones de salud grandes.");
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesVida[index];
             personaje.tomarPocion(pocion);
-            spanVidaActualAliado.textContent = " : " + personaje.vidaActual;
+            spanVidaActualAliado.textContent = " : " + Math.round(personaje.vidaActual);
             alert("Poción de salud milagrosa usada.");
         } else {
             alert("No quedan más pociones de salud milagrosas.");
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaActualAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + Math.round(personaje.manaActual);
             alert("Poción de mana pequeña usada.");
         } else {
             alert("No quedan más pociones de mana pequeñas.");
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaActualAliado.textContent = " : " + personaje.manaActual; 
+            spanManaActualAliado.textContent = " : " + Marh.round(personaje.manaActual); 
             alert("Poción de mana mediana usada.");
         } else {
             alert("No quedan más pociones de mana medianas.");
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion);
-            spanManaActualAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + Math.round(personaje.manaActual);
             alert("Poción de mana grande usada.");
         } else {
             alert("No quedan más pociones de mana grandes.");
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index !== -1) {
             let pocion = pocionesMana[index];
             personaje.tomarPocion(pocion); 
-            spanManaActualAliado.textContent = " : " + personaje.manaActual;
+            spanManaActualAliado.textContent = " : " + Math.round(personaje.manaActual);
             alert("Poción de mana divina usada.");
         } else {
             alert("No quedan más pociones de mana divinas.");
