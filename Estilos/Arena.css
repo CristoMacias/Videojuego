@@ -10,9 +10,7 @@ body {
     background-color: black;
     color: white;
     z-index: relative;
-    background-image: url("/Videojuego/Imagenes/fondos/fondobatalla.jpg");
-    
-   
+    background-image: url("../Imagenes/fondos/fondobatalla.jpg");
     
 }
 .canvas{
@@ -43,7 +41,7 @@ a{
     align-content: initial;
     width: 20%;
     text-align: center;
-    z-index: -1;
+    z-index: 1;
     margin-top: 2%;
 }
 .botonesArena{
@@ -67,9 +65,11 @@ a{
 
 .imagenPersonaje{
     width: 95%;
+    z-index: 100;
 }
 .imagenEnemigo{
     width: 95%;
+    z-index: 100;
 }
 
 .topArena{
@@ -77,16 +77,6 @@ a{
     align-items: start;
     margin: 3%;
 }
-
-.imagenArena{
-    border: 5px ridge;
-    width: 33%;
-    height: 300px;
-    border-radius: 15px;
-    border-image: linear-gradient(to right,var(--amarilloFondo), var(--verdeOscuro)) 1;
-    margin-right: 5%;
-}
-
 
 
 
